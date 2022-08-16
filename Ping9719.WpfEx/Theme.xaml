@@ -1,0 +1,6 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Ping9719.WpfEx">
+    <local:EnumConverter x:Key="EnumConverter"></local:EnumConverter>
+    <local:ListJoinConverter x:Key="ListJoinConverter"></local:ListJoinConverter>
+</ResourceDictionary>
