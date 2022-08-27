@@ -20,20 +20,11 @@ namespace Ping9719.WpfEx
         /// </summary>
         public UserControlBase()
         {
-            Loaded += UserControlBase_Loaded;
             IsVisibleChanged += UserControlEx_IsVisibleChanged;
-        }
-
-        private void UserControlBase_Loaded(object sender, RoutedEventArgs e)
-        {
-            IsLoadedControl = true;
         }
 
         private void UserControlEx_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
-            if (!IsLoadedControl)
-                return;
-
             if (e.NewValue is true)
             {
                 if (LoadedVisible != null)
@@ -62,10 +53,6 @@ namespace Ping9719.WpfEx
         #endregion
 
         #region 属性
-        /// <summary>
-        /// 是否已加载
-        /// </summary>
-        public bool IsLoadedControl { get; private set; }
         /// <summary>
         /// 是否已加载并显示界面
         /// </summary>
