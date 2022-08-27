@@ -27,14 +27,14 @@ namespace Ping9719.WpfEx
         {
             if (e.NewValue is true)
             {
-                if (LoadedVisible != null)
-                    LoadedVisible(this, new EventArgs());
-
                 if (!IsLoadedVisible)
                 {
                     if (LoadedVisibleFirst != null)
                         LoadedVisibleFirst(this, new EventArgs());
                 }
+
+                if (LoadedVisible != null)
+                    LoadedVisible(this, new EventArgs());
 
                 IsLoadedVisible = true;
             }
