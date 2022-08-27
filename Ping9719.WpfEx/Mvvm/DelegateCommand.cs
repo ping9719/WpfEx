@@ -16,17 +16,15 @@ namespace Ping9719.WpfEx.Mvvm
     /// //XML代码
     /// &lt;Button Command="{Binding MyCommand}" Content="按钮"/&gt;
     /// 
-    /// //类
-    /// public class MyClass : BindableBase
+    /// //在窗体中设置绑定数据源
+    /// this.DataContext = new MainWindowViewModel()
+    /// 
+    /// //ViewModel类
+    /// public class MainWindowViewModel : BindableBase
     /// {
-    ///     public ICommand MyCommand { get; }
-    ///     //构造函数
-    ///     public MyClass()
-    ///     {
-    ///         MyCommand = new DelegateCommand(MyFun);
-    ///     }
+    ///     public ICommand MyCommand { get => new DelegateCommand(My); }
     ///     //执行方法
-    ///     public void MyFun()
+    ///     public void My()
     ///     {
     ///         //code
     ///     }

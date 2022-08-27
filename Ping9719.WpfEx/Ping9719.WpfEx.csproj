@@ -3,7 +3,23 @@
   <PropertyGroup>
     <TargetFrameworks>net45;netcoreapp3.0;net5.0-windows</TargetFrameworks>
     <UseWPF>true</UseWPF>
+    <Version>0.0.2</Version>
+	<GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Description>WPF扩展库，在 HandyControl 的基础上。(WPF extension library, based on HandyControl.)
+https://github.com/ping9719/WpfEx</Description>
+    <PackageProjectUrl>https://github.com/ping9719/WpfEx</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/ping9719/WpfEx</RepositoryUrl>
+    <Authors>ping9719</Authors>
   </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net45|AnyCPU'">
+    <DocumentationFile>Ping9719.WpfEx.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Mvvm\ObservableList.cs" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="HandyControl" Version="3.3.0" />

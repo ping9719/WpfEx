@@ -15,20 +15,37 @@ namespace Ping9719.WpfEx
     /// </summary>
     public class UserControlBase : UserControl
     {
+        /// <summary>
+        /// 初始化
+        /// </summary>
         public UserControlBase()
         {
+            Loaded += UserControlBase_Loaded;
             IsVisibleChanged += UserControlEx_IsVisibleChanged;
+        }
+
+        private void UserControlBase_Loaded(object sender, RoutedEventArgs e)
+        {
+            IsLoadedControl = true;
         }
 
         private void UserControlEx_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
+            if (!IsLoadedControl)
+                return;
 
-            if (!IsLoadedFirst && e.NewValue is true)
+            if (e.NewValue is true)
             {
-                if (LoadedFirst != null)
-                    LoadedFirst(this, new EventArgs());
+                if (LoadedVisible != null)
+                    LoadedVisible(this, new EventArgs());
 
-                IsLoadedFirst = true;
+                if (!IsLoadedVisible)
+                {
+                    if (LoadedVisibleFirst != null)
+                        LoadedVisibleFirst(this, new EventArgs());
+                }
+
+                IsLoadedVisible = true;
             }
         }
 
@@ -36,14 +53,23 @@ namespace Ping9719.WpfEx
         /// <summary>
         /// 首次加载并显示控件时发生
         /// </summary>
-        public event EventHandler LoadedFirst;
+        public event EventHandler LoadedVisibleFirst;
+
+        /// <summary>
+        /// 加载并显示控件时发生
+        /// </summary>
+        public event EventHandler LoadedVisible;
         #endregion
 
         #region 属性
         /// <summary>
-        /// 是否已第一次加载并显示
+        /// 是否已加载
         /// </summary>
-        public bool IsLoadedFirst { get; private set; }
+        public bool IsLoadedControl { get; private set; }
+        /// <summary>
+        /// 是否已加载并显示界面
+        /// </summary>
+        public bool IsLoadedVisible { get; private set; }
         /// <summary>
         /// 是否处于设计模式
         /// </summary>

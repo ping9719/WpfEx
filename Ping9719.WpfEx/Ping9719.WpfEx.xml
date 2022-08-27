@@ -1,0 +1,202 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Ping9719.WpfEx</name>
+    </assembly>
+    <members>
+        <member name="T:Ping9719.WpfEx.EnumConverter">
+            <summary>
+            将枚举转为字符串
+            </summary>
+        </member>
+        <member name="T:Ping9719.WpfEx.ListJoinConverter">
+            <summary>
+            将数组、集合按照默认逗号分隔转为字符串
+            </summary>
+        </member>
+        <member name="T:Ping9719.WpfEx.Mvvm.BindableBase">
+            <summary>
+            对 INotifyPropertyChanged 的实现
+            </summary>
+            <remarks>
+            代码列子：
+            <code>
+            //XML代码
+            &lt;Button Content="{Binding Txt}"/&gt;
+            
+            //在窗体中设置绑定数据源
+            this.DataContext = new MainWindowViewModel()
+            
+            //ViewModel类
+            public class MainWindowViewModel : BindableBase
+            {
+                private string _Txt = "按钮";
+                public string Title
+                {
+                    get { return _Txt; }
+                    set { SetProperty(ref _Txt, value); }
+                }
+            }
+            </code>
+            </remarks>
+        </member>
+        <member name="E:Ping9719.WpfEx.Mvvm.BindableBase.PropertyChanged">
+            <summary>
+            在属性值更改时发生。
+            </summary>
+        </member>
+        <member name="M:Ping9719.WpfEx.Mvvm.BindableBase.SetProperty``1(``0@,``0,System.String)">
+            <summary>
+            检查属性是否已经与所需的值匹配。 设置属性并仅在必要时通知侦听器。 
+            </summary>
+            <typeparam name="T">属性的类型</typeparam>
+            <param name="storage">设置的属性，需要有get;set;</param>
+            <param name="value">设置的值</param>
+            <param name="propertyName"> 用于通知侦听器的属性的名称。 该值是可选的，可以在从支持CallerMemberName的编译器中调用时自动提供。 </param>
+            <returns>如果值被更改，则为True，如果现有值与期望值匹配，则为false。 </returns>
+        </member>
+        <member name="M:Ping9719.WpfEx.Mvvm.BindableBase.SetProperty``1(``0@,``0,System.Action,System.String)">
+            <summary>
+            检查属性是否已经与所需的值匹配。 设置属性并仅在必要时通知侦听器。 
+            </summary>
+            <typeparam name="T">属性的类型</typeparam>
+            <param name="storage">设置的属性，需要有get;set;</param>
+            <param name="value">设置的值</param>
+            <param name="onChanged">更改属性值后调用的操作。 </param>
+            <param name="propertyName"> 用于通知侦听器的属性的名称。 该值是可选的，可以在从支持CallerMemberName的编译器中调用时自动提供。 </param>
+            <returns>如果值被更改，则为True，如果现有值与期望值匹配，则为false。 </returns>
+        </member>
+        <member name="M:Ping9719.WpfEx.Mvvm.BindableBase.RaisePropertyChanged(System.String)">
+            <summary>
+            引发此对象的PropertyChanged事件。
+            </summary>
+            <param name="propertyName">用于通知侦听器的属性的名称。 该值是可选的，可以在从支持<see cref="T:System.Runtime.CompilerServices.CallerMemberNameAttribute"/>的编译器中调用时自动提供。 </param>
+        </member>
+        <member name="M:Ping9719.WpfEx.Mvvm.BindableBase.OnPropertyChanged(System.String)">
+            <summary>
+            引发此对象的PropertyChanged事件。
+            </summary>
+            <param name="propertyName">用于通知侦听器的属性的名称。</param>
+        </member>
+        <member name="M:Ping9719.WpfEx.Mvvm.BindableBase.OnPropertyChanged(System.ComponentModel.PropertyChangedEventArgs)">
+            <summary>
+            引发此对象的PropertyChanged事件。
+            </summary>
+            <param name="args">这是 PropertyChangedEventArgs</param>
+        </member>
+        <member name="T:Ping9719.WpfEx.Mvvm.DelegateCommand">
+            <summary>
+            委托一个命名
+            </summary>
+            <remarks>
+            代码列子：
+            <code>
+            //XML代码
+            &lt;Button Command="{Binding MyCommand}" Content="按钮"/&gt;
+            
+            //在窗体中设置绑定数据源
+            this.DataContext = new MainWindowViewModel()
+            
+            //ViewModel类
+            public class MainWindowViewModel : BindableBase
+            {
+                public ICommand MyCommand { get => new DelegateCommand(My); }
+                //执行方法
+                public void My()
+                {
+                    //code
+                }
+            }
+            </code>
+            </remarks>
+        </member>
+        <member name="M:Ping9719.WpfEx.Mvvm.DelegateCommand.#ctor(System.Action)">
+            <summary>
+            创建实列
+            </summary>
+            <param name="executeMethod">一个方法</param>
+        </member>
+        <member name="M:Ping9719.WpfEx.Mvvm.DelegateCommand.#ctor(System.Action,System.Func{System.Boolean})">
+            <summary>
+            创建实列
+            </summary>
+            <param name="executeMethod">一个方法</param>
+            <param name="canExecuteMethod">是否可以执行此方式。使用方式：() => true</param>
+        </member>
+        <member name="T:Ping9719.WpfEx.Mvvm.DelegateCommand`1">
+            <summary>
+            委托一个带参数的命名
+            </summary>
+            <typeparam name="T">参数的类型，不能为null</typeparam>
+            <remarks>
+            代码列子：
+            <code>
+            //XML代码
+            &lt;Button Command="{Binding MyCommand}" CommandParameter="abc" Content="按钮"/&gt;
+            
+            //在窗体中设置绑定数据源
+            this.DataContext = new MainWindowViewModel()
+            
+            //ViewModel类
+            public class MainWindowViewModel : BindableBase
+            {
+                public ICommand MyCommand { get => new DelegateCommand&lt;string&gt;(My); }
+                //执行方法
+                public void My(string obj)
+                {
+                    //code
+                }
+            }
+            </code>
+            </remarks>
+        </member>
+        <member name="M:Ping9719.WpfEx.Mvvm.DelegateCommand`1.#ctor(System.Action{`0})">
+            <summary>
+            创建实列
+            </summary>
+            <param name="executeMethod">带参数的一个方法</param>
+        </member>
+        <member name="M:Ping9719.WpfEx.Mvvm.DelegateCommand`1.#ctor(System.Action{`0},System.Func{`0,System.Boolean})">
+            <summary>
+            创建实列
+            </summary>
+            <param name="executeMethod">带参数的一个方法</param>
+            <param name="canExecuteMethod">带参数的一个方法并返回bool。使用方法：(obj) => true</param>
+        </member>
+        <member name="T:Ping9719.WpfEx.UserControlBase">
+            <summary>
+            对用户控件的扩展
+            </summary>
+        </member>
+        <member name="M:Ping9719.WpfEx.UserControlBase.#ctor">
+            <summary>
+            初始化
+            </summary>
+        </member>
+        <member name="E:Ping9719.WpfEx.UserControlBase.LoadedVisibleFirst">
+            <summary>
+            首次加载并显示控件时发生
+            </summary>
+        </member>
+        <member name="E:Ping9719.WpfEx.UserControlBase.LoadedVisible">
+            <summary>
+            加载并显示控件时发生
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.UserControlBase.IsLoadedControl">
+            <summary>
+            是否已加载
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.UserControlBase.IsLoadedVisible">
+            <summary>
+            是否已加载并显示界面
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.UserControlBase.IsInDesignMode">
+            <summary>
+            是否处于设计模式
+            </summary>
+        </member>
+    </members>
+</doc>
