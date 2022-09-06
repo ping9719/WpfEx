@@ -5,8 +5,8 @@
 #
 
 ### 文档：[Document：]
-### 本地[Local]：\doc\WPF扩展库文档.docx
-### 在线[on-line]：--
+### 本地[Local]：\doc\WpfExDoc.docx
+### 在线[on-line]：https://view.officeapps.live.com/op/view.aspx?src=https://github.com/ping9719/WpfEx/blob/main/doc/WpfExDoc.docx?raw=true
 #
 
 ### 下载包 [download、install]
