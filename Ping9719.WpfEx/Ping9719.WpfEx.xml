@@ -61,11 +61,6 @@
             标记图像文件格式 (TIFF) 图像格式
             </summary>
         </member>
-        <member name="F:Ping9719.WpfEx.ImageFormat.Wmp">
-            <summary>
-            用于编码 Microsoft Windows Media 照片图像
-            </summary>
-        </member>
         <member name="T:Ping9719.WpfEx.WpfHelp">
             <summary>
             wpf扩展帮助

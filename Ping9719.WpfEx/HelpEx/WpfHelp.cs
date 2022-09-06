@@ -72,14 +72,6 @@ namespace Ping9719.WpfEx
                 using (var stream = File.Create(fileName))
                     encoder.Save(stream);
             }
-            else if (imageFormat == ImageFormat.Wmp)
-            {
-                var encoder = new WmpBitmapEncoder();
-                EncodeVisual(visual, encoder, background);
-
-                using (var stream = File.Create(fileName))
-                    encoder.Save(stream);
-            }
         }
 
         /// <summary>
@@ -134,13 +126,6 @@ namespace Ping9719.WpfEx
 
                 encoder.Save(memoryStream);
             }
-            else if (imageFormat == ImageFormat.Wmp)
-            {
-                var encoder = new WmpBitmapEncoder();
-                EncodeVisual(visual, encoder, background);
-
-                encoder.Save(memoryStream);
-            }
             return memoryStream;
         }
 
@@ -156,6 +141,8 @@ namespace Ping9719.WpfEx
                 visual.UpdateLayout();
                 viewbox.UpdateLayout();
             }
+            else
+                visual.UpdateLayout();
 
             var bitmap = new RenderTargetBitmap((int)visual.ActualWidth, (int)visual.ActualHeight, 96, 96, PixelFormats.Pbgra32);
 

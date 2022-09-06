@@ -31,9 +31,5 @@ namespace Ping9719.WpfEx
         /// 标记图像文件格式 (TIFF) 图像格式
         /// </summary>
         Tiff,
-        ///// <summary>
-        ///// 用于编码 Microsoft Windows Media 照片图像
-        ///// </summary>
-        //Wmp
     }
 }
