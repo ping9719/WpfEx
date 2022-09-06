@@ -10,10 +10,10 @@ using System.Windows.Data;
 namespace Ping9719.WpfEx
 {
     /// <summary>
-    /// 将枚举转为字符串
+    /// 将枚举转为字符串（支持Description特性）
     /// </summary>
     [ValueConversion(typeof(Enum), typeof(string))]
-    public class EnumConverter : IValueConverter
+    public class Enum2StrConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
@@ -22,7 +22,8 @@ namespace Ping9719.WpfEx
 
             if (value is Enum enu)
             {
-                return enu.ToString();
+                var des = EnumHelp.GetAttributeDescription(enu);
+                return des == null ? enu.ToString() : des;
             }
 
             return "";

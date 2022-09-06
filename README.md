@@ -5,7 +5,8 @@
 #
 
 ### 文档：[Document：]
-### https://www.yuque.com/ping9719/llv8rw/lvx0ii/edit
+### 本地[Local]：\doc\WPF扩展库文档.docx
+### 在线[on-line]：--
 #
 
 ### 下载包 [download、install]

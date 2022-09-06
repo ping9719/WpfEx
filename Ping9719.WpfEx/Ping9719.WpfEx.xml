@@ -4,15 +4,89 @@
         <name>Ping9719.WpfEx</name>
     </assembly>
     <members>
-        <member name="T:Ping9719.WpfEx.EnumConverter">
+        <member name="T:Ping9719.WpfEx.Enum2IntConverter">
             <summary>
-            将枚举转为字符串
+            将枚举转为数字
             </summary>
         </member>
-        <member name="T:Ping9719.WpfEx.ListJoinConverter">
+        <member name="T:Ping9719.WpfEx.Enum2StrConverter">
+            <summary>
+            将枚举转为字符串（支持Description特性）
+            </summary>
+        </member>
+        <member name="T:Ping9719.WpfEx.List2StrConverter">
             <summary>
             将数组、集合按照默认逗号分隔转为字符串
             </summary>
+        </member>
+        <member name="T:Ping9719.WpfEx.EnumHelp">
+            <summary>
+            枚举帮助扩展类
+            </summary>
+        </member>
+        <member name="M:Ping9719.WpfEx.EnumHelp.GetAttributeDescription(System.Enum)">
+            <summary>
+            得到枚举特性Description
+            </summary>
+            <param name="obj">枚举</param>
+            <returns>返回特性中的说明文本，没有找到特性返回null</returns>
+        </member>
+        <member name="T:Ping9719.WpfEx.ImageFormat">
+            <summary>
+            图片格式
+            </summary>
+        </member>
+        <member name="F:Ping9719.WpfEx.ImageFormat.Bmp">
+            <summary>
+            位图 (BMP) 图像格式
+            </summary>
+        </member>
+        <member name="F:Ping9719.WpfEx.ImageFormat.Gif">
+            <summary>
+            图形交换格式 (GIF) 图像格式
+            </summary>
+        </member>
+        <member name="F:Ping9719.WpfEx.ImageFormat.Jpeg">
+            <summary>
+            联合图像专家组 (JPEG) 图像格式
+            </summary>
+        </member>
+        <member name="F:Ping9719.WpfEx.ImageFormat.Png">
+            <summary>
+             W3C 可移植网络图形 (PNG) 图像格式
+            </summary>
+        </member>
+        <member name="F:Ping9719.WpfEx.ImageFormat.Tiff">
+            <summary>
+            标记图像文件格式 (TIFF) 图像格式
+            </summary>
+        </member>
+        <member name="F:Ping9719.WpfEx.ImageFormat.Wmp">
+            <summary>
+            用于编码 Microsoft Windows Media 照片图像
+            </summary>
+        </member>
+        <member name="T:Ping9719.WpfEx.WpfHelp">
+            <summary>
+            wpf扩展帮助
+            </summary>
+        </member>
+        <member name="M:Ping9719.WpfEx.WpfHelp.SaveToImg(System.Windows.FrameworkElement,System.String,Ping9719.WpfEx.ImageFormat,System.Windows.Media.Brush)">
+            <summary>
+            保存到图片
+            </summary>
+            <param name="visual">用户控件，控件等，不建议窗体</param>
+            <param name="fileName">全文件名</param>
+            <param name="imageFormat">文件格式（针对png,jpg已做优化）</param>
+            <param name="background">绘画画布颜色，png默认透明,jpg默认白色</param>
+        </member>
+        <member name="M:Ping9719.WpfEx.WpfHelp.SaveToImg(System.Windows.FrameworkElement,Ping9719.WpfEx.ImageFormat,System.Windows.Media.Brush)">
+            <summary>
+            保存到图片到流
+            </summary>
+            <param name="visual">用户控件，控件等，不建议窗体</param>
+            <param name="imageFormat">文件格式（针对png,jpg已做优化）</param>
+            <param name="background">绘画画布颜色，png默认透明,jpg默认白色</param>
         </member>
         <member name="T:Ping9719.WpfEx.Mvvm.BindableBase">
             <summary>
@@ -191,36 +265,6 @@
         <member name="P:Ping9719.WpfEx.UserControlBase.IsInDesignMode">
             <summary>
             是否处于设计模式
-            </summary>
-        </member>
-        <member name="T:XamlGeneratedNamespace.GeneratedInternalTypeHelper">
-            <summary>
-            GeneratedInternalTypeHelper
-            </summary>
-        </member>
-        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateInstance(System.Type,System.Globalization.CultureInfo)">
-            <summary>
-            CreateInstance
-            </summary>
-        </member>
-        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.GetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Globalization.CultureInfo)">
-            <summary>
-            GetPropertyValue
-            </summary>
-        </member>
-        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.SetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Object,System.Globalization.CultureInfo)">
-            <summary>
-            SetPropertyValue
-            </summary>
-        </member>
-        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateDelegate(System.Type,System.Object,System.String)">
-            <summary>
-            CreateDelegate
-            </summary>
-        </member>
-        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.AddEventHandler(System.Reflection.EventInfo,System.Object,System.Delegate)">
-            <summary>
-            AddEventHandler
             </summary>
         </member>
     </members>
