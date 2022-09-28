@@ -13,7 +13,6 @@ namespace Ping9719.WpfEx
     /// 将数组、集合按照默认逗号分隔转为字符串
     /// </summary>
     [ValueConversion(typeof(IEnumerable), typeof(string))]
-    [ValueConversion(typeof(Array), typeof(string))]
     public class List2StrConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
@@ -21,26 +20,21 @@ namespace Ping9719.WpfEx
             if (value == null)
                 return "";
 
-            if (value is IEnumerable lis)
+            if (value is string)
             {
-                if (parameter == null)
-                    return string.Join(",", lis);
-                else
-                    return string.Join(parameter.ToString(), lis);
+                return value.ToString();
             }
-            else if (value is Array array)
+            else if (value is IEnumerable lis)
             {
-                if (parameter == null)
-                    return string.Join(",", array);
-                else
-                    return string.Join(parameter.ToString(), array);
-            }
-            else if (value is string[] strs)
-            {
-                if (parameter == null)
-                    return string.Join(",", strs);
-                else
-                    return string.Join(parameter.ToString(), strs);
+                List<string> strList = new List<string>();
+                string sep = parameter == null ? "," : parameter.ToString();
+
+                foreach (var item in lis)
+                {
+                    strList.Add(item.ToString());
+                }
+
+                return string.Join(sep, strList);
             }
 
             return "";
@@ -49,21 +43,6 @@ namespace Ping9719.WpfEx
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            string cf = parameter.ToString();
-            if (cf == null)
-                cf = ",";
-
-            var sss = value.ToString().Split(new string[] { cf }, StringSplitOptions.None);
-
-            if (targetType is IEnumerable lis)
-            {
-                //return sss.ToList();
-            }
-            else if (value is string[] strs)
-            {
-                return sss;
-            }
-
             return null;
         }
     }
