@@ -22,7 +22,7 @@ Install-Package Ping9719.WpfEx
 #
 
 ### 快速开始 [How To Use]
-一、在App.xaml中添加以下代码：
+一、在App.xaml中添加以下代码： 
 ```CSharp
     <Application.Resources>
         <ResourceDictionary>
