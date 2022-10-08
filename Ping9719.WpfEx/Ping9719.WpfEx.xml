@@ -4,6 +4,11 @@
         <name>Ping9719.WpfEx</name>
     </assembly>
     <members>
+        <member name="T:Ping9719.WpfEx.Enum2BoolConverter">
+            <summary>
+            将枚举转为布尔
+            </summary>
+        </member>
         <member name="T:Ping9719.WpfEx.Enum2IntConverter">
             <summary>
             将枚举转为数字
