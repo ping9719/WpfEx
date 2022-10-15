@@ -9,6 +9,20 @@
 ### 在线[on-line]：https://view.officeapps.live.com/op/view.aspx?src=https://github.com/ping9719/WpfEx/blob/main/doc/WpfExDoc.docx?raw=true
 #
 
+### 未来计划 [plan]
+### 控件
+#遮罩加载控件<br/>
+#适用于瀑布流分页控件<br/>
+#适用与设备的启动与停止（或可选暂停、继续）控件<br/>
+#适用与设备的三色状态控件<br/>
+#底部状态栏控件<br/>
+#对HandyControl的基础选项卡美化
+### 窗体
+#启动加载窗体<br/>
+#登录窗体<br/>
+### 主题
+#待定<br/>
+
 ### 下载包 [download、install]
 ```CSharp
 Install-Package Ping9719.WpfEx
