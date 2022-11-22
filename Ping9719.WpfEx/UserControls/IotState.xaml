@@ -1,0 +1,33 @@
+﻿<UserControl xmlns:hc="https://handyorg.github.io/handycontrol"  x:Class="Ping9719.WpfEx.IotState"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Ping9719.WpfEx"
+             mc:Ignorable="d" 
+             d:DesignHeight="30" d:DesignWidth="150" Height="24" Width="130">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/Ping9719.WpfEx;component/Themes/Theme.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <Grid Margin="5,3" PreviewMouseLeftButtonDown="Border_PreviewMouseLeftButtonDown">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="8*"></ColumnDefinition>
+            <ColumnDefinition Width="2*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <ToggleButton Grid.Column="1" Width="auto" Height="auto" Margin="0" BorderThickness="0" IsChecked="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type local:IotState}},Path=IsOk}" IsEnabled="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type local:IotState}},Path=IsLoadIn,Converter={StaticResource Boolean2BooleanReConverter}}" Style="{StaticResource ToggleButtonFlip}">
+            <hc:StatusSwitchElement.CheckedElement>
+                <Border Background="{DynamicResource DarkSuccessBrush}"></Border>
+            </hc:StatusSwitchElement.CheckedElement>
+            <Border Background="{DynamicResource DarkOpacityBrush}"></Border>
+        </ToggleButton>
+        <Border Grid.Column="1" Background="White" Opacity="0"></Border>
+
+        <TextBlock Height="auto" Margin="3,0" FontSize="{StaticResource TextFontSize}" ToolTip="{Binding Text,RelativeSource={RelativeSource Mode=Self}}" hc:TextBlockAttach.AutoTooltip="True" TextWrapping="NoWrap" TextTrimming="CharacterEllipsis"  HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type local:IotState}},Path=Text}"></TextBlock>
+        <hc:LoadingLine Visibility="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type local:IotState}},Path=IsLoadIn,Converter={StaticResource Boolean2VisibilityConverter}}" Margin="-3,-3,-3,0" Grid.ColumnSpan="2" DotDiameter="3" DotSpeed="2"  Foreground="Blue" VerticalAlignment="Top"/>
+    </Grid>
+</UserControl>

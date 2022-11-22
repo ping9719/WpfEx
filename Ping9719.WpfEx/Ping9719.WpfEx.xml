@@ -237,6 +237,221 @@
             <param name="executeMethod">带参数的一个方法</param>
             <param name="canExecuteMethod">带参数的一个方法并返回bool。使用方法：(obj) => true</param>
         </member>
+        <member name="T:Ping9719.WpfEx.ServoMoveType">
+            <summary>
+            伺服运动位置类型
+            </summary>
+        </member>
+        <member name="F:Ping9719.WpfEx.ServoMoveType.MoveTo">
+            <summary>
+            运动到指定位置
+            </summary>
+        </member>
+        <member name="F:Ping9719.WpfEx.ServoMoveType.StartDotAdd">
+            <summary>
+            开始点动增加
+            </summary>
+        </member>
+        <member name="F:Ping9719.WpfEx.ServoMoveType.EndDotAdd">
+            <summary>
+            开始点动增加
+            </summary>
+        </member>
+        <member name="F:Ping9719.WpfEx.ServoMoveType.StartDotSub">
+            <summary>
+            开始点动减少
+            </summary>
+        </member>
+        <member name="F:Ping9719.WpfEx.ServoMoveType.EndDotSub">
+            <summary>
+            开始点动减少
+            </summary>
+        </member>
+        <member name="T:Ping9719.WpfEx.IotServo">
+            <summary>
+            工业控件：伺服
+            </summary>
+            <summary>
+            IotServo
+            </summary>
+        </member>
+        <member name="M:Ping9719.WpfEx.IotServo.#ctor">
+            <summary>
+            工业控件：伺服
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.IotServo.Text">
+            <summary>
+            名称
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.IotServo.Location">
+            <summary>
+            当前位置
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.IotServo.IsFold">
+            <summary>
+            是否折叠
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.IotServo.ModelSpeedHome">
+            <summary>
+            主页显示的模式速度
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.IotServo.ModelSpeeds">
+            <summary>
+            全部的模式速度
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.IotServo.IsLoadIn">
+            <summary>
+            是否在加载中
+            </summary>
+        </member>
+        <member name="E:Ping9719.WpfEx.IotServo.LocationChange">
+            <summary>
+            尝试改变伺服的位置时
+            </summary>
+        </member>
+        <member name="E:Ping9719.WpfEx.IotServo.SpeedChange">
+            <summary>
+            尝试改变伺服的速度时
+            </summary>
+        </member>
+        <member name="M:Ping9719.WpfEx.IotServo.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Ping9719.WpfEx.ServoModelSpeed">
+            <summary>
+            伺服模式速度
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.ServoModelSpeed.Name">
+            <summary>
+            模式名称
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.ServoModelSpeed.Speed">
+            <summary>
+            当前速度
+            </summary>
+        </member>
+        <member name="T:Ping9719.WpfEx.IotState">
+            <summary>
+            工业控件：传感器状态
+            </summary>
+            <summary>
+            IotState
+            </summary>
+        </member>
+        <member name="M:Ping9719.WpfEx.IotState.#ctor">
+            <summary>
+            工业控件：传感器状态
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.IotState.Text">
+            <summary>
+            文本
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.IotState.IsOk">
+            <summary>
+            是否成功
+            </summary>
+        </member>
+        <member name="E:Ping9719.WpfEx.IotState.Click">
+            <summary>
+            单击图标时
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.IotState.IsLoadIn">
+            <summary>
+            是否在加载中
+            </summary>
+        </member>
+        <member name="M:Ping9719.WpfEx.IotState.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Ping9719.WpfEx.IotUrn">
+            <summary>
+            工业控件：气缸
+            </summary>
+            <summary>
+            IotUrn
+            </summary>
+        </member>
+        <member name="M:Ping9719.WpfEx.IotUrn.#ctor">
+            <summary>
+            工业控件：气缸
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.IotUrn.Text">
+            <summary>
+            文本
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.IotUrn.IsButBadge1">
+            <summary>
+            时候显示按钮1上面的标记
+            </summary>
+        </member>
+        <member name="E:Ping9719.WpfEx.IotUrn.ButClick1">
+            <summary>
+            单击按钮1
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.IotUrn.IsButBadge2">
+            <summary>
+            时候显示按钮2上面的标记
+            </summary>
+        </member>
+        <member name="E:Ping9719.WpfEx.IotUrn.ButClick2">
+            <summary>
+            单击按钮2
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.IotUrn.IsLoadIn">
+            <summary>
+            是否在加载中
+            </summary>
+        </member>
+        <member name="M:Ping9719.WpfEx.IotUrn.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Ping9719.WpfEx.TextBoxMulti">
+            <summary>
+            TextBoxMulti.xaml 的交互逻辑
+            </summary>
+            <summary>
+            TextBoxMulti
+            </summary>
+        </member>
+        <member name="M:Ping9719.WpfEx.TextBoxMulti.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Ping9719.WpfEx.UcDev">
+            <summary>
+            UcDev.xaml 的交互逻辑
+            </summary>
+            <summary>
+            UcDev
+            </summary>
+        </member>
+        <member name="M:Ping9719.WpfEx.UcDev.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
         <member name="T:Ping9719.WpfEx.UserControlBase">
             <summary>
             对用户控件的扩展

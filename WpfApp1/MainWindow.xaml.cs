@@ -1,4 +1,5 @@
-﻿using Ping9719.WpfEx.Mvvm;
+﻿using Ping9719.WpfEx;
+using Ping9719.WpfEx.Mvvm;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -30,27 +31,71 @@ namespace WpfApp1
         {
             InitializeComponent();
 
-            this.DataContext = ViewModel;
+            //this.DataContext = ViewModel;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            Task.Run(() =>
+            //Task.Run(() =>
+            //{
+            //    while (true)
+            //    {
+            //        ViewModel.Str = Guid.NewGuid().ToString();
+
+
+            //        ViewModel.Datas.Add(new Namas() { Name = Guid.NewGuid().ToString() });
+            //        ViewModel.Datas = ViewModel.Datas.ToList();
+
+            //        System.Threading.Thread.Sleep(2000);
+
+            //        ViewModel.Datas.RemoveAt(0);
+            //    }
+
+            //});
+
+            ser.ModelSpeeds = new List<ServoModelSpeed>()
+            {
+                new ServoModelSpeed (){ Name="阿斯达12213dd ssdas大",Speed=123},
+                new ServoModelSpeed (){ Name="adas",Speed=-285616512},
+                new ServoModelSpeed (){ Name="阿斯达12213dd ssdas大",Speed=123},
+                new ServoModelSpeed (){ Name="adas",Speed=-285616512},
+            };
+
+            var aaa = ser.ModelSpeeds;
+            Task.Run(()=>
             {
                 while (true)
                 {
-                    ViewModel.Str = Guid.NewGuid().ToString();
-
-
-                    ViewModel.Datas.Add(new Namas() { Name = Guid.NewGuid().ToString() });
-                    ViewModel.Datas = ViewModel.Datas.ToList();
-
-                    System.Threading.Thread.Sleep(2000);
-
-                    ViewModel.Datas.RemoveAt(0);
+                    aaa.First().Speed++;
+                    System.Threading.Thread.Sleep(1000);
                 }
 
             });
+        }
+
+        private void aaa(object sender, RoutedEventArgs e)
+        {
+
+        
+        }
+
+        private void IotUrn_ButClick1(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void IotUrn_ButClick2(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void loa(object sender, RoutedEventArgs e)
+        {
+            ser.Text = e.OriginalSource.ToString();
+        }
+
+        private void spe(object sender, RoutedEventArgs e)
+        {
 
         }
     }

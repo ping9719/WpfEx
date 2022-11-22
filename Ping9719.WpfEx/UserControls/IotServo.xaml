@@ -1,0 +1,87 @@
+﻿<UserControl xmlns:hc="https://handyorg.github.io/handycontrol"  x:Class="Ping9719.WpfEx.IotServo"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Ping9719.WpfEx"
+             mc:Ignorable="d" 
+             Width="290">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/Ping9719.WpfEx;component/Themes/Theme.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <Border Style="{StaticResource BorderRegion}" Height="auto" Padding="0">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="82"></ColumnDefinition>
+                <ColumnDefinition Width="82"></ColumnDefinition>
+                <ColumnDefinition Width="auto"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+            </Grid.RowDefinitions>
+            <!--上半部分-->
+            <!--标题-->
+            <TextBlock MaxHeight="60" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Margin="3,0" FontSize="{StaticResource TextFontSize}" ToolTip="{Binding Text,RelativeSource={RelativeSource Mode=Self}}" hc:TextBlockAttach.AutoTooltip="True" TextWrapping="Wrap" TextTrimming="CharacterEllipsis" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type local:IotServo}},Path=Text}"></TextBlock>
+            <Border Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Width="1" Height="auto" Margin="0,5" Padding="0" HorizontalAlignment="Right" Style="{StaticResource BorderRegion}"/>
+            <!--速度-->
+            <Grid Grid.Row="0" Grid.Column="1" Grid.RowSpan="1" Margin="0,1" HorizontalAlignment="Center" VerticalAlignment="Bottom">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="auto"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" Margin="3,0" FontSize="{StaticResource TextFontSize}" ToolTip="{Binding Text,RelativeSource={RelativeSource Mode=Self}}" hc:TextBlockAttach.AutoTooltip="True" TextWrapping="NoWrap" TextTrimming="CharacterEllipsis" Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type local:IotServo}},Path=ModelSpeedHome.Name}"></TextBlock>
+                <ToggleButton Grid.Column="1" IsChecked="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type local:IotServo}},Path=IsFold}" Style="{StaticResource ToggleButtonCustom}" hc:StatusSwitchElement.HideUncheckedElement="True">
+                    <hc:StatusSwitchElement.CheckedElement>
+                        <Button Cursor="Hand" Style="{StaticResource ButtonIcon}" Margin="3,0" Padding="0" Width="auto" Height="auto" Foreground="Black" hc:IconElement.Width="10" hc:IconElement.Height="10" hc:IconElement.Geometry="{StaticResource DownGeometry}" Click="qh"/>
+                    </hc:StatusSwitchElement.CheckedElement>
+                    <Button Cursor="Hand" Style="{StaticResource ButtonIcon}" Margin="3,0" Padding="0" Width="auto" Height="auto" Foreground="Black" hc:IconElement.Width="10" hc:IconElement.Height="10" hc:IconElement.Geometry="{StaticResource UpGeometry}" Click="qh"/>
+                </ToggleButton>
+            </Grid>
+            <!--速度-下-->
+            <TextBlock Grid.Row="1" Grid.Column="1" Grid.RowSpan="1" Margin="3,1" FontSize="{StaticResource TextFontSize}" ToolTip="{Binding Text,RelativeSource={RelativeSource Mode=Self}}" hc:TextBlockAttach.AutoTooltip="True" TextWrapping="NoWrap" TextTrimming="CharacterEllipsis" HorizontalAlignment="Center" VerticalAlignment="Top" Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type local:IotServo}},Path=ModelSpeedHome.Speed}"></TextBlock>
+            <Border Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" Width="1" Height="auto" Margin="0,5" Padding="0" HorizontalAlignment="Right" Style="{StaticResource BorderRegion}"/>
+            <!--当前位置-->
+            <TextBlock Grid.Row="0" Grid.Column="2" Grid.RowSpan="1" Margin="3,0" FontSize="{StaticResource TextFontSize}" ToolTip="{Binding Text,RelativeSource={RelativeSource Mode=Self}}" hc:TextBlockAttach.AutoTooltip="True" TextWrapping="NoWrap" TextTrimming="CharacterEllipsis" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type local:IotServo}},Path=Location}"></TextBlock>
+            <TextBox x:Name="textwz" Grid.Row="1" Grid.Column="2" Grid.RowSpan="1" Margin="3,0" Padding="1,0" Height="auto" VerticalAlignment="Center"></TextBox>
+            <Border Grid.Row="0" Grid.Column="2" Grid.RowSpan="2" Width="1" Height="auto" Margin="0,5" Padding="0" HorizontalAlignment="Right" Style="{StaticResource BorderRegion}"/>
+            <!--设置位置-->
+            <StackPanel Grid.Row="0" Grid.Column="3" Grid.RowSpan="1" Margin="3,1,1,1" Orientation="Horizontal">
+                <Button Height="{Binding ActualHeight,ElementName=butyd}" Width="auto" Padding="10,0" Margin="0,0,0,0" hc:BorderElement.CornerRadius="4,0,0,4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" hc:IconElement.Width="7" hc:IconElement.Geometry="{StaticResource AddGeometry}" PreviewMouseLeftButtonDown="jiad" PreviewMouseLeftButtonUp="jiau"></Button>
+                <Button Height="auto" Width="auto" Padding="10,0" Margin="-1,0,0,0" hc:BorderElement.CornerRadius="0,4,4,0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" hc:IconElement.Width="7" hc:IconElement.Geometry="{StaticResource SubGeometry}" PreviewMouseLeftButtonDown="jiand" PreviewMouseLeftButtonUp="jianu"></Button>
+            </StackPanel>
+            <Button x:Name="butyd" Tag="{Binding ElementName=textwz}" Grid.Row="1" Grid.Column="3" Grid.RowSpan="1" Height="auto" Width="auto" Margin="3,1,1,1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="yd">移动</Button>
+
+            <!--下半部分-->
+            <Border Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="4" Background="LightGoldenrodYellow" Width="auto" Height="102" Margin="-1,1,-1,-1" Padding="0" CornerRadius="0,0,4,4" Style="{StaticResource BorderRegion}" VerticalAlignment="Top" Visibility="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type local:IotServo}},Path=IsFold,Converter={StaticResource Boolean2VisibilityReConverter}}">
+                <ListBox Margin="0" BorderThickness="0" Background="LightGoldenrodYellow" ItemsSource="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type local:IotServo}},Path=ModelSpeeds}" Style="{DynamicResource ListBoxCustom}">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Margin="0,1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                    <ColumnDefinition Width="82"></ColumnDefinition>
+                                    <ColumnDefinition Width="82"></ColumnDefinition>
+                                    <ColumnDefinition Width="auto"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0" Margin="3,0" FontSize="{StaticResource TextFontSize}" ToolTip="{Binding Text,RelativeSource={RelativeSource Mode=Self}}" hc:TextBlockAttach.AutoTooltip="True" TextWrapping="NoWrap" TextTrimming="CharacterEllipsis" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding Name}"></TextBlock>
+                                <TextBlock Grid.Column="1" Margin="3,0" FontSize="{StaticResource TextFontSize}" ToolTip="{Binding Text,RelativeSource={RelativeSource Mode=Self}}" hc:TextBlockAttach.AutoTooltip="True" TextWrapping="NoWrap" TextTrimming="CharacterEllipsis" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding Speed}"></TextBlock>
+                                <TextBox x:Name="text1" Background="LightGoldenrodYellow" Grid.Column="2" Margin="3,0" Padding="1,0" Height="auto" VerticalAlignment="Center"></TextBox>
+                                <Button Background="LightGoldenrodYellow" Grid.Column="3" Height="auto" Width="{Binding ActualWidth,ElementName=butyd}" Tag="{Binding ElementName=text1}" Margin="3,1,1,1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="szsd">设置</Button>
+                            </Grid>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </Border>
+
+            <hc:LoadingLine Visibility="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type local:IotServo}},Path=IsLoadIn,Converter={StaticResource Boolean2VisibilityConverter}}" Margin="0" Grid.ColumnSpan="4" DotDiameter="3" DotSpeed="2"  Foreground="Blue" VerticalAlignment="Top"/>
+        </Grid>
+    </Border>
+</UserControl>
