@@ -34,7 +34,7 @@
 
             </StackPanel>
             
-            <hc:LoadingLine Visibility="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type local:IotUrn}},Path=IsLoadIn,Converter={StaticResource Boolean2VisibilityConverter}}" Margin="0" Grid.ColumnSpan="2" DotDiameter="3" DotSpeed="2"  Foreground="Blue" VerticalAlignment="Top"/>
+            <hc:LoadingLine Visibility="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type local:IotUrn}},Path=IsLoadIn,Converter={StaticResource Boolean2VisibilityConverter}}" Margin="0" Grid.ColumnSpan="2" DotDiameter="3" DotSpeed="2" VerticalAlignment="Top"/>
         </Grid>
     </Border>
 </UserControl>

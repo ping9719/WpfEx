@@ -1,4 +1,4 @@
-﻿<UserControl xmlns:hc="https://handyorg.github.io/handycontrol"  x:Class="Ping9719.WpfEx.UcDev"
+﻿<UserControl xmlns:hc="https://handyorg.github.io/handycontrol"  x:Class="Ping9719.WpfEx.IotDevice"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -21,7 +21,7 @@
         </Grid.RowDefinitions>
 
         <hc:LoadingLine VerticalAlignment="Top" />
-        <hc:ButtonGroup Margin="10,5" HorizontalAlignment="Left">
+        <hc:ButtonGroup x:Name="modlGroup" Margin="10,5" HorizontalAlignment="Left">
             <RadioButton MinWidth="100" Content="手动模式" IsChecked="True"/>
             <RadioButton MinWidth="100" Content="调试模式"/>
             <RadioButton MinWidth="100" Content="自动模式"/>
@@ -50,9 +50,11 @@
                     </WrapPanel>
                 </GroupBox>
                 <GroupBox Header="伺服" Margin="0,0" MinHeight="80" Style="{StaticResource GroupBoxTab}" Background="{x:Null}">
-                    <WrapPanel>
-                        <local:IotServo Margin="5,3"></local:IotServo>
-                        <local:IotServo Margin="5,3"></local:IotServo>
+                    <WrapPanel Orientation="Horizontal">
+                        <local:IotServo Margin="5,3" VerticalAlignment="Top"></local:IotServo>
+                        <local:IotServo Margin="5,3" VerticalAlignment="Top" />
+                        <local:IotServo Margin="5,3" VerticalAlignment="Top"></local:IotServo>
+                        <local:IotServo Margin="5,3" VerticalAlignment="Top"></local:IotServo>
                     </WrapPanel>
                 </GroupBox>
             </StackPanel>

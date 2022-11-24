@@ -237,6 +237,19 @@
             <param name="executeMethod">带参数的一个方法</param>
             <param name="canExecuteMethod">带参数的一个方法并返回bool。使用方法：(obj) => true</param>
         </member>
+        <member name="T:Ping9719.WpfEx.IotDevice">
+            <summary>
+            IotPlc.xaml 的交互逻辑
+            </summary>
+            <summary>
+            IotDevice
+            </summary>
+        </member>
+        <member name="M:Ping9719.WpfEx.IotDevice.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
         <member name="T:Ping9719.WpfEx.ServoMoveType">
             <summary>
             伺服运动位置类型
@@ -435,19 +448,6 @@
             </summary>
         </member>
         <member name="M:Ping9719.WpfEx.TextBoxMulti.InitializeComponent">
-            <summary>
-            InitializeComponent
-            </summary>
-        </member>
-        <member name="T:Ping9719.WpfEx.UcDev">
-            <summary>
-            UcDev.xaml 的交互逻辑
-            </summary>
-            <summary>
-            UcDev
-            </summary>
-        </member>
-        <member name="M:Ping9719.WpfEx.UcDev.InitializeComponent">
             <summary>
             InitializeComponent
             </summary>

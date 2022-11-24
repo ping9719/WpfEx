@@ -7,11 +7,13 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded">
     <Grid>
-        <WrapPanel>
+        <!--<pi:IotDevice />-->
+
+        <!--<WrapPanel>
             <pi:IotState IsOk="True" Text="aaaaaa11111aaaaaa" Click="aaa" IsLoadIn="True"/>
             <pi:IotUrn IsEnabled="True" IsLoadIn="False" Text="12323123433" IsButBadge1="False" IsButBadge2="True" ButClick1="IotUrn_ButClick1" ButClick2="IotUrn_ButClick2"/>
             <pi:IotServo x:Name="ser" IsFold="True" Text="asdadsadsasdfqw" Margin="5,5" LocationChange="loa" SpeedChange="spe" IsLoadIn="False"/>
-        </WrapPanel>
+        </WrapPanel>-->
 
     </Grid>
 </Window>

@@ -28,6 +28,6 @@
         <Border Grid.Column="1" Background="White" Opacity="0"></Border>
 
         <TextBlock Height="auto" Margin="3,0" FontSize="{StaticResource TextFontSize}" ToolTip="{Binding Text,RelativeSource={RelativeSource Mode=Self}}" hc:TextBlockAttach.AutoTooltip="True" TextWrapping="NoWrap" TextTrimming="CharacterEllipsis"  HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type local:IotState}},Path=Text}"></TextBlock>
-        <hc:LoadingLine Visibility="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type local:IotState}},Path=IsLoadIn,Converter={StaticResource Boolean2VisibilityConverter}}" Margin="-3,-3,-3,0" Grid.ColumnSpan="2" DotDiameter="3" DotSpeed="2"  Foreground="Blue" VerticalAlignment="Top"/>
+        <hc:LoadingLine Visibility="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type local:IotState}},Path=IsLoadIn,Converter={StaticResource Boolean2VisibilityConverter}}" Margin="-3,-3,-3,0" Grid.ColumnSpan="2" DotDiameter="3" DotSpeed="2" VerticalAlignment="Top"/>
     </Grid>
 </UserControl>

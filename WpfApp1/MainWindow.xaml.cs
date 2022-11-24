@@ -36,6 +36,7 @@ namespace WpfApp1
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            //aaaa.Texts = new string[] { "123","3123","12"};
             //Task.Run(() =>
             //{
             //    while (true)
@@ -53,24 +54,24 @@ namespace WpfApp1
 
             //});
 
-            ser.ModelSpeeds = new List<ServoModelSpeed>()
-            {
-                new ServoModelSpeed (){ Name="阿斯达12213dd ssdas大",Speed=123},
-                new ServoModelSpeed (){ Name="adas",Speed=-285616512},
-                new ServoModelSpeed (){ Name="阿斯达12213dd ssdas大",Speed=123},
-                new ServoModelSpeed (){ Name="adas",Speed=-285616512},
-            };
+            //ser.ModelSpeeds = new List<ServoModelSpeed>()
+            //{
+            //    new ServoModelSpeed (){ Name="阿斯达12213dd ssdas大",Speed=123},
+            //    new ServoModelSpeed (){ Name="adas",Speed=-285616512},
+            //    new ServoModelSpeed (){ Name="阿斯达12213dd ssdas大",Speed=123},
+            //    new ServoModelSpeed (){ Name="adas",Speed=-285616512},
+            //};
 
-            var aaa = ser.ModelSpeeds;
-            Task.Run(()=>
-            {
-                while (true)
-                {
-                    aaa.First().Speed++;
-                    System.Threading.Thread.Sleep(1000);
-                }
+            //var aaa = ser.ModelSpeeds;
+            //Task.Run(()=>
+            //{
+            //    while (true)
+            //    {
+            //        aaa.First().Speed++;
+            //        System.Threading.Thread.Sleep(1000);
+            //    }
 
-            });
+            //});
         }
 
         private void aaa(object sender, RoutedEventArgs e)
@@ -91,7 +92,7 @@ namespace WpfApp1
 
         private void loa(object sender, RoutedEventArgs e)
         {
-            ser.Text = e.OriginalSource.ToString();
+            //ser.Text = e.OriginalSource.ToString();
         }
 
         private void spe(object sender, RoutedEventArgs e)
