@@ -29,4 +29,17 @@ https://github.com/ping9719/WpfEx
 	<ItemGroup>
 		<PackageReference Include="HandyControl" Version="3.4.0" />
 	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Update="UserControls\IotServo2.xaml.cs">
+	    <SubType>Code</SubType>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Page Update="UserControls\IotServo2.xaml">
+	    <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+	    <SubType>Designer</SubType>
+	  </Page>
+	</ItemGroup>
 </Project>

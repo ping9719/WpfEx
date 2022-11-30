@@ -31,71 +31,73 @@ namespace WpfApp1
         {
             InitializeComponent();
 
-            //this.DataContext = ViewModel;
+            this.DataContext = ViewModel;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            //aaaa.Texts = new string[] { "123","3123","12"};
-            //Task.Run(() =>
-            //{
-            //    while (true)
-            //    {
-            //        ViewModel.Str = Guid.NewGuid().ToString();
+            List<DeviceStateData> deviceStateDatas = new List<DeviceStateData>()
+            {
+                new DeviceStateData (){ Name="传感器1",GroupName="",IsOk=false},
+                new DeviceStateData (){ Name="传感器2",GroupName="",IsOk=false},
+                new DeviceStateData (){ Name="传感器3",GroupName="",IsOk=false},
+                new DeviceStateData (){ Name="传感器4",GroupName="1",IsOk=false},
+                new DeviceStateData (){ Name="传感器5",GroupName="1",IsOk=false},
+                new DeviceStateData (){ Name="传感器6",GroupName="1",IsOk=false},
+                new DeviceStateData (){ Name="传感器7",GroupName="1",IsOk=false},
+                new DeviceStateData (){ Name="传感器8",GroupName="2",IsOk=false},
+                new DeviceStateData (){ Name="传感器9",GroupName="2",IsOk=false},
+            };
+            List<DeviceUrnData> deviceUrnDatas = new List<DeviceUrnData>()
+            {
+                new DeviceUrnData (){Name="气缸1",GroupName="" },
+                new DeviceUrnData (){Name="气缸2",GroupName="" },
+                new DeviceUrnData (){Name="气缸3",GroupName="" },
+                new DeviceUrnData (){Name="气缸4",GroupName="组1" },
+                new DeviceUrnData (){Name="气缸5",GroupName="组1" },
+                new DeviceUrnData (){Name="气缸6",GroupName="组1" },
+                new DeviceUrnData (){Name="气缸7",GroupName="组1" },
+                new DeviceUrnData (){Name="气缸8",GroupName="组2" },
+                new DeviceUrnData (){Name="气缸9",GroupName="组2" },
+            };
+            List<DeviceServoData> deviceServoDatas = new List<DeviceServoData>()
+            {
+                new DeviceServoData (){Name="伺服1",GroupName="" },
+                new DeviceServoData (){Name="伺服2",GroupName="" },
+                new DeviceServoData (){Name="伺服3",GroupName="" },
+                new DeviceServoData (){Name="伺服4",GroupName="组1" },
+                new DeviceServoData (){Name="伺服5",GroupName="组1" },
+                new DeviceServoData (){Name="伺服6",GroupName="组1" },
+                new DeviceServoData (){Name="伺服7",GroupName="组1" },
+                new DeviceServoData (){Name="伺服8",GroupName="组2" },
+                new DeviceServoData (){Name="伺服9",GroupName="组2" },
+            };
+            dev.LoadUi(deviceStateDatas, deviceUrnDatas, deviceServoDatas);
 
+            Task.Run(() =>
+            {
+                while (true)
+                {
+                    deviceStateDatas[2].IsOk = !deviceStateDatas[2].IsOk;
+                    deviceStateDatas[4].IsOk = !deviceStateDatas[4].IsOk;
 
-            //        ViewModel.Datas.Add(new Namas() { Name = Guid.NewGuid().ToString() });
-            //        ViewModel.Datas = ViewModel.Datas.ToList();
+                    deviceUrnDatas[2].IsGoTo = !deviceUrnDatas[2].IsGoTo;
+                    deviceUrnDatas[4].IsRetTo = !deviceUrnDatas[4].IsRetTo;
 
-            //        System.Threading.Thread.Sleep(2000);
-
-            //        ViewModel.Datas.RemoveAt(0);
-            //    }
-
-            //});
-
-            //ser.ModelSpeeds = new List<ServoModelSpeed>()
-            //{
-            //    new ServoModelSpeed (){ Name="阿斯达12213dd ssdas大",Speed=123},
-            //    new ServoModelSpeed (){ Name="adas",Speed=-285616512},
-            //    new ServoModelSpeed (){ Name="阿斯达12213dd ssdas大",Speed=123},
-            //    new ServoModelSpeed (){ Name="adas",Speed=-285616512},
-            //};
-
-            //var aaa = ser.ModelSpeeds;
-            //Task.Run(()=>
-            //{
-            //    while (true)
-            //    {
-            //        aaa.First().Speed++;
-            //        System.Threading.Thread.Sleep(1000);
-            //    }
-
-            //});
+                    deviceServoDatas[2].AutoSpeed++;
+                    deviceServoDatas[4].JogSpeed++;
+                    deviceServoDatas[6].Location += 0.1;
+                    System.Threading.Thread.Sleep(2000);
+                }
+            });
         }
 
-        private void aaa(object sender, RoutedEventArgs e)
+        private void clike(object sender, RoutedEventArgs e)
         {
-
-        
+            var aaa = (object[])e.OriginalSource;
         }
 
-        private void IotUrn_ButClick1(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void IotUrn_ButClick2(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void loa(object sender, RoutedEventArgs e)
-        {
-            //ser.Text = e.OriginalSource.ToString();
-        }
-
-        private void spe(object sender, RoutedEventArgs e)
+        private void clikeser(object sender, RoutedEventArgs e)
         {
 
         }
@@ -103,59 +105,7 @@ namespace WpfApp1
 
     public class MainWindowViewModel : BindableBase
     {
-        public MainWindowViewModel()
-        {
-            //Datas.CollectionChanged += (s, e) =>
-            //{
-            //    OnPropertyChanged("Datas");
-            //};
-        }
-
-        private string str;
-
-        public string Str
-        {
-            get { return str; }
-            set { SetProperty(ref str, value); }
-        }
-
-        private List<Namas> datas = new List<Namas>();
-
-        public List<Namas> Datas
-        {
-            get { return datas; }
-            set { SetProperty(ref datas, value); }
-        }
-
-        public ICommand UpCommand { get => new DelegateCommand<string>(Up); }
-
-        public void Up(string str)
-        {
-            Str = Guid.NewGuid().ToString() + str;
-        }
-
-        ///     public ICommand MyCommand { get; }
-        ///     //构造函数
-        ///     public MyClass()
-        ///     {
-        ///         MyCommand = new DelegateCommand(MyFun);
-        ///     }
-        ///     //执行方法
-        ///     public void MyFun()
-        ///     {
-        ///         //code
-        ///     }
-    }
-
-    public class Namas : BindableBase
-    {
-        private string name;
-
-        public string Name
-        {
-            get { return name; }
-            set { SetProperty(ref name, value); }
-        }
 
     }
+
 }

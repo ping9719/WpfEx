@@ -81,7 +81,7 @@
                 </ListBox>
             </Border>
 
-            <hc:LoadingLine Visibility="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type local:IotServo}},Path=IsLoadIn,Converter={StaticResource Boolean2VisibilityConverter}}" Margin="0" Grid.ColumnSpan="4" DotDiameter="3" DotSpeed="2" VerticalAlignment="Top"/>
+            <!--<hc:LoadingLine Visibility="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type local:IotServo}},Path=IsLoadIn,Converter={StaticResource Boolean2VisibilityConverter}}" Margin="0" Grid.ColumnSpan="4" DotDiameter="3" DotSpeed="2" VerticalAlignment="Top"/>-->
         </Grid>
     </Border>
 </UserControl>

@@ -17,45 +17,14 @@ using System.Windows.Shapes;
 namespace Ping9719.WpfEx
 {
     /// <summary>
-    /// 伺服运动位置类型
-    /// </summary>
-    public enum ServoClickType
-    {
-        /// <summary>
-        /// 设置速度
-        /// </summary>
-        SetSpeed,
-        /// <summary>
-        /// 运动到指定位置
-        /// </summary>
-        MoveTo,
-        /// <summary>
-        /// 开始点动增加
-        /// </summary>
-        StartDotAdd,
-        /// <summary>
-        /// 开始点动增加
-        /// </summary>
-        EndDotAdd,
-        /// <summary>
-        /// 开始点动减少
-        /// </summary>
-        StartDotSub,
-        /// <summary>
-        /// 开始点动减少
-        /// </summary>
-        EndDotSub,
-    }
-
-    /// <summary>
     /// 工业控件：伺服
     /// </summary>
-    public partial class IotServo : UserControl
+    public partial class IotServo2 : UserControl
     {
         /// <summary>
         /// 工业控件：伺服
         /// </summary>
-        public IotServo()
+        public IotServo2()
         {
             InitializeComponent();
         }
@@ -72,7 +41,7 @@ namespace Ping9719.WpfEx
         }
 
         public static readonly DependencyProperty TextProperty =
-            DependencyProperty.Register("Text", typeof(string), typeof(IotServo), new PropertyMetadata(null));
+            DependencyProperty.Register("Text", typeof(string), typeof(IotServo2), new PropertyMetadata(null));
 
 
         #endregion
@@ -89,8 +58,37 @@ namespace Ping9719.WpfEx
         }
 
         public static readonly DependencyProperty LocationProperty =
-            DependencyProperty.Register("Location", typeof(double), typeof(IotServo), new PropertyMetadata((double)0));
+            DependencyProperty.Register("Location", typeof(double), typeof(IotServo2), new PropertyMetadata((double)0));
 
+
+        #endregion
+
+        #region Speed
+
+        /// <summary>
+        /// 速度1，默认手动速度
+        /// </summary>
+        public int Speed1
+        {
+            get { return (int)GetValue(Speed1Property); }
+            set { SetValue(Speed1Property, value); }
+        }
+
+        public static readonly DependencyProperty Speed1Property =
+            DependencyProperty.Register("Speed1", typeof(int), typeof(IotServo2), new PropertyMetadata(0));
+
+
+        /// <summary>
+        /// 速度2，默认自动速度
+        /// </summary>
+        public int Speed2
+        {
+            get { return (int)GetValue(Speed2Property); }
+            set { SetValue(Speed2Property, value); }
+        }
+
+        public static readonly DependencyProperty Speed2Property =
+            DependencyProperty.Register("Speed2", typeof(int), typeof(IotServo2), new PropertyMetadata(0));
 
         #endregion
 
@@ -105,56 +103,24 @@ namespace Ping9719.WpfEx
         }
 
         public static readonly DependencyProperty IsFoldProperty =
-            DependencyProperty.Register("IsFold", typeof(bool), typeof(IotServo), new PropertyMetadata(true));
-
+            DependencyProperty.Register("IsFold", typeof(bool), typeof(IotServo2), new PropertyMetadata(true));
 
         #endregion
 
-        #region ModelSpeed
+        #region IsVisSpeed1
 
         /// <summary>
-        /// 主页显示的模式速度
+        /// 是否主页中显示速度1和模式，默认true
         /// </summary>
-        public ServoSpeed ModelSpeedHome
+        public bool IsVisSpeed1
         {
-            get { return (ServoSpeed)GetValue(ModelSpeedHomeProperty); }
-            set { SetValue(ModelSpeedHomeProperty, value); }
+            get { return (bool)GetValue(IsVisSpeed1Property); }
+            set { SetValue(IsVisSpeed1Property, value); }
         }
 
-        public static readonly DependencyProperty ModelSpeedHomeProperty =
-            DependencyProperty.Register("ModelSpeedHome", typeof(ServoSpeed), typeof(IotServo), new PropertyMetadata(null));
+        public static readonly DependencyProperty IsVisSpeed1Property =
+            DependencyProperty.Register("IsVisSpeed1", typeof(bool), typeof(IotServo2), new PropertyMetadata(true));
 
-        /// <summary>
-        /// 搜索指定名称并设为主界面展示
-        /// </summary>
-        /// <param name="name"></param>
-        public void SetModelSpeedHomeName(string name)
-        {
-            var a = ModelSpeeds?.FirstOrDefault(o => o.Name == name);
-            if (a != null)
-                ModelSpeedHome = a;
-        }
-
-        /// <summary>
-        /// 全部的模式速度
-        /// </summary>
-        public List<ServoSpeed> ModelSpeeds
-        {
-            get { return (List<ServoSpeed>)GetValue(ModelSpeedsProperty); }
-            set { SetValue(ModelSpeedsProperty, value); }
-        }
-
-        public static readonly DependencyProperty ModelSpeedsProperty =
-            DependencyProperty.Register("ModelSpeeds", typeof(List<ServoSpeed>), typeof(IotServo), new PropertyMetadata(new List<ServoSpeed>(), new PropertyChangedCallback(ModelSpeedsChan)));
-
-        private static void ModelSpeedsChan(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            IotServo iotServo = (IotServo)d;
-            if (e.NewValue != null && e.NewValue is List<ServoSpeed> ed)
-            {
-                iotServo.ModelSpeedHome = ed.FirstOrDefault();
-            }
-        }
 
         #endregion
 
@@ -170,7 +136,7 @@ namespace Ping9719.WpfEx
         //}
 
         //public static readonly DependencyProperty IsLoadInProperty =
-        //    DependencyProperty.Register("IsLoadIn", typeof(bool), typeof(IotServo), new PropertyMetadata(false));
+        //    DependencyProperty.Register("IsLoadIn", typeof(bool), typeof(IotServo2), new PropertyMetadata(false));
 
         #endregion
 
@@ -186,7 +152,7 @@ namespace Ping9719.WpfEx
         }
 
         public static readonly RoutedEvent LocationChangeEvent =
-            EventManager.RegisterRoutedEvent("LocationChangeEvent", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(IotServo));
+            EventManager.RegisterRoutedEvent("LocationChangeEvent", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(IotServo2));
 
         private void jiad(object sender, MouseButtonEventArgs e)
         {
@@ -245,10 +211,9 @@ namespace Ping9719.WpfEx
         }
 
         public static readonly RoutedEvent SpeedChangeEvent =
-            EventManager.RegisterRoutedEvent("SpeedChangeEvent", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(IotServo));
+            EventManager.RegisterRoutedEvent("SpeedChangeEvent", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(IotServo2));
 
-
-        private void szsd(object sender, RoutedEventArgs e)
+        private void szsd1(object sender, RoutedEventArgs e)
         {
             var d = (FrameworkElement)sender;
             var aaa = (TextBox)d.Tag;
@@ -262,7 +227,35 @@ namespace Ping9719.WpfEx
                 //aaa.IsError = false;
                 //if (!IsLoadIn)
                 //{
-                var servoSpeed = (ServoSpeed)d.DataContext;
+                var servoSpeed = new ServoSpeed();
+                servoSpeed.Name = "手动模式";
+                servoSpeed.Speed = re;
+                this.RaiseEvent(new RoutedEventArgs(SpeedChangeEvent, servoSpeed));
+                //}
+            }
+            else
+            {
+                //aaa.IsError = true;
+                aaa.Text = "错误格式";
+            }
+        }
+
+        private void szsd2(object sender, RoutedEventArgs e)
+        {
+            var d = (FrameworkElement)sender;
+            var aaa = (TextBox)d.Tag;
+            if (string.IsNullOrWhiteSpace(aaa.Text))
+            {
+                aaa.Text = "无效的值";
+                return;
+            }
+            if (int.TryParse(aaa.Text, out int re))
+            {
+                //aaa.IsError = false;
+                //if (!IsLoadIn)
+                //{
+                var servoSpeed = new ServoSpeed();
+                servoSpeed.Name = "自动模式";
                 servoSpeed.Speed = re;
                 this.RaiseEvent(new RoutedEventArgs(SpeedChangeEvent, servoSpeed));
                 //}
@@ -280,31 +273,6 @@ namespace Ping9719.WpfEx
             IsFold = !IsFold;
         }
 
-    }
 
-    /// <summary>
-    /// 伺服模式速度
-    /// </summary>
-    public class ServoSpeed : BindableBase
-    {
-        private string name;
-        /// <summary>
-        /// 模式名称
-        /// </summary>
-        public string Name
-        {
-            get { return name; }
-            set { SetProperty(ref name, value); }
-        }
-
-        private int speed;
-        /// <summary>
-        /// 当前速度
-        /// </summary>
-        public int Speed
-        {
-            get { return speed; }
-            set { SetProperty(ref speed, value); }
-        }
     }
 }

@@ -70,7 +70,7 @@ namespace Ping9719.WpfEx
 
         private void Button1_Click(object sender, RoutedEventArgs e)
         {
-            if (!IsLoadIn)
+            //if (!IsLoadIn)
                 this.RaiseEvent(new RoutedEventArgs(ButClick1Event));
         }
         #endregion
@@ -103,24 +103,24 @@ namespace Ping9719.WpfEx
 
         private void Button2_Click(object sender, RoutedEventArgs e)
         {
-            if (!IsLoadIn)
+            //if (!IsLoadIn)
                 this.RaiseEvent(new RoutedEventArgs(ButClick2Event));
         }
         #endregion
 
         #region isload
 
-        /// <summary>
-        /// 是否在加载中
-        /// </summary>
-        public bool IsLoadIn
-        {
-            get { return (bool)GetValue(IsLoadInProperty); }
-            set { SetValue(IsLoadInProperty, value); }
-        }
+        ///// <summary>
+        ///// 是否在加载中
+        ///// </summary>
+        //public bool IsLoadIn
+        //{
+        //    get { return (bool)GetValue(IsLoadInProperty); }
+        //    set { SetValue(IsLoadInProperty, value); }
+        //}
 
-        public static readonly DependencyProperty IsLoadInProperty =
-            DependencyProperty.Register("IsLoadIn", typeof(bool), typeof(IotUrn), new PropertyMetadata(false));
+        //public static readonly DependencyProperty IsLoadInProperty =
+        //    DependencyProperty.Register("IsLoadIn", typeof(bool), typeof(IotUrn), new PropertyMetadata(false));
 
         #endregion
 

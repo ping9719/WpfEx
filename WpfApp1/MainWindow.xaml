@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded">
     <Grid>
-        <!--<pi:IotDevice />-->
+        <pi:IotDevice x:Name="dev" UrnClick="clike" ServoClick="clikeser"/>
 
         <!--<WrapPanel>
             <pi:IotState IsOk="True" Text="aaaaaa11111aaaaaa" Click="aaa" IsLoadIn="True"/>

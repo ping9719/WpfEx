@@ -119,7 +119,7 @@
             在属性值更改时发生。
             </summary>
         </member>
-        <member name="M:Ping9719.WpfEx.Mvvm.BindableBase.SetProperty``1(``0@,``0,System.String)">
+        <member name="M:Ping9719.WpfEx.Mvvm.BindableBase.SetProperty``1(``0@,``0,System.String,System.Boolean)">
             <summary>
             检查属性是否已经与所需的值匹配。 设置属性并仅在必要时通知侦听器。 
             </summary>
@@ -127,6 +127,7 @@
             <param name="storage">设置的属性，需要有get;set;</param>
             <param name="value">设置的值</param>
             <param name="propertyName"> 用于通知侦听器的属性的名称。 该值是可选的，可以在从支持CallerMemberName的编译器中调用时自动提供。 </param>
+            <param name="isEqualsVerify"> 是否进行相等效验 </param>
             <returns>如果值被更改，则为True，如果现有值与期望值匹配，则为false。 </returns>
         </member>
         <member name="M:Ping9719.WpfEx.Mvvm.BindableBase.SetProperty``1(``0@,``0,System.Action,System.String)">
@@ -245,37 +246,142 @@
             IotDevice
             </summary>
         </member>
+        <member name="E:Ping9719.WpfEx.IotDevice.UrnClick">
+            <summary>
+            气缸点击推或回。返回的OriginalSource参数为object[]，1为bool（true为推）；2为原绑定数据
+            </summary>
+        </member>
+        <member name="E:Ping9719.WpfEx.IotDevice.ServoClick">
+            <summary>
+            伺服点击的操作。返回的OriginalSource参数为object[]，1为枚举；2为新数据；3为原绑定数据
+            </summary>
+        </member>
         <member name="M:Ping9719.WpfEx.IotDevice.InitializeComponent">
             <summary>
             InitializeComponent
             </summary>
         </member>
-        <member name="T:Ping9719.WpfEx.ServoMoveType">
+        <member name="T:Ping9719.WpfEx.DeviceStateData">
+            <summary>
+            设备数据
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.DeviceStateData.Name">
+            <summary>
+            名称
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.DeviceStateData.GroupName">
+            <summary>
+            组名
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.DeviceStateData.IsOk">
+            <summary>
+            是否ok状态
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.DeviceStateData.Tag">
+            <summary>
+            自定义数据
+            </summary>
+        </member>
+        <member name="T:Ping9719.WpfEx.DeviceUrnData">
+            <summary>
+            设备气缸数据
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.DeviceUrnData.Name">
+            <summary>
+            名称
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.DeviceUrnData.GroupName">
+            <summary>
+            组名
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.DeviceUrnData.IsGoTo">
+            <summary>
+            是否推到位
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.DeviceUrnData.IsRetTo">
+            <summary>
+            是否回到位
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.DeviceUrnData.Tag">
+            <summary>
+            自定义数据
+            </summary>
+        </member>
+        <member name="T:Ping9719.WpfEx.DeviceServoData">
+            <summary>
+            设备伺服数据
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.DeviceServoData.Name">
+            <summary>
+            名称
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.DeviceServoData.GroupName">
+            <summary>
+            组名
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.DeviceServoData.JogSpeed">
+            <summary>
+            手动模式速度
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.DeviceServoData.AutoSpeed">
+            <summary>
+            自动模式速度
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.DeviceServoData.Location">
+            <summary>
+            伺服当前位置
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.DeviceServoData.Tag">
+            <summary>
+            自定义数据
+            </summary>
+        </member>
+        <member name="T:Ping9719.WpfEx.ServoClickType">
             <summary>
             伺服运动位置类型
             </summary>
         </member>
-        <member name="F:Ping9719.WpfEx.ServoMoveType.MoveTo">
+        <member name="F:Ping9719.WpfEx.ServoClickType.SetSpeed">
+            <summary>
+            设置速度
+            </summary>
+        </member>
+        <member name="F:Ping9719.WpfEx.ServoClickType.MoveTo">
             <summary>
             运动到指定位置
             </summary>
         </member>
-        <member name="F:Ping9719.WpfEx.ServoMoveType.StartDotAdd">
+        <member name="F:Ping9719.WpfEx.ServoClickType.StartDotAdd">
             <summary>
             开始点动增加
             </summary>
         </member>
-        <member name="F:Ping9719.WpfEx.ServoMoveType.EndDotAdd">
+        <member name="F:Ping9719.WpfEx.ServoClickType.EndDotAdd">
             <summary>
             开始点动增加
             </summary>
         </member>
-        <member name="F:Ping9719.WpfEx.ServoMoveType.StartDotSub">
+        <member name="F:Ping9719.WpfEx.ServoClickType.StartDotSub">
             <summary>
             开始点动减少
             </summary>
         </member>
-        <member name="F:Ping9719.WpfEx.ServoMoveType.EndDotSub">
+        <member name="F:Ping9719.WpfEx.ServoClickType.EndDotSub">
             <summary>
             开始点动减少
             </summary>
@@ -313,14 +419,15 @@
             主页显示的模式速度
             </summary>
         </member>
+        <member name="M:Ping9719.WpfEx.IotServo.SetModelSpeedHomeName(System.String)">
+            <summary>
+            搜索指定名称并设为主界面展示
+            </summary>
+            <param name="name"></param>
+        </member>
         <member name="P:Ping9719.WpfEx.IotServo.ModelSpeeds">
             <summary>
             全部的模式速度
-            </summary>
-        </member>
-        <member name="P:Ping9719.WpfEx.IotServo.IsLoadIn">
-            <summary>
-            是否在加载中
             </summary>
         </member>
         <member name="E:Ping9719.WpfEx.IotServo.LocationChange">
@@ -338,19 +445,77 @@
             InitializeComponent
             </summary>
         </member>
-        <member name="T:Ping9719.WpfEx.ServoModelSpeed">
+        <member name="T:Ping9719.WpfEx.ServoSpeed">
             <summary>
             伺服模式速度
             </summary>
         </member>
-        <member name="P:Ping9719.WpfEx.ServoModelSpeed.Name">
+        <member name="P:Ping9719.WpfEx.ServoSpeed.Name">
             <summary>
             模式名称
             </summary>
         </member>
-        <member name="P:Ping9719.WpfEx.ServoModelSpeed.Speed">
+        <member name="P:Ping9719.WpfEx.ServoSpeed.Speed">
             <summary>
             当前速度
+            </summary>
+        </member>
+        <member name="T:Ping9719.WpfEx.IotServo2">
+            <summary>
+            工业控件：伺服
+            </summary>
+            <summary>
+            IotServo2
+            </summary>
+        </member>
+        <member name="M:Ping9719.WpfEx.IotServo2.#ctor">
+            <summary>
+            工业控件：伺服
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.IotServo2.Text">
+            <summary>
+            名称
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.IotServo2.Location">
+            <summary>
+            当前位置
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.IotServo2.Speed1">
+            <summary>
+            速度1，默认手动速度
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.IotServo2.Speed2">
+            <summary>
+            速度2，默认自动速度
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.IotServo2.IsFold">
+            <summary>
+            是否折叠
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.IotServo2.IsVisSpeed1">
+            <summary>
+            是否主页中显示速度1和模式，默认true
+            </summary>
+        </member>
+        <member name="E:Ping9719.WpfEx.IotServo2.LocationChange">
+            <summary>
+            尝试改变伺服的位置时
+            </summary>
+        </member>
+        <member name="E:Ping9719.WpfEx.IotServo2.SpeedChange">
+            <summary>
+            尝试改变伺服的速度时
+            </summary>
+        </member>
+        <member name="M:Ping9719.WpfEx.IotServo2.InitializeComponent">
+            <summary>
+            InitializeComponent
             </summary>
         </member>
         <member name="T:Ping9719.WpfEx.IotState">
@@ -379,11 +544,6 @@
         <member name="E:Ping9719.WpfEx.IotState.Click">
             <summary>
             单击图标时
-            </summary>
-        </member>
-        <member name="P:Ping9719.WpfEx.IotState.IsLoadIn">
-            <summary>
-            是否在加载中
             </summary>
         </member>
         <member name="M:Ping9719.WpfEx.IotState.InitializeComponent">
@@ -427,11 +587,6 @@
         <member name="E:Ping9719.WpfEx.IotUrn.ButClick2">
             <summary>
             单击按钮2
-            </summary>
-        </member>
-        <member name="P:Ping9719.WpfEx.IotUrn.IsLoadIn">
-            <summary>
-            是否在加载中
             </summary>
         </member>
         <member name="M:Ping9719.WpfEx.IotUrn.InitializeComponent">
@@ -480,6 +635,36 @@
         <member name="P:Ping9719.WpfEx.UserControlBase.IsInDesignMode">
             <summary>
             是否处于设计模式
+            </summary>
+        </member>
+        <member name="T:XamlGeneratedNamespace.GeneratedInternalTypeHelper">
+            <summary>
+            GeneratedInternalTypeHelper
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateInstance(System.Type,System.Globalization.CultureInfo)">
+            <summary>
+            CreateInstance
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.GetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            GetPropertyValue
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.SetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            SetPropertyValue
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateDelegate(System.Type,System.Object,System.String)">
+            <summary>
+            CreateDelegate
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.AddEventHandler(System.Reflection.EventInfo,System.Object,System.Delegate)">
+            <summary>
+            AddEventHandler
             </summary>
         </member>
     </members>

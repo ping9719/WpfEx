@@ -72,24 +72,24 @@ namespace Ping9719.WpfEx
 
         private void Border_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            if (!IsLoadIn)
+            //if (!IsLoadIn)
                 this.RaiseEvent(new RoutedEventArgs(ClickEvent));
         }
         #endregion
 
         #region isload
 
-        /// <summary>
-        /// 是否在加载中
-        /// </summary>
-        public bool IsLoadIn
-        {
-            get { return (bool)GetValue(IsLoadInProperty); }
-            set { SetValue(IsLoadInProperty, value); }
-        }
+        ///// <summary>
+        ///// 是否在加载中
+        ///// </summary>
+        //public bool IsLoadIn
+        //{
+        //    get { return (bool)GetValue(IsLoadInProperty); }
+        //    set { SetValue(IsLoadInProperty, value); }
+        //}
 
-        public static readonly DependencyProperty IsLoadInProperty =
-            DependencyProperty.Register("IsLoadIn", typeof(bool), typeof(IotState), new PropertyMetadata(false));
+        //public static readonly DependencyProperty IsLoadInProperty =
+        //    DependencyProperty.Register("IsLoadIn", typeof(bool), typeof(IotState), new PropertyMetadata(false));
 
         #endregion
 
