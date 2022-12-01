@@ -86,9 +86,12 @@
                         <Grid Width="{Binding ActualWidth,ElementName=boxsf}">
                             <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">伺服</TextBlock>
                             <StackPanel Margin="0,0,10,0" Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Right">
-                                <Button Margin="0,0,0,0" hc:BorderElement.CornerRadius="4,0,0,4" Padding="10,3" Height="auto" ToolTip="全部设为手动模式" Click="clisd">手</Button>
-                                <Button Margin="-1,0,-1,0" hc:BorderElement.CornerRadius="0,0,0,0" Padding="10,3" Height="auto" ToolTip="全部设为自动模式" Click="clizd">自</Button>
-                                <Button Margin="0,0,0,0" hc:BorderElement.CornerRadius="0,4,4,0" Padding="10,3" Height="auto" ToolTip="全部模式反转" Click="clifx">反</Button>
+                                <Button Margin="0,0,0,0" hc:BorderElement.CornerRadius="4,0,0,4" Padding="10,3" Height="auto" ToolTip="首页展示为：手动模式" Click="clisd">手</Button>
+                                <Button Margin="-1,0,-1,0" hc:BorderElement.CornerRadius="0,0,0,0" Padding="10,3" Height="auto" ToolTip="首页展示为：自动模式" Click="clizd">自</Button>
+                                <Button Margin="0,0,0,0" hc:BorderElement.CornerRadius="0,4,4,0" Padding="10,3" Height="auto" ToolTip="首页展示的模式反转" Click="clifx">反</Button>
+
+                                <Button Margin="10,0,0,0" hc:BorderElement.CornerRadius="4,0,0,4" Padding="10,3" Height="auto" ToolTip="首页展示为：手动模式" Click="clisd">展开</Button>
+                                <Button Margin="0,0,0,0" hc:BorderElement.CornerRadius="0,4,4,0" Padding="10,3" Height="auto" ToolTip="首页展示的模式反转" Click="clifx">折叠</Button>
                             </StackPanel>
                         </Grid>
                     </GroupBox.Header>
@@ -110,15 +113,6 @@
             </StackPanel>
         </ScrollViewer>
 
-        <Grid Grid.Row="2" Margin="10,0,10,5">
-            <TextBox Text="" Width="{Binding ActualWidth,ElementName=stackPanel}" Height="{Binding ActualHeight,ElementName=stackPanel}" TextWrapping="Wrap" AcceptsReturn="True" VerticalContentAlignment="Top" VerticalScrollBarVisibility="Visible" Style="{StaticResource TextBoxExtend}" FontSize="14" hc:InfoElement.Placeholder="没有消息">
-                <TextBox.ContextMenu>
-                    <ContextMenu>
-                        <MenuItem Header="清空消息"></MenuItem>
-                    </ContextMenu>
-                </TextBox.ContextMenu>
-            </TextBox>
-        </Grid>
-
+        <TextBox Grid.Row="2" Style="{StaticResource TextBoxExtend.Multi}" Margin="10,5"></TextBox>
     </Grid>
 </local:UserControlBase>

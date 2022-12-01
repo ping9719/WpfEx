@@ -119,7 +119,7 @@
             在属性值更改时发生。
             </summary>
         </member>
-        <member name="M:Ping9719.WpfEx.Mvvm.BindableBase.SetProperty``1(``0@,``0,System.String,System.Boolean)">
+        <member name="M:Ping9719.WpfEx.Mvvm.BindableBase.SetProperty``1(``0@,``0,System.String)">
             <summary>
             检查属性是否已经与所需的值匹配。 设置属性并仅在必要时通知侦听器。 
             </summary>
@@ -127,7 +127,6 @@
             <param name="storage">设置的属性，需要有get;set;</param>
             <param name="value">设置的值</param>
             <param name="propertyName"> 用于通知侦听器的属性的名称。 该值是可选的，可以在从支持CallerMemberName的编译器中调用时自动提供。 </param>
-            <param name="isEqualsVerify"> 是否进行相等效验 </param>
             <returns>如果值被更改，则为True，如果现有值与期望值匹配，则为false。 </returns>
         </member>
         <member name="M:Ping9719.WpfEx.Mvvm.BindableBase.SetProperty``1(``0@,``0,System.Action,System.String)">
@@ -344,6 +343,11 @@
         <member name="P:Ping9719.WpfEx.DeviceServoData.Location">
             <summary>
             伺服当前位置
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.DeviceServoData.IsJog">
+            <summary>
+            是否主页显示为手动模式
             </summary>
         </member>
         <member name="P:Ping9719.WpfEx.DeviceServoData.Tag">
@@ -596,15 +600,12 @@
         </member>
         <member name="T:Ping9719.WpfEx.TextBoxMulti">
             <summary>
-            TextBoxMulti.xaml 的交互逻辑
-            </summary>
-            <summary>
-            TextBoxMulti
+            多行文本框
             </summary>
         </member>
-        <member name="M:Ping9719.WpfEx.TextBoxMulti.InitializeComponent">
+        <member name="M:Ping9719.WpfEx.TextBoxMulti.#ctor">
             <summary>
-            InitializeComponent
+            初始化多行文本框
             </summary>
         </member>
         <member name="T:Ping9719.WpfEx.UserControlBase">

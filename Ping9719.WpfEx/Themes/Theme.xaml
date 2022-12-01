@@ -1,6 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:local="clr-namespace:Ping9719.WpfEx">
+                    xmlns:local="clr-namespace:Ping9719.WpfEx"
+                    xmlns:hc="https://handyorg.github.io/handycontrol">
     <!--外部资源-->
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/SkinDefault.xaml"/>
@@ -13,4 +14,13 @@
     <local:Enum2IntConverter x:Key="Enum2IntConverter"></local:Enum2IntConverter>
     <local:Enum2StrConverter x:Key="Enum2StrConverter"></local:Enum2StrConverter>
     <local:List2StrConverter x:Key="List2StrConverter"></local:List2StrConverter>
+
+    <!--TextBox-->
+    <Style x:Key="TextBoxExtend.Multi" BasedOn="{StaticResource TextBoxExtend}" TargetType="TextBox">
+        <Setter Property="hc:InfoElement.Placeholder" Value="没有信息" />
+        <Setter Property="TextWrapping" Value="Wrap" />
+        <Setter Property="AcceptsReturn" Value="True" />
+        <Setter Property="VerticalContentAlignment" Value="Top" />
+        <Setter Property="VerticalScrollBarVisibility" Value="Visible" />
+    </Style>
 </ResourceDictionary>

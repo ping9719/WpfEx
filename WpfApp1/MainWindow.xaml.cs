@@ -1,4 +1,5 @@
-﻿using Ping9719.WpfEx;
+﻿using MiniExcelLibs;
+using Ping9719.WpfEx;
 using Ping9719.WpfEx.Mvvm;
 using System;
 using System.Collections.Generic;
@@ -72,6 +73,7 @@ namespace WpfApp1
                 new DeviceServoData (){Name="伺服8",GroupName="组2" },
                 new DeviceServoData (){Name="伺服9",GroupName="组2" },
             };
+
             dev.LoadUi(deviceStateDatas, deviceUrnDatas, deviceServoDatas);
 
             Task.Run(() =>
