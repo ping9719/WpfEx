@@ -37,7 +37,7 @@ Install-Package Ping9719.WpfEx
 
 ### 快速开始 [How To Use]
 ##### 一、在App.xaml中添加以下代码 [Add to App.xaml]
-```CSharp
+```xml
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
