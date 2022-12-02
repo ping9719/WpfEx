@@ -36,17 +36,21 @@ Install-Package Ping9719.WpfEx
 #
 
 ### 快速开始 [How To Use]
-一、在App.xaml中添加以下代码：
+##### 一、在App.xaml中添加以下代码 [Add to App.xaml]
 ```CSharp
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
+                <!--HandyControl-->
+                <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/SkinDefault.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Theme.xaml"/>
+                <!--Ping9719.WpfEx-->
                 <ResourceDictionary Source="pack://application:,,,/Ping9719.WpfEx;component/Themes/Theme.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>
 ```
-一、添加命名空间：
+##### 二、添加命名空间 [namespace]
 ```CSharp
 xmlns:pi="https://github.com/ping9719/wpfex"
 ```
