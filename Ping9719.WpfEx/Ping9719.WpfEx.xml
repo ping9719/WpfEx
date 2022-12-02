@@ -239,11 +239,28 @@
         </member>
         <member name="T:Ping9719.WpfEx.IotDevice">
             <summary>
-            IotPlc.xaml 的交互逻辑
+            工业控件：设备
             </summary>
             <summary>
             IotDevice
             </summary>
+        </member>
+        <member name="M:Ping9719.WpfEx.IotDevice.#ctor">
+            <summary>
+            工业控件：设备
+            </summary>
+        </member>
+        <member name="M:Ping9719.WpfEx.IotDevice.LoadUi(System.Collections.Generic.IEnumerable{Ping9719.WpfEx.IDeviceDataBase}[])">
+            <summary>
+            加载多个Ui
+            </summary>
+            <param name="deviceDatass">暂支持 DeviceStateData，DeviceUrnData，DeviceServo2Data</param>
+        </member>
+        <member name="M:Ping9719.WpfEx.IotDevice.LoadUi(System.Collections.Generic.IEnumerable{Ping9719.WpfEx.IDeviceDataBase})">
+            <summary>
+            加载Ui
+            </summary>
+            <param name="deviceDatas">暂支持 DeviceStateData，DeviceUrnData，DeviceServo2Data</param>
         </member>
         <member name="E:Ping9719.WpfEx.IotDevice.UrnClick">
             <summary>
@@ -258,6 +275,26 @@
         <member name="M:Ping9719.WpfEx.IotDevice.InitializeComponent">
             <summary>
             InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Ping9719.WpfEx.IDeviceDataBase">
+            <summary>
+            设备数据基类
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.IDeviceDataBase.Name">
+            <summary>
+            名称
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.IDeviceDataBase.GroupName">
+            <summary>
+            组名
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.IDeviceDataBase.Tag">
+            <summary>
+            自定义数据
             </summary>
         </member>
         <member name="T:Ping9719.WpfEx.DeviceStateData">
@@ -315,42 +352,47 @@
             自定义数据
             </summary>
         </member>
-        <member name="T:Ping9719.WpfEx.DeviceServoData">
+        <member name="T:Ping9719.WpfEx.DeviceServo2Data">
             <summary>
             设备伺服数据
             </summary>
         </member>
-        <member name="P:Ping9719.WpfEx.DeviceServoData.Name">
+        <member name="P:Ping9719.WpfEx.DeviceServo2Data.Name">
             <summary>
             名称
             </summary>
         </member>
-        <member name="P:Ping9719.WpfEx.DeviceServoData.GroupName">
+        <member name="P:Ping9719.WpfEx.DeviceServo2Data.GroupName">
             <summary>
             组名
             </summary>
         </member>
-        <member name="P:Ping9719.WpfEx.DeviceServoData.JogSpeed">
+        <member name="P:Ping9719.WpfEx.DeviceServo2Data.JogSpeed">
             <summary>
             手动模式速度
             </summary>
         </member>
-        <member name="P:Ping9719.WpfEx.DeviceServoData.AutoSpeed">
+        <member name="P:Ping9719.WpfEx.DeviceServo2Data.AutoSpeed">
             <summary>
             自动模式速度
             </summary>
         </member>
-        <member name="P:Ping9719.WpfEx.DeviceServoData.Location">
+        <member name="P:Ping9719.WpfEx.DeviceServo2Data.Location">
             <summary>
             伺服当前位置
             </summary>
         </member>
-        <member name="P:Ping9719.WpfEx.DeviceServoData.IsJog">
+        <member name="P:Ping9719.WpfEx.DeviceServo2Data.IsJog">
             <summary>
             是否主页显示为手动模式
             </summary>
         </member>
-        <member name="P:Ping9719.WpfEx.DeviceServoData.Tag">
+        <member name="P:Ping9719.WpfEx.DeviceServo2Data.IsFold">
+            <summary>
+            是否折叠
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.DeviceServo2Data.Tag">
             <summary>
             自定义数据
             </summary>
@@ -420,7 +462,7 @@
         </member>
         <member name="P:Ping9719.WpfEx.IotServo.ModelSpeedHome">
             <summary>
-            主页显示的模式速度
+            主页显示的速度模式
             </summary>
         </member>
         <member name="M:Ping9719.WpfEx.IotServo.SetModelSpeedHomeName(System.String)">
@@ -431,7 +473,7 @@
         </member>
         <member name="P:Ping9719.WpfEx.IotServo.ModelSpeeds">
             <summary>
-            全部的模式速度
+            全部的速度模式
             </summary>
         </member>
         <member name="E:Ping9719.WpfEx.IotServo.LocationChange">
@@ -575,7 +617,7 @@
         </member>
         <member name="P:Ping9719.WpfEx.IotUrn.IsButBadge1">
             <summary>
-            时候显示按钮1上面的标记
+            是否显示按钮1上面的标记
             </summary>
         </member>
         <member name="E:Ping9719.WpfEx.IotUrn.ButClick1">
@@ -596,16 +638,6 @@
         <member name="M:Ping9719.WpfEx.IotUrn.InitializeComponent">
             <summary>
             InitializeComponent
-            </summary>
-        </member>
-        <member name="T:Ping9719.WpfEx.TextBoxMulti">
-            <summary>
-            多行文本框
-            </summary>
-        </member>
-        <member name="M:Ping9719.WpfEx.TextBoxMulti.#ctor">
-            <summary>
-            初始化多行文本框
             </summary>
         </member>
         <member name="T:Ping9719.WpfEx.UserControlBase">
@@ -636,36 +668,6 @@
         <member name="P:Ping9719.WpfEx.UserControlBase.IsInDesignMode">
             <summary>
             是否处于设计模式
-            </summary>
-        </member>
-        <member name="T:XamlGeneratedNamespace.GeneratedInternalTypeHelper">
-            <summary>
-            GeneratedInternalTypeHelper
-            </summary>
-        </member>
-        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateInstance(System.Type,System.Globalization.CultureInfo)">
-            <summary>
-            CreateInstance
-            </summary>
-        </member>
-        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.GetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Globalization.CultureInfo)">
-            <summary>
-            GetPropertyValue
-            </summary>
-        </member>
-        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.SetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Object,System.Globalization.CultureInfo)">
-            <summary>
-            SetPropertyValue
-            </summary>
-        </member>
-        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateDelegate(System.Type,System.Object,System.String)">
-            <summary>
-            CreateDelegate
-            </summary>
-        </member>
-        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.AddEventHandler(System.Reflection.EventInfo,System.Object,System.Delegate)">
-            <summary>
-            AddEventHandler
             </summary>
         </member>
     </members>

@@ -1,5 +1,4 @@
-﻿using MiniExcelLibs;
-using Ping9719.WpfEx;
+﻿using Ping9719.WpfEx;
 using Ping9719.WpfEx.Mvvm;
 using System;
 using System.Collections.Generic;
@@ -61,17 +60,17 @@ namespace WpfApp1
                 new DeviceUrnData (){Name="气缸8",GroupName="组2" },
                 new DeviceUrnData (){Name="气缸9",GroupName="组2" },
             };
-            List<DeviceServoData> deviceServoDatas = new List<DeviceServoData>()
+            List<DeviceServo2Data> deviceServoDatas = new List<DeviceServo2Data>()
             {
-                new DeviceServoData (){Name="伺服1",GroupName="" },
-                new DeviceServoData (){Name="伺服2",GroupName="" },
-                new DeviceServoData (){Name="伺服3",GroupName="" },
-                new DeviceServoData (){Name="伺服4",GroupName="组1" },
-                new DeviceServoData (){Name="伺服5",GroupName="组1" },
-                new DeviceServoData (){Name="伺服6",GroupName="组1" },
-                new DeviceServoData (){Name="伺服7",GroupName="组1" },
-                new DeviceServoData (){Name="伺服8",GroupName="组2" },
-                new DeviceServoData (){Name="伺服9",GroupName="组2" },
+                new DeviceServo2Data (){Name="伺服1",GroupName="" },
+                new DeviceServo2Data (){Name="伺服2",GroupName="" },
+                new DeviceServo2Data (){Name="伺服3",GroupName="" },
+                new DeviceServo2Data (){Name="伺服4",GroupName="组1" },
+                new DeviceServo2Data (){Name="伺服5",GroupName="组1" },
+                new DeviceServo2Data (){Name="伺服6",GroupName="组1" },
+                new DeviceServo2Data (){Name="伺服7",GroupName="组1" },
+                new DeviceServo2Data (){Name="伺服8",GroupName="组2" },
+                new DeviceServo2Data (){Name="伺服9",GroupName="组2" },
             };
 
             dev.LoadUi(deviceStateDatas, deviceUrnDatas, deviceServoDatas);
@@ -80,6 +79,7 @@ namespace WpfApp1
             {
                 while (true)
                 {
+                    //操作Ui直接控制模型就行了，使用的为双向绑定
                     deviceStateDatas[2].IsOk = !deviceStateDatas[2].IsOk;
                     deviceStateDatas[4].IsOk = !deviceStateDatas[4].IsOk;
 
@@ -94,15 +94,15 @@ namespace WpfApp1
             });
         }
 
-        private void clike(object sender, RoutedEventArgs e)
-        {
-            var aaa = (object[])e.OriginalSource;
-        }
+private void clike(object sender, RoutedEventArgs e)
+{
+    var aaa = (object[])e.OriginalSource;
+}
 
-        private void clikeser(object sender, RoutedEventArgs e)
-        {
-
-        }
+private void clikeser(object sender, RoutedEventArgs e)
+{
+    var aaa = (object[])e.OriginalSource;
+}
     }
 
     public class MainWindowViewModel : BindableBase

@@ -113,7 +113,7 @@ namespace Ping9719.WpfEx
         #region ModelSpeed
 
         /// <summary>
-        /// 主页显示的模式速度
+        /// 主页显示的速度模式
         /// </summary>
         public ServoSpeed ModelSpeedHome
         {
@@ -136,7 +136,7 @@ namespace Ping9719.WpfEx
         }
 
         /// <summary>
-        /// 全部的模式速度
+        /// 全部的速度模式
         /// </summary>
         public List<ServoSpeed> ModelSpeeds
         {

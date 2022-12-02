@@ -17,191 +17,194 @@ using System.Windows.Shapes;
 namespace Ping9719.WpfEx
 {
     /// <summary>
-    /// IotPlc.xaml 的交互逻辑
+    /// 工业控件：设备
     /// </summary>
     public partial class IotDevice : UserControlBase
     {
-        List<DeviceStateData> stateDatas;
-        List<DeviceUrnData> urnDatas;
-        List<DeviceServoData> servoDatas;
+        IEnumerable<DeviceStateData> stateDatas;
+        IEnumerable<DeviceUrnData> urnDatas;
+        IEnumerable<DeviceServo2Data> servoDatas;
 
+        /// <summary>
+        /// 工业控件：设备
+        /// </summary>
         public IotDevice()
         {
             InitializeComponent();
 
             if (!this.IsInDesignMode)
             {
-                LoadUi(null, null, null);
+                LoadUi(new List<DeviceStateData>(), new List<DeviceUrnData>(), new List<DeviceServo2Data>());
             }
         }
 
-        public void LoadUi(List<DeviceStateData> stateDatas, List<DeviceUrnData> urnDatas, List<DeviceServoData> servoDatas)
+        /// <summary>
+        /// 加载多个Ui
+        /// </summary>
+        /// <param name="deviceDatass">暂支持 DeviceStateData，DeviceUrnData，DeviceServo2Data</param>
+        public void LoadUi(params IEnumerable<IDeviceDataBase>[] deviceDatass)
         {
-            this.stateDatas = stateDatas;
-            this.urnDatas = urnDatas;
-            this.servoDatas = servoDatas;
-
-            if (stateDatas == null || !stateDatas.Any())
+            foreach (var item in deviceDatass)
             {
-                boxcgq.Visibility = Visibility.Collapsed;
-                pancgq.Children.Clear();
+                LoadUi(item);
             }
-            else
+        }
+
+        /// <summary>
+        /// 加载Ui
+        /// </summary>
+        /// <param name="deviceDatas">暂支持 DeviceStateData，DeviceUrnData，DeviceServo2Data</param>
+        public void LoadUi(IEnumerable<IDeviceDataBase> deviceDatas)
+        {
+            if (deviceDatas is IEnumerable<DeviceStateData> stateDatas)
             {
-                boxcgq.Visibility = Visibility.Visible;
-                pancgq.Children.Clear();
-
-                var moren = stateDatas.Where(o => string.IsNullOrWhiteSpace(o.GroupName));
-                var group = stateDatas.Where(o => !string.IsNullOrWhiteSpace(o.GroupName)).GroupBy(o => o.GroupName);
-
-                if (moren.Any())
+                this.stateDatas = stateDatas;
+                if (stateDatas == null || !stateDatas.Any())
                 {
-                    WrapPanel wrapPanel = new WrapPanel();
-                    foreach (var item in moren)
-                    {
-                        IotState iotState = new IotState();
-                        iotState.DataContext = item;
-                        iotState.SetBinding(IotState.TextProperty, nameof(item.Name));
-                        iotState.SetBinding(IotState.IsOkProperty, nameof(item.IsOk));
-
-                        wrapPanel.Children.Add(iotState);
-                    }
-                    pancgq.Children.Add(wrapPanel);
+                    boxcgq.Visibility = Visibility.Collapsed;
+                    pancgq.Children.Clear();
                 }
-                if (group.Any())
+                else
                 {
-                    foreach (var item in group)
-                    {
-                        Expander expander = new Expander();
-                        expander.Header = item.Key;
+                    boxcgq.Visibility = Visibility.Visible;
+                    pancgq.Children.Clear();
 
+                    var moren = stateDatas.Where(o => string.IsNullOrWhiteSpace(o.GroupName));
+                    var group = stateDatas.Where(o => !string.IsNullOrWhiteSpace(o.GroupName)).GroupBy(o => o.GroupName);
+
+                    if (moren.Any())
+                    {
                         WrapPanel wrapPanel = new WrapPanel();
-                        foreach (var item2 in item)
+                        foreach (var item in moren)
                         {
                             IotState iotState = new IotState();
-                            iotState.DataContext = item2;
-                            iotState.SetBinding(IotState.TextProperty, nameof(item2.Name));
-                            iotState.SetBinding(IotState.IsOkProperty, nameof(item2.IsOk));
+                            iotState.DataContext = item;
+                            iotState.SetBinding(IotState.TextProperty, nameof(item.Name));
+                            iotState.SetBinding(IotState.IsOkProperty, nameof(item.IsOk));
 
                             wrapPanel.Children.Add(iotState);
                         }
-                        expander.Content = wrapPanel;
-                        pancgq.Children.Add(expander);
+                        pancgq.Children.Add(wrapPanel);
                     }
-                }
+                    if (group.Any())
+                    {
+                        foreach (var item in group)
+                        {
+                            Expander expander = new Expander();
+                            expander.Header = item.Key;
 
+                            WrapPanel wrapPanel = new WrapPanel();
+                            foreach (var item2 in item)
+                            {
+                                IotState iotState = new IotState();
+                                iotState.DataContext = item2;
+                                iotState.SetBinding(IotState.TextProperty, nameof(item2.Name));
+                                iotState.SetBinding(IotState.IsOkProperty, nameof(item2.IsOk));
+
+                                wrapPanel.Children.Add(iotState);
+                            }
+                            expander.Content = wrapPanel;
+                            pancgq.Children.Add(expander);
+                        }
+                    }
+
+                }
             }
 
-
-            if (urnDatas == null || !urnDatas.Any())
+            if (deviceDatas is IEnumerable<DeviceUrnData> urnDatas)
             {
-                boxqg.Visibility = Visibility.Collapsed;
-                panqg.Children.Clear();
-            }
-            else
-            {
-                boxqg.Visibility = Visibility.Visible;
-                panqg.Children.Clear();
-
-                var moren = urnDatas.Where(o => string.IsNullOrWhiteSpace(o.GroupName));
-                var group = urnDatas.Where(o => !string.IsNullOrWhiteSpace(o.GroupName)).GroupBy(o => o.GroupName);
-
-                if (moren.Any())
+                this.urnDatas = urnDatas;
+                if (urnDatas == null || !urnDatas.Any())
                 {
-                    WrapPanel wrapPanel = new WrapPanel();
-                    foreach (var item in moren)
-                    {
-                        IotUrn iotUrn = new IotUrn();
-                        iotUrn.DataContext = item;
-                        iotUrn.SetBinding(IotUrn.TextProperty, nameof(item.Name));
-                        iotUrn.SetBinding(IotUrn.IsButBadge1Property, nameof(item.IsGoTo));
-                        iotUrn.SetBinding(IotUrn.IsButBadge2Property, nameof(item.IsRetTo));
-                        iotUrn.ButClick1 += IotUrn_ButClick1;
-                        iotUrn.ButClick2 += IotUrn_ButClick2;
-
-                        wrapPanel.Children.Add(iotUrn);
-                    }
-                    panqg.Children.Add(wrapPanel);
+                    boxqg.Visibility = Visibility.Collapsed;
+                    panqg.Children.Clear();
                 }
-                if (group.Any())
+                else
                 {
-                    foreach (var item in group)
-                    {
-                        Expander expander = new Expander();
-                        expander.Header = item.Key;
+                    boxqg.Visibility = Visibility.Visible;
+                    panqg.Children.Clear();
 
+                    var moren = urnDatas.Where(o => string.IsNullOrWhiteSpace(o.GroupName));
+                    var group = urnDatas.Where(o => !string.IsNullOrWhiteSpace(o.GroupName)).GroupBy(o => o.GroupName);
+
+                    if (moren.Any())
+                    {
                         WrapPanel wrapPanel = new WrapPanel();
-                        foreach (var item2 in item)
+                        foreach (var item in moren)
                         {
                             IotUrn iotUrn = new IotUrn();
-                            iotUrn.DataContext = item2;
-                            iotUrn.SetBinding(IotUrn.TextProperty, nameof(item2.Name));
-                            iotUrn.SetBinding(IotUrn.IsButBadge1Property, nameof(item2.IsGoTo));
-                            iotUrn.SetBinding(IotUrn.IsButBadge2Property, nameof(item2.IsRetTo));
+                            iotUrn.DataContext = item;
+                            iotUrn.SetBinding(IotUrn.TextProperty, nameof(item.Name));
+                            iotUrn.SetBinding(IotUrn.IsButBadge1Property, nameof(item.IsGoTo));
+                            iotUrn.SetBinding(IotUrn.IsButBadge2Property, nameof(item.IsRetTo));
                             iotUrn.ButClick1 += IotUrn_ButClick1;
                             iotUrn.ButClick2 += IotUrn_ButClick2;
 
                             wrapPanel.Children.Add(iotUrn);
                         }
-                        expander.Content = wrapPanel;
-                        panqg.Children.Add(expander);
+                        panqg.Children.Add(wrapPanel);
                     }
-                }
-
-            }
-
-            if (servoDatas == null || !servoDatas.Any())
-            {
-                boxsf.Visibility = Visibility.Collapsed;
-                pansf.Children.Clear();
-            }
-            else
-            {
-                boxsf.Visibility = Visibility.Visible;
-                pansf.Children.Clear();
-
-                var moren = servoDatas.Where(o => string.IsNullOrWhiteSpace(o.GroupName));
-                var group = servoDatas.Where(o => !string.IsNullOrWhiteSpace(o.GroupName)).GroupBy(o => o.GroupName);
-
-                if (moren.Any())
-                {
-                    WrapPanel wrapPanel = new WrapPanel();
-                    foreach (var item in moren)
+                    if (group.Any())
                     {
-                        IotServo2 iotServo = new IotServo2();
-                        iotServo.DataContext = item;
-                        iotServo.SetBinding(IotServo2.TextProperty, nameof(item.Name));
-                        iotServo.SetBinding(IotServo2.Speed1Property, nameof(item.JogSpeed));
-                        iotServo.SetBinding(IotServo2.Speed2Property, nameof(item.AutoSpeed));
-                        iotServo.SetBinding(IotServo2.LocationProperty, nameof(item.Location));
-                        iotServo.SetBinding(IotServo2.IsVisSpeed1Property, new Binding(nameof(item.IsJog))
+                        foreach (var item in group)
                         {
-                            Mode = BindingMode.TwoWay,
-                        });
-                        iotServo.LocationChange += IotServo_LocationChange;
-                        iotServo.SpeedChange += IotServo_SpeedChange;
+                            Expander expander = new Expander();
+                            expander.Header = item.Key;
 
-                        wrapPanel.Children.Add(iotServo);
+                            WrapPanel wrapPanel = new WrapPanel();
+                            foreach (var item2 in item)
+                            {
+                                IotUrn iotUrn = new IotUrn();
+                                iotUrn.DataContext = item2;
+                                iotUrn.SetBinding(IotUrn.TextProperty, nameof(item2.Name));
+                                iotUrn.SetBinding(IotUrn.IsButBadge1Property, nameof(item2.IsGoTo));
+                                iotUrn.SetBinding(IotUrn.IsButBadge2Property, nameof(item2.IsRetTo));
+                                iotUrn.ButClick1 += IotUrn_ButClick1;
+                                iotUrn.ButClick2 += IotUrn_ButClick2;
+
+                                wrapPanel.Children.Add(iotUrn);
+                            }
+                            expander.Content = wrapPanel;
+                            panqg.Children.Add(expander);
+                        }
                     }
-                    pansf.Children.Add(wrapPanel);
-                }
-                if (group.Any())
-                {
-                    foreach (var item in group)
-                    {
-                        Expander expander = new Expander();
-                        expander.Header = item.Key;
 
+                }
+
+            }
+
+            if (deviceDatas is IEnumerable<DeviceServo2Data> servoDatas)
+            {
+                this.servoDatas = servoDatas;
+                if (servoDatas == null || !servoDatas.Any())
+                {
+                    boxsf.Visibility = Visibility.Collapsed;
+                    pansf.Children.Clear();
+                }
+                else
+                {
+                    boxsf.Visibility = Visibility.Visible;
+                    pansf.Children.Clear();
+
+                    var moren = servoDatas.Where(o => string.IsNullOrWhiteSpace(o.GroupName));
+                    var group = servoDatas.Where(o => !string.IsNullOrWhiteSpace(o.GroupName)).GroupBy(o => o.GroupName);
+
+                    if (moren.Any())
+                    {
                         WrapPanel wrapPanel = new WrapPanel();
-                        foreach (var item2 in item)
+                        foreach (var item in moren)
                         {
                             IotServo2 iotServo = new IotServo2();
-                            iotServo.DataContext = item2;
-                            iotServo.SetBinding(IotServo2.TextProperty, nameof(item2.Name));
-                            iotServo.SetBinding(IotServo2.Speed1Property, nameof(item2.JogSpeed));
-                            iotServo.SetBinding(IotServo2.Speed2Property, nameof(item2.AutoSpeed));
-                            iotServo.SetBinding(IotServo2.LocationProperty, nameof(item2.Location));
-                            iotServo.SetBinding(IotServo2.IsVisSpeed1Property, new Binding(nameof(item2.IsJog))
+                            iotServo.DataContext = item;
+                            iotServo.SetBinding(IotServo2.TextProperty, nameof(item.Name));
+                            iotServo.SetBinding(IotServo2.Speed1Property, nameof(item.JogSpeed));
+                            iotServo.SetBinding(IotServo2.Speed2Property, nameof(item.AutoSpeed));
+                            iotServo.SetBinding(IotServo2.LocationProperty, nameof(item.Location));
+                            iotServo.SetBinding(IotServo2.IsVisSpeed1Property, new Binding(nameof(item.IsJog))
+                            {
+                                Mode = BindingMode.TwoWay,
+                            });
+                            iotServo.SetBinding(IotServo2.IsFoldProperty, new Binding(nameof(item.IsFold))
                             {
                                 Mode = BindingMode.TwoWay,
                             });
@@ -210,11 +213,43 @@ namespace Ping9719.WpfEx
 
                             wrapPanel.Children.Add(iotServo);
                         }
-                        expander.Content = wrapPanel;
-                        pansf.Children.Add(expander);
+                        pansf.Children.Add(wrapPanel);
                     }
-                }
+                    if (group.Any())
+                    {
+                        foreach (var item in group)
+                        {
+                            Expander expander = new Expander();
+                            expander.Header = item.Key;
 
+                            WrapPanel wrapPanel = new WrapPanel();
+                            foreach (var item2 in item)
+                            {
+                                IotServo2 iotServo = new IotServo2();
+                                iotServo.DataContext = item2;
+                                iotServo.SetBinding(IotServo2.TextProperty, nameof(item2.Name));
+                                iotServo.SetBinding(IotServo2.Speed1Property, nameof(item2.JogSpeed));
+                                iotServo.SetBinding(IotServo2.Speed2Property, nameof(item2.AutoSpeed));
+                                iotServo.SetBinding(IotServo2.LocationProperty, nameof(item2.Location));
+                                iotServo.SetBinding(IotServo2.IsVisSpeed1Property, new Binding(nameof(item2.IsJog))
+                                {
+                                    Mode = BindingMode.TwoWay,
+                                });
+                                iotServo.SetBinding(IotServo2.IsFoldProperty, new Binding(nameof(item2.IsFold))
+                                {
+                                    Mode = BindingMode.TwoWay,
+                                });
+                                iotServo.LocationChange += IotServo_LocationChange;
+                                iotServo.SpeedChange += IotServo_SpeedChange;
+
+                                wrapPanel.Children.Add(iotServo);
+                            }
+                            expander.Content = wrapPanel;
+                            pansf.Children.Add(expander);
+                        }
+                    }
+
+                }
             }
         }
 
@@ -300,12 +335,53 @@ namespace Ping9719.WpfEx
                 item.IsJog = !item.IsJog;
             }
         }
+
+        private void clizka(object sender, RoutedEventArgs e)
+        {
+            if (servoDatas == null || !servoDatas.Any())
+                return;
+
+            foreach (var item in servoDatas)
+            {
+                item.IsFold = false;
+            }
+        }
+
+        private void clizda(object sender, RoutedEventArgs e)
+        {
+            if (servoDatas == null || !servoDatas.Any())
+                return;
+
+            foreach (var item in servoDatas)
+            {
+                item.IsFold = true;
+            }
+        }
+    }
+
+    /// <summary>
+    /// 设备数据基类
+    /// </summary>
+    public interface IDeviceDataBase
+    {
+        /// <summary>
+        /// 名称
+        /// </summary>
+        string Name { get; set; }
+        /// <summary>
+        /// 组名
+        /// </summary>
+        string GroupName { get; set; }
+        /// <summary>
+        /// 自定义数据
+        /// </summary>
+        object Tag { get; set; }
     }
 
     /// <summary>
     /// 设备数据
     /// </summary>
-    public class DeviceStateData : BindableBase
+    public class DeviceStateData : BindableBase, IDeviceDataBase
     {
         private string name;
         /// <summary>
@@ -341,7 +417,7 @@ namespace Ping9719.WpfEx
     /// <summary>
     /// 设备气缸数据
     /// </summary>
-    public class DeviceUrnData : BindableBase
+    public class DeviceUrnData : BindableBase, IDeviceDataBase
     {
         private string name;
         /// <summary>
@@ -390,7 +466,7 @@ namespace Ping9719.WpfEx
     /// <summary>
     /// 设备伺服数据
     /// </summary>
-    public class DeviceServoData : BindableBase
+    public class DeviceServo2Data : BindableBase, IDeviceDataBase
     {
         private string name;
         /// <summary>
@@ -446,6 +522,15 @@ namespace Ping9719.WpfEx
             set { SetProperty(ref isJog, value); }
         }
 
+        private bool isFold = true;
+        /// <summary>
+        /// 是否折叠
+        /// </summary>
+        public bool IsFold
+        {
+            get { return isFold; }
+            set { SetProperty(ref isFold, value); }
+        }
 
         /// <summary>
         /// 自定义数据

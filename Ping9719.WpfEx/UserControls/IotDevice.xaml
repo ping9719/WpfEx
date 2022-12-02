@@ -32,23 +32,16 @@
         </ResourceDictionary>
     </UserControl.Resources>
 
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="40"></RowDefinition>
-            <RowDefinition Height="*"></RowDefinition>
-            <RowDefinition Height="120"></RowDefinition>
-        </Grid.RowDefinitions>
+    <!--<Border Style="{StaticResource BorderRegion}" Margin="0" Padding="0">-->
 
-        <hc:LoadingLine VerticalAlignment="Top" />
-        <hc:ButtonGroup Margin="10,5" HorizontalAlignment="Left">
+        <!--<hc:ButtonGroup Margin="10,5" HorizontalAlignment="Left">
             <RadioButton MinWidth="100" Content="手动模式" IsChecked="True"/>
             <RadioButton MinWidth="100" Content="调试模式"/>
             <RadioButton MinWidth="100" Content="自动模式"/>
-        </hc:ButtonGroup>
-        <TextBlock Margin="10,5" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="Gray">1#PLC</TextBlock>
+        </hc:ButtonGroup>-->
 
-        <ScrollViewer Grid.Row="1" Margin="10,5">
-            <StackPanel Margin="10,5" Orientation="Vertical">
+        <ScrollViewer Grid.Row="1" Margin="0" Padding="5">
+            <StackPanel Margin="0" Orientation="Vertical">
                 <GroupBox x:Name="boxcgq" Header="传感器" MinHeight="80" Style="{StaticResource GroupBoxTab}" Background="{x:Null}">
                     <StackPanel x:Name="pancgq">
                         <WrapPanel>
@@ -86,12 +79,12 @@
                         <Grid Width="{Binding ActualWidth,ElementName=boxsf}">
                             <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">伺服</TextBlock>
                             <StackPanel Margin="0,0,10,0" Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Right">
-                                <Button Margin="0,0,0,0" hc:BorderElement.CornerRadius="4,0,0,4" Padding="10,3" Height="auto" ToolTip="首页展示为：手动模式" Click="clisd">手</Button>
-                                <Button Margin="-1,0,-1,0" hc:BorderElement.CornerRadius="0,0,0,0" Padding="10,3" Height="auto" ToolTip="首页展示为：自动模式" Click="clizd">自</Button>
-                                <Button Margin="0,0,0,0" hc:BorderElement.CornerRadius="0,4,4,0" Padding="10,3" Height="auto" ToolTip="首页展示的模式反转" Click="clifx">反</Button>
+                                <Button Margin="0,0,0,0" hc:BorderElement.CornerRadius="4,0,0,4" Padding="10,3" Height="auto" ToolTip="首页展示为：手动模式" Click="clisd">手动</Button>
+                                <Button Margin="-1,0,-1,0" hc:BorderElement.CornerRadius="0,0,0,0" Padding="10,3" Height="auto" ToolTip="首页展示为：自动模式" Click="clizd">自动</Button>
+                                <Button Margin="0,0,0,0" hc:BorderElement.CornerRadius="0,4,4,0" Padding="10,3" Height="auto" ToolTip="首页展示的模式反转" Click="clifx">反转</Button>
 
-                                <Button Margin="10,0,0,0" hc:BorderElement.CornerRadius="4,0,0,4" Padding="10,3" Height="auto" ToolTip="首页展示为：手动模式" Click="clisd">展开</Button>
-                                <Button Margin="0,0,0,0" hc:BorderElement.CornerRadius="0,4,4,0" Padding="10,3" Height="auto" ToolTip="首页展示的模式反转" Click="clifx">折叠</Button>
+                                <Button Margin="10,0,0,0" hc:BorderElement.CornerRadius="4,0,0,4" Padding="10,3" Height="auto" ToolTip="全部展开速度设置面板" Click="clizka">展开</Button>
+                                <Button Margin="0,0,0,0" hc:BorderElement.CornerRadius="0,4,4,0" Padding="10,3" Height="auto" ToolTip="全部折叠速度设置面板" Click="clizda">折叠</Button>
                             </StackPanel>
                         </Grid>
                     </GroupBox.Header>
@@ -112,7 +105,5 @@
                 </GroupBox>
             </StackPanel>
         </ScrollViewer>
-
-        <TextBox Grid.Row="2" Style="{StaticResource TextBoxExtend.Multi}" Margin="10,5"></TextBox>
-    </Grid>
+    <!--</Border>-->
 </local:UserControlBase>

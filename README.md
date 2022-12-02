@@ -15,7 +15,6 @@
 #适用于瀑布流分页控件<br/>
 #适用与设备的启动与停止（或可选暂停、继续）控件<br/>
 #适用与设备的三色状态控件<br/>
-#底部状态栏控件<br/>
 #对HandyControl的基础选项卡美化
 #### 窗体
 #启动加载窗体<br/>
@@ -42,7 +41,7 @@ Install-Package Ping9719.WpfEx
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="pack://application:,,,/Ping9719.WpfEx;component/Theme.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/Ping9719.WpfEx;component/Themes/Theme.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

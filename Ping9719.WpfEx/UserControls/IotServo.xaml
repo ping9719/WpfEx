@@ -50,7 +50,7 @@
             <Border Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" Width="1" Height="auto" Margin="0,5" Padding="0" HorizontalAlignment="Right" Style="{StaticResource BorderRegion}"/>
             <!--当前位置-->
             <TextBlock Grid.Row="0" Grid.Column="2" Grid.RowSpan="1" Margin="3,0" FontSize="{StaticResource TextFontSize}" ToolTip="{Binding Text,RelativeSource={RelativeSource Mode=Self}}" hc:TextBlockAttach.AutoTooltip="True" TextWrapping="NoWrap" TextTrimming="CharacterEllipsis" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type local:IotServo}},Path=Location}"></TextBlock>
-            <TextBox x:Name="textwz" Grid.Row="1" Grid.Column="2" Grid.RowSpan="1" Margin="3,0" Padding="1,0" Height="auto" VerticalAlignment="Center"></TextBox>
+            <TextBox x:Name="textwz" Grid.Row="1" Grid.Column="2" Grid.RowSpan="1" Margin="3,0" Padding="1,0" Height="auto" VerticalAlignment="Center" Style="{StaticResource TextBoxExtend}" hc:InfoElement.Placeholder="移动到位置"></TextBox>
             <Border Grid.Row="0" Grid.Column="2" Grid.RowSpan="2" Width="1" Height="auto" Margin="0,5" Padding="0" HorizontalAlignment="Right" Style="{StaticResource BorderRegion}"/>
             <!--设置位置-->
             <StackPanel Grid.Row="0" Grid.Column="3" Grid.RowSpan="1" Margin="3,1,1,1" Orientation="Horizontal">
@@ -73,7 +73,7 @@
                                 </Grid.ColumnDefinitions>
                                 <TextBlock Grid.Column="0" Margin="3,0" FontSize="{StaticResource TextFontSize}" ToolTip="{Binding Text,RelativeSource={RelativeSource Mode=Self}}" hc:TextBlockAttach.AutoTooltip="True" TextWrapping="NoWrap" TextTrimming="CharacterEllipsis" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding Name}"></TextBlock>
                                 <TextBlock Grid.Column="1" Margin="3,0" FontSize="{StaticResource TextFontSize}" ToolTip="{Binding Text,RelativeSource={RelativeSource Mode=Self}}" hc:TextBlockAttach.AutoTooltip="True" TextWrapping="NoWrap" TextTrimming="CharacterEllipsis" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding Speed}"></TextBlock>
-                                <TextBox x:Name="text1" Background="LightGoldenrodYellow" Grid.Column="2" Margin="3,0" Padding="1,0" Height="auto" VerticalAlignment="Center"></TextBox>
+                                <TextBox x:Name="text1" Background="LightGoldenrodYellow" Grid.Column="2" Margin="3,0" Padding="1,0" Height="auto" VerticalAlignment="Center" Style="{StaticResource TextBoxExtend}" hc:InfoElement.Placeholder="移动到位置"></TextBox>
                                 <Button Background="LightGoldenrodYellow" Grid.Column="3" Height="auto" Width="{Binding ActualWidth,ElementName=butyd}" Tag="{Binding ElementName=text1}" Margin="3,1,1,1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="szsd">设置</Button>
                             </Grid>
                         </DataTemplate>

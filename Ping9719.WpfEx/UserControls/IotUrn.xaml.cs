@@ -45,7 +45,7 @@ namespace Ping9719.WpfEx
         #region but1
 
         /// <summary>
-        /// 时候显示按钮1上面的标记
+        /// 是否显示按钮1上面的标记
         /// </summary>
         public bool IsButBadge1
         {
