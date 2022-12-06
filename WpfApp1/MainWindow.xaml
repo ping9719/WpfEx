@@ -7,7 +7,20 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded">
     <Grid>
-        <Grid.RowDefinitions>
+        <TabControl Style="{DynamicResource TabControlBaseStyle}">
+            <TabItem Header="1"></TabItem>
+            <TabItem Header="2"></TabItem>
+        </TabControl>
+        <!--<hc:TabControl TabStripPlacement="Left" Background="Gray" Style="{DynamicResource TabControlStyle1}">
+            <TabItem>
+                <TabItem.Header>
+                    <Button>123</Button>
+                </TabItem.Header>
+            </TabItem>
+            <TabItem Header="123"></TabItem>
+            <TabItem Header="123"></TabItem>
+        </hc:TabControl>-->
+        <!--<Grid.RowDefinitions>
             <RowDefinition Height="auto"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="120"></RowDefinition>
@@ -17,10 +30,9 @@
             <RadioButton MinWidth="100" Content="调试模式"/>
             <RadioButton MinWidth="100" Content="自动模式"/>
         </hc:ButtonGroup>
-        <pi:IotServo Text="伺服1" x:Name="ser1"></pi:IotServo>
         <Border Style="{StaticResource BorderRegion}" Grid.Row="1" Margin="10,5" Padding="0">
             <pi:IotDevice x:Name="dev" UrnClick="clike" ServoClick="clikeser"/>
         </Border>
-        <TextBox Margin="10,5" Style="{StaticResource TextBoxExtend.Multi}" Grid.Row="2"></TextBox>
+        <TextBox Margin="10,5" Style="{StaticResource TextBoxExtend.Multi}" Grid.Row="2"></TextBox>-->
     </Grid>
 </Window>

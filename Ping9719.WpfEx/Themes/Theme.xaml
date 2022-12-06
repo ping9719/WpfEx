@@ -4,9 +4,17 @@
                     xmlns:hc="https://handyorg.github.io/handycontrol">
     <!--外部资源-->
     <ResourceDictionary.MergedDictionaries>
+        <!--HandyControl-->
         <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/SkinDefault.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Theme.xaml"/>
         <!--<ResourceDictionary Source="pack://application:,,,/Ping9719.WpfEx;component/Themes/Theme.xaml"/>-->
+
+        <!--TextBox-->
+        <ResourceDictionary Source="pack://application:,,,/Ping9719.WpfEx;component/Controls/Styles/TextBoxExtend.Multi.xaml"/>
+        <!--TabControl-->
+        <ResourceDictionary Source="pack://application:,,,/Ping9719.WpfEx;component/Controls/Styles/TabControlBaseStyle.MouseOver.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/Ping9719.WpfEx;component/Controls/Styles/TabControlInLine.MouseOver.xaml"/>
+
     </ResourceDictionary.MergedDictionaries>
 
     <!--转换器-->
@@ -15,12 +23,4 @@
     <local:Enum2StrConverter x:Key="Enum2StrConverter"></local:Enum2StrConverter>
     <local:List2StrConverter x:Key="List2StrConverter"></local:List2StrConverter>
 
-    <!--TextBox-->
-    <Style x:Key="TextBoxExtend.Multi" BasedOn="{StaticResource TextBoxExtend}" TargetType="TextBox">
-        <Setter Property="hc:InfoElement.Placeholder" Value="没有信息" />
-        <Setter Property="TextWrapping" Value="Wrap" />
-        <Setter Property="AcceptsReturn" Value="True" />
-        <Setter Property="VerticalContentAlignment" Value="Top" />
-        <Setter Property="VerticalScrollBarVisibility" Value="Visible" />
-    </Style>
 </ResourceDictionary>

@@ -73,7 +73,7 @@ namespace WpfApp1
                 new DeviceServo2Data (){Name="伺服9",GroupName="组2" },
             };
 
-            dev.LoadUi(deviceStateDatas, deviceUrnDatas, deviceServoDatas);
+            //dev.LoadUi(deviceStateDatas, deviceUrnDatas, deviceServoDatas);
 
             Task.Run(() =>
             {
@@ -94,20 +94,25 @@ namespace WpfApp1
             });
         }
 
-private void clike(object sender, RoutedEventArgs e)
-{
-    var aaa = (object[])e.OriginalSource;
-}
+        private void clike(object sender, RoutedEventArgs e)
+        {
+            var aaa = (object[])e.OriginalSource;
+        }
 
-private void clikeser(object sender, RoutedEventArgs e)
-{
-    var aaa = (object[])e.OriginalSource;
-}
+        private void clikeser(object sender, RoutedEventArgs e)
+        {
+            var aaa = (object[])e.OriginalSource;
+        }
     }
 
     public class MainWindowViewModel : BindableBase
     {
-
+        public ICommand MyCommand => new DelegateCommand(My);
+        //执行方法
+        public void My()
+        {
+            //code
+        }
     }
 
 }
