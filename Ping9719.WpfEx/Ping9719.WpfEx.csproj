@@ -23,6 +23,7 @@ https://github.com/ping9719/WpfEx
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Page Remove="Controls\Styles\TabControl1.xaml" />
 	  <Page Remove="Properties\DesignTimeResources.xaml" />
 	</ItemGroup>
 

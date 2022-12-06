@@ -7,19 +7,12 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded">
     <Grid>
-        <TabControl Style="{DynamicResource TabControlBaseStyle}">
-            <TabItem Header="1"></TabItem>
-            <TabItem Header="2"></TabItem>
+        <TabControl TabStripPlacement="Top" Style="{StaticResource TabControlRectangle}">
+            <TabItem Header="主页" IsEnabled="False">123</TabItem>
+            <TabItem Header="关于我们">456</TabItem>
+            <TabItem Header="信息" >456</TabItem>
+            <TabItem Header="设置" >456</TabItem>
         </TabControl>
-        <!--<hc:TabControl TabStripPlacement="Left" Background="Gray" Style="{DynamicResource TabControlStyle1}">
-            <TabItem>
-                <TabItem.Header>
-                    <Button>123</Button>
-                </TabItem.Header>
-            </TabItem>
-            <TabItem Header="123"></TabItem>
-            <TabItem Header="123"></TabItem>
-        </hc:TabControl>-->
         <!--<Grid.RowDefinitions>
             <RowDefinition Height="auto"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>

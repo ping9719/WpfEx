@@ -15,6 +15,8 @@
         <ResourceDictionary Source="pack://application:,,,/Ping9719.WpfEx;component/Controls/Styles/TabControlBaseStyle.MouseOver.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/Ping9719.WpfEx;component/Controls/Styles/TabControlInLine.MouseOver.xaml"/>
 
+        <ResourceDictionary Source="pack://application:,,,/Ping9719.WpfEx;component/Controls/Styles/TabControlRectangle.xaml"/>
+
     </ResourceDictionary.MergedDictionaries>
 
     <!--转换器-->
