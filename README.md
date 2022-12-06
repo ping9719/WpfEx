@@ -41,11 +41,11 @@ Install-Package Ping9719.WpfEx
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
+                <!--Ping9719.WpfEx-->
+                <ResourceDictionary Source="pack://application:,,,/Ping9719.WpfEx;component/Themes/Theme.xaml"/>
                 <!--HandyControl-->
                 <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/SkinDefault.xaml"/>
                 <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Theme.xaml"/>
-                <!--Ping9719.WpfEx-->
-                <ResourceDictionary Source="pack://application:,,,/Ping9719.WpfEx;component/Themes/Theme.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>
