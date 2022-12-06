@@ -7,12 +7,14 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded">
     <Grid>
-        <TabControl TabStripPlacement="Top" Style="{StaticResource TabControlRectangle}">
-            <TabItem Header="主页" IsEnabled="False">123</TabItem>
-            <TabItem Header="关于我们">456</TabItem>
-            <TabItem Header="信息" >456</TabItem>
-            <TabItem Header="设置" >456</TabItem>
-        </TabControl>
+<TabControl Margin="10" Style="{StaticResource TabControlBaseStyle.MouseOver}">
+    <TabItem Header="选项卡1">
+    </TabItem>
+    <TabItem Header="选项卡2">
+    </TabItem>
+    <TabItem Header="选项卡3">
+    </TabItem>
+</TabControl>
         <!--<Grid.RowDefinitions>
             <RowDefinition Height="auto"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>

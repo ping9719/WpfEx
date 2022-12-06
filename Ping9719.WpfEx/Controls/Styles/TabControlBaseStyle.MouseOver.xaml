@@ -27,9 +27,13 @@
                                     <ContentPresenter x:Name="contentPresenter" ContentTemplate="{TemplateBinding HeaderTemplate}" Content="{TemplateBinding Header}" ContentStringFormat="{TemplateBinding HeaderStringFormat}" ContentSource="Header" TextElement.Foreground="{DynamicResource PrimaryTextBrush}" Focusable="False" HorizontalAlignment="Center" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="Center"/>
                                 </hc:SimplePanel>
                                 <ControlTemplate.Triggers>
-                                    <Trigger Property="IsMouseOver" Value="True">
-                                        <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{DynamicResource PrimaryBrush}"/>
-                                    </Trigger>
+                                    <MultiTrigger>
+                                        <MultiTrigger.Conditions>
+                                            <Condition Property="IsMouseOver" Value="True"/>
+                                            <Condition Property="IsSelected" Value="False"/>
+                                        </MultiTrigger.Conditions>
+                                        <Setter Property="Opacity" TargetName="templateRoot" Value="0.6"></Setter>
+                                    </MultiTrigger>
                                     <Trigger Property="IsSelected" Value="False">
                                         <Setter Property="BorderThickness" TargetName="mainBorder" Value="0"/>
                                     </Trigger>
