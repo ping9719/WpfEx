@@ -22,8 +22,6 @@ https://github.com/ping9719/WpfEx
 		<Compile Remove="Mvvm\ObservableList.cs" />
 	</ItemGroup>
 
-	<ItemGroup>
-	</ItemGroup>
 
 	<ItemGroup>
 		<PackageReference Include="HandyControl" Version="3.4.0" />
