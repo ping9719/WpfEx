@@ -2,13 +2,219 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:hc="https://handyorg.github.io/handycontrol">
 
-    <!--TextBox-->
-    <Style x:Key="TextBoxExtend.Multi" BasedOn="{StaticResource TextBoxExtend}" TargetType="TextBox">
+    <Style x:Key="TextBoxExtend.Multi" TargetType="{x:Type TextBox}">
         <Setter Property="hc:InfoElement.Placeholder" Value="没有信息" />
         <Setter Property="TextWrapping" Value="Wrap" />
         <Setter Property="AcceptsReturn" Value="True" />
         <Setter Property="VerticalContentAlignment" Value="Top" />
         <Setter Property="VerticalScrollBarVisibility" Value="Visible" />
+        <!--以上为新增-->
+        <Setter Property="hc:InfoElement.Symbol" Value="●"/>
+        <Setter Property="hc:InfoElement.ContentHeight" Value="NaN"/>
+        <Setter Property="hc:InfoElement.MinContentHeight" Value="30"/>
+        <Setter Property="Height" Value="Auto"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type TextBox}">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition MinHeight="{Binding (hc:InfoElement.MinContentHeight), RelativeSource={RelativeSource TemplatedParent}}">
+                                <RowDefinition.Height>
+                                    <Binding Path="(hc:InfoElement.ContentHeight)" RelativeSource="{RelativeSource TemplatedParent}">
+                                        <Binding.Converter>
+                                            <hc:Double2GridLengthConverter/>
+                                        </Binding.Converter>
+                                    </Binding>
+                                </RowDefinition.Height>
+                            </RowDefinition>
+                        </Grid.RowDefinitions>
+                        <DockPanel HorizontalAlignment="{Binding (hc:TitleElement.HorizontalAlignment), RelativeSource={RelativeSource TemplatedParent}}" LastChildFill="True" Margin="{TemplateBinding Padding}">
+                            <DockPanel.Visibility>
+                                <Binding Path="(hc:TitleElement.Title)" RelativeSource="{RelativeSource TemplatedParent}">
+                                    <Binding.Converter>
+                                        <hc:String2VisibilityConverter/>
+                                    </Binding.Converter>
+                                </Binding>
+                            </DockPanel.Visibility>
+                            <ContentPresenter Content="{Binding (hc:InfoElement.Symbol), RelativeSource={RelativeSource TemplatedParent}}" DockPanel.Dock="Right" TextElement.Foreground="{DynamicResource DangerBrush}" Margin="4,0,0,0">
+                                <ContentPresenter.Visibility>
+                                    <Binding Path="(hc:InfoElement.Necessary)" RelativeSource="{RelativeSource TemplatedParent}">
+                                        <Binding.Converter>
+                                            <BooleanToVisibilityConverter/>
+                                        </Binding.Converter>
+                                    </Binding>
+                                </ContentPresenter.Visibility>
+                            </ContentPresenter>
+                            <TextBlock hc:TextBlockAttach.AutoTooltip="True" TextWrapping="NoWrap" Text="{Binding (hc:TitleElement.Title), RelativeSource={RelativeSource TemplatedParent}}" ToolTip="{x:Null}" TextTrimming="CharacterEllipsis"/>
+                        </DockPanel>
+                        <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" CornerRadius="{Binding (hc:BorderElement.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" Grid.Row="1" SnapsToDevicePixels="True"/>
+                        <TextBlock x:Name="Placeholder" HorizontalAlignment="Stretch" Margin="{TemplateBinding Padding}" Grid.Row="1" Text="{Binding (hc:InfoElement.Placeholder), RelativeSource={RelativeSource TemplatedParent}}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+                            <TextBlock.Style>
+                                <Style TargetType="{x:Type TextBlock}">
+                                    <Setter Property="Foreground" Value="{DynamicResource ThirdlyTextBrush}"/>
+                                    <Style.BasedOn>
+                                        <Style TargetType="{x:Type TextBlock}">
+                                            <Setter Property="VerticalAlignment" Value="Center"/>
+                                            <Setter Property="HorizontalAlignment" Value="Center"/>
+                                            <Setter Property="Foreground" Value="{DynamicResource PrimaryTextBrush}"/>
+                                        </Style>
+                                    </Style.BasedOn>
+                                </Style>
+                            </TextBlock.Style>
+                            <TextBlock.Visibility>
+                                <TemplateBinding Property="Text">
+                                    <TemplateBinding.Converter>
+                                        <hc:String2VisibilityReConverter/>
+                                    </TemplateBinding.Converter>
+                                </TemplateBinding>
+                            </TextBlock.Visibility>
+                        </TextBlock>
+                        <ScrollViewer x:Name="PART_ContentHost" Focusable="False" HorizontalScrollBarVisibility="Hidden" Margin="-2,0" Padding="{TemplateBinding Padding}" Grid.Row="1" VerticalScrollBarVisibility="Hidden" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" TargetName="border" Value="0.4"/>
+                            <Setter Property="Opacity" TargetName="PART_ContentHost" Value="0.4"/>
+                            <Setter Property="Opacity" TargetName="Placeholder" Value="0.4"/>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" SourceName="PART_ContentHost" Value="True">
+                            <Setter Property="BorderBrush" Value="{DynamicResource SecondaryBorderBrush}"/>
+                        </Trigger>
+                        <Trigger Property="IsFocused" Value="True">
+                            <Setter Property="BorderBrush" Value="{DynamicResource PrimaryBrush}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.BasedOn>
+            <Style TargetType="{x:Type TextBox}">
+                <Setter Property="CaretBrush" Value="{DynamicResource PrimaryTextBrush}"/>
+                <Setter Property="KeyboardNavigation.TabNavigation" Value="None"/>
+                <Setter Property="AllowDrop" Value="True"/>
+                <Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst"/>
+                <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type TextBox}">
+                            <hc:SimplePanel x:Name="root">
+                                <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" CornerRadius="{Binding (hc:BorderElement.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" SnapsToDevicePixels="True"/>
+                                <ScrollViewer x:Name="PART_ContentHost" Focusable="False" HorizontalScrollBarVisibility="Hidden" Margin="-2,0" Padding="{TemplateBinding Padding}" VerticalScrollBarVisibility="Hidden" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                            </hc:SimplePanel>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsEnabled" Value="False">
+                                    <Setter Property="Opacity" TargetName="root" Value="0.4"/>
+                                </Trigger>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="BorderBrush" Value="{DynamicResource SecondaryBorderBrush}"/>
+                                </Trigger>
+                                <Trigger Property="IsFocused" Value="True">
+                                    <Setter Property="BorderBrush" Value="{DynamicResource PrimaryBrush}"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+                <Style.BasedOn>
+                    <Style TargetType="{x:Type Control}">
+                        <Setter Property="hc:TitleElement.MarginOnTheLeft" Value="0,8,6,0"/>
+                        <Setter Property="hc:BorderElement.CornerRadius" Value="4"/>
+                        <Setter Property="MinHeight" Value="30"/>
+                        <Setter Property="Padding" Value="8,6"/>
+                        <Setter Property="VerticalContentAlignment" Value="Center"/>
+                        <Setter Property="HorizontalContentAlignment" Value="Left"/>
+                        <Setter Property="Background" Value="{DynamicResource RegionBrush}"/>
+                        <Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}"/>
+                        <Setter Property="Foreground" Value="{DynamicResource PrimaryTextBrush}"/>
+                        <Setter Property="BorderThickness" Value="1"/>
+                        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+                        <Setter Property="Validation.ErrorTemplate">
+                            <Setter.Value>
+                                <ControlTemplate/>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="Validation.HasError" Value="True">
+                                <Setter Property="BorderBrush" Value="{DynamicResource DangerBrush}"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Style.BasedOn>
+            </Style>
+        </Style.BasedOn>
+        <Style.Triggers>
+            <Trigger Property="hc:TitleElement.TitlePlacement" Value="Left">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type TextBox}">
+                            <Grid Height="{Binding (hc:InfoElement.ContentHeight), RelativeSource={RelativeSource TemplatedParent}}" MinHeight="{Binding (hc:InfoElement.MinContentHeight), RelativeSource={RelativeSource TemplatedParent}}">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="{Binding (hc:TitleElement.TitleWidth), RelativeSource={RelativeSource TemplatedParent}}"/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <DockPanel HorizontalAlignment="{Binding (hc:TitleElement.HorizontalAlignment), RelativeSource={RelativeSource TemplatedParent}}" LastChildFill="True" Margin="{Binding (hc:TitleElement.MarginOnTheLeft), RelativeSource={RelativeSource TemplatedParent}}" VerticalAlignment="{Binding (hc:TitleElement.VerticalAlignment), RelativeSource={RelativeSource TemplatedParent}}">
+                                    <DockPanel.Visibility>
+                                        <Binding Path="(hc:TitleElement.Title)" RelativeSource="{RelativeSource TemplatedParent}">
+                                            <Binding.Converter>
+                                                <hc:String2VisibilityConverter/>
+                                            </Binding.Converter>
+                                        </Binding>
+                                    </DockPanel.Visibility>
+                                    <ContentPresenter Content="{Binding (hc:InfoElement.Symbol), RelativeSource={RelativeSource TemplatedParent}}" DockPanel.Dock="Right" TextElement.Foreground="{DynamicResource DangerBrush}" Margin="4,0,0,0">
+                                        <ContentPresenter.Visibility>
+                                            <Binding Path="(hc:InfoElement.Necessary)" RelativeSource="{RelativeSource TemplatedParent}">
+                                                <Binding.Converter>
+                                                    <BooleanToVisibilityConverter/>
+                                                </Binding.Converter>
+                                            </Binding>
+                                        </ContentPresenter.Visibility>
+                                    </ContentPresenter>
+                                    <TextBlock hc:TextBlockAttach.AutoTooltip="True" TextWrapping="NoWrap" Text="{Binding (hc:TitleElement.Title), RelativeSource={RelativeSource TemplatedParent}}" ToolTip="{x:Null}" TextTrimming="CharacterEllipsis"/>
+                                </DockPanel>
+                                <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Grid.Column="1" CornerRadius="{Binding (hc:BorderElement.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" SnapsToDevicePixels="True"/>
+                                <TextBlock x:Name="Placeholder" Grid.Column="1" HorizontalAlignment="Stretch" Margin="{TemplateBinding Padding}" Text="{Binding (hc:InfoElement.Placeholder), RelativeSource={RelativeSource TemplatedParent}}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+                                    <TextBlock.Style>
+                                        <Style TargetType="{x:Type TextBlock}">
+                                            <Setter Property="Foreground" Value="{DynamicResource ThirdlyTextBrush}"/>
+                                            <Style.BasedOn>
+                                                <Style TargetType="{x:Type TextBlock}">
+                                                    <Setter Property="VerticalAlignment" Value="Center"/>
+                                                    <Setter Property="HorizontalAlignment" Value="Center"/>
+                                                    <Setter Property="Foreground" Value="{DynamicResource PrimaryTextBrush}"/>
+                                                </Style>
+                                            </Style.BasedOn>
+                                        </Style>
+                                    </TextBlock.Style>
+                                    <TextBlock.Visibility>
+                                        <TemplateBinding Property="Text">
+                                            <TemplateBinding.Converter>
+                                                <hc:String2VisibilityReConverter/>
+                                            </TemplateBinding.Converter>
+                                        </TemplateBinding>
+                                    </TextBlock.Visibility>
+                                </TextBlock>
+                                <ScrollViewer x:Name="PART_ContentHost" Grid.Column="1" Focusable="False" HorizontalScrollBarVisibility="Hidden" Margin="-2,0" Padding="{TemplateBinding Padding}" VerticalScrollBarVisibility="Hidden"/>
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsEnabled" Value="False">
+                                    <Setter Property="Opacity" TargetName="border" Value="0.4"/>
+                                    <Setter Property="Opacity" TargetName="PART_ContentHost" Value="0.4"/>
+                                    <Setter Property="Opacity" TargetName="Placeholder" Value="0.4"/>
+                                </Trigger>
+                                <Trigger Property="IsMouseOver" SourceName="PART_ContentHost" Value="True">
+                                    <Setter Property="BorderBrush" Value="{DynamicResource SecondaryBorderBrush}"/>
+                                </Trigger>
+                                <Trigger Property="IsFocused" Value="True">
+                                    <Setter Property="BorderBrush" Value="{DynamicResource PrimaryBrush}"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="Width" Value="Auto"/>
+            </Trigger>
+        </Style.Triggers>
     </Style>
-    
+
 </ResourceDictionary>

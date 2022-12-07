@@ -6,14 +6,7 @@
              xmlns:local="clr-namespace:Ping9719.WpfEx"
              mc:Ignorable="d" 
              d:DesignHeight="30" d:DesignWidth="150" Height="24" Width="130">
-    <UserControl.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="pack://application:,,,/Ping9719.WpfEx;component/Themes/Theme.xaml"/>
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </UserControl.Resources>
-
+    
     <Grid Margin="5,3" PreviewMouseLeftButtonDown="Border_PreviewMouseLeftButtonDown">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="8*"></ColumnDefinition>

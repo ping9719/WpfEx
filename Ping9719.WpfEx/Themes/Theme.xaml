@@ -5,8 +5,8 @@
     <!--外部资源-->
     <ResourceDictionary.MergedDictionaries>
         <!--HandyControl-->
-        <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/SkinDefault.xaml"/>
-        <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Theme.xaml"/>
+        <!--<ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/SkinDefault.xaml"/>-->
+        <!--<ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Theme.xaml"/>-->
         <!--<ResourceDictionary Source="pack://application:,,,/Ping9719.WpfEx;component/Themes/Theme.xaml"/>-->
 
         <!--TextBox-->
@@ -14,7 +14,6 @@
         <!--TabControl-->
         <ResourceDictionary Source="pack://application:,,,/Ping9719.WpfEx;component/Controls/Styles/TabControlBaseStyle.MouseOver.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/Ping9719.WpfEx;component/Controls/Styles/TabControlInLine.MouseOver.xaml"/>
-
         <ResourceDictionary Source="pack://application:,,,/Ping9719.WpfEx;component/Controls/Styles/TabControlRectangle.xaml"/>
 
     </ResourceDictionary.MergedDictionaries>
