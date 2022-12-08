@@ -7,12 +7,12 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded">
     <Grid>
-<TabControl Margin="10" Style="{StaticResource TabControlBaseStyle.MouseOver}">
+        <TabControl Margin="10" TabStripPlacement="Left"  Style="{StaticResource TabControlRectangle}">
     <TabItem Header="选项卡1">
     </TabItem>
     <TabItem Header="选项卡2">
     </TabItem>
-    <TabItem Header="选项卡3">
+    <TabItem Header="选项卡333">
     </TabItem>
 </TabControl>
         <!--<Grid.RowDefinitions>

@@ -5,7 +5,7 @@
     <Style x:Key="TabControlRectangle" TargetType="{x:Type TabControl}">
         <Setter Property="Background" Value="{DynamicResource RegionBrush}"/>
         <Setter Property="BorderThickness" Value="1"/>
-        <Setter Property="Padding" Value="1"/>
+        <Setter Property="Padding" Value="0"/>
         <Setter Property="hc:BorderElement.CornerRadius" Value="3"/>
         <Setter Property="Template">
             <Setter.Value>
@@ -19,7 +19,9 @@
                             <RowDefinition x:Name="RowDefinition0" Height="Auto"/>
                             <RowDefinition x:Name="RowDefinition1" Height="*"/>
                         </Grid.RowDefinitions>
-                        <TabPanel x:Name="headerPanel" Background="{TemplateBinding Background}" IsItemsHost="True" Margin="{TemplateBinding Padding}"/>
+                        <Border BorderThickness="1" CornerRadius="{TemplateBinding hc:BorderElement.CornerRadius}" Background="{TemplateBinding Background}">
+                            <TabPanel x:Name="headerPanel" IsItemsHost="True" Margin="{TemplateBinding Padding}"/>
+                        </Border>
 
                         <Border x:Name="contentPanel" Grid.Row="1" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{DynamicResource BorderBrush}" CornerRadius="{TemplateBinding hc:BorderElement.CornerRadius}" Background="{TemplateBinding Background}">
                             <ContentPresenter ContentTemplate="{TemplateBinding SelectedContentTemplate}" Content="{TemplateBinding SelectedContent}" ContentStringFormat="{TemplateBinding SelectedContentStringFormat}" ContentSource="SelectedContent" Margin="0" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
