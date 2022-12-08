@@ -19,12 +19,12 @@
                             <RowDefinition x:Name="RowDefinition0" Height="Auto"/>
                             <RowDefinition x:Name="RowDefinition1" Height="*"/>
                         </Grid.RowDefinitions>
-                        <Border BorderThickness="1" CornerRadius="{TemplateBinding hc:BorderElement.CornerRadius}" Background="{TemplateBinding Background}">
-                            <TabPanel x:Name="headerPanel" IsItemsHost="True" Margin="{TemplateBinding Padding}"/>
+                        <Border x:Name="headerPanel" BorderThickness="0" CornerRadius="{TemplateBinding hc:BorderElement.CornerRadius}" Background="{TemplateBinding Background}" Padding="0" Margin="{TemplateBinding Padding}">
+                            <TabPanel IsItemsHost="True"/>
                         </Border>
 
-                        <Border x:Name="contentPanel" Grid.Row="1" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{DynamicResource BorderBrush}" CornerRadius="{TemplateBinding hc:BorderElement.CornerRadius}" Background="{TemplateBinding Background}">
-                            <ContentPresenter ContentTemplate="{TemplateBinding SelectedContentTemplate}" Content="{TemplateBinding SelectedContent}" ContentStringFormat="{TemplateBinding SelectedContentStringFormat}" ContentSource="SelectedContent" Margin="0" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                        <Border x:Name="contentPanel" Grid.Row="1" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{DynamicResource BorderBrush}" CornerRadius="{TemplateBinding hc:BorderElement.CornerRadius}" Background="{TemplateBinding Background}" Margin="0" Padding="0">
+                            <ContentPresenter ContentTemplate="{TemplateBinding SelectedContentTemplate}" Content="{TemplateBinding SelectedContent}" ContentStringFormat="{TemplateBinding SelectedContentStringFormat}" ContentSource="SelectedContent" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
                         </Border>
                     </Grid>
                     <ControlTemplate.Triggers>

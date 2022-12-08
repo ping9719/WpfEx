@@ -7,27 +7,10 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded">
     <Grid>
-        <TabControl Margin="10" TabStripPlacement="Left"  Style="{StaticResource TabControlRectangle}">
-    <TabItem Header="选项卡1">
-    </TabItem>
-    <TabItem Header="选项卡2">
-    </TabItem>
-    <TabItem Header="选项卡333">
-    </TabItem>
-</TabControl>
-        <!--<Grid.RowDefinitions>
-            <RowDefinition Height="auto"></RowDefinition>
-            <RowDefinition Height="*"></RowDefinition>
-            <RowDefinition Height="120"></RowDefinition>
-        </Grid.RowDefinitions>
-        <hc:ButtonGroup Margin="10,10,0,0" HorizontalAlignment="Left">
-            <RadioButton MinWidth="100" Content="手动模式" IsChecked="True"/>
-            <RadioButton MinWidth="100" Content="调试模式"/>
-            <RadioButton MinWidth="100" Content="自动模式"/>
-        </hc:ButtonGroup>
-        <Border Style="{StaticResource BorderRegion}" Grid.Row="1" Margin="10,5" Padding="0">
-            <pi:IotDevice x:Name="dev" UrnClick="clike" ServoClick="clikeser"/>
-        </Border>
-        <TextBox Margin="10,5" Style="{StaticResource TextBoxExtend.Multi}" Grid.Row="2"></TextBox>-->
+        <TabControl TabStripPlacement="Bottom" Style="{StaticResource TabControlRectangle}" Margin="5" Padding="1">
+            <TabItem Header="123"></TabItem>
+            <TabItem Header="123"></TabItem>
+            <TabItem Header="123"></TabItem>
+        </TabControl>
     </Grid>
 </Window>
