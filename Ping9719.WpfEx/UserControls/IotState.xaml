@@ -5,22 +5,24 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Ping9719.WpfEx"
              mc:Ignorable="d" 
-             d:DesignHeight="30" d:DesignWidth="150" Height="24" Width="130">
-    
-    <Grid Margin="5,3" PreviewMouseLeftButtonDown="Border_PreviewMouseLeftButtonDown">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="8*"></ColumnDefinition>
-            <ColumnDefinition Width="2*"></ColumnDefinition>
-        </Grid.ColumnDefinitions>
-        <ToggleButton Grid.Column="1" Width="auto" Height="auto" Margin="0" BorderThickness="0" IsChecked="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type local:IotState}},Path=IsOk}" IsEnabled="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type local:IotState}},Path=IsLoadIn,Converter={StaticResource Boolean2BooleanReConverter}}" Style="{StaticResource ToggleButtonFlip}">
-            <hc:StatusSwitchElement.CheckedElement>
-                <Border Background="{DynamicResource DarkSuccessBrush}"></Border>
-            </hc:StatusSwitchElement.CheckedElement>
-            <Border Background="{DynamicResource DarkOpacityBrush}"></Border>
-        </ToggleButton>
-        <Border Grid.Column="1" Background="White" Opacity="0"></Border>
+             d:DesignHeight="30" d:DesignWidth="150" Height="30" Width="130">
 
-        <TextBlock Height="auto" Margin="3,0" FontSize="{StaticResource TextFontSize}" ToolTip="{Binding Text,RelativeSource={RelativeSource Mode=Self}}" hc:TextBlockAttach.AutoTooltip="True" TextWrapping="NoWrap" TextTrimming="CharacterEllipsis"  HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type local:IotState}},Path=Text}"></TextBlock>
-        <!--<hc:LoadingLine Visibility="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type local:IotState}},Path=IsLoadIn,Converter={StaticResource Boolean2VisibilityConverter}}" Margin="-3,-3,-3,0" Grid.ColumnSpan="2" DotDiameter="3" DotSpeed="2" VerticalAlignment="Top"/>-->
-    </Grid>
+    <Border Style="{StaticResource BorderRegion}" BorderThickness="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type local:IotState}},Path=BorderThickness}" Height="auto" Padding="0" PreviewMouseLeftButtonDown="Border_PreviewMouseLeftButtonDown">
+        <Grid Margin="5,3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="8*"></ColumnDefinition>
+                <ColumnDefinition Width="2*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <ToggleButton Grid.Column="1" Width="auto" Height="auto" Margin="0,2" BorderThickness="0" IsChecked="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type local:IotState}},Path=IsOk}" IsEnabled="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type local:IotState}},Path=IsLoadIn,Converter={StaticResource Boolean2BooleanReConverter}}" Style="{StaticResource ToggleButtonFlip}">
+                <hc:StatusSwitchElement.CheckedElement>
+                    <Border Background="{DynamicResource DarkSuccessBrush}"></Border>
+                </hc:StatusSwitchElement.CheckedElement>
+                <Border Background="{DynamicResource DarkOpacityBrush}"></Border>
+            </ToggleButton>
+            <Border Grid.Column="1" Background="White" Opacity="0"></Border>
+
+            <TextBlock Height="auto" Margin="3,0" FontSize="{StaticResource TextFontSize}" ToolTip="{Binding Text,RelativeSource={RelativeSource Mode=Self}}" hc:TextBlockAttach.AutoTooltip="True" TextWrapping="NoWrap" TextTrimming="CharacterEllipsis"  HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type local:IotState}},Path=Text}"></TextBlock>
+            <!--<hc:LoadingLine Visibility="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type local:IotState}},Path=IsLoadIn,Converter={StaticResource Boolean2VisibilityConverter}}" Margin="-3,-3,-3,0" Grid.ColumnSpan="2" DotDiameter="3" DotSpeed="2" VerticalAlignment="Top"/>-->
+        </Grid>
+    </Border>
 </UserControl>
