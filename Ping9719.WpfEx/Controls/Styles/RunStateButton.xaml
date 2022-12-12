@@ -9,7 +9,9 @@
         <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Theme.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
-    <Style TargetType="{x:Type local:RunStateButton}">
+    <Style BasedOn="{StaticResource RunStateButtonBaseStyle}" TargetType="{x:Type local:RunStateButton}"/>
+
+    <Style x:Key="RunStateButtonBaseStyle" TargetType="{x:Type local:RunStateButton}">
         <Setter Property="Padding" Value="20,6"/>
         <Setter Property="Template">
             <Setter.Value>
@@ -75,7 +77,7 @@
                         <Trigger Property="IsVisRset" Value="False">
                             <Setter Property="Visibility" TargetName="_rset" Value="Collapsed"/>
                         </Trigger>
-                        
+
                         <Trigger Property="RunState" Value="Run">
                             <Setter Property="IsEnabled" TargetName="_start" Value="False"/>
                             <Setter Property="IsEnabled" TargetName="_pause" Value="true"/>
