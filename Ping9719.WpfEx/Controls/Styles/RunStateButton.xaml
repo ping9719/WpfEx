@@ -28,7 +28,7 @@
                             <Setter Property="Visibility" TargetName="_rset" Value="Visible"/>
                         </Trigger>
                         <Trigger Property="IsVisRset" Value="False">
-                            <Setter Property="Visibility" TargetName="_rset" Value="Hidden"/>
+                            <Setter Property="Visibility" TargetName="_rset" Value="Collapsed"/>
                         </Trigger>
 
                         <Trigger Property="RunState" Value="Run">
@@ -73,7 +73,7 @@
                             <Setter Property="Visibility" TargetName="_rset" Value="Visible"/>
                         </Trigger>
                         <Trigger Property="IsVisRset" Value="False">
-                            <Setter Property="Visibility" TargetName="_rset" Value="Hidden"/>
+                            <Setter Property="Visibility" TargetName="_rset" Value="Collapsed"/>
                         </Trigger>
                         
                         <Trigger Property="RunState" Value="Run">
