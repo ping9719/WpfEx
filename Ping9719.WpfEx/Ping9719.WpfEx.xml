@@ -4,6 +4,81 @@
         <name>Ping9719.WpfEx</name>
     </assembly>
     <members>
+        <member name="T:Ping9719.WpfEx.RunState">
+            <summary>
+            运行状态
+            </summary>
+        </member>
+        <member name="F:Ping9719.WpfEx.RunState.Run">
+            <summary>
+            运行中
+            </summary>
+        </member>
+        <member name="F:Ping9719.WpfEx.RunState.Pause">
+            <summary>
+            暂停中
+            </summary>
+        </member>
+        <member name="F:Ping9719.WpfEx.RunState.Stop">
+            <summary>
+            已停止
+            </summary>
+        </member>
+        <member name="T:Ping9719.WpfEx.RunStateButtonClick">
+            <summary>
+            运行状态点击的按钮
+            </summary>
+        </member>
+        <member name="F:Ping9719.WpfEx.RunStateButtonClick.Start">
+            <summary>
+            启动
+            </summary>
+        </member>
+        <member name="F:Ping9719.WpfEx.RunStateButtonClick.Pause">
+            <summary>
+            暂停
+            </summary>
+        </member>
+        <member name="F:Ping9719.WpfEx.RunStateButtonClick.Continue">
+            <summary>
+            继续
+            </summary>
+        </member>
+        <member name="F:Ping9719.WpfEx.RunStateButtonClick.Stop">
+            <summary>
+            停止
+            </summary>
+        </member>
+        <member name="F:Ping9719.WpfEx.RunStateButtonClick.Rset">
+            <summary>
+            复位
+            </summary>
+        </member>
+        <member name="T:Ping9719.WpfEx.RunStateButton">
+            <summary>
+            运行状态按钮
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.RunStateButton.RunStateButtonClick">
+            <summary>
+            最近一次单击的按钮
+            </summary>
+        </member>
+        <member name="E:Ping9719.WpfEx.RunStateButton.Click">
+            <summary>
+            单击按钮时
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.RunStateButton.IsVisRset">
+            <summary>
+            是否显示复位按钮
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.RunStateButton.RunState">
+            <summary>
+            运行状态
+            </summary>
+        </member>
         <member name="T:Ping9719.WpfEx.Enum2BoolConverter">
             <summary>
             将枚举转为布尔
@@ -668,36 +743,6 @@
         <member name="P:Ping9719.WpfEx.UserControlBase.IsInDesignMode">
             <summary>
             是否处于设计模式
-            </summary>
-        </member>
-        <member name="T:XamlGeneratedNamespace.GeneratedInternalTypeHelper">
-            <summary>
-            GeneratedInternalTypeHelper
-            </summary>
-        </member>
-        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateInstance(System.Type,System.Globalization.CultureInfo)">
-            <summary>
-            CreateInstance
-            </summary>
-        </member>
-        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.GetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Globalization.CultureInfo)">
-            <summary>
-            GetPropertyValue
-            </summary>
-        </member>
-        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.SetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Object,System.Globalization.CultureInfo)">
-            <summary>
-            SetPropertyValue
-            </summary>
-        </member>
-        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateDelegate(System.Type,System.Object,System.String)">
-            <summary>
-            CreateDelegate
-            </summary>
-        </member>
-        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.AddEventHandler(System.Reflection.EventInfo,System.Object,System.Delegate)">
-            <summary>
-            AddEventHandler
             </summary>
         </member>
     </members>
