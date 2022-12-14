@@ -1,0 +1,84 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:local="clr-namespace:Ping9719.WpfEx"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:hc="https://handyorg.github.io/handycontrol">
+
+    <ResourceDictionary.MergedDictionaries>
+        <!--HandyControl-->
+        <!--<ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/SkinDefault.xaml"/>-->
+        <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Theme.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style x:Key="SyncProgressBarBaseStyle" TargetType="{x:Type local:SyncProgressBar}">
+        <Setter Property="Value" Value="100"></Setter>
+        <Setter Property="Maximum" Value="100"></Setter>
+        <Setter Property="Minimum" Value="0"></Setter>
+        <Setter Property="Width" Value="auto"></Setter>
+        <Setter Property="Height" Value="auto"></Setter>
+        <Setter Property="InteriorHeight" Value="12"></Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:SyncProgressBar}">
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"></ColumnDefinition>
+                                <ColumnDefinition x:Name="ColumnDefinition0" Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="auto"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+
+                            <Button x:Name="buttonOk" Grid.Column="0" Height="{Binding ActualHeight,ElementName=progressBar1}" Style="{StaticResource ButtonIcon}" Foreground="{StaticResource SuccessBrush}" hc:IconElement.Geometry="{StaticResource SuccessGeometry}" Padding="-2" Margin="2"/>
+                            <Button x:Name="buttonErr" Grid.Column="0" Height="{Binding ActualHeight,ElementName=progressBar1}" Style="{StaticResource ButtonIcon}" Foreground="{StaticResource DangerBrush}" hc:IconElement.Geometry="{StaticResource ErrorGeometry}" Padding="-2" Margin="2"/>
+
+                            <ProgressBar x:Name="progressBar1" Grid.Column="1" Height="{TemplateBinding InteriorHeight}" Style="{DynamicResource ProgressBarPrimaryStripe}" Value="{TemplateBinding Value}" Maximum="{TemplateBinding Maximum}" Minimum="{TemplateBinding Minimum}" Margin="3,0,0,0"></ProgressBar>
+                            
+                            <TextBlock x:Name="textBlockOk" Grid.Column="2" Text="{TemplateBinding SyncTextOk}" HorizontalAlignment="Left" VerticalAlignment="Center"  Margin="3,0,0,0"/>
+                            <TextBlock x:Name="textBlockIn" Grid.Column="2" Text="{TemplateBinding SyncTextIn}" HorizontalAlignment="Left" VerticalAlignment="Center"  Margin="3,0,0,0"/>
+                            <TextBlock x:Name="textBlockErr" Grid.Column="2" Text="{TemplateBinding SyncTextErr}" HorizontalAlignment="Left" VerticalAlignment="Center"  Margin="3,0,0,0"/>
+
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="SyncState" Value="OkCollapsed">
+                            <Setter Property="Width" TargetName="ColumnDefinition0" Value="0"/>
+                            <Setter Property="Visibility" TargetName="buttonOk" Value="Collapsed"/>
+                            <Setter Property="Visibility" TargetName="buttonErr" Value="Collapsed"/>
+                            <Setter Property="Visibility" TargetName="textBlockOk" Value="Collapsed"/>
+                            <Setter Property="Visibility" TargetName="textBlockIn" Value="Collapsed"/>
+                            <Setter Property="Visibility" TargetName="textBlockErr" Value="Collapsed"/>
+                        </Trigger>
+                        <Trigger Property="SyncState" Value="OkVisible">
+                            <Setter Property="Width" TargetName="ColumnDefinition0" Value="0"/>
+                            <Setter Property="Visibility" TargetName="buttonOk" Value="Visible"/>
+                            <Setter Property="Visibility" TargetName="buttonErr" Value="Collapsed"/>
+                            <Setter Property="Visibility" TargetName="textBlockOk" Value="Visible"/>
+                            <Setter Property="Visibility" TargetName="textBlockIn" Value="Collapsed"/>
+                            <Setter Property="Visibility" TargetName="textBlockErr" Value="Collapsed"/>
+                        </Trigger>
+                        <Trigger Property="SyncState" Value="SyncIn">
+                            <Setter Property="Width" TargetName="ColumnDefinition0" Value="*"/>
+                            <Setter Property="Visibility" TargetName="buttonOk" Value="Collapsed"/>
+                            <Setter Property="Visibility" TargetName="buttonErr" Value="Collapsed"/>
+                            <Setter Property="Visibility" TargetName="textBlockOk" Value="Collapsed"/>
+                            <Setter Property="Visibility" TargetName="textBlockIn" Value="Visible"/>
+                            <Setter Property="Visibility" TargetName="textBlockErr" Value="Collapsed"/>
+                        </Trigger>
+                        <Trigger Property="SyncState" Value="SyncErr">
+                            <Setter Property="Width" TargetName="ColumnDefinition0" Value="0"/>
+                            <Setter Property="Visibility" TargetName="buttonOk" Value="Collapsed"/>
+                            <Setter Property="Visibility" TargetName="buttonErr" Value="Visible"/>
+                            <Setter Property="Visibility" TargetName="textBlockOk" Value="Collapsed"/>
+                            <Setter Property="Visibility" TargetName="textBlockIn" Value="Collapsed"/>
+                            <Setter Property="Visibility" TargetName="textBlockErr" Value="Visible"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style BasedOn="{StaticResource SyncProgressBarBaseStyle}" TargetType="{x:Type local:SyncProgressBar}"/>
+    
+</ResourceDictionary>

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Ping9719.WpfEx.Helps
+namespace Ping9719.WpfEx
 {
     /// <summary>
     /// 简单定时任务队列执行器
@@ -32,6 +32,22 @@ namespace Ping9719.WpfEx.Helps
         /// 队列任务
         /// </summary>
         public Queue<Tuple<object, object>> QueueTask = new Queue<Tuple<object, object>>();
+        /// <summary>
+        /// 状态
+        /// </summary>
+        public QueueTaskTimeState State { get; private set; } = QueueTaskTimeState.Stop;
+
+        /// <summary>
+        /// 状态发生改变
+        /// </summary>
+        /// <param name="sender">源</param>
+        /// <param name="state">状态</param>
+        /// <param name="exception">错误</param>
+        public delegate void StateChangeEventHandler(object sender, QueueTaskTimeState state, Exception exception);
+        /// <summary>
+        /// 状态发生改变
+        /// </summary>
+        public event StateChangeEventHandler StateChange;
 
         Task task = null;
 
@@ -39,6 +55,8 @@ namespace Ping9719.WpfEx.Helps
         ///// 空闲 0 运行循环任务 1 运行队列任务 2
         ///// </summary>
         //int runState = 0;
+
+        Action actque = null;
 
         /// <summary>
         /// 初始化简单定时任务队列执行器
@@ -54,26 +72,35 @@ namespace Ping9719.WpfEx.Helps
 
                     try
                     {
-                        if (IsStart && ForTask.Count != 0)
+                        if (IsStart && ForTask.Any())
                         {
-                            var que = ForTask.Dequeue();
-                            que.Invoke();
+                            SetState(QueueTaskTimeState.ForTask);
+
+                            actque = ForTask.Dequeue();
+                            actque.Invoke();
+                            actque = null;
+
+                            SetState(QueueTaskTimeState.EndTaskOk);
                         }
 
-                        if (IsStart && QueueTask.Count != 0)
+                        if (IsStart && QueueTask.Any())
                         {
+                            SetState(QueueTaskTimeState.QueueTask);
+
                             var que = QueueTask.Dequeue();
                             if (que.Item1 is Action act)
                                 act.Invoke();
                             else if (que.Item1 is Action<object> actt)
                                 actt.Invoke(que.Item2);
+
+                            SetState(QueueTaskTimeState.EndTaskOk);
                         }
                     }
                     catch (Exception ex)
                     {
-
+                        actque = null;
+                        SetState(QueueTaskTimeState.EndTaskErr, ex);
                     }
-
                 }
             });
         }
@@ -84,6 +111,7 @@ namespace Ping9719.WpfEx.Helps
         public void Start()
         {
             IsStart = true;
+            SetState(QueueTaskTimeState.Start);
         }
 
         /// <summary>
@@ -92,6 +120,17 @@ namespace Ping9719.WpfEx.Helps
         public void Stop()
         {
             IsStart = false;
+            SetState(QueueTaskTimeState.Stop);
+        }
+
+        void SetState(QueueTaskTimeState state, Exception exception = null)
+        {
+            if (State == state)
+                return;
+
+            State = state;
+            if (StateChange != null)
+                StateChange(this, state, exception);
         }
 
         ///// <summary>
@@ -131,6 +170,9 @@ namespace Ping9719.WpfEx.Helps
                     if (!IsStart)
                         continue;
 
+                    if (actque == dt.Item1)
+                        continue;
+
                     if (!ForTask.Contains(dt.Item1))
                     {
                         if (!dt.Item3)
@@ -145,7 +187,6 @@ namespace Ping9719.WpfEx.Helps
                         if (!IsStart)
                             continue;
                     }
-
                 }
             }, Tuple.Create(action, timeSpan, isStartRun));
 

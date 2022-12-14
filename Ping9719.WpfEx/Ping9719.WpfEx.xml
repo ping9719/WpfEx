@@ -29,6 +29,46 @@
             运行状态
             </summary>
         </member>
+        <member name="T:Ping9719.WpfEx.SyncProgressBar">
+            <summary>
+            同步进度条
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.SyncProgressBar.SyncErrClickInfo">
+            <summary>
+            同步错误点击时提示信息
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.SyncProgressBar.QueueTask">
+            <summary>
+            任务队列
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.SyncProgressBar.InteriorHeight">
+            <summary>
+            内部显示高度
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.SyncProgressBar.SyncState">
+            <summary>
+            同步状态
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.SyncProgressBar.SyncTextOk">
+            <summary>
+            同步成功描述文本
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.SyncProgressBar.SyncTextIn">
+            <summary>
+            同步中描述文本
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.SyncProgressBar.SyncTextErr">
+            <summary>
+            同步错误描述文本
+            </summary>
+        </member>
         <member name="T:Ping9719.WpfEx.Enum2BoolConverter">
             <summary>
             将枚举转为布尔
@@ -47,6 +87,41 @@
         <member name="T:Ping9719.WpfEx.List2StrConverter">
             <summary>
             将数组、集合按照默认逗号分隔转为字符串
+            </summary>
+        </member>
+        <member name="T:Ping9719.WpfEx.QueueTaskTimeState">
+            <summary>
+            简单定时任务队列执行器运行状态
+            </summary>
+        </member>
+        <member name="F:Ping9719.WpfEx.QueueTaskTimeState.Start">
+            <summary>
+            开始，正在运行循环检测任务中
+            </summary>
+        </member>
+        <member name="F:Ping9719.WpfEx.QueueTaskTimeState.ForTask">
+            <summary>
+            正在执行循环任务中
+            </summary>
+        </member>
+        <member name="F:Ping9719.WpfEx.QueueTaskTimeState.QueueTask">
+            <summary>
+            正在执行队列任务中
+            </summary>
+        </member>
+        <member name="F:Ping9719.WpfEx.QueueTaskTimeState.EndTaskOk">
+            <summary>
+            结束任务，并且没有遇到错误，并等待继续运行
+            </summary>
+        </member>
+        <member name="F:Ping9719.WpfEx.QueueTaskTimeState.EndTaskErr">
+            <summary>
+            结束任务，并且遇到错误，并等待继续运行
+            </summary>
+        </member>
+        <member name="F:Ping9719.WpfEx.QueueTaskTimeState.Stop">
+            <summary>
+            已暂停、停止
             </summary>
         </member>
         <member name="T:Ping9719.WpfEx.RunState">
@@ -134,6 +209,31 @@
             开始点动减少
             </summary>
         </member>
+        <member name="T:Ping9719.WpfEx.SyncProgressBarState">
+            <summary>
+            同步进度条状态
+            </summary>
+        </member>
+        <member name="F:Ping9719.WpfEx.SyncProgressBarState.OkVisible">
+            <summary>
+            同步成功并且显示
+            </summary>
+        </member>
+        <member name="F:Ping9719.WpfEx.SyncProgressBarState.OkCollapsed">
+            <summary>
+            同步成功不显示控件
+            </summary>
+        </member>
+        <member name="F:Ping9719.WpfEx.SyncProgressBarState.SyncIn">
+            <summary>
+            同步中
+            </summary>
+        </member>
+        <member name="F:Ping9719.WpfEx.SyncProgressBarState.SyncErr">
+            <summary>
+            同步失败
+            </summary>
+        </member>
         <member name="T:Ping9719.WpfEx.EnumHelp">
             <summary>
             枚举帮助扩展类
@@ -176,52 +276,70 @@
             标记图像文件格式 (TIFF) 图像格式
             </summary>
         </member>
-        <member name="T:Ping9719.WpfEx.Helps.QueueTaskTime">
+        <member name="T:Ping9719.WpfEx.QueueTaskTime">
             <summary>
             简单定时任务队列执行器
             </summary>
         </member>
-        <member name="P:Ping9719.WpfEx.Helps.QueueTaskTime.IsStart">
+        <member name="P:Ping9719.WpfEx.QueueTaskTime.IsStart">
             <summary>
             是否启动
             </summary>
         </member>
-        <member name="P:Ping9719.WpfEx.Helps.QueueTaskTime.IsRunNoConflict">
+        <member name="P:Ping9719.WpfEx.QueueTaskTime.IsRunNoConflict">
             <summary>
             是否允许不冲突。运行定期任务的时候不执行队列任务，运行队列任务的时候不执行定期任务
             </summary>
         </member>
-        <member name="P:Ping9719.WpfEx.Helps.QueueTaskTime.WaitCount">
+        <member name="P:Ping9719.WpfEx.QueueTaskTime.WaitCount">
             <summary>
             等待任务数
             </summary>
         </member>
-        <member name="F:Ping9719.WpfEx.Helps.QueueTaskTime.ForTask">
+        <member name="F:Ping9719.WpfEx.QueueTaskTime.ForTask">
             <summary>
             队列循环任务
             </summary>
         </member>
-        <member name="F:Ping9719.WpfEx.Helps.QueueTaskTime.QueueTask">
+        <member name="F:Ping9719.WpfEx.QueueTaskTime.QueueTask">
             <summary>
             队列任务
             </summary>
         </member>
-        <member name="M:Ping9719.WpfEx.Helps.QueueTaskTime.#ctor">
+        <member name="P:Ping9719.WpfEx.QueueTaskTime.State">
+            <summary>
+            状态
+            </summary>
+        </member>
+        <member name="T:Ping9719.WpfEx.QueueTaskTime.StateChangeEventHandler">
+            <summary>
+            状态发生改变
+            </summary>
+            <param name="sender">源</param>
+            <param name="state">状态</param>
+            <param name="exception">错误</param>
+        </member>
+        <member name="E:Ping9719.WpfEx.QueueTaskTime.StateChange">
+            <summary>
+            状态发生改变
+            </summary>
+        </member>
+        <member name="M:Ping9719.WpfEx.QueueTaskTime.#ctor">
             <summary>
             初始化简单定时任务队列执行器
             </summary>
         </member>
-        <member name="M:Ping9719.WpfEx.Helps.QueueTaskTime.Start">
+        <member name="M:Ping9719.WpfEx.QueueTaskTime.Start">
             <summary>
             启动
             </summary>
         </member>
-        <member name="M:Ping9719.WpfEx.Helps.QueueTaskTime.Stop">
+        <member name="M:Ping9719.WpfEx.QueueTaskTime.Stop">
             <summary>
             暂停
             </summary>
         </member>
-        <member name="M:Ping9719.WpfEx.Helps.QueueTaskTime.AddForTask(System.Action,System.TimeSpan,System.Boolean)">
+        <member name="M:Ping9719.WpfEx.QueueTaskTime.AddForTask(System.Action,System.TimeSpan,System.Boolean)">
             <summary>
             添加循环任务
             </summary>
@@ -229,13 +347,13 @@
             <param name="timeSpan">执行的间隔</param>
             <param name="isStartRun">启动是否马上就执行方法（不等待间隔时间）</param>
         </member>
-        <member name="M:Ping9719.WpfEx.Helps.QueueTaskTime.AddQueueTask(System.Action)">
+        <member name="M:Ping9719.WpfEx.QueueTaskTime.AddQueueTask(System.Action)">
             <summary>
             添加队列任务
             </summary>
             <param name="action">需要执行的方法</param>
         </member>
-        <member name="M:Ping9719.WpfEx.Helps.QueueTaskTime.AddQueueTask(System.Action{System.Object},System.Object)">
+        <member name="M:Ping9719.WpfEx.QueueTaskTime.AddQueueTask(System.Action{System.Object},System.Object)">
             <summary>
             添加队列任务
             </summary>
@@ -809,6 +927,36 @@
         <member name="P:Ping9719.WpfEx.UserControlBase.IsInDesignMode">
             <summary>
             是否处于设计模式
+            </summary>
+        </member>
+        <member name="T:XamlGeneratedNamespace.GeneratedInternalTypeHelper">
+            <summary>
+            GeneratedInternalTypeHelper
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateInstance(System.Type,System.Globalization.CultureInfo)">
+            <summary>
+            CreateInstance
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.GetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            GetPropertyValue
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.SetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            SetPropertyValue
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateDelegate(System.Type,System.Object,System.String)">
+            <summary>
+            CreateDelegate
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.AddEventHandler(System.Reflection.EventInfo,System.Object,System.Delegate)">
+            <summary>
+            AddEventHandler
             </summary>
         </member>
     </members>

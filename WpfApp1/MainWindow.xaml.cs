@@ -74,24 +74,6 @@ namespace WpfApp1
             };
 
             //dev.LoadUi(deviceStateDatas, deviceUrnDatas, deviceServoDatas);
-
-            Task.Run(() =>
-            {
-                while (true)
-                {
-                    //操作Ui直接控制模型就行了，使用的为双向绑定
-                    deviceStateDatas[2].IsOk = !deviceStateDatas[2].IsOk;
-                    deviceStateDatas[4].IsOk = !deviceStateDatas[4].IsOk;
-
-                    deviceUrnDatas[2].IsGoTo = !deviceUrnDatas[2].IsGoTo;
-                    deviceUrnDatas[4].IsRetTo = !deviceUrnDatas[4].IsRetTo;
-
-                    deviceServoDatas[2].AutoSpeed++;
-                    deviceServoDatas[4].JogSpeed++;
-                    deviceServoDatas[6].Location += 0.1;
-                    System.Threading.Thread.Sleep(2000);
-                }
-            });
         }
 
         private void clike(object sender, RoutedEventArgs e)

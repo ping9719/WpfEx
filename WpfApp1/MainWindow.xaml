@@ -7,7 +7,13 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded">
     <Grid>
-        <pi:RunStateButton />
+        <StackPanel Width="200">
+            <pi:SyncProgressBar SyncState="OkVisible"/>
+            <pi:SyncProgressBar SyncState="SyncIn"/>
+            <pi:SyncProgressBar SyncState="SyncErr"/>
+            <pi:SyncProgressBar SyncState="SyncIn" Value="30"/>
+        </StackPanel>
+
         <!--<TabControl TabStripPlacement="Bottom" Style="{StaticResource TabControlRectangle}" Margin="5" Padding="1">
             <TabItem Header="123"></TabItem>
             <TabItem Header="123"></TabItem>

@@ -16,7 +16,10 @@
         <ResourceDictionary Source="pack://application:,,,/Ping9719.WpfEx;component/Controls/Styles/TabControlInLine.MouseOver.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/Ping9719.WpfEx;component/Controls/Styles/TabControlRectangle.xaml"/>
 
+        <!--扩展控件-->
         <ResourceDictionary Source="pack://application:,,,/Ping9719.WpfEx;component/Controls/Styles/RunStateButton.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/Ping9719.WpfEx;component/Controls/Styles/SyncProgressBar.xaml"/>
+
     </ResourceDictionary.MergedDictionaries>
 
     <!--转换器-->
