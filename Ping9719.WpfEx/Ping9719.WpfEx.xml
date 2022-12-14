@@ -4,6 +4,51 @@
         <name>Ping9719.WpfEx</name>
     </assembly>
     <members>
+        <member name="T:Ping9719.WpfEx.RunStateButton">
+            <summary>
+            运行状态按钮
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.RunStateButton.RunStateButtonClick">
+            <summary>
+            最近一次单击的按钮
+            </summary>
+        </member>
+        <member name="E:Ping9719.WpfEx.RunStateButton.Click">
+            <summary>
+            单击按钮时
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.RunStateButton.IsVisRset">
+            <summary>
+            是否显示复位按钮
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.RunStateButton.RunState">
+            <summary>
+            运行状态
+            </summary>
+        </member>
+        <member name="T:Ping9719.WpfEx.Enum2BoolConverter">
+            <summary>
+            将枚举转为布尔
+            </summary>
+        </member>
+        <member name="T:Ping9719.WpfEx.Enum2IntConverter">
+            <summary>
+            将枚举转为数字
+            </summary>
+        </member>
+        <member name="T:Ping9719.WpfEx.Enum2StrConverter">
+            <summary>
+            将枚举转为字符串（支持Description特性）
+            </summary>
+        </member>
+        <member name="T:Ping9719.WpfEx.List2StrConverter">
+            <summary>
+            将数组、集合按照默认逗号分隔转为字符串
+            </summary>
+        </member>
         <member name="T:Ping9719.WpfEx.RunState">
             <summary>
             运行状态
@@ -54,49 +99,39 @@
             复位
             </summary>
         </member>
-        <member name="T:Ping9719.WpfEx.RunStateButton">
+        <member name="T:Ping9719.WpfEx.ServoClickType">
             <summary>
-            运行状态按钮
+            伺服运动位置类型
             </summary>
         </member>
-        <member name="P:Ping9719.WpfEx.RunStateButton.RunStateButtonClick">
+        <member name="F:Ping9719.WpfEx.ServoClickType.SetSpeed">
             <summary>
-            最近一次单击的按钮
+            设置速度
             </summary>
         </member>
-        <member name="E:Ping9719.WpfEx.RunStateButton.Click">
+        <member name="F:Ping9719.WpfEx.ServoClickType.MoveTo">
             <summary>
-            单击按钮时
+            运动到指定位置
             </summary>
         </member>
-        <member name="P:Ping9719.WpfEx.RunStateButton.IsVisRset">
+        <member name="F:Ping9719.WpfEx.ServoClickType.StartDotAdd">
             <summary>
-            是否显示复位按钮
+            开始点动增加
             </summary>
         </member>
-        <member name="P:Ping9719.WpfEx.RunStateButton.RunState">
+        <member name="F:Ping9719.WpfEx.ServoClickType.EndDotAdd">
             <summary>
-            运行状态
+            开始点动增加
             </summary>
         </member>
-        <member name="T:Ping9719.WpfEx.Enum2BoolConverter">
+        <member name="F:Ping9719.WpfEx.ServoClickType.StartDotSub">
             <summary>
-            将枚举转为布尔
+            开始点动减少
             </summary>
         </member>
-        <member name="T:Ping9719.WpfEx.Enum2IntConverter">
+        <member name="F:Ping9719.WpfEx.ServoClickType.EndDotSub">
             <summary>
-            将枚举转为数字
-            </summary>
-        </member>
-        <member name="T:Ping9719.WpfEx.Enum2StrConverter">
-            <summary>
-            将枚举转为字符串（支持Description特性）
-            </summary>
-        </member>
-        <member name="T:Ping9719.WpfEx.List2StrConverter">
-            <summary>
-            将数组、集合按照默认逗号分隔转为字符串
+            开始点动减少
             </summary>
         </member>
         <member name="T:Ping9719.WpfEx.EnumHelp">
@@ -140,6 +175,72 @@
             <summary>
             标记图像文件格式 (TIFF) 图像格式
             </summary>
+        </member>
+        <member name="T:Ping9719.WpfEx.Helps.QueueTaskTime">
+            <summary>
+            简单定时任务队列执行器
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.Helps.QueueTaskTime.IsStart">
+            <summary>
+            是否启动
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.Helps.QueueTaskTime.IsRunNoConflict">
+            <summary>
+            是否允许不冲突。运行定期任务的时候不执行队列任务，运行队列任务的时候不执行定期任务
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.Helps.QueueTaskTime.WaitCount">
+            <summary>
+            等待任务数
+            </summary>
+        </member>
+        <member name="F:Ping9719.WpfEx.Helps.QueueTaskTime.ForTask">
+            <summary>
+            队列循环任务
+            </summary>
+        </member>
+        <member name="F:Ping9719.WpfEx.Helps.QueueTaskTime.QueueTask">
+            <summary>
+            队列任务
+            </summary>
+        </member>
+        <member name="M:Ping9719.WpfEx.Helps.QueueTaskTime.#ctor">
+            <summary>
+            初始化简单定时任务队列执行器
+            </summary>
+        </member>
+        <member name="M:Ping9719.WpfEx.Helps.QueueTaskTime.Start">
+            <summary>
+            启动
+            </summary>
+        </member>
+        <member name="M:Ping9719.WpfEx.Helps.QueueTaskTime.Stop">
+            <summary>
+            暂停
+            </summary>
+        </member>
+        <member name="M:Ping9719.WpfEx.Helps.QueueTaskTime.AddForTask(System.Action,System.TimeSpan,System.Boolean)">
+            <summary>
+            添加循环任务
+            </summary>
+            <param name="action">需要执行的方法</param>
+            <param name="timeSpan">执行的间隔</param>
+            <param name="isStartRun">启动是否马上就执行方法（不等待间隔时间）</param>
+        </member>
+        <member name="M:Ping9719.WpfEx.Helps.QueueTaskTime.AddQueueTask(System.Action)">
+            <summary>
+            添加队列任务
+            </summary>
+            <param name="action">需要执行的方法</param>
+        </member>
+        <member name="M:Ping9719.WpfEx.Helps.QueueTaskTime.AddQueueTask(System.Action{System.Object},System.Object)">
+            <summary>
+            添加队列任务
+            </summary>
+            <param name="action">需要执行的方法</param>
+            <param name="state">参数</param>
         </member>
         <member name="T:Ping9719.WpfEx.WpfHelp">
             <summary>
@@ -470,41 +571,6 @@
         <member name="P:Ping9719.WpfEx.DeviceServo2Data.Tag">
             <summary>
             自定义数据
-            </summary>
-        </member>
-        <member name="T:Ping9719.WpfEx.ServoClickType">
-            <summary>
-            伺服运动位置类型
-            </summary>
-        </member>
-        <member name="F:Ping9719.WpfEx.ServoClickType.SetSpeed">
-            <summary>
-            设置速度
-            </summary>
-        </member>
-        <member name="F:Ping9719.WpfEx.ServoClickType.MoveTo">
-            <summary>
-            运动到指定位置
-            </summary>
-        </member>
-        <member name="F:Ping9719.WpfEx.ServoClickType.StartDotAdd">
-            <summary>
-            开始点动增加
-            </summary>
-        </member>
-        <member name="F:Ping9719.WpfEx.ServoClickType.EndDotAdd">
-            <summary>
-            开始点动增加
-            </summary>
-        </member>
-        <member name="F:Ping9719.WpfEx.ServoClickType.StartDotSub">
-            <summary>
-            开始点动减少
-            </summary>
-        </member>
-        <member name="F:Ping9719.WpfEx.ServoClickType.EndDotSub">
-            <summary>
-            开始点动减少
             </summary>
         </member>
         <member name="T:Ping9719.WpfEx.IotServo">

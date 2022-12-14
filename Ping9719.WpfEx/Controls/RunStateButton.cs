@@ -16,53 +16,6 @@ using System.Windows.Shapes;
 namespace Ping9719.WpfEx
 {
     /// <summary>
-    /// 运行状态
-    /// </summary>
-    public enum RunState
-    {
-        /// <summary>
-        /// 运行中
-        /// </summary>
-        Run,
-        /// <summary>
-        /// 暂停中
-        /// </summary>
-        Pause,
-        /// <summary>
-        /// 已停止
-        /// </summary>
-        Stop,
-
-    }
-
-    /// <summary>
-    /// 运行状态点击的按钮
-    /// </summary>
-    public enum RunStateButtonClick
-    {
-        /// <summary>
-        /// 启动
-        /// </summary>
-        Start,
-        /// <summary>
-        /// 暂停
-        /// </summary>
-        Pause,
-        /// <summary>
-        /// 继续
-        /// </summary>
-        Continue,
-        /// <summary>
-        /// 停止
-        /// </summary>
-        Stop,
-        /// <summary>
-        /// 复位
-        /// </summary>
-        Rset
-    }
-
-    /// <summary>
     /// 运行状态按钮
     /// </summary>
     public class RunStateButton : Control

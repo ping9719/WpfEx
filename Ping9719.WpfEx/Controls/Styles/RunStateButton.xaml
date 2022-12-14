@@ -9,8 +9,6 @@
         <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Theme.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
-    <Style BasedOn="{StaticResource RunStateButtonBaseStyle}" TargetType="{x:Type local:RunStateButton}"/>
-
     <Style x:Key="RunStateButtonBaseStyle" TargetType="{x:Type local:RunStateButton}">
         <Setter Property="Padding" Value="20,6"/>
         <Setter Property="Template">
@@ -53,6 +51,8 @@
             </Setter.Value>
         </Setter>
     </Style>
+
+    <Style BasedOn="{StaticResource RunStateButtonBaseStyle}" TargetType="{x:Type local:RunStateButton}"/>
 
     <Style x:Key="RunStateButtonPause" TargetType="{x:Type local:RunStateButton}">
         <Setter Property="Padding" Value="20,6"/>
