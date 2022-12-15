@@ -73,7 +73,6 @@ namespace WpfApp1
                 new DeviceServo2Data (){Name="伺服9",GroupName="组2" },
             };
 
-            //dev.LoadUi(deviceStateDatas, deviceUrnDatas, deviceServoDatas);
         }
 
         private void clike(object sender, RoutedEventArgs e)

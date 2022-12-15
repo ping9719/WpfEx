@@ -27,11 +27,11 @@ namespace Ping9719.WpfEx
         /// <summary>
         /// 队列循环任务
         /// </summary>
-        public Queue<Action> ForTask = new Queue<Action>();
+        public Queue<Action> ForTask { get; private set; } = new Queue<Action>();
         /// <summary>
         /// 队列任务
         /// </summary>
-        public Queue<Tuple<object, object>> QueueTask = new Queue<Tuple<object, object>>();
+        public Queue<Tuple<object, object>> QueueTask { get; private set; } = new Queue<Tuple<object, object>>();
         /// <summary>
         /// 状态
         /// </summary>
@@ -101,6 +101,8 @@ namespace Ping9719.WpfEx
                         actque = null;
                         SetState(QueueTaskTimeState.EndTaskErr, ex);
                     }
+
+                    Thread.Sleep(1);
                 }
             });
         }
@@ -187,6 +189,7 @@ namespace Ping9719.WpfEx
                         if (!IsStart)
                             continue;
                     }
+                    Thread.Sleep(1);
                 }
             }, Tuple.Create(action, timeSpan, isStartRun));
 

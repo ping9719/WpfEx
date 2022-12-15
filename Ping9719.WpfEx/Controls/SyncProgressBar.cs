@@ -25,6 +25,10 @@ namespace Ping9719.WpfEx
         /// 同步错误点击时提示信息
         /// </summary>
         public string SyncErrClickInfo { get; set; }
+        /// <summary>
+        /// 在任务队列采购的时候时候显示，默认false
+        /// </summary>
+        public bool QueueTaskOkVisible { get; set; } = false;
 
         QueueTaskTime QueueTask_ = null;
         /// <summary>
@@ -53,7 +57,7 @@ namespace Ping9719.WpfEx
         {
             if (state == QueueTaskTimeState.ForTask || state == QueueTaskTimeState.QueueTask)
             {
-                this.Dispatcher.Invoke(()=> 
+                this.Dispatcher.Invoke(() =>
                 {
                     SyncState = SyncProgressBarState.SyncIn;
                 });
@@ -71,7 +75,7 @@ namespace Ping9719.WpfEx
             {
                 this.Dispatcher.Invoke(() =>
                 {
-                    SyncState = SyncProgressBarState.OkCollapsed;
+                    SyncState = QueueTaskOkVisible ? SyncProgressBarState.OkVisible : SyncProgressBarState.OkCollapsed;
                 });
             }
         }

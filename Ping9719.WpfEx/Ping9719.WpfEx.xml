@@ -39,6 +39,11 @@
             同步错误点击时提示信息
             </summary>
         </member>
+        <member name="P:Ping9719.WpfEx.SyncProgressBar.QueueTaskOkVisible">
+            <summary>
+            在任务队列采购的时候时候显示，默认false
+            </summary>
+        </member>
         <member name="P:Ping9719.WpfEx.SyncProgressBar.QueueTask">
             <summary>
             任务队列
@@ -296,12 +301,12 @@
             等待任务数
             </summary>
         </member>
-        <member name="F:Ping9719.WpfEx.QueueTaskTime.ForTask">
+        <member name="P:Ping9719.WpfEx.QueueTaskTime.ForTask">
             <summary>
             队列循环任务
             </summary>
         </member>
-        <member name="F:Ping9719.WpfEx.QueueTaskTime.QueueTask">
+        <member name="P:Ping9719.WpfEx.QueueTaskTime.QueueTask">
             <summary>
             队列任务
             </summary>
