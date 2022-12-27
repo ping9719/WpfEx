@@ -114,7 +114,5 @@ namespace Ping9719.WpfEx
         public static readonly DependencyProperty InteriorHeightProperty =
             DependencyProperty.Register("InteriorHeight", typeof(double), typeof(IotState));
 
-
-
     }
 }
