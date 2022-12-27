@@ -15,7 +15,7 @@
                 <Setter Property="IsExpanded" Value="True"></Setter>
                 <Setter Property="Background" Value="{StaticResource DefaultBrush}"></Setter>
             </Style>
-            <Style TargetType="local:IotState">
+            <Style TargetType="local:IotState" BasedOn="{StaticResource IotStateStyle}">
                 <Setter Property="Margin" Value="3,1"></Setter>
                 <Setter Property="BorderThickness" Value="1"></Setter>
             </Style>

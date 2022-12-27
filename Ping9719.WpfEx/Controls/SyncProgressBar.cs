@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -110,6 +111,7 @@ namespace Ping9719.WpfEx
         /// <summary>
         /// 内部显示高度
         /// </summary>
+        [TypeConverter(typeof(LengthConverter))]
         public double InteriorHeight
         {
             get { return (double)GetValue(InteriorHeightProperty); }

@@ -4,6 +4,41 @@
         <name>Ping9719.WpfEx</name>
     </assembly>
     <members>
+        <member name="T:Ping9719.WpfEx.IotState">
+            <summary>
+            工业控件：传感器状态
+            </summary>
+        </member>
+        <member name="E:Ping9719.WpfEx.IotState.Click">
+            <summary>
+            单击按钮时
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.IotState.Text">
+            <summary>
+            文本
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.IotState.IsOk">
+            <summary>
+            是否成功
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.IotState.OkBrush">
+            <summary>
+            成功状态下的颜色
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.IotState.NotOkBrush">
+            <summary>
+            不成功状态下的颜色
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.IotState.InteriorHeight">
+            <summary>
+            内部高度
+            </summary>
+        </member>
         <member name="T:Ping9719.WpfEx.RunStateButton">
             <summary>
             运行状态按钮
@@ -853,39 +888,6 @@
             InitializeComponent
             </summary>
         </member>
-        <member name="T:Ping9719.WpfEx.IotState">
-            <summary>
-            工业控件：传感器状态
-            </summary>
-            <summary>
-            IotState
-            </summary>
-        </member>
-        <member name="M:Ping9719.WpfEx.IotState.#ctor">
-            <summary>
-            工业控件：传感器状态
-            </summary>
-        </member>
-        <member name="P:Ping9719.WpfEx.IotState.Text">
-            <summary>
-            文本
-            </summary>
-        </member>
-        <member name="P:Ping9719.WpfEx.IotState.IsOk">
-            <summary>
-            是否成功
-            </summary>
-        </member>
-        <member name="E:Ping9719.WpfEx.IotState.Click">
-            <summary>
-            单击图标时
-            </summary>
-        </member>
-        <member name="M:Ping9719.WpfEx.IotState.InitializeComponent">
-            <summary>
-            InitializeComponent
-            </summary>
-        </member>
         <member name="T:Ping9719.WpfEx.IotUrn">
             <summary>
             工业控件：气缸
@@ -916,7 +918,7 @@
         </member>
         <member name="P:Ping9719.WpfEx.IotUrn.IsButBadge2">
             <summary>
-            时候显示按钮2上面的标记
+            是否显示按钮2上面的标记
             </summary>
         </member>
         <member name="E:Ping9719.WpfEx.IotUrn.ButClick2">
