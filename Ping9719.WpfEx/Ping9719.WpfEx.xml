@@ -29,6 +29,31 @@
             运行状态
             </summary>
         </member>
+        <member name="P:Ping9719.WpfEx.RunStateButton.StartButContent">
+            <summary>
+            启动按钮内容
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.RunStateButton.PauseButContent">
+            <summary>
+            暂停按钮内容
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.RunStateButton.ContinueButContent">
+            <summary>
+            继续按钮内容
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.RunStateButton.StopButContent">
+            <summary>
+            停止按钮内容
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.RunStateButton.RsetButContent">
+            <summary>
+            复位按钮内容
+            </summary>
+        </member>
         <member name="T:Ping9719.WpfEx.SyncProgressBar">
             <summary>
             同步进度条

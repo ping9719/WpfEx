@@ -109,5 +109,75 @@ namespace Ping9719.WpfEx
             DependencyProperty.Register("RunState", typeof(RunState), typeof(RunStateButton), new PropertyMetadata(RunState.Stop));
 
         public event EventHandler CanExecuteChanged;
+
+
+        #region buttonContent
+
+        /// <summary>
+        /// 启动按钮内容
+        /// </summary>
+        public object StartButContent
+        {
+            get { return (object)GetValue(StartButContentProperty); }
+            set { SetValue(StartButContentProperty, value); }
+        }
+
+        public static readonly DependencyProperty StartButContentProperty =
+            DependencyProperty.Register("StartButContent", typeof(object), typeof(RunStateButton), new PropertyMetadata((object)"启动"));
+
+
+
+        /// <summary>
+        /// 暂停按钮内容
+        /// </summary>
+        public object PauseButContent
+        {
+            get { return (object)GetValue(PauseButContentProperty); }
+            set { SetValue(PauseButContentProperty, value); }
+        }
+
+        public static readonly DependencyProperty PauseButContentProperty =
+            DependencyProperty.Register("PauseButContent", typeof(object), typeof(RunStateButton), new PropertyMetadata((object)"暂停"));
+
+
+        /// <summary>
+        /// 继续按钮内容
+        /// </summary>
+        public object ContinueButContent
+        {
+            get { return (object)GetValue(ContinueButContentProperty); }
+            set { SetValue(ContinueButContentProperty, value); }
+        }
+
+        public static readonly DependencyProperty ContinueButContentProperty =
+            DependencyProperty.Register("ContinueButContent", typeof(object), typeof(RunStateButton), new PropertyMetadata((object)"继续"));
+
+
+        /// <summary>
+        /// 停止按钮内容
+        /// </summary>
+        public object StopButContent
+        {
+            get { return (object)GetValue(StopButContentProperty); }
+            set { SetValue(StopButContentProperty, value); }
+        }
+
+        public static readonly DependencyProperty StopButContentProperty =
+            DependencyProperty.Register("StopButContent", typeof(object), typeof(RunStateButton), new PropertyMetadata((object)"停止"));
+
+
+        /// <summary>
+        /// 复位按钮内容
+        /// </summary>
+        public object RsetButContent
+        {
+            get { return (object)GetValue(RsetButContentProperty); }
+            set { SetValue(RsetButContentProperty, value); }
+        }
+
+        public static readonly DependencyProperty RsetButContentProperty =
+            DependencyProperty.Register("RsetButContent", typeof(object), typeof(RunStateButton), new PropertyMetadata((object)"复位"));
+
+        #endregion
     }
 }

@@ -18,9 +18,9 @@
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}">
                         <StackPanel Orientation="Horizontal">
-                            <Button x:Name="_start" Margin="3,0" Width="auto" Height="auto" Padding="{TemplateBinding Padding}" FontSize="{TemplateBinding FontSize}" Style="{StaticResource ButtonSuccess}">启动</Button>
-                            <Button x:Name="_stop" Margin="3,0" Width="auto" Height="auto" Padding="{TemplateBinding Padding}" FontSize="{TemplateBinding FontSize}" Style="{StaticResource ButtonDanger}">停止</Button>
-                            <Button x:Name="_rset" Margin="3,0" Width="auto" Height="auto" Padding="{TemplateBinding Padding}" FontSize="{TemplateBinding FontSize}" Style="{StaticResource ButtonInfo}">复位</Button>
+                            <Button x:Name="_start" Margin="3,0" Width="auto" Height="auto" Padding="{TemplateBinding Padding}" FontSize="{TemplateBinding FontSize}" Style="{StaticResource ButtonSuccess}" Content="{TemplateBinding StartButContent}"></Button>
+                            <Button x:Name="_stop" Margin="3,0" Width="auto" Height="auto" Padding="{TemplateBinding Padding}" FontSize="{TemplateBinding FontSize}" Style="{StaticResource ButtonDanger}" Content="{TemplateBinding StopButContent}"></Button>
+                            <Button x:Name="_rset" Margin="3,0" Width="auto" Height="auto" Padding="{TemplateBinding Padding}" FontSize="{TemplateBinding FontSize}" Style="{StaticResource ButtonInfo}" Content="{TemplateBinding RsetButContent}"></Button>
                         </StackPanel>
                     </Border>
                     <ControlTemplate.Triggers>
@@ -63,11 +63,11 @@
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}">
                         <StackPanel Orientation="Horizontal">
-                            <Button x:Name="_start" Margin="3,0" Width="auto" Height="auto" Padding="{TemplateBinding Padding}" FontSize="{TemplateBinding FontSize}" Style="{StaticResource ButtonSuccess}">启动</Button>
-                            <Button x:Name="_pause" Margin="3,0" Width="auto" Height="auto" Padding="{TemplateBinding Padding}" FontSize="{TemplateBinding FontSize}" Style="{StaticResource ButtonWarning}">暂停</Button>
-                            <Button x:Name="_continue" Margin="3,0" Width="auto" Height="auto" Padding="{TemplateBinding Padding}" FontSize="{TemplateBinding FontSize}" Style="{StaticResource ButtonSuccess}">继续</Button>
-                            <Button x:Name="_stop" Margin="3,0" Width="auto" Height="auto" Padding="{TemplateBinding Padding}" FontSize="{TemplateBinding FontSize}" Style="{StaticResource ButtonDanger}">停止</Button>
-                            <Button x:Name="_rset" Margin="3,0" Width="auto" Height="auto" Padding="{TemplateBinding Padding}" FontSize="{TemplateBinding FontSize}" Style="{StaticResource ButtonInfo}">复位</Button>
+                            <Button x:Name="_start" Margin="3,0" Width="auto" Height="auto" Padding="{TemplateBinding Padding}" FontSize="{TemplateBinding FontSize}" Style="{StaticResource ButtonSuccess}" Content="{TemplateBinding StartButContent}"></Button>
+                            <Button x:Name="_pause" Margin="3,0" Width="auto" Height="auto" Padding="{TemplateBinding Padding}" FontSize="{TemplateBinding FontSize}" Style="{StaticResource ButtonWarning}" Content="{TemplateBinding PauseButContent}"></Button>
+                            <Button x:Name="_continue" Margin="3,0" Width="auto" Height="auto" Padding="{TemplateBinding Padding}" FontSize="{TemplateBinding FontSize}" Style="{StaticResource ButtonSuccess}" Content="{TemplateBinding ContinueButContent}"></Button>
+                            <Button x:Name="_stop" Margin="3,0" Width="auto" Height="auto" Padding="{TemplateBinding Padding}" FontSize="{TemplateBinding FontSize}" Style="{StaticResource ButtonDanger}" Content="{TemplateBinding StopButContent}"></Button>
+                            <Button x:Name="_rset" Margin="3,0" Width="auto" Height="auto" Padding="{TemplateBinding Padding}" FontSize="{TemplateBinding FontSize}" Style="{StaticResource ButtonInfo}" Content="{TemplateBinding RsetButContent}"></Button>
                         </StackPanel>
                     </Border>
                     <ControlTemplate.Triggers>
