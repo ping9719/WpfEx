@@ -19,6 +19,7 @@ namespace Ping9719.WpfEx
     /// <summary>
     /// 工业控件：传感器状态
     /// </summary>
+    [ToolboxItem(true)]
     public class IotState : Control
     {
         static IotState()

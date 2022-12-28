@@ -13,6 +13,7 @@ namespace Ping9719.WpfEx
     /// <summary>
     /// 对用户控件的扩展
     /// </summary>
+    [ToolboxItem(false)]
     public class UserControlBase : UserControl
     {
         /// <summary>
