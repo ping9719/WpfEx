@@ -119,4 +119,55 @@
             </Setter.Value>
         </Setter>
     </Style>
+
+    <Style x:Key="RunStateButtonPause.NotHide" TargetType="{x:Type local:RunStateButton}">
+        <Setter Property="Padding" Value="20,6"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:RunStateButton}">
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
+                        <StackPanel Orientation="Horizontal">
+                            <Button x:Name="_start" Margin="3,0" Width="auto" Height="auto" Padding="{TemplateBinding Padding}" FontSize="{TemplateBinding FontSize}" Style="{StaticResource ButtonSuccess}" Content="{TemplateBinding StartButContent}"></Button>
+                            <Button x:Name="_pause" Margin="3,0" Width="auto" Height="auto" Padding="{TemplateBinding Padding}" FontSize="{TemplateBinding FontSize}" Style="{StaticResource ButtonWarning}" Content="{TemplateBinding PauseButContent}"></Button>
+                            <Button x:Name="_continue" Margin="3,0" Width="auto" Height="auto" Padding="{TemplateBinding Padding}" FontSize="{TemplateBinding FontSize}" Style="{StaticResource ButtonSuccess}" Content="{TemplateBinding ContinueButContent}"></Button>
+                            <Button x:Name="_stop" Margin="3,0" Width="auto" Height="auto" Padding="{TemplateBinding Padding}" FontSize="{TemplateBinding FontSize}" Style="{StaticResource ButtonDanger}" Content="{TemplateBinding StopButContent}"></Button>
+                            <Button x:Name="_rset" Margin="3,0" Width="auto" Height="auto" Padding="{TemplateBinding Padding}" FontSize="{TemplateBinding FontSize}" Style="{StaticResource ButtonInfo}" Content="{TemplateBinding RsetButContent}"></Button>
+                        </StackPanel>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsVisRset" Value="True">
+                            <Setter Property="Visibility" TargetName="_rset" Value="Visible"/>
+                        </Trigger>
+                        <Trigger Property="IsVisRset" Value="False">
+                            <Setter Property="Visibility" TargetName="_rset" Value="Collapsed"/>
+                        </Trigger>
+
+                        <Trigger Property="RunState" Value="Run">
+                            <Setter Property="IsEnabled" TargetName="_start" Value="False"/>
+                            <Setter Property="IsEnabled" TargetName="_pause" Value="true"/>
+                            <Setter Property="IsEnabled" TargetName="_stop" Value="true"/>
+                            <Setter Property="IsEnabled" TargetName="_rset" Value="False"/>
+                            <Setter Property="IsEnabled" TargetName="_continue" Value="False"/>
+                        </Trigger>
+                        <Trigger Property="RunState" Value="Pause">
+                            <Setter Property="IsEnabled" TargetName="_start" Value="False"/>
+                            <Setter Property="IsEnabled" TargetName="_pause" Value="false"/>
+                            <Setter Property="IsEnabled" TargetName="_stop" Value="true"/>
+                            <Setter Property="IsEnabled" TargetName="_rset" Value="true"/>
+                            <Setter Property="IsEnabled" TargetName="_continue" Value="true"/>
+                        </Trigger>
+                        <Trigger Property="RunState" Value="Stop">
+                            <Setter Property="IsEnabled" TargetName="_start" Value="true"/>
+                            <Setter Property="IsEnabled" TargetName="_pause" Value="false"/>
+                            <Setter Property="IsEnabled" TargetName="_stop" Value="false"/>
+                            <Setter Property="IsEnabled" TargetName="_rset" Value="true"/>
+                            <Setter Property="IsEnabled" TargetName="_continue" Value="False"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 </ResourceDictionary>
