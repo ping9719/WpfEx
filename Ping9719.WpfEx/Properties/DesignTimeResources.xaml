@@ -3,6 +3,6 @@
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/SkinDefault.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Theme.xaml"/>
-        <ResourceDictionary Source="pack://application:,,,/Ping9719.WpfEx;component/Theme.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/Ping9719.WpfEx;component/Themes/Theme.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>
