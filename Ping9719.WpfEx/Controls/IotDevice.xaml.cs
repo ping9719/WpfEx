@@ -22,6 +22,7 @@ namespace Ping9719.WpfEx
     public partial class IotDevice : UserControlBase
     {
         IEnumerable<DeviceStateData> stateDatas;
+        IEnumerable<DeviceStateSetData> stateSetData;
         IEnumerable<DeviceUrnData> urnDatas;
         IEnumerable<DeviceServo2Data> servoDatas;
 
@@ -34,7 +35,7 @@ namespace Ping9719.WpfEx
 
             if (!this.IsInDesignMode)
             {
-                LoadUi(new List<DeviceStateData>(), new List<DeviceUrnData>(), new List<DeviceServo2Data>());
+                LoadUi(new List<DeviceStateData>(), new List<DeviceStateSetData>(), new List<DeviceUrnData>(), new List<DeviceServo2Data>());
             }
         }
 
@@ -105,6 +106,63 @@ namespace Ping9719.WpfEx
                             }
                             expander.Content = wrapPanel;
                             pancgq.Children.Add(expander);
+                        }
+                    }
+
+                }
+            }
+
+            if (deviceDatas is IEnumerable<DeviceStateSetData> stateSetData)
+            {
+                this.stateSetData = stateSetData;
+                if (stateSetData == null || !stateSetData.Any())
+                {
+                    boxcgqkz.Visibility = Visibility.Collapsed;
+                    pancgqkz.Children.Clear();
+                }
+                else
+                {
+                    boxcgqkz.Visibility = Visibility.Visible;
+                    pancgqkz.Children.Clear();
+
+                    var moren = stateSetData.Where(o => string.IsNullOrWhiteSpace(o.GroupName));
+                    var group = stateSetData.Where(o => !string.IsNullOrWhiteSpace(o.GroupName)).GroupBy(o => o.GroupName);
+
+                    if (moren.Any())
+                    {
+                        WrapPanel wrapPanel = new WrapPanel();
+                        foreach (var item in moren)
+                        {
+                            IotState iotState = new IotState();
+                            iotState.DataContext = item;
+                            iotState.Click += IotState_Click;
+                            iotState.SetBinding(IotState.TextProperty, nameof(item.Name));
+                            iotState.SetBinding(IotState.IsOkProperty, nameof(item.IsOk));
+
+                            wrapPanel.Children.Add(iotState);
+                        }
+                        pancgqkz.Children.Add(wrapPanel);
+                    }
+                    if (group.Any())
+                    {
+                        foreach (var item in group)
+                        {
+                            Expander expander = new Expander();
+                            expander.Header = item.Key;
+
+                            WrapPanel wrapPanel = new WrapPanel();
+                            foreach (var item2 in item)
+                            {
+                                IotState iotState = new IotState();
+                                iotState.DataContext = item2;
+                                iotState.Click += IotState_Click;
+                                iotState.SetBinding(IotState.TextProperty, nameof(item2.Name));
+                                iotState.SetBinding(IotState.IsOkProperty, nameof(item2.IsOk));
+
+                                wrapPanel.Children.Add(iotState);
+                            }
+                            expander.Content = wrapPanel;
+                            pancgqkz.Children.Add(expander);
                         }
                     }
 
@@ -253,7 +311,76 @@ namespace Ping9719.WpfEx
             }
         }
 
+        #region 属性
+
+        /// <summary>
+        /// 传感器标题文本
+        /// </summary>
+        public string StateHeader
+        {
+            get { return (string)GetValue(StateHeaderProperty); }
+            set { SetValue(StateHeaderProperty, value); }
+        }
+
+        public static readonly DependencyProperty StateHeaderProperty =
+            DependencyProperty.Register("StateHeader", typeof(string), typeof(IotDevice), new PropertyMetadata("传感器"));
+
+
+        /// <summary>
+        /// 传感器（可控制）标题文本
+        /// </summary>
+        public string StateSetHeader
+        {
+            get { return (string)GetValue(StateSetHeaderProperty); }
+            set { SetValue(StateSetHeaderProperty, value); }
+        }
+
+        public static readonly DependencyProperty StateSetHeaderProperty =
+            DependencyProperty.Register("StateSetHeader", typeof(string), typeof(IotDevice), new PropertyMetadata("传感器（可控制）"));
+
+        /// <summary>
+        /// 气缸标题文本
+        /// </summary>
+        public string UrnHeader
+        {
+            get { return (string)GetValue(UrnHeaderProperty); }
+            set { SetValue(UrnHeaderProperty, value); }
+        }
+
+        public static readonly DependencyProperty UrnHeaderProperty =
+            DependencyProperty.Register("UrnHeader", typeof(string), typeof(IotDevice), new PropertyMetadata("气缸"));
+
+        /// <summary>
+        /// 伺服标题文本
+        /// </summary>
+        public string Servo2Header
+        {
+            get { return (string)GetValue(Servo2HeaderProperty); }
+            set { SetValue(Servo2HeaderProperty, value); }
+        }
+
+        public static readonly DependencyProperty Servo2HeaderProperty =
+            DependencyProperty.Register("Servo2Header", typeof(string), typeof(IotDevice), new PropertyMetadata("伺服"));
+
+        #endregion
+
         #region 事件
+        /// <summary>
+        /// 可点击的状态点击。返回的OriginalSource参数为原绑定数据
+        /// </summary>
+        public event RoutedEventHandler StateSetClick
+        {
+            add { this.AddHandler(StateSetClickEvent, value); }
+            remove { this.RemoveHandler(StateSetClickEvent, value); }
+        }
+
+        public static readonly RoutedEvent StateSetClickEvent =
+            EventManager.RegisterRoutedEvent("StateSetClickEvent", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(IotState));
+        private void IotState_Click(object sender, RoutedEventArgs e)
+        {
+            this.RaiseEvent(new RoutedEventArgs(StateSetClickEvent, ((FrameworkElement)sender).DataContext));
+        }
+
         /// <summary>
         /// 气缸点击推或回。返回的OriginalSource参数为object[]，1为bool（true为推）；2为原绑定数据
         /// </summary>
@@ -379,9 +506,45 @@ namespace Ping9719.WpfEx
     }
 
     /// <summary>
-    /// 设备数据
+    /// 设备状态数据
     /// </summary>
     public class DeviceStateData : BindableBase, IDeviceDataBase
+    {
+        private string name;
+        /// <summary>
+        /// 名称
+        /// </summary>
+        public string Name
+        {
+            get { return name; }
+            set { SetProperty(ref name, value); }
+        }
+
+        /// <summary>
+        /// 组名
+        /// </summary>
+        public string GroupName { get; set; }
+
+        private bool isok;
+        /// <summary>
+        /// 是否ok状态
+        /// </summary>
+        public bool IsOk
+        {
+            get { return isok; }
+            set { SetProperty(ref isok, value); }
+        }
+
+        /// <summary>
+        /// 自定义数据
+        /// </summary>
+        public object Tag { get; set; }
+    }
+
+    /// <summary>
+    /// 设备状态(可控制)数据
+    /// </summary>
+    public class DeviceStateSetData : BindableBase, IDeviceDataBase
     {
         private string name;
         /// <summary>
