@@ -1,0 +1,13 @@
+﻿<hc:Window xmlns:hc="https://handyorg.github.io/handycontrol"  x:Class="Ping9719.WpfEx.MainLoadWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Ping9719.WpfEx"
+        mc:Ignorable="d"
+        Title="MainStartWindow" Height="200" Width="400" WindowStyle="None" AllowsTransparency="True" WindowStartupLocation="CenterScreen"  Loaded="Window_Loaded" Opacity="0.8">
+    <Grid>
+        <Button Visibility="{Binding IsClose,Converter={StaticResource Boolean2VisibilityConverter}}" Style="{StaticResource ButtonIcon}" hc:IconElement.Geometry="{StaticResource CloseGeometry}" Click="but_close" HorizontalAlignment="Right" VerticalAlignment="Top"/>
+        <TextBlock Text="{Binding Txt, FallbackValue=加载中...}" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center" MouseLeftButtonDown="TextBlock_MouseLeftButtonDown"  />
+    </Grid>
+</hc:Window>

@@ -1011,5 +1011,30 @@
             <param name="executeMethod">带参数的一个方法</param>
             <param name="canExecuteMethod">带参数的一个方法并返回bool。使用方法：(obj) => true</param>
         </member>
+        <member name="T:Ping9719.WpfEx.MainLoadWindow">
+            <summary>
+            入口页面加载等待窗体
+            </summary>
+            <summary>
+            MainLoadWindow
+            </summary>
+        </member>
+        <member name="F:Ping9719.WpfEx.MainLoadWindow.TaskSleepTime">
+            <summary>
+            任务最小间隔时间
+            </summary>
+        </member>
+        <member name="M:Ping9719.WpfEx.MainLoadWindow.Show(System.Tuple{System.String,System.String,System.Action}[])">
+            <summary>
+            开始显示
+            </summary>
+            <param name="funcs">任务，1正在进行的任务的提示（如：正在进行XX中...），2此任务错误的提示（如：XX失败），3任务</param>
+            <returns>是否全部成功</returns>
+        </member>
+        <member name="M:Ping9719.WpfEx.MainLoadWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
     </members>
 </doc>
