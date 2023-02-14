@@ -25,7 +25,7 @@ namespace Ping9719.WpfEx
         /// <summary>
         /// 任务最小间隔时间
         /// </summary>
-        public static int TaskSleepTime = 500;
+        public static int TaskSleepTime = 300;
         Tuple<string, string, Action>[] Funcs;
         MainLoadWindowViewModel vModel = new MainLoadWindowViewModel();
         bool isUserClose = false;
