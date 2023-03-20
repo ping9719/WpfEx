@@ -27,7 +27,7 @@ namespace Ping9719.WpfEx
         /// </summary>
         public string SyncErrClickInfo { get; set; }
         /// <summary>
-        /// 在任务队列采购的时候时候显示，默认false
+        /// 在任务队列成功的时候显示控件。默认false
         /// </summary>
         public bool QueueTaskOkVisible { get; set; } = false;
 
