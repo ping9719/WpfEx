@@ -79,7 +79,7 @@ namespace Ping9719.WpfEx
                 but2.PreviewMouseLeftButtonDown += (sen1, obj1) =>
                 {
                     ClickErr();
-                };
+                }; 
         }
 
         void ClickErr()
@@ -173,6 +173,12 @@ namespace Ping9719.WpfEx
                 return;
             if (e.NewValue is QueueTaskTime queue && o is SyncProgressBar prog)
             {
+                //赋值的时候为成功状态
+                prog.Dispatcher.Invoke(() =>
+                {
+                    prog.SyncState = prog.QueueTaskOkVisible ? SyncProgressBarState.OkVisible : SyncProgressBarState.OkCollapsed;
+                });
+
                 queue.StateChange += (object sender, QueueTaskTimeState state, Exception exception) =>
                 {
                     if (state == QueueTaskTimeState.ForTask || state == QueueTaskTimeState.QueueTask)
