@@ -486,12 +486,7 @@
         </member>
         <member name="P:Ping9719.WpfEx.SyncProgressBar.QueueTaskOkVisible">
             <summary>
-            在任务队列采购的时候时候显示，默认false
-            </summary>
-        </member>
-        <member name="P:Ping9719.WpfEx.SyncProgressBar.QueueTask">
-            <summary>
-            任务队列
+            在任务队列成功的时候显示控件。默认false
             </summary>
         </member>
         <member name="P:Ping9719.WpfEx.SyncProgressBar.InteriorHeight">
@@ -517,6 +512,11 @@
         <member name="P:Ping9719.WpfEx.SyncProgressBar.SyncTextErr">
             <summary>
             同步错误描述文本
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.SyncProgressBar.QueueTask">
+            <summary>
+            任务队列
             </summary>
         </member>
         <member name="T:Ping9719.WpfEx.UserControlBase">

@@ -31,24 +31,6 @@ namespace Ping9719.WpfEx
         /// </summary>
         public bool QueueTaskOkVisible { get; set; } = false;
 
-        QueueTaskTime QueueTask_ = null;
-        /// <summary>
-        /// 任务队列
-        /// </summary>
-        public QueueTaskTime QueueTask
-        {
-            get
-            {
-                if (QueueTask_ == null)
-                {
-                    QueueTask_ = new QueueTaskTime();
-                    QueueTask_.StateChange += QueueTask_StateChange;
-                }
-
-                return QueueTask_;
-            }
-        }
-
         static SyncProgressBar()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(SyncProgressBar), new FrameworkPropertyMetadata(typeof(SyncProgressBar)));
@@ -171,5 +153,53 @@ namespace Ping9719.WpfEx
 
         public static readonly DependencyProperty SyncTextErrProperty =
             DependencyProperty.Register("SyncTextErr", typeof(string), typeof(SyncProgressBar), new PropertyMetadata("同步失败"));
+
+        #region QueueTask
+        /// <summary>
+        /// 任务队列
+        /// </summary>
+        public QueueTaskTime QueueTask
+        {
+            get { return (QueueTaskTime)GetValue(QueueTaskProperty); }
+            set { SetValue(QueueTaskProperty, value); }
+        }
+
+        public static readonly DependencyProperty QueueTaskProperty =
+            DependencyProperty.Register("QueueTask", typeof(QueueTaskTime), typeof(SyncProgressBar), new PropertyMetadata(null, OnTestChanged));
+
+        private static void OnTestChanged(DependencyObject o, DependencyPropertyChangedEventArgs e)
+        {
+            if (o == null || e == null)
+                return;
+            if (e.NewValue is QueueTaskTime queue && o is SyncProgressBar prog)
+            {
+                queue.StateChange += (object sender, QueueTaskTimeState state, Exception exception) =>
+                {
+                    if (state == QueueTaskTimeState.ForTask || state == QueueTaskTimeState.QueueTask)
+                    {
+                        prog.Dispatcher.Invoke(() =>
+                        {
+                            prog.SyncState = SyncProgressBarState.SyncIn;
+                        });
+                    }
+                    else if (state == QueueTaskTimeState.EndTaskErr)
+                    {
+                        prog.Dispatcher.Invoke(() =>
+                        {
+                            prog.SyncErrClickInfo = exception?.ToString();
+                            prog.SyncState = SyncProgressBarState.SyncErr;
+                        });
+                    }
+                    else
+                    {
+                        prog.Dispatcher.Invoke(() =>
+                        {
+                            prog.SyncState = prog.QueueTaskOkVisible ? SyncProgressBarState.OkVisible : SyncProgressBarState.OkCollapsed;
+                        });
+                    }
+                };
+            }
+        }
+        #endregion
     }
 }
