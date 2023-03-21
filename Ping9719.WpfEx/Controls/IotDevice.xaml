@@ -35,15 +35,15 @@
             <GroupBox x:Name="boxcgq" Header="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type local:IotDevice}},Path=StateHeader}" MinHeight="80" Style="{StaticResource GroupBoxTab}" Background="{x:Null}">
                 <StackPanel x:Name="pancgq">
                     <WrapPanel>
-                        <local:IotState Text="传感器1"></local:IotState>
-                        <local:IotState Text="传感器1"></local:IotState>
-                        <local:IotState Text="传感器1"></local:IotState>
+                        <local:IotState Content="传感器1"></local:IotState>
+                        <local:IotState Content="传感器1"></local:IotState>
+                        <local:IotState Content="传感器1"></local:IotState>
                     </WrapPanel>
                     <Expander Header="分组1">
                         <WrapPanel>
-                            <local:IotState Text="传感器1"></local:IotState>
-                            <local:IotState Text="传感器2" IsOk="True"></local:IotState>
-                            <local:IotState Text="传感器3"></local:IotState>
+                            <local:IotState Content="传感器1"></local:IotState>
+                            <local:IotState Content="传感器2" IsOk="True"></local:IotState>
+                            <local:IotState Content="传感器3"></local:IotState>
                         </WrapPanel>
                     </Expander>
                 </StackPanel>
@@ -51,15 +51,15 @@
             <GroupBox x:Name="boxcgqkz" Header="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type local:IotDevice}},Path=StateSetHeader}" Margin="0,10,0,0" MinHeight="80" Style="{StaticResource GroupBoxTab}" Background="{x:Null}">
                 <StackPanel x:Name="pancgqkz">
                     <WrapPanel>
-                        <local:IotState Text="传感器1"></local:IotState>
-                        <local:IotState Text="传感器1"></local:IotState>
-                        <local:IotState Text="传感器1"></local:IotState>
+                        <local:IotState Content="传感器1"></local:IotState>
+                        <local:IotState Content="传感器1"></local:IotState>
+                        <local:IotState Content="传感器1"></local:IotState>
                     </WrapPanel>
                     <Expander Header="分组1">
                         <WrapPanel>
-                            <local:IotState Text="传感器1"></local:IotState>
-                            <local:IotState Text="传感器2" IsOk="True"></local:IotState>
-                            <local:IotState Text="传感器3"></local:IotState>
+                            <local:IotState Content="传感器1"></local:IotState>
+                            <local:IotState Content="传感器2" IsOk="True"></local:IotState>
+                            <local:IotState Content="传感器3"></local:IotState>
                         </WrapPanel>
                     </Expander>
                 </StackPanel>

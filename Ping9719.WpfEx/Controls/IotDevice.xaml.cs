@@ -80,7 +80,7 @@ namespace Ping9719.WpfEx
                         {
                             IotState iotState = new IotState();
                             iotState.DataContext = item;
-                            iotState.SetBinding(IotState.TextProperty, nameof(item.Name));
+                            iotState.SetBinding(IotState.ContentProperty, nameof(item.Name));
                             iotState.SetBinding(IotState.IsOkProperty, nameof(item.IsOk));
 
                             wrapPanel.Children.Add(iotState);
@@ -99,7 +99,7 @@ namespace Ping9719.WpfEx
                             {
                                 IotState iotState = new IotState();
                                 iotState.DataContext = item2;
-                                iotState.SetBinding(IotState.TextProperty, nameof(item2.Name));
+                                iotState.SetBinding(IotState.ContentProperty, nameof(item2.Name));
                                 iotState.SetBinding(IotState.IsOkProperty, nameof(item2.IsOk));
 
                                 wrapPanel.Children.Add(iotState);
@@ -136,7 +136,7 @@ namespace Ping9719.WpfEx
                             IotState iotState = new IotState();
                             iotState.DataContext = item;
                             iotState.Click += IotState_Click;
-                            iotState.SetBinding(IotState.TextProperty, nameof(item.Name));
+                            iotState.SetBinding(IotState.ContentProperty, nameof(item.Name));
                             iotState.SetBinding(IotState.IsOkProperty, nameof(item.IsOk));
 
                             wrapPanel.Children.Add(iotState);
@@ -156,7 +156,7 @@ namespace Ping9719.WpfEx
                                 IotState iotState = new IotState();
                                 iotState.DataContext = item2;
                                 iotState.Click += IotState_Click;
-                                iotState.SetBinding(IotState.TextProperty, nameof(item2.Name));
+                                iotState.SetBinding(IotState.ContentProperty, nameof(item2.Name));
                                 iotState.SetBinding(IotState.IsOkProperty, nameof(item2.IsOk));
 
                                 wrapPanel.Children.Add(iotState);

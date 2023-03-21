@@ -20,7 +20,7 @@ namespace Ping9719.WpfEx
     /// 工业控件：传感器状态
     /// </summary>
     [ToolboxItem(true)]
-    public class IotState : Control
+    public class IotState : ContentControl
     {
         static IotState()
         {
@@ -51,18 +51,6 @@ namespace Ping9719.WpfEx
 
         public static readonly RoutedEvent ClickEvent =
             EventManager.RegisterRoutedEvent("ClickEvent", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(IotState));
-
-        /// <summary>
-        /// 文本
-        /// </summary>
-        public string Text
-        {
-            get { return (string)GetValue(TextProperty); }
-            set { SetValue(TextProperty, value); }
-        }
-
-        public static readonly DependencyProperty TextProperty =
-            DependencyProperty.Register("Text", typeof(string), typeof(IotState), new PropertyMetadata("XXX"));
 
         /// <summary>
         /// 是否成功

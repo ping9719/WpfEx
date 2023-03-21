@@ -42,8 +42,8 @@
                             </ToggleButton>
                             <Border Grid.Column="1" Background="White" Opacity="0"></Border>
 
-                            <TextBlock Height="auto" Margin="3,0" FontSize="{StaticResource TextFontSize}" ToolTip="{TemplateBinding Text}" hc:TextBlockAttach.AutoTooltip="True" TextWrapping="NoWrap" TextTrimming="CharacterEllipsis"  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Text="{TemplateBinding Text}"></TextBlock>
-                            <!--<hc:LoadingLine Visibility="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type local:IotState}},Path=IsLoadIn,Converter={StaticResource Boolean2VisibilityConverter}}" Margin="-3,-3,-3,0" Grid.ColumnSpan="2" DotDiameter="3" DotSpeed="2" VerticalAlignment="Top"/>-->
+                            <ContentPresenter x:Name="contentPresenter" Height="auto" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" ContentStringFormat="{TemplateBinding ContentStringFormat}" ContentSource="Content" hc:TextBlockAttach.AutoTooltip="True" TextElement.Foreground="{DynamicResource PrimaryTextBrush}" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="3,0" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                            <!--<TextBlock Height="auto" Margin="3,0" FontSize="{StaticResource TextFontSize}" ToolTip="{TemplateBinding Text}" hc:TextBlockAttach.AutoTooltip="True" TextWrapping="NoWrap" TextTrimming="CharacterEllipsis"  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Text="{TemplateBinding Text}"></TextBlock>-->
                         </Grid>
                     </Border>
                 </ControlTemplate>
