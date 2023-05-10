@@ -68,10 +68,42 @@ namespace Ping9719.WpfEx
         public static readonly RoutedEvent ButClick1Event =
             EventManager.RegisterRoutedEvent("ButClick1Event", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(IotUrn));
 
+        /// <summary>
+        /// 单击按钮1按下
+        /// </summary>
+        public event RoutedEventHandler ButDownClick1
+        {
+            add { this.AddHandler(ButDownClick1Event, value); }
+            remove { this.RemoveHandler(ButDownClick1Event, value); }
+        }
+
+        public static readonly RoutedEvent ButDownClick1Event =
+            EventManager.RegisterRoutedEvent("ButDownClick1Event", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(IotUrn));
+
+        /// <summary>
+        /// 单击按钮1松开
+        /// </summary>
+        public event RoutedEventHandler ButUpClick1
+        {
+            add { this.AddHandler(ButUpClick1Event, value); }
+            remove { this.RemoveHandler(ButUpClick1Event, value); }
+        }
+
+        public static readonly RoutedEvent ButUpClick1Event =
+            EventManager.RegisterRoutedEvent("ButUpClick1Event", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(IotUrn));
+
         private void Button1_Click(object sender, RoutedEventArgs e)
         {
             //if (!IsLoadIn)
                 this.RaiseEvent(new RoutedEventArgs(ButClick1Event));
+        }
+        private void Button1_DownClick(object sender, MouseButtonEventArgs e)
+        {
+            this.RaiseEvent(new RoutedEventArgs(ButDownClick1Event));
+        }
+        private void Button1_UpClick(object sender, MouseButtonEventArgs e)
+        {
+            this.RaiseEvent(new RoutedEventArgs(ButUpClick1Event));
         }
         #endregion
 
@@ -101,10 +133,42 @@ namespace Ping9719.WpfEx
         public static readonly RoutedEvent ButClick2Event =
             EventManager.RegisterRoutedEvent("ButClick2Event", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(IotUrn));
 
+        /// <summary>
+        /// 单击按钮2按下
+        /// </summary>
+        public event RoutedEventHandler ButDownClick2
+        {
+            add { this.AddHandler(ButDownClick2Event, value); }
+            remove { this.RemoveHandler(ButDownClick2Event, value); }
+        }
+
+        public static readonly RoutedEvent ButDownClick2Event =
+            EventManager.RegisterRoutedEvent("ButDownClick2Event", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(IotUrn));
+
+        /// <summary>
+        /// 单击按钮2松开
+        /// </summary>
+        public event RoutedEventHandler ButUpClick2
+        {
+            add { this.AddHandler(ButUpClick2Event, value); }
+            remove { this.RemoveHandler(ButUpClick2Event, value); }
+        }
+
+        public static readonly RoutedEvent ButUpClick2Event =
+            EventManager.RegisterRoutedEvent("ButUpClick2Event", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(IotUrn));
+
         private void Button2_Click(object sender, RoutedEventArgs e)
         {
             //if (!IsLoadIn)
                 this.RaiseEvent(new RoutedEventArgs(ButClick2Event));
+        }
+        private void Button2_DownClick(object sender, MouseButtonEventArgs e)
+        {
+            this.RaiseEvent(new RoutedEventArgs(ButDownClick2Event));
+        }
+        private void Button2_UpClick(object sender, MouseButtonEventArgs e)
+        {
+            this.RaiseEvent(new RoutedEventArgs(ButUpClick2Event));
         }
         #endregion
 
@@ -123,6 +187,5 @@ namespace Ping9719.WpfEx
         //    DependencyProperty.Register("IsLoadIn", typeof(bool), typeof(IotUrn), new PropertyMetadata(false));
 
         #endregion
-
     }
 }

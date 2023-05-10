@@ -29,14 +29,29 @@
             </summary>
             <param name="deviceDatas">暂支持 DeviceStateData，DeviceUrnData，DeviceServo2Data</param>
         </member>
+        <member name="P:Ping9719.WpfEx.IotDevice.StateWidth">
+            <summary>
+            监视块宽度
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.IotDevice.StateSetWidth">
+            <summary>
+            控制块宽度
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.IotDevice.UrnWidth">
+            <summary>
+            气缸块宽度
+            </summary>
+        </member>
         <member name="P:Ping9719.WpfEx.IotDevice.StateHeader">
             <summary>
-            传感器标题文本
+            监视标题文本
             </summary>
         </member>
         <member name="P:Ping9719.WpfEx.IotDevice.StateSetHeader">
             <summary>
-            传感器（可控制）标题文本
+            控制标题文本
             </summary>
         </member>
         <member name="P:Ping9719.WpfEx.IotDevice.UrnHeader">
@@ -51,17 +66,17 @@
         </member>
         <member name="E:Ping9719.WpfEx.IotDevice.StateSetClick">
             <summary>
-            可点击的状态点击。返回的OriginalSource参数为原绑定数据
+            可点击的状态点击。返回的OriginalSource参数为object[]，1为原绑定数据；2为bool（true为鼠标按下）
             </summary>
         </member>
         <member name="E:Ping9719.WpfEx.IotDevice.UrnClick">
             <summary>
-            气缸点击推或回。返回的OriginalSource参数为object[]，1为bool（true为推）；2为原绑定数据
+            气缸点击推或回。返回的OriginalSource参数为object[]，1为bool（true为推）；2为原绑定数据；3为bool（true为鼠标按下）
             </summary>
         </member>
         <member name="E:Ping9719.WpfEx.IotDevice.ServoClick">
             <summary>
-            伺服点击的操作。返回的OriginalSource参数为object[]，1为枚举；2为新数据；3为原绑定数据
+            伺服点击的操作。返回的OriginalSource参数为object[]，1为枚举(ServoClickType)；2为新数据；3为原绑定数据
             </summary>
         </member>
         <member name="M:Ping9719.WpfEx.IotDevice.InitializeComponent">
@@ -212,6 +227,26 @@
         <member name="P:Ping9719.WpfEx.DeviceServo2Data.Tag">
             <summary>
             自定义数据
+            </summary>
+        </member>
+        <member name="T:Ping9719.WpfEx.IotListener">
+            <summary>
+            工业控件：监听
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.IotListener.Header">
+            <summary>
+            标题
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.IotListener.ValueStr">
+            <summary>
+            值，字符串
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.IotListener.Value">
+            <summary>
+            值
             </summary>
         </member>
         <member name="T:Ping9719.WpfEx.IotServo">
@@ -404,6 +439,16 @@
             单击按钮1
             </summary>
         </member>
+        <member name="E:Ping9719.WpfEx.IotUrn.ButDownClick1">
+            <summary>
+            单击按钮1按下
+            </summary>
+        </member>
+        <member name="E:Ping9719.WpfEx.IotUrn.ButUpClick1">
+            <summary>
+            单击按钮1松开
+            </summary>
+        </member>
         <member name="P:Ping9719.WpfEx.IotUrn.IsButBadge2">
             <summary>
             是否显示按钮2上面的标记
@@ -412,6 +457,16 @@
         <member name="E:Ping9719.WpfEx.IotUrn.ButClick2">
             <summary>
             单击按钮2
+            </summary>
+        </member>
+        <member name="E:Ping9719.WpfEx.IotUrn.ButDownClick2">
+            <summary>
+            单击按钮2按下
+            </summary>
+        </member>
+        <member name="E:Ping9719.WpfEx.IotUrn.ButUpClick2">
+            <summary>
+            单击按钮2松开
             </summary>
         </member>
         <member name="M:Ping9719.WpfEx.IotUrn.InitializeComponent">

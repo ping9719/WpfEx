@@ -3,7 +3,7 @@
 	<PropertyGroup>
 		<TargetFrameworks>net45;netcoreapp3.0;net5.0-windows</TargetFrameworks>
 		<UseWPF>true</UseWPF>
-		<Version>0.3.0</Version>
+		<Version>0.4.0</Version>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<Description>WPF扩展库，在 HandyControl 的基础上。(WPF extension library, based on HandyControl.)

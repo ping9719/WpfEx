@@ -1,6 +1,7 @@
 ﻿using Ping9719.WpfEx.Mvvm;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,6 +26,7 @@ namespace Ping9719.WpfEx
         IEnumerable<DeviceStateSetData> stateSetData;
         IEnumerable<DeviceUrnData> urnDatas;
         IEnumerable<DeviceServo2Data> servoDatas;
+        IotDeviceEx iotDeviceEx = new IotDeviceEx();
 
         /// <summary>
         /// 工业控件：设备
@@ -82,6 +84,7 @@ namespace Ping9719.WpfEx
                             iotState.DataContext = item;
                             iotState.SetBinding(IotState.ContentProperty, nameof(item.Name));
                             iotState.SetBinding(IotState.IsOkProperty, nameof(item.IsOk));
+                            iotState.SetBinding(IotState.WidthProperty, new System.Windows.Data.Binding(nameof(iotDeviceEx.StateWidth)) { Source = iotDeviceEx });
 
                             wrapPanel.Children.Add(iotState);
                         }
@@ -101,6 +104,7 @@ namespace Ping9719.WpfEx
                                 iotState.DataContext = item2;
                                 iotState.SetBinding(IotState.ContentProperty, nameof(item2.Name));
                                 iotState.SetBinding(IotState.IsOkProperty, nameof(item2.IsOk));
+                                iotState.SetBinding(IotState.WidthProperty, new System.Windows.Data.Binding(nameof(iotDeviceEx.StateWidth)) { Source = iotDeviceEx });
 
                                 wrapPanel.Children.Add(iotState);
                             }
@@ -135,9 +139,11 @@ namespace Ping9719.WpfEx
                         {
                             IotState iotState = new IotState();
                             iotState.DataContext = item;
-                            iotState.Click += IotState_Click;
+                            iotState.PreviewMouseLeftButtonDown += IotState_Click1;
+                            iotState.PreviewMouseLeftButtonUp += IotState_Click2;
                             iotState.SetBinding(IotState.ContentProperty, nameof(item.Name));
                             iotState.SetBinding(IotState.IsOkProperty, nameof(item.IsOk));
+                            iotState.SetBinding(IotState.WidthProperty, new System.Windows.Data.Binding(nameof(iotDeviceEx.StateSetWidth)) { Source = iotDeviceEx });
 
                             wrapPanel.Children.Add(iotState);
                         }
@@ -155,9 +161,11 @@ namespace Ping9719.WpfEx
                             {
                                 IotState iotState = new IotState();
                                 iotState.DataContext = item2;
-                                iotState.Click += IotState_Click;
+                                iotState.PreviewMouseLeftButtonDown += IotState_Click1;
+                                iotState.PreviewMouseLeftButtonUp += IotState_Click2;
                                 iotState.SetBinding(IotState.ContentProperty, nameof(item2.Name));
                                 iotState.SetBinding(IotState.IsOkProperty, nameof(item2.IsOk));
+                                iotState.SetBinding(IotState.WidthProperty, new System.Windows.Data.Binding(nameof(iotDeviceEx.StateSetWidth)) { Source = iotDeviceEx });
 
                                 wrapPanel.Children.Add(iotState);
                             }
@@ -195,8 +203,11 @@ namespace Ping9719.WpfEx
                             iotUrn.SetBinding(IotUrn.TextProperty, nameof(item.Name));
                             iotUrn.SetBinding(IotUrn.IsButBadge1Property, nameof(item.IsGoTo));
                             iotUrn.SetBinding(IotUrn.IsButBadge2Property, nameof(item.IsRetTo));
-                            iotUrn.ButClick1 += IotUrn_ButClick1;
-                            iotUrn.ButClick2 += IotUrn_ButClick2;
+                            iotUrn.SetBinding(IotState.WidthProperty, new System.Windows.Data.Binding(nameof(iotDeviceEx.UrnWidth)) { Source = iotDeviceEx });
+                            iotUrn.ButDownClick1 += IotUrn_ButClickD1;
+                            iotUrn.ButUpClick1 += IotUrn_ButClickU1;
+                            iotUrn.ButDownClick2 += IotUrn_ButClickD2;
+                            iotUrn.ButUpClick2 += IotUrn_ButClickU2;
 
                             wrapPanel.Children.Add(iotUrn);
                         }
@@ -217,8 +228,11 @@ namespace Ping9719.WpfEx
                                 iotUrn.SetBinding(IotUrn.TextProperty, nameof(item2.Name));
                                 iotUrn.SetBinding(IotUrn.IsButBadge1Property, nameof(item2.IsGoTo));
                                 iotUrn.SetBinding(IotUrn.IsButBadge2Property, nameof(item2.IsRetTo));
-                                iotUrn.ButClick1 += IotUrn_ButClick1;
-                                iotUrn.ButClick2 += IotUrn_ButClick2;
+                                iotUrn.SetBinding(IotState.WidthProperty, new System.Windows.Data.Binding(nameof(iotDeviceEx.UrnWidth)) { Source = iotDeviceEx });
+                                iotUrn.ButDownClick1 += IotUrn_ButClickD1;
+                                iotUrn.ButUpClick1 += IotUrn_ButClickU1;
+                                iotUrn.ButDownClick2 += IotUrn_ButClickD2;
+                                iotUrn.ButUpClick2 += IotUrn_ButClickU2;
 
                                 wrapPanel.Children.Add(iotUrn);
                             }
@@ -314,7 +328,23 @@ namespace Ping9719.WpfEx
         #region 属性
 
         /// <summary>
-        /// 传感器标题文本
+        /// 监视块宽度
+        /// </summary>
+        [TypeConverter(typeof(LengthConverter))]
+        public double StateWidth { get => iotDeviceEx.StateWidth; set => iotDeviceEx.StateWidth = value; }
+        /// <summary>
+        /// 控制块宽度
+        /// </summary>
+        [TypeConverter(typeof(LengthConverter))]
+        public double StateSetWidth { get => iotDeviceEx.StateSetWidth; set => iotDeviceEx.StateSetWidth = value; }
+        /// <summary>
+        /// 气缸块宽度
+        /// </summary>
+        [TypeConverter(typeof(LengthConverter))]
+        public double UrnWidth { get => iotDeviceEx.UrnWidth; set => iotDeviceEx.UrnWidth = value; }
+
+        /// <summary>
+        /// 监视标题文本
         /// </summary>
         public string StateHeader
         {
@@ -325,9 +355,8 @@ namespace Ping9719.WpfEx
         public static readonly DependencyProperty StateHeaderProperty =
             DependencyProperty.Register("StateHeader", typeof(string), typeof(IotDevice), new PropertyMetadata("传感器"));
 
-
         /// <summary>
-        /// 传感器（可控制）标题文本
+        /// 控制标题文本
         /// </summary>
         public string StateSetHeader
         {
@@ -366,7 +395,7 @@ namespace Ping9719.WpfEx
 
         #region 事件
         /// <summary>
-        /// 可点击的状态点击。返回的OriginalSource参数为原绑定数据
+        /// 可点击的状态点击。返回的OriginalSource参数为object[]，1为原绑定数据；2为bool（true为鼠标按下）
         /// </summary>
         public event RoutedEventHandler StateSetClick
         {
@@ -376,13 +405,17 @@ namespace Ping9719.WpfEx
 
         public static readonly RoutedEvent StateSetClickEvent =
             EventManager.RegisterRoutedEvent("StateSetClickEvent", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(IotState));
-        private void IotState_Click(object sender, RoutedEventArgs e)
+        private void IotState_Click1(object sender, RoutedEventArgs e)
         {
-            this.RaiseEvent(new RoutedEventArgs(StateSetClickEvent, ((FrameworkElement)sender).DataContext));
+            this.RaiseEvent(new RoutedEventArgs(StateSetClickEvent, new object[] { ((FrameworkElement)sender).DataContext, true }));
+        }
+        private void IotState_Click2(object sender, RoutedEventArgs e)
+        {
+            this.RaiseEvent(new RoutedEventArgs(StateSetClickEvent, new object[] { ((FrameworkElement)sender).DataContext, false }));
         }
 
         /// <summary>
-        /// 气缸点击推或回。返回的OriginalSource参数为object[]，1为bool（true为推）；2为原绑定数据
+        /// 气缸点击推或回。返回的OriginalSource参数为object[]，1为bool（true为推）；2为原绑定数据；3为bool（true为鼠标按下）
         /// </summary>
         public event RoutedEventHandler UrnClick
         {
@@ -393,18 +426,27 @@ namespace Ping9719.WpfEx
         public static readonly RoutedEvent UrnClickEvent =
             EventManager.RegisterRoutedEvent("UrnClickEvent", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(IotDevice));
 
-        private void IotUrn_ButClick1(object sender, RoutedEventArgs e)
+        private void IotUrn_ButClickD1(object sender, RoutedEventArgs e)
         {
-            this.RaiseEvent(new RoutedEventArgs(UrnClickEvent, new object[] { true, ((FrameworkElement)sender).DataContext }));
+            this.RaiseEvent(new RoutedEventArgs(UrnClickEvent, new object[] { true, ((FrameworkElement)sender).DataContext, true }));
         }
 
-        private void IotUrn_ButClick2(object sender, RoutedEventArgs e)
+        private void IotUrn_ButClickU1(object sender, RoutedEventArgs e)
         {
-            this.RaiseEvent(new RoutedEventArgs(UrnClickEvent, new object[] { false, ((FrameworkElement)sender).DataContext }));
+            this.RaiseEvent(new RoutedEventArgs(UrnClickEvent, new object[] { true, ((FrameworkElement)sender).DataContext, false }));
+        }
+
+        private void IotUrn_ButClickD2(object sender, RoutedEventArgs e)
+        {
+            this.RaiseEvent(new RoutedEventArgs(UrnClickEvent, new object[] { false, ((FrameworkElement)sender).DataContext, true }));
+        }
+        private void IotUrn_ButClickU2(object sender, RoutedEventArgs e)
+        {
+            this.RaiseEvent(new RoutedEventArgs(UrnClickEvent, new object[] { false, ((FrameworkElement)sender).DataContext, false }));
         }
 
         /// <summary>
-        /// 伺服点击的操作。返回的OriginalSource参数为object[]，1为枚举；2为新数据；3为原绑定数据
+        /// 伺服点击的操作。返回的OriginalSource参数为object[]，1为枚举(ServoClickType)；2为新数据；3为原绑定数据
         /// </summary>
         public event RoutedEventHandler ServoClick
         {
@@ -700,4 +742,18 @@ namespace Ping9719.WpfEx
         /// </summary>
         public object Tag { get; set; }
     }
+
+    internal class IotDeviceEx : BindableBase
+    {
+        private double stateWidth = 120.00;
+        public double StateWidth { get => stateWidth; set { SetProperty(ref stateWidth, value); } }
+
+        private double stateSetWidth = 120.00;
+        public double StateSetWidth { get => stateSetWidth; set { SetProperty(ref stateSetWidth, value); } }
+
+        private double urnWidth = 150.00;
+        public double UrnWidth { get => urnWidth; set { SetProperty(ref urnWidth, value); } }
+
+    }
+
 }

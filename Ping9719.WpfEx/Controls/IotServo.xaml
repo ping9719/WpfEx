@@ -1,12 +1,12 @@
-﻿<UserControl xmlns:hc="https://handyorg.github.io/handycontrol"  x:Class="Ping9719.WpfEx.IotServo"
+﻿<UserControl x:Class="Ping9719.WpfEx.IotServo"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Ping9719.WpfEx"
-             mc:Ignorable="d" 
+             mc:Ignorable="d"
+             xmlns:hc="https://handyorg.github.io/handycontrol"
              Width="290">
-    
     <Border Style="{StaticResource BorderRegion}" Height="auto" Padding="0">
         <Grid>
             <Grid.ColumnDefinitions>
