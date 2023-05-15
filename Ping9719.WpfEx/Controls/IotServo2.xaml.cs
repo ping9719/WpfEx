@@ -68,27 +68,27 @@ namespace Ping9719.WpfEx
         /// <summary>
         /// 速度1，默认手动速度
         /// </summary>
-        public int Speed1
+        public double Speed1
         {
-            get { return (int)GetValue(Speed1Property); }
+            get { return (double)GetValue(Speed1Property); }
             set { SetValue(Speed1Property, value); }
         }
 
         public static readonly DependencyProperty Speed1Property =
-            DependencyProperty.Register("Speed1", typeof(int), typeof(IotServo2), new PropertyMetadata(0));
+            DependencyProperty.Register("Speed1", typeof(double), typeof(IotServo2), new PropertyMetadata(0.0));
 
 
         /// <summary>
         /// 速度2，默认自动速度
         /// </summary>
-        public int Speed2
+        public double Speed2
         {
-            get { return (int)GetValue(Speed2Property); }
+            get { return (double)GetValue(Speed2Property); }
             set { SetValue(Speed2Property, value); }
         }
 
         public static readonly DependencyProperty Speed2Property =
-            DependencyProperty.Register("Speed2", typeof(int), typeof(IotServo2), new PropertyMetadata(0));
+            DependencyProperty.Register("Speed2", typeof(double), typeof(IotServo2), new PropertyMetadata(0.0));
 
         #endregion
 
@@ -222,7 +222,7 @@ namespace Ping9719.WpfEx
                 aaa.Text = "无效的值";
                 return;
             }
-            if (int.TryParse(aaa.Text, out int re))
+            if (double.TryParse(aaa.Text, out double re))
             {
                 //aaa.IsError = false;
                 //if (!IsLoadIn)
@@ -249,7 +249,7 @@ namespace Ping9719.WpfEx
                 aaa.Text = "无效的值";
                 return;
             }
-            if (int.TryParse(aaa.Text, out int re))
+            if (double.TryParse(aaa.Text, out double re))
             {
                 //aaa.IsError = false;
                 //if (!IsLoadIn)

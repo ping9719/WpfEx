@@ -687,21 +687,21 @@ namespace Ping9719.WpfEx
         /// </summary>
         public string GroupName { get; set; }
 
-        private int jogSpeed;
+        private double jogSpeed;
         /// <summary>
         /// 手动模式速度
         /// </summary>
-        public int JogSpeed
+        public double JogSpeed
         {
             get { return jogSpeed; }
             set { SetProperty(ref jogSpeed, value); }
         }
 
-        private int autoSpeed;
+        private double autoSpeed;
         /// <summary>
         /// 自动模式速度
         /// </summary>
-        public int AutoSpeed
+        public double AutoSpeed
         {
             get { return autoSpeed; }
             set { SetProperty(ref autoSpeed, value); }

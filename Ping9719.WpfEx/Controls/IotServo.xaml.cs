@@ -226,7 +226,7 @@ namespace Ping9719.WpfEx
                 aaa.Text = "无效的值";
                 return;
             }
-            if (int.TryParse(aaa.Text, out int re))
+            if (double.TryParse(aaa.Text, out double re))
             {
                 //aaa.IsError = false;
                 //if (!IsLoadIn)
@@ -266,11 +266,11 @@ namespace Ping9719.WpfEx
             set { SetProperty(ref name, value); }
         }
 
-        private int speed;
+        private double speed;
         /// <summary>
         /// 当前速度
         /// </summary>
-        public int Speed
+        public double Speed
         {
             get { return speed; }
             set { SetProperty(ref speed, value); }
