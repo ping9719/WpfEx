@@ -124,22 +124,6 @@ namespace Ping9719.WpfEx
 
         #endregion
 
-        #region isload
-
-        ///// <summary>
-        ///// 是否在加载中
-        ///// </summary>
-        //public bool IsLoadIn
-        //{
-        //    get { return (bool)GetValue(IsLoadInProperty); }
-        //    set { SetValue(IsLoadInProperty, value); }
-        //}
-
-        //public static readonly DependencyProperty IsLoadInProperty =
-        //    DependencyProperty.Register("IsLoadIn", typeof(bool), typeof(IotServo2), new PropertyMetadata(false));
-
-        #endregion
-
         #region 改变位置
 
         /// <summary>
@@ -156,24 +140,20 @@ namespace Ping9719.WpfEx
 
         private void jiad(object sender, MouseButtonEventArgs e)
         {
-            //if (!IsLoadIn)
             this.RaiseEvent(new RoutedEventArgs(LocationChangeEvent, ServoClickType.StartDotAdd));
         }
 
         private void jiau(object sender, MouseButtonEventArgs e)
         {
-            //if (!IsLoadIn)
             this.RaiseEvent(new RoutedEventArgs(LocationChangeEvent, ServoClickType.EndDotAdd));
         }
         private void jiand(object sender, MouseButtonEventArgs e)
         {
-            //if (!IsLoadIn)
             this.RaiseEvent(new RoutedEventArgs(LocationChangeEvent, ServoClickType.StartDotSub));
         }
 
         private void jianu(object sender, MouseButtonEventArgs e)
         {
-            //if (!IsLoadIn)
             this.RaiseEvent(new RoutedEventArgs(LocationChangeEvent, ServoClickType.EndDotSub));
         }
 
@@ -188,13 +168,10 @@ namespace Ping9719.WpfEx
             }
             if (double.TryParse(aaa.Text, out double re))
             {
-                //aaa.IsError = false;
-                //if (!IsLoadIn)
                 this.RaiseEvent(new RoutedEventArgs(LocationChangeEvent, re));
             }
             else
             {
-                //aaa.IsError = true;
                 aaa.Text = "错误格式";
             }
         }
@@ -224,18 +201,13 @@ namespace Ping9719.WpfEx
             }
             if (double.TryParse(aaa.Text, out double re))
             {
-                //aaa.IsError = false;
-                //if (!IsLoadIn)
-                //{
                 var servoSpeed = new ServoSpeed();
                 servoSpeed.Name = "手动模式";
                 servoSpeed.Speed = re;
                 this.RaiseEvent(new RoutedEventArgs(SpeedChangeEvent, servoSpeed));
-                //}
             }
             else
             {
-                //aaa.IsError = true;
                 aaa.Text = "错误格式";
             }
         }
@@ -251,18 +223,13 @@ namespace Ping9719.WpfEx
             }
             if (double.TryParse(aaa.Text, out double re))
             {
-                //aaa.IsError = false;
-                //if (!IsLoadIn)
-                //{
                 var servoSpeed = new ServoSpeed();
                 servoSpeed.Name = "自动模式";
                 servoSpeed.Speed = re;
                 this.RaiseEvent(new RoutedEventArgs(SpeedChangeEvent, servoSpeed));
-                //}
             }
             else
             {
-                //aaa.IsError = true;
                 aaa.Text = "错误格式";
             }
         }
@@ -272,7 +239,6 @@ namespace Ping9719.WpfEx
         {
             IsFold = !IsFold;
         }
-
 
     }
 }

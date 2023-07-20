@@ -94,8 +94,7 @@ namespace Ping9719.WpfEx
 
         private void Button1_Click(object sender, RoutedEventArgs e)
         {
-            //if (!IsLoadIn)
-                this.RaiseEvent(new RoutedEventArgs(ButClick1Event));
+            this.RaiseEvent(new RoutedEventArgs(ButClick1Event));
         }
         private void Button1_DownClick(object sender, MouseButtonEventArgs e)
         {
@@ -159,8 +158,7 @@ namespace Ping9719.WpfEx
 
         private void Button2_Click(object sender, RoutedEventArgs e)
         {
-            //if (!IsLoadIn)
-                this.RaiseEvent(new RoutedEventArgs(ButClick2Event));
+            this.RaiseEvent(new RoutedEventArgs(ButClick2Event));
         }
         private void Button2_DownClick(object sender, MouseButtonEventArgs e)
         {
@@ -172,20 +170,5 @@ namespace Ping9719.WpfEx
         }
         #endregion
 
-        #region isload
-
-        ///// <summary>
-        ///// 是否在加载中
-        ///// </summary>
-        //public bool IsLoadIn
-        //{
-        //    get { return (bool)GetValue(IsLoadInProperty); }
-        //    set { SetValue(IsLoadInProperty, value); }
-        //}
-
-        //public static readonly DependencyProperty IsLoadInProperty =
-        //    DependencyProperty.Register("IsLoadIn", typeof(bool), typeof(IotUrn), new PropertyMetadata(false));
-
-        #endregion
     }
 }

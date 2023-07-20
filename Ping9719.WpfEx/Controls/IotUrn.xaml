@@ -17,13 +17,12 @@
 
             <StackPanel Grid.Column="1" Orientation="Horizontal">
                 <hc:Badge Margin="0,-1" BadgeMargin="1,1" Status="Dot" ShowBadge="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type local:IotUrn}},Path=IsButBadge1}" Style="{DynamicResource BadgeSuccess}">
-                    <Button hc:BorderElement.CornerRadius="4,0,0,4" Grid.Column="1" Height="auto" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" IsEnabled="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type local:IotUrn}},Path=IsLoadIn,Converter={StaticResource Boolean2BooleanReConverter}}" Click="Button1_Click" PreviewMouseLeftButtonDown="Button1_DownClick" PreviewMouseLeftButtonUp="Button1_UpClick">推</Button>
+                    <Button hc:BorderElement.CornerRadius="4,0,0,4" Grid.Column="1" Height="auto" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="Button1_Click" PreviewMouseLeftButtonDown="Button1_DownClick" PreviewMouseLeftButtonUp="Button1_UpClick">推</Button>
                 </hc:Badge>
                 <hc:Badge Margin="-1,-1" BadgeMargin="1,1" Status="Dot" ShowBadge="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type local:IotUrn}},Path=IsButBadge2}" Style="{DynamicResource BadgeSuccess}">
-                    <Button hc:BorderElement.CornerRadius="0,4,4,0" Grid.Column="2" Height="auto" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" IsEnabled="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type local:IotUrn}},Path=IsLoadIn,Converter={StaticResource Boolean2BooleanReConverter}}" Click="Button2_Click" PreviewMouseLeftButtonDown="Button2_DownClick" PreviewMouseLeftButtonUp="Button2_UpClick">回</Button>
+                    <Button hc:BorderElement.CornerRadius="0,4,4,0" Grid.Column="2" Height="auto" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="Button2_Click" PreviewMouseLeftButtonDown="Button2_DownClick" PreviewMouseLeftButtonUp="Button2_UpClick">回</Button>
                 </hc:Badge>
             </StackPanel>
-            <!--<hc:LoadingLine Visibility="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type local:IotUrn}},Path=IsLoadIn,Converter={StaticResource Boolean2VisibilityConverter}}" Margin="0" Grid.ColumnSpan="2" DotDiameter="3" DotSpeed="2" VerticalAlignment="Top"/>-->
         </Grid>
     </Border>
 </UserControl>
