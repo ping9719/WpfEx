@@ -106,15 +106,11 @@
                 </GroupBox.Header>
                 <StackPanel x:Name="pansf">
                     <WrapPanel>
-                        <local:IotServo2 Text="伺服1"/>
-                        <local:IotServo2 Text="伺服2"/>
-                        <local:IotServo2 Text="伺服3"/>
+                        <!--<local:IotServo2 Text="伺服1"/>-->
                     </WrapPanel>
                     <Expander Header="分组1">
                         <WrapPanel>
-                            <local:IotServo2 Text="伺服1"/>
-                            <local:IotServo2 Text="伺服2"/>
-                            <local:IotServo2 Text="伺服3"/>
+                            <!--<local:IotServo2 Text="伺服1"/>-->
                         </WrapPanel>
                     </Expander>
                 </StackPanel>
