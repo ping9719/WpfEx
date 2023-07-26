@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -20,37 +21,12 @@ namespace Ping9719.WpfEx
     /// 工业控件：传感器状态
     /// </summary>
     [ToolboxItem(true)]
-    public class IotState : ContentControl
+    public class IotState : ButtonBase
     {
         static IotState()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(IotState), new FrameworkPropertyMetadata(typeof(IotState)));
         }
-
-        public override void OnApplyTemplate()
-        {
-            base.OnApplyTemplate();
-
-            var aa1 = this.Template.FindName("border", this);
-
-            if (aa1 is Border but1)
-                but1.PreviewMouseLeftButtonDown += (sen1, obj1) =>
-                {
-                    this.RaiseEvent(new RoutedEventArgs(ClickEvent));
-                };
-        }
-
-        /// <summary>
-        /// 单击按钮时
-        /// </summary>
-        public event RoutedEventHandler Click
-        {
-            add { this.AddHandler(ClickEvent, value); }
-            remove { this.RemoveHandler(ClickEvent, value); }
-        }
-
-        public static readonly RoutedEvent ClickEvent =
-            EventManager.RegisterRoutedEvent("ClickEvent", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(IotState));
 
         /// <summary>
         /// 是否成功
@@ -88,7 +64,6 @@ namespace Ping9719.WpfEx
 
         public static readonly DependencyProperty NotOkBrushProperty =
             DependencyProperty.Register("NotOkBrush", typeof(Brush), typeof(IotState));
-
 
         /// <summary>
         /// 内部高度

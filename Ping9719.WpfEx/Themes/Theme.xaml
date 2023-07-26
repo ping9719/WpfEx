@@ -18,6 +18,7 @@
 
         <!--扩展控件-->
         <ResourceDictionary Source="pack://application:,,,/Ping9719.WpfEx;component/Controls/Styles/IotListener.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/Ping9719.WpfEx;component/Controls/Styles/IotServoMode.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/Ping9719.WpfEx;component/Controls/Styles/IotState.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/Ping9719.WpfEx;component/Controls/Styles/RunStateButton.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/Ping9719.WpfEx;component/Controls/Styles/SyncProgressBar.xaml"/>

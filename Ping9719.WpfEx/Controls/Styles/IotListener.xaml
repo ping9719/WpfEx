@@ -4,8 +4,6 @@
                     xmlns:hc="https://handyorg.github.io/handycontrol">
 
     <ResourceDictionary.MergedDictionaries>
-        <!--HandyControl-->
-        <!--<ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/SkinDefault.xaml"/>-->
         <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Theme.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 

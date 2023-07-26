@@ -3,7 +3,7 @@
 	<PropertyGroup>
 		<TargetFrameworks>net462;net6.0-windows</TargetFrameworks>
 		<UseWPF>true</UseWPF>
-		<Version>0.5.3</Version>
+		<Version>0.6.0</Version>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<Description>WPF扩展库，在 HandyControl 的基础上。(WPF extension library, based on HandyControl.)
@@ -19,24 +19,18 @@ https://github.com/ping9719/WpfEx
 	</PropertyGroup>
 
 	<ItemGroup>
+		<Compile Remove="Controls\IotDevice.xaml.cs" />
+		<Compile Remove="Controls\IotServo2.xaml.cs" />
 		<Compile Remove="Mvvm\ObservableList.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Page Remove="Controls\IotDevice.xaml" />
+	  <Page Remove="Controls\IotServo2.xaml" />
 	</ItemGroup>
 
 
 	<ItemGroup>
 		<PackageReference Include="HandyControl" Version="3.4.0" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Compile Update="Controls\IotServo2.xaml.cs">
-	    <SubType>Code</SubType>
-	  </Compile>
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Page Update="Controls\IotServo2.xaml">
-	    <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
-	    <SubType>Designer</SubType>
-	  </Page>
 	</ItemGroup>
 </Project>
