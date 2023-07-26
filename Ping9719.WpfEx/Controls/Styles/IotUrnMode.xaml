@@ -1,0 +1,60 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:local="clr-namespace:Ping9719.WpfEx"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:hc="https://handyorg.github.io/handycontrol">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Theme.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style x:Key="IotUrnModeStyle" TargetType="{x:Type local:IotUrnMode}">
+        <Setter Property="hc:BorderElement.CornerRadius" Value="{StaticResource DefaultCornerRadius}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}" />
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="Padding" Value="5,0"/>
+        <Setter Property="Height" Value="30"/>
+        <Setter Property="Width" Value="150"/>
+        <Setter Property="Background" Value="White"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:IotUrnMode}">
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="{TemplateBinding hc:BorderElement.CornerRadius}"
+                            x:Name="border">
+                        <Grid Margin="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="auto"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Margin="{TemplateBinding Padding}" FontSize="{TemplateBinding FontSize}" hc:TextBlockAttach.AutoTooltip="True" TextWrapping="NoWrap" TextTrimming="CharacterEllipsis" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{TemplateBinding Text}"></TextBlock>
+
+                            <StackPanel Grid.Column="1" Orientation="Horizontal">
+                                <hc:Badge Margin="0,-1" BadgeMargin="1,1" Status="Dot" ShowBadge="{TemplateBinding IsButBadge1}" Style="{DynamicResource BadgeSuccess}">
+                                    <Grid x:Name="grid1" Grid.Column="1">
+                                        <!--<Button x:Name="but1" hc:BorderElement.CornerRadius="3,0,0,3"  Height="auto" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontSize="{TemplateBinding FontSize}" Content="{TemplateBinding ButContent1}"></Button>-->
+                                    </Grid>
+                                </hc:Badge>
+                                <hc:Badge Margin="-1,-1" BadgeMargin="1,1" Status="Dot" ShowBadge="{TemplateBinding IsButBadge2}" Style="{DynamicResource BadgeSuccess}">
+                                    <Grid x:Name="grid2" Grid.Column="2">
+                                        <!--<Button x:Name="but2" hc:BorderElement.CornerRadius="0,3,3,0" Height="auto" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontSize="{TemplateBinding FontSize}" Content="{TemplateBinding ButContent2}"></Button>-->
+                                    </Grid>
+                                </hc:Badge>
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" Value="0.4"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style BasedOn="{StaticResource IotUrnModeStyle}" TargetType="{x:Type local:IotUrnMode}"/>
+</ResourceDictionary>
