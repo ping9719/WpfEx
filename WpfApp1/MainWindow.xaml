@@ -7,18 +7,17 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded">
     <Grid>
-<StackPanel Width="200">
-    <!--<pi:SyncProgressBar SyncState="OkVisible"/>
-    <pi:SyncProgressBar SyncState="SyncIn"/>
-    <pi:SyncProgressBar SyncState="SyncErr"/>
-    <pi:SyncProgressBar SyncState="SyncIn" QueueTaskOkVisible="True" Value="30"/>-->
-    <pi:IotServo2></pi:IotServo2>
-</StackPanel>
+        <TabControl Margin="10">
+            <TabItem Header="选项卡1">
+            </TabItem>
+            <TabItem Header="选项卡2">
+                <StackPanel Width="200">
+                    <pi:TextBoxScanner></pi:TextBoxScanner>
+                </StackPanel>
+            </TabItem>
+        </TabControl>
 
-        <!--<TabControl TabStripPlacement="Bottom" Style="{StaticResource TabControlRectangle}" Margin="5" Padding="1">
-            <TabItem Header="123"></TabItem>
-            <TabItem Header="123"></TabItem>
-            <TabItem Header="123"></TabItem>
-        </TabControl>-->
+
+
     </Grid>
 </Window>

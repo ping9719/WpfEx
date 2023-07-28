@@ -23,6 +23,7 @@
         <ResourceDictionary Source="pack://application:,,,/Ping9719.WpfEx;component/Controls/Styles/IotUrnMode.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/Ping9719.WpfEx;component/Controls/Styles/RunStateButton.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/Ping9719.WpfEx;component/Controls/Styles/SyncProgressBar.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/Ping9719.WpfEx;component/Controls/Styles/TextBoxScanner.xaml"/>
 
     </ResourceDictionary.MergedDictionaries>
 
