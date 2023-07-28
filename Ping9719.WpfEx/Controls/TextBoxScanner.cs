@@ -24,14 +24,14 @@ namespace Ping9719.WpfEx
             this.TextChanged += TextBoxScanner_TextChanged;
         }
 
-        int textCount = 0;
+        int textTop = 0;
         bool isFir = false;
         private void TextBoxScanner_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
             if (!isFir)
             {
                 isFir = true;
-                textCount = Text?.Length ?? 0;
+                textTop = Text?.Length ?? 0;
             }
 
             if (IsAutoFocus && e.NewValue is true)
@@ -57,18 +57,17 @@ namespace Ping9719.WpfEx
         public static readonly DependencyProperty IsAutoFocusProperty =
             DependencyProperty.Register("IsAutoFocus", typeof(bool), typeof(TextBoxScanner), new PropertyMetadata(false));
 
-
         /// <summary>
         /// 自动清除文本（当达到计时变化间隔时）
         /// </summary>
-        public bool IsAutoClear
+        public TextBoxScannerAutoClear AutoClear
         {
-            get { return (bool)GetValue(IsAutoClearProperty); }
-            set { SetValue(IsAutoClearProperty, value); }
+            get { return (TextBoxScannerAutoClear)GetValue(AutoClearProperty); }
+            set { SetValue(AutoClearProperty, value); }
         }
 
-        public static readonly DependencyProperty IsAutoClearProperty =
-            DependencyProperty.Register("IsAutoClear", typeof(bool), typeof(TextBoxScanner), new PropertyMetadata(true));
+        public static readonly DependencyProperty AutoClearProperty =
+            DependencyProperty.Register("AutoClear", typeof(TextBoxScannerAutoClear), typeof(TextBoxScanner), new PropertyMetadata(TextBoxScannerAutoClear.Clear));
 
         /// <summary>
         /// 计时变化间隔，默认600ms
@@ -124,13 +123,13 @@ namespace Ping9719.WpfEx
         {
             var textCount_ = Text?.Length ?? 0;
             //删除文本中
-            if (textCount_ < textCount)
+            if (textCount_ < textTop)
             {
-                textCount = textCount_;
+                textTop = Text?.Length ?? 0;
                 return;
             }
 
-            textCount = textCount_;
+            textTop = Text?.Length ?? 0;
 
             var isNull = string.IsNullOrEmpty(Text);
             if (isNull)
@@ -160,10 +159,19 @@ namespace Ping9719.WpfEx
                             {
                                 this.Dispatcher.Invoke(() =>
                                 {
+                                    if (AutoClear == TextBoxScannerAutoClear.NextClear)
+                                    {
+                                        if (Text.StartsWith(ScannerText))
+                                        {
+                                            Text = Text.Substring(ScannerText.Length);
+                                            SelectionStart = Text.Length;
+                                        }
+                                    }
+
                                     ScannerText = Text;
                                     this.RaiseEvent(new RoutedEventArgs(TextScannerChangedEvent));
 
-                                    if (IsAutoClear)
+                                    if (AutoClear == TextBoxScannerAutoClear.Clear)
                                         Text = string.Empty;
                                 });
                                 break;

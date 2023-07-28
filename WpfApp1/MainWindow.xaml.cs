@@ -48,6 +48,15 @@ namespace WpfApp1
 
             Growl.Info(a1 + ";" + a2);
         }
+
+        private void aaaaa(object sender, RoutedEventArgs e)
+        {
+            var aaa = (TextBoxScanner)sender;
+            var a1 = aaa.Text;
+            var a2 = aaa.ScannerText;
+
+            Growl.Info(a1);
+        }
     }
 
     public class MainWindowViewModel : BindableBase
