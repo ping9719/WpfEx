@@ -7,17 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded">
     <Grid>
-        <TabControl Margin="10">
-            <TabItem Header="选项卡1">
-            </TabItem>
-            <TabItem Header="选项卡2">
-                <StackPanel Width="200">
-                    <pi:TextBoxScanner></pi:TextBoxScanner>
-                </StackPanel>
-            </TabItem>
-        </TabControl>
-
-
+        <pi:TextBoxScanner Style="{StaticResource TextBoxExtend.Multi}"></pi:TextBoxScanner>
 
     </Grid>
 </Window>

@@ -68,7 +68,7 @@ namespace Ping9719.WpfEx
         }
 
         public static readonly DependencyProperty IsAutoClearProperty =
-            DependencyProperty.Register("IsAutoClear", typeof(bool), typeof(TextBoxScanner), new PropertyMetadata(false));
+            DependencyProperty.Register("IsAutoClear", typeof(bool), typeof(TextBoxScanner), new PropertyMetadata(true));
 
         /// <summary>
         /// 计时变化间隔，默认600ms
