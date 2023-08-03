@@ -179,7 +179,7 @@ namespace Ping9719.WpfEx
                     prog.SyncState = prog.QueueTaskOkVisible ? SyncProgressBarState.OkVisible : SyncProgressBarState.OkCollapsed;
                 });
 
-                queue.StateChange += (object sender, QueueTaskTimeState state, Exception exception) =>
+                queue.StateChange += (QueueTaskTime sender, QueueTaskTimeState state, Exception exception) =>
                 {
                     if (state == QueueTaskTimeState.ForTask || state == QueueTaskTimeState.QueueTask)
                     {

@@ -38,24 +38,11 @@ namespace Ping9719.WpfEx
         public QueueTaskTimeState State { get; private set; } = QueueTaskTimeState.Stop;
 
         /// <summary>
-        /// 状态发生改变
+        /// 状态发生改变（本身，状态，错误）
         /// </summary>
-        /// <param name="sender">源</param>
-        /// <param name="state">状态</param>
-        /// <param name="exception">错误</param>
-        public delegate void StateChangeEventHandler(object sender, QueueTaskTimeState state, Exception exception);
-        /// <summary>
-        /// 状态发生改变
-        /// </summary>
-        public event StateChangeEventHandler StateChange;
+        public Action<QueueTaskTime, QueueTaskTimeState, Exception> StateChange;
 
         Task task = null;
-
-        ///// <summary>
-        ///// 空闲 0 运行循环任务 1 运行队列任务 2
-        ///// </summary>
-        //int runState = 0;
-
         Action actque = null;
 
         /// <summary>
@@ -131,8 +118,7 @@ namespace Ping9719.WpfEx
                 return;
 
             State = state;
-            if (StateChange != null)
-                StateChange(this, state, exception);
+            StateChange?.Invoke(this, state, exception);
         }
 
         ///// <summary>
