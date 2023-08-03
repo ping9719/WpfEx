@@ -45,6 +45,7 @@ namespace Ping9719.WpfEx
         public Button Button1 { get; private set; } = new Button()
         {
             Content = "推",
+            Height = Double.NaN,
             HorizontalAlignment = HorizontalAlignment.Stretch,
             VerticalAlignment = VerticalAlignment.Stretch,
         };
@@ -55,6 +56,7 @@ namespace Ping9719.WpfEx
         public Button Button2 { get; private set; } = new Button()
         {
             Content = "回",
+            Height = Double.NaN,
             HorizontalAlignment = HorizontalAlignment.Stretch,
             VerticalAlignment = VerticalAlignment.Stretch,
         };
