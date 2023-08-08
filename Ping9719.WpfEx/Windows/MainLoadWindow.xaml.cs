@@ -62,6 +62,7 @@ namespace Ping9719.WpfEx
                     {
                         vModel.Txt = item.Item2;
                         vModel.IsClose = true;
+                        vModel.IsVisLoad = false;
                         err = ex.ToString();
                         stopwatch.Stop();
                         return;
@@ -106,6 +107,9 @@ namespace Ping9719.WpfEx
         private string txt;
 
         public string Txt { get => txt; set { SetProperty(ref txt, value); } }
+
+        private bool isVisLoad = true;
+        public bool IsVisLoad { get => isVisLoad; set { SetProperty(ref isVisLoad, value); } }
 
         private bool isclode = false;
 
