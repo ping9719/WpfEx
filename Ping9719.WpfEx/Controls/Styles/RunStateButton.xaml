@@ -44,6 +44,10 @@
                             <Setter Property="IsEnabled" TargetName="_stop" Value="false"/>
                             <Setter Property="IsEnabled" TargetName="_rset" Value="true"/>
                         </Trigger>
+
+                        <Trigger Property="IsAutoRset" Value="False">
+                            <Setter Property="IsEnabled" TargetName="_rset" Value="True"/>
+                        </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
@@ -112,6 +116,10 @@
                             <Setter Property="Visibility" TargetName="_continue" Value="Collapsed"/>
                             <Setter Property="Visibility" TargetName="_stop" Value="Visible"/>
                         </Trigger>
+                        
+                        <Trigger Property="IsAutoRset" Value="False">
+                            <Setter Property="IsEnabled" TargetName="_rset" Value="True"/>
+                        </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
@@ -162,6 +170,10 @@
                             <Setter Property="IsEnabled" TargetName="_stop" Value="false"/>
                             <Setter Property="IsEnabled" TargetName="_rset" Value="true"/>
                             <Setter Property="IsEnabled" TargetName="_continue" Value="False"/>
+                        </Trigger>
+
+                        <Trigger Property="IsAutoRset" Value="False">
+                            <Setter Property="IsEnabled" TargetName="_rset" Value="True"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

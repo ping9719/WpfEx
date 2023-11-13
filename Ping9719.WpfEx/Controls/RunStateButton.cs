@@ -96,6 +96,20 @@ namespace Ping9719.WpfEx
         public static readonly DependencyProperty IsVisRsetProperty =
             DependencyProperty.Register("IsVisRset", typeof(bool), typeof(RunStateButton), new PropertyMetadata(false));
 
+
+        /// <summary>
+        /// 是否自动控制复位按钮是否可用
+        /// </summary>
+        public bool IsAutoRset
+        {
+            get { return (bool)GetValue(IsAutoRsetProperty); }
+            set { SetValue(IsAutoRsetProperty, value); }
+        }
+
+        public static readonly DependencyProperty IsAutoRsetProperty =
+            DependencyProperty.Register("IsAutoRset", typeof(bool), typeof(RunStateButton), new PropertyMetadata(true));
+
+
         /// <summary>
         /// 运行状态
         /// </summary>

@@ -3,7 +3,7 @@
 	<PropertyGroup>
 		<TargetFrameworks>net462;net6.0-windows</TargetFrameworks>
 		<UseWPF>true</UseWPF>
-		<Version>0.6.3</Version>
+		<Version>0.6.4</Version>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<Description>WPF扩展库，在 HandyControl 的基础上。(WPF extension library, based on HandyControl.)
