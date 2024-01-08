@@ -24,7 +24,7 @@ namespace Ping9719.WpfEx
         /// </summary>
         StartDotAdd,
         /// <summary>
-        /// 开始点动增加
+        /// 结束点动增加
         /// </summary>
         EndDotAdd,
         /// <summary>
@@ -32,7 +32,7 @@ namespace Ping9719.WpfEx
         /// </summary>
         StartDotSub,
         /// <summary>
-        /// 开始点动减少
+        /// 结束点动减少
         /// </summary>
         EndDotSub,
     }
