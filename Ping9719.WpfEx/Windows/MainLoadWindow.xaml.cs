@@ -100,6 +100,11 @@ namespace Ping9719.WpfEx
             isUserClose = true;
             this.Close();
         }
+
+        private void Window_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            DragMove();
+        }
     }
 
     internal class MainLoadWindowViewModel : BindableBase

@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Ping9719.WpfEx"
         mc:Ignorable="d"
         xmlns:hc="https://handyorg.github.io/handycontrol"
-        Title="MainStartWindow" Height="200" Width="400" WindowStyle="None" BorderThickness="0" Background="{x:Null}" AllowsTransparency="True" WindowStartupLocation="CenterScreen"  Loaded="Window_Loaded" Opacity="0.8">
+        Title="MainStartWindow" Height="200" Width="400" WindowStyle="None" BorderThickness="0" Background="{x:Null}" AllowsTransparency="True" WindowStartupLocation="CenterScreen"  Loaded="Window_Loaded" Opacity="0.9" PreviewMouseLeftButtonDown="Window_PreviewMouseLeftButtonDown">
     <Border BorderBrush="Gray" Background="WhiteSmoke" CornerRadius="5" BorderThickness="1">
         <Grid>
             <Button Margin="-5,-1" Visibility="{Binding IsClose,Converter={StaticResource Boolean2VisibilityConverter}}" Style="{StaticResource ButtonIcon}" hc:IconElement.Geometry="{StaticResource CloseGeometry}" Click="but_close" HorizontalAlignment="Right" VerticalAlignment="Top"/>
