@@ -28,8 +28,8 @@
                         <Grid Margin="{TemplateBinding Padding}">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"></ColumnDefinition>
-                                <ColumnDefinition Width="82"></ColumnDefinition>
-                                <ColumnDefinition Width="82"></ColumnDefinition>
+                                <ColumnDefinition Width="85"></ColumnDefinition>
+                                <ColumnDefinition Width="85"></ColumnDefinition>
                                 <ColumnDefinition Width="auto"></ColumnDefinition>
                             </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
@@ -40,62 +40,73 @@
                             <!--上半部分-->
                             <!--标题-->
                             <TextBlock MaxHeight="60" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Margin="3,0" FontSize="{TemplateBinding FontSize}" ToolTip="{TemplateBinding Text}" hc:TextBlockAttach.AutoTooltip="True" TextWrapping="Wrap" TextTrimming="CharacterEllipsis" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{TemplateBinding Text}"></TextBlock>
-                            <Border Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Width="1" Height="auto" Margin="0,5" Padding="0" HorizontalAlignment="Right" Style="{StaticResource BorderRegion}"/>
+                            <hc:Divider Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Orientation="Vertical" Margin="0,5" Padding="0" HorizontalAlignment="Right"/>
                             <!--速度-->
+                            <!--<hc:Divider Grid.Row="0" Grid.Column="1" Margin="3,-8" Padding="0" Content="速度" HorizontalContentAlignment="Left"/>-->
                             <Grid Grid.Row="0" Grid.Column="1" Grid.RowSpan="1" Margin="0,1" HorizontalAlignment="Center" VerticalAlignment="Bottom">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*"></ColumnDefinition>
                                     <ColumnDefinition Width="auto"></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
                                 <Grid Grid.Column="0" Margin="3,0" x:Name="ms">
-                                    <TextBlock FontSize="{TemplateBinding FontSize}" ToolTip="手动模式速度，点击可切换" Text="手动模式" Visibility="{TemplateBinding IsVis1,Converter={StaticResource Boolean2VisibilityConverter}}"></TextBlock>
-                                    <TextBlock FontSize="{TemplateBinding FontSize}" ToolTip="自动模式速度，点击可切换" Text="自动模式" Visibility="{TemplateBinding IsVis1,Converter={StaticResource Boolean2VisibilityReConverter}}"></TextBlock>
+                                    <TextBlock FontSize="{TemplateBinding FontSize}" ToolTip="点击切换为自动速度" Text="手动速度" Visibility="{TemplateBinding IsVis1,Converter={StaticResource Boolean2VisibilityConverter}}"></TextBlock>
+                                    <TextBlock FontSize="{TemplateBinding FontSize}" ToolTip="点击切换为手动速度" Text="自动速度" Visibility="{TemplateBinding IsVis1,Converter={StaticResource Boolean2VisibilityReConverter}}"></TextBlock>
                                 </Grid>
                                 <Grid Grid.Column="1" x:Name="zd">
-                                    <Button Cursor="Hand" Style="{StaticResource ButtonIcon}" ToolTip="折叠，点击可展开" Margin="3,0" Padding="0" Width="auto" Height="auto" hc:IconElement.Width="10" hc:IconElement.Height="10" hc:IconElement.Geometry="{StaticResource DownGeometry}" Visibility="{TemplateBinding IsFold,Converter={StaticResource Boolean2VisibilityConverter}}"/>
-                                    <Button Cursor="Hand" Style="{StaticResource ButtonIcon}" ToolTip="展开，点击可折叠" Margin="3,0" Padding="0" Width="auto" Height="auto" hc:IconElement.Width="10" hc:IconElement.Height="10" hc:IconElement.Geometry="{StaticResource UpGeometry}" Visibility="{TemplateBinding IsFold,Converter={StaticResource Boolean2VisibilityReConverter}}"/>
+                                    <Button Cursor="Hand" Style="{StaticResource ButtonIcon}" ToolTip="折叠速度设置" Margin="3,0" Padding="0" Width="auto" Height="auto" hc:IconElement.Width="10" hc:IconElement.Height="10" hc:IconElement.Geometry="{StaticResource DownGeometry}" Visibility="{TemplateBinding IsFold,Converter={StaticResource Boolean2VisibilityConverter}}"/>
+                                    <Button Cursor="Hand" Style="{StaticResource ButtonIcon}" ToolTip="展开速度设置" Margin="3,0" Padding="0" Width="auto" Height="auto" hc:IconElement.Width="10" hc:IconElement.Height="10" hc:IconElement.Geometry="{StaticResource UpGeometry}" Visibility="{TemplateBinding IsFold,Converter={StaticResource Boolean2VisibilityReConverter}}"/>
                                 </Grid>
                             </Grid>
                             <!--速度-下-->
                             <Grid Grid.Row="1" Grid.Column="1" Grid.RowSpan="1" Margin="3,3">
-                                <TextBlock FontSize="{TemplateBinding FontSize}" hc:TextBlockAttach.AutoTooltip="True" TextWrapping="NoWrap" TextTrimming="CharacterEllipsis" HorizontalAlignment="Center" VerticalAlignment="Top" Text="{TemplateBinding Speed1}" Visibility="{TemplateBinding IsVis1,Converter={StaticResource Boolean2VisibilityConverter}}"></TextBlock>
-                                <TextBlock FontSize="{TemplateBinding FontSize}" hc:TextBlockAttach.AutoTooltip="True" TextWrapping="NoWrap" TextTrimming="CharacterEllipsis" HorizontalAlignment="Center" VerticalAlignment="Top" Text="{TemplateBinding Speed2}" Visibility="{TemplateBinding IsVis1,Converter={StaticResource Boolean2VisibilityReConverter}}"></TextBlock>
+                                <TextBlock FontSize="{TemplateBinding FontSize}" ToolTip="当前手动速度" hc:TextBlockAttach.AutoTooltip="True" TextWrapping="NoWrap" TextTrimming="CharacterEllipsis" HorizontalAlignment="Center" VerticalAlignment="Top" Text="{TemplateBinding Speed1}" Visibility="{TemplateBinding IsVis1,Converter={StaticResource Boolean2VisibilityConverter}}"></TextBlock>
+                                <TextBlock FontSize="{TemplateBinding FontSize}" ToolTip="当前自动速度" hc:TextBlockAttach.AutoTooltip="True" TextWrapping="NoWrap" TextTrimming="CharacterEllipsis" HorizontalAlignment="Center" VerticalAlignment="Top" Text="{TemplateBinding Speed2}" Visibility="{TemplateBinding IsVis1,Converter={StaticResource Boolean2VisibilityReConverter}}"></TextBlock>
                             </Grid>
-                            <Border Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" Width="1" Height="auto" Margin="0,5" Padding="0" HorizontalAlignment="Right" Style="{StaticResource BorderRegion}"/>
+                            <hc:Divider Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" Orientation="Vertical" Margin="0,5" Padding="0" HorizontalAlignment="Right"/>
                             <!--当前位置-->
-                            <TextBlock Grid.Row="0" Grid.Column="2" Grid.RowSpan="1" Margin="3,0" FontSize="{TemplateBinding FontSize}" hc:TextBlockAttach.AutoTooltip="True" TextWrapping="NoWrap" TextTrimming="CharacterEllipsis" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{TemplateBinding Location}"></TextBlock>
-                            <TextBox x:Name="textwz" Grid.Row="1" Grid.Column="2" Grid.RowSpan="1" Margin="3,0" Padding="3,0" Height="auto" VerticalAlignment="Center" Style="{StaticResource TextBoxExtend}" hc:InfoElement.Placeholder="移动到位置"></TextBox>
-                            <Border Grid.Row="0" Grid.Column="2" Grid.RowSpan="2" Width="1" Height="auto" Margin="0,5" Padding="0" HorizontalAlignment="Right" Style="{StaticResource BorderRegion}"/>
+                            <Border Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2" Width="auto" Height="auto" Margin="1" Padding="0" Style="{StaticResource BorderRegion}"></Border>
+                            <Border Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" Width="auto" Height="auto" Margin="1" Padding="0" Style="{StaticResource BorderRegion}"></Border>
+                            <!--<hc:Divider Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2" Margin="3,-8" Padding="0" Content="位置" HorizontalContentAlignment="Left"/>-->
+                            <TextBlock Grid.Row="0" Grid.Column="2" Grid.RowSpan="1" ToolTip="当前位置" Margin="3,0,3,0" FontSize="{TemplateBinding FontSize}" hc:TextBlockAttach.AutoTooltip="True" TextWrapping="NoWrap" TextTrimming="CharacterEllipsis" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{TemplateBinding Location}"></TextBlock>
+                            <TextBox x:Name="textwz" Grid.Row="1" Grid.Column="2" Grid.RowSpan="1" Margin="1,0,0,0" BorderThickness="0" Padding="3,0" Height="auto" VerticalAlignment="Center" Style="{StaticResource TextBoxExtend}" hc:InfoElement.Placeholder="移动到位置"></TextBox>
                             <!--设置位置-->
-                            <StackPanel Grid.Row="0" Grid.Column="3" Grid.RowSpan="1" Margin="3,1,1,1" Orientation="Horizontal">
-                                <Button x:Name="butyd1" ToolTip="位置点动加" Height="{Binding ActualHeight,ElementName=butyd}" Width="auto" Padding="10,0" Margin="0,0,0,0" hc:BorderElement.CornerRadius="4,0,0,4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" hc:IconElement.Width="7" hc:IconElement.Geometry="{StaticResource AddGeometry}"></Button>
+                            <StackPanel Grid.Row="0" Grid.Column="3" Grid.RowSpan="1" Margin="0,1,1,1" Orientation="Horizontal">
+                                <Button x:Name="butyd1" ToolTip="位置点动加" Height="{Binding ActualHeight,ElementName=butyd}" Width="auto" Padding="10,0" Margin="0,0,0,0" hc:BorderElement.CornerRadius="0,0,0,0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" hc:IconElement.Width="7" hc:IconElement.Geometry="{StaticResource AddGeometry}"></Button>
                                 <Button x:Name="butyd2" ToolTip="位置点动减" Height="auto" Width="auto" Padding="10,0" Margin="-1,0,0,0" hc:BorderElement.CornerRadius="0,4,4,0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" hc:IconElement.Width="7" hc:IconElement.Geometry="{StaticResource SubGeometry}"></Button>
                             </StackPanel>
-                            <Button x:Name="butyd" Grid.Row="1" Grid.Column="3" Grid.RowSpan="1" ToolTip="移动到指定位置" Height="auto" Width="auto" Margin="3,1,1,1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">移动</Button>
+                            <Button x:Name="butyd" Grid.Row="1" Grid.Column="3" Grid.RowSpan="1" ToolTip="移动到指定位置" Height="auto" Width="auto" Margin="0,1,1,1" hc:BorderElement.CornerRadius="0,4,4,0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">移动</Button>
+
+                            <Border Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2" Width="auto" Height="auto" Margin="1" Padding="0" Background="{x:Null}" Style="{StaticResource BorderRegion}"></Border>
+                            <Border Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" Width="auto" Height="auto" Margin="1" Padding="0" Background="{x:Null}" Style="{StaticResource BorderRegion}"></Border>
 
                             <!--下半部分-->
-                            <Border Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="4" Background="LightGoldenrodYellow" Width="auto" Height="70" Margin="-1,1,-1,-1" Padding="0" CornerRadius="0,0,4,4" Style="{StaticResource BorderRegion}" VerticalAlignment="Top" Visibility="{TemplateBinding IsFold,Converter={StaticResource Boolean2VisibilityReConverter}}">
+                            <Border Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="4" Width="auto" Height="auto" Margin="-1,1,-1,-1" Padding="0" CornerRadius="0,0,4,4" Style="{StaticResource BorderRegion}" VerticalAlignment="Top" Visibility="{TemplateBinding IsFold,Converter={StaticResource Boolean2VisibilityReConverter}}">
                                 <Grid Margin="0,1">
                                     <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto"></RowDefinition>
                                         <RowDefinition Height="auto"></RowDefinition>
                                         <RowDefinition Height="auto"></RowDefinition>
                                     </Grid.RowDefinitions>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="*"></ColumnDefinition>
-                                        <ColumnDefinition Width="82"></ColumnDefinition>
-                                        <ColumnDefinition Width="82"></ColumnDefinition>
+                                        <ColumnDefinition Width="85"></ColumnDefinition>
+                                        <ColumnDefinition Width="85"></ColumnDefinition>
                                         <ColumnDefinition Width="auto"></ColumnDefinition>
                                     </Grid.ColumnDefinitions>
+                                    <!--<hc:Divider Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" Margin="2,-3" Padding="0" Content="速度设置：" HorizontalContentAlignment="Left"/>-->
                                     <!--手动模式-->
-                                    <TextBlock Grid.Column="0" Margin="3,0" FontSize="{TemplateBinding FontSize}" ToolTip="{TemplateBinding Text}" hc:TextBlockAttach.AutoTooltip="True" TextWrapping="NoWrap" TextTrimming="CharacterEllipsis" HorizontalAlignment="Center" VerticalAlignment="Center" Text="手动模式"></TextBlock>
-                                    <TextBlock Grid.Column="1" Margin="3,0" FontSize="{TemplateBinding FontSize}" ToolTip="{TemplateBinding Text}" hc:TextBlockAttach.AutoTooltip="True" TextWrapping="NoWrap" TextTrimming="CharacterEllipsis" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{TemplateBinding Speed1}"></TextBlock>
-                                    <TextBox x:Name="text1" ToolTip="当前手动模式速度" Background="LightGoldenrodYellow" Grid.Column="2" Margin="3,0" Padding="1,0" Height="auto" VerticalAlignment="Center" Style="{StaticResource TextBoxExtend}" hc:InfoElement.Placeholder="设置速度"></TextBox>
-                                    <Button x:Name="butsd1" ToolTip="设置当前手动模式速度" Background="LightGoldenrodYellow" Grid.Column="3" Height="auto" Width="{Binding ActualWidth,ElementName=butyd}" Margin="3,1,1,1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">设置</Button>
+                                    <TextBlock Grid.Row="1" Grid.Column="0" Margin="3,0" FontSize="{TemplateBinding FontSize}" ToolTip="{TemplateBinding Text}" hc:TextBlockAttach.AutoTooltip="True" TextWrapping="NoWrap" TextTrimming="CharacterEllipsis" HorizontalAlignment="Center" VerticalAlignment="Center" Text="手动速度"></TextBlock>
+                                    <TextBlock Grid.Row="1" Grid.Column="1" Margin="3,0" FontSize="{TemplateBinding FontSize}" ToolTip="当前设置的手动速度" hc:TextBlockAttach.AutoTooltip="True" TextWrapping="NoWrap" TextTrimming="CharacterEllipsis" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{TemplateBinding Speed1}"></TextBlock>
+                                    <TextBox x:Name="text1" Grid.Row="1" ToolTip="当前手动模式速度" Grid.Column="2" Margin="3,0" Padding="1,0" Height="auto" VerticalAlignment="Center" Style="{StaticResource TextBoxExtend}" BorderThickness="0" hc:InfoElement.Placeholder="设置手动速度"></TextBox>
+                                    <Button x:Name="butsd1" Grid.Row="1" ToolTip="设置当前手动模式速度" Grid.Column="3" Height="auto" hc:BorderElement.CornerRadius="0,4,4,0" Width="{Binding ActualWidth,ElementName=butyd}" Margin="3,1,1,1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">设置</Button>
                                     <!--自动模式-->
-                                    <TextBlock Grid.Row="1" Grid.Column="0" Margin="3,0" FontSize="{TemplateBinding FontSize}" ToolTip="{TemplateBinding Text}" hc:TextBlockAttach.AutoTooltip="True" TextWrapping="NoWrap" TextTrimming="CharacterEllipsis" HorizontalAlignment="Center" VerticalAlignment="Center" Text="自动模式"></TextBlock>
-                                    <TextBlock Grid.Row="1" Grid.Column="1" Margin="3,0" FontSize="{TemplateBinding FontSize}" ToolTip="{TemplateBinding Text}" hc:TextBlockAttach.AutoTooltip="True" TextWrapping="NoWrap" TextTrimming="CharacterEllipsis" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{TemplateBinding Speed2}"></TextBlock>
-                                    <TextBox x:Name="text2" Grid.Row="1" ToolTip="当前自动模式速度" Background="LightGoldenrodYellow" Grid.Column="2" Margin="3,0" Padding="1,0" Height="auto" VerticalAlignment="Center" Style="{StaticResource TextBoxExtend}" hc:InfoElement.Placeholder="设置速度"></TextBox>
-                                    <Button x:Name="butsd2" Grid.Row="1" ToolTip="设置当前自动模式速度" Background="LightGoldenrodYellow" Grid.Column="3" Height="auto" Width="{Binding ActualWidth,ElementName=butyd}" Margin="3,1,1,1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">设置</Button>
+                                    <TextBlock Grid.Row="2" Grid.Column="0" Margin="3,0" FontSize="{TemplateBinding FontSize}" ToolTip="{TemplateBinding Text}" hc:TextBlockAttach.AutoTooltip="True" TextWrapping="NoWrap" TextTrimming="CharacterEllipsis" HorizontalAlignment="Center" VerticalAlignment="Center" Text="自动速度"></TextBlock>
+                                    <TextBlock Grid.Row="2" Grid.Column="1" Margin="3,0" FontSize="{TemplateBinding FontSize}" ToolTip="当前设置的自动速度" hc:TextBlockAttach.AutoTooltip="True" TextWrapping="NoWrap" TextTrimming="CharacterEllipsis" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{TemplateBinding Speed2}"></TextBlock>
+                                    <TextBox x:Name="text2" Grid.Row="2" ToolTip="当前自动模式速度" Grid.Column="2" Margin="3,0" Padding="1,0" Height="auto" VerticalAlignment="Center" Style="{StaticResource TextBoxExtend}" BorderThickness="0" hc:InfoElement.Placeholder="设置自动速度"></TextBox>
+                                    <Button x:Name="butsd2" Grid.Row="2" ToolTip="设置当前自动模式速度" Grid.Column="3" Height="auto" hc:BorderElement.CornerRadius="0,4,4,0" Width="{Binding ActualWidth,ElementName=butyd}" Margin="3,1,1,1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">设置</Button>
+                                    <!--边框-->
+                                    <Border Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" Width="auto" Height="auto" Margin="3,1,1,1" Padding="0" Background="{x:Null}" Style="{StaticResource BorderRegion}"></Border>
+                                    <Border Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2" Width="auto" Height="auto" Margin="3,1,1,1" Padding="0" Background="{x:Null}" Style="{StaticResource BorderRegion}"></Border>
                                 </Grid>
                             </Border>
                         </Grid>
