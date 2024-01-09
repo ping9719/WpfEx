@@ -20,7 +20,7 @@ namespace Ping9719.WpfEx
         /// </summary>
         public TextBoxScanner() : base()
         {
-            this.IsVisibleChanged += TextBoxScanner_IsVisibleChanged; ;
+            this.IsVisibleChanged += TextBoxScanner_IsVisibleChanged;
             this.TextChanged += TextBoxScanner_TextChanged;
         }
 
