@@ -9,13 +9,10 @@
     <Grid>
         <TabControl Margin="10">
             <TabItem Header="选项卡1">
-                <pi:TextBoxLog Margin="5" Style="{StaticResource TextBoxExtend.Multi}"></pi:TextBoxLog>
+
             </TabItem>
             <TabItem Header="选项卡2">
-                <StackPanel Width="200">
-                    <TextBox Style="{StaticResource TextBoxExtend}"></TextBox>
-                    <pi:TextBoxScanner Style="{StaticResource TextBoxBaseStyle}" IsAutoFocus="True" AutoClear="Clear"  TextScannerChanged="textc"></pi:TextBoxScanner>
-                </StackPanel>
+
             </TabItem>
         </TabControl>
 

@@ -61,6 +61,11 @@ namespace Ping9719.WpfEx
                 //关闭窗体释放
                 this.Loaded += (_, _) =>
                 {
+                    if (AutoScrollToEnd)
+                    {
+                        ScrollToEnd();
+                    }
+
                     if (!IsLoadedFirst)
                     {
                         try
