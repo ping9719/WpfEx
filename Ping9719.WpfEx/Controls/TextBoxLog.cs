@@ -33,6 +33,7 @@ namespace Ping9719.WpfEx
 
             if (this != null)
             {
+                //大小改变置底
                 this.SizeChanged += (sender, e) =>
                 {
                     if (sender is TextBox textBox)
@@ -51,6 +52,13 @@ namespace Ping9719.WpfEx
                     }
                 };
 
+                //文本改变置底
+                this.TextChanged += (_, _) =>
+                {
+                    ScrollToEnd2();
+                };
+
+                //关闭窗体释放
                 this.Loaded += (_, _) =>
                 {
                     if (!IsLoadedFirst)
@@ -99,7 +107,7 @@ namespace Ping9719.WpfEx
             DependencyProperty.Register("MaxLineNum", typeof(int), typeof(TextBoxLog), new PropertyMetadata(600));
 
         /// <summary>
-        /// 满足了清除条件时，是否清空所有文本（如出现自动清除时出现置顶的问题，将此设为true可解决）。默认false
+        /// 满足了清除条件时，是否清空所有文本。默认false
         /// </summary>
         public bool MaxLineNumClearAll
         {
@@ -212,8 +220,8 @@ namespace Ping9719.WpfEx
                 {
                     info.Token = tbl.TokenVal;
                     info.TimeFormat = tbl.TimeFormat;
+                    tbl.BeginChange();
                     tbl.AppendText($"{(string.IsNullOrEmpty(tbl.Text) ? "" : Environment.NewLine)}{info.ToString()}");
-                    tbl.ScrollToEnd2();
 
                     //清理
                     if (tbl.LineCount > tbl.MaxLineNum * 1.5)
@@ -239,10 +247,10 @@ namespace Ping9719.WpfEx
                             }
                         }
                     }
+                    tbl.EndChange();
 
                     TextBoxLogAdd?.BeginInvoke(info, null, null);
                 });
-
             }
             catch (Exception ex)
             {
