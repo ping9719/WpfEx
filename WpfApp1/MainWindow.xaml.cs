@@ -37,7 +37,17 @@ namespace WpfApp1
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            Task.Run(() => 
+            {
+                int i = 1;
+                while (true)
+                {
+                    TextBoxLog.AddLog(i.ToString());
+                    i++;
+                    System.Threading.Thread.Sleep(1);
+                }
 
+            });
         }
 
         private void textc(object sender, RoutedEventArgs e)
