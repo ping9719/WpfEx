@@ -243,6 +243,7 @@ namespace Ping9719.WpfEx
 
                                 info.AddErr = ex;
                                 TextBoxLogAdd?.BeginInvoke(info, null, null);
+                                tbl.EndChange();
                                 return;
                             }
                         }
