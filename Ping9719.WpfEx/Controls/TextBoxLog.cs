@@ -339,13 +339,17 @@ namespace Ping9719.WpfEx
     public class TextBoxLogInfo
     {
         /// <summary>
+        /// 文本信息
+        /// </summary>
+        public string Text { get; set; }
+        /// <summary>
         /// 时间
         /// </summary>
         public DateTime Time { get; set; }
         /// <summary>
-        /// 时间格式字符串
+        /// 自定义的信息
         /// </summary>
-        public string TimeFormat { get; set; }
+        public object Tag { get; set; }
         /// <summary>
         /// 标识token
         /// </summary>
@@ -355,17 +359,13 @@ namespace Ping9719.WpfEx
         /// </summary>
         public bool IsSeekToken { get; set; }
         /// <summary>
-        /// 寻找到的token
+        /// 找寻到的组件的token
         /// </summary>
         public string SeekToken { get; set; }
         /// <summary>
-        /// 文本信息
+        /// 找寻到的组件的时间格式字符串
         /// </summary>
-        public string Text { get; set; }
-        /// <summary>
-        /// 自定义的信息
-        /// </summary>
-        public object Tag { get; set; }
+        public string TimeFormat { get; set; }
         /// <summary>
         /// 添加到页面时的错误
         /// </summary>
