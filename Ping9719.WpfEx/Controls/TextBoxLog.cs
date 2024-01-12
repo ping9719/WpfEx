@@ -191,26 +191,32 @@ namespace Ping9719.WpfEx
         /// <summary>
         /// 追加日志信息
         /// </summary>
-        /// <param name="text"></param>
-        /// <param name="token"></param>
-        public static void AddLog(string text, string token)
+        public static void AddLog(string text, DateTime time)
         {
-            AddLog(text, token, null);
+            AddLog(text, "", time, null);
         }
 
         /// <summary>
         /// 追加日志信息
         /// </summary>
-        /// <param name="text"></param>
-        /// <param name="time"></param>
-        /// <param name="token"></param>
-        public static void AddLog(string text, string token = "", DateTime? time = null)
+        public static void AddLog(string text, string token)
+        {
+            AddLog(text, token, null, null);
+        }
+
+        /// <summary>
+        /// 追加日志信息
+        /// </summary>
+        public static void AddLog(string text, string token = "", DateTime? time = null, object tag = null)
         {
             TextBoxLog tbl = GetTextBoxLog(token);
             TextBoxLogInfo info = new TextBoxLogInfo()
             {
+                Token = token,
+                IsSeekToken = tbl != null,
                 Time = time.HasValue ? time.Value : DateTime.Now,
                 Text = text,
+                Tag = tag,
             };
 
             if (tbl == null)
@@ -223,7 +229,7 @@ namespace Ping9719.WpfEx
             {
                 tbl?.Dispatcher?.Invoke(() =>
                 {
-                    info.Token = tbl.TokenVal;
+                    info.SeekToken = tbl.TokenVal;
                     info.TimeFormat = tbl.TimeFormat;
                     tbl.BeginChange();
                     tbl.AppendText($"{(string.IsNullOrEmpty(tbl.Text) ? "" : Environment.NewLine)}{info.ToString()}");
@@ -345,9 +351,21 @@ namespace Ping9719.WpfEx
         /// </summary>
         public string Token { get; set; }
         /// <summary>
+        /// 是否寻找到此Token关联的组件
+        /// </summary>
+        public bool IsSeekToken { get; set; }
+        /// <summary>
+        /// 寻找到的token
+        /// </summary>
+        public string SeekToken { get; set; }
+        /// <summary>
         /// 文本信息
         /// </summary>
         public string Text { get; set; }
+        /// <summary>
+        /// 自定义的信息
+        /// </summary>
+        public object Tag { get; set; }
         /// <summary>
         /// 添加到页面时的错误
         /// </summary>
