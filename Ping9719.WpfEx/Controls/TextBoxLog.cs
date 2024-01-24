@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using System.Timers;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Threading;
 using static System.Net.Mime.MediaTypeNames;
 
 namespace Ping9719.WpfEx
@@ -34,6 +35,7 @@ namespace Ping9719.WpfEx
         public TextBoxLog() : base()
         {
             this.IsReadOnly = true;
+            this.IsReadOnlyCaretVisible = true;
             TextBoxLogAll.Add(this);
 
             if (this != null)
@@ -60,7 +62,7 @@ namespace Ping9719.WpfEx
                 //加载控件
                 this.Loaded += (_, _) =>
                 {
-                    if (AutoScrollToEnd)
+                    if (AutoScroll)
                         ScrollToEnd();
 
                     if (!IsLoadedFirst)
@@ -100,46 +102,56 @@ namespace Ping9719.WpfEx
 
                                     if (queue.IsEmpty || (DateTime.Now - dt).TotalMilliseconds > 20)
                                     {
-                                        this?.Dispatcher?.Invoke(() =>
+                                        try
                                         {
-                                            BeginChange();
-
-                                            if (AddTextClearSelection)
-                                                SelectionLength = 0;
-                                            var onestr = (string.IsNullOrEmpty(Text) ? string.Empty : Environment.NewLine);
-                                            bool isScroll = AutoScrollToEnd && (LineCount - GetLastVisibleLineIndex()) < 5;
-                                            AppendText(onestr);
-                                            AppendText(stringb.ToString());
-                                            stringb.Clear();
-
-                                            //清理
-                                            if (LineCount >= MaxLineNumVal)
+                                            this?.Dispatcher?.Invoke(() =>
                                             {
-                                                if (MaxLineNumClearAll)
+                                                BeginChange();
+
+                                                if (AddTextClearSelection)
+                                                    SelectionLength = 0;
+                                                var onestr = (string.IsNullOrEmpty(Text) ? string.Empty : Environment.NewLine);
+                                                bool isScroll = AutoScroll && (LineCount - GetLastVisibleLineIndex()) < 5;
+                                                stringb.Insert(0, onestr);
+                                                AppendText(stringb.ToString());
+                                                stringb.Clear();
+
+                                                //清理
+                                                if (LineCount >= MaxLineNumVal)
                                                 {
-                                                    base.Clear();
-                                                }
-                                                else
-                                                {
-                                                    try
+                                                    if (MaxLineNumClearAll)
                                                     {
-                                                        var num = GetCharacterIndexFromLineIndex(MaxLineNum / 4);
-                                                        if (num > 0 && num < Text.Length)
-                                                            Text = Text.Substring(num);
+                                                        base.Clear();
                                                     }
-                                                    catch (Exception)
+                                                    else
                                                     {
+                                                        try
+                                                        {
+                                                            var num = GetCharacterIndexFromLineIndex(MaxLineNum / 4);
+                                                            if (num > 0 && num < Text.Length)
+                                                                Text = Text.Substring(num);
+                                                        }
+                                                        catch (Exception)
+                                                        {
 
+                                                        }
                                                     }
                                                 }
-                                            }
 
-                                            if (isScroll)
-                                                ScrollToEnd();
+                                                if (isScroll)
+                                                    ScrollToEnd();
 
-                                            EndChange();
-                                        });
+                                                EndChange();
+                                            }, DispatcherPriority.Background);
+                                        }
+                                        catch (Exception)
+                                        {
 
+                                        }
+                                        finally
+                                        {
+                                            stringb.Clear();
+                                        }
                                         break;
                                     }
                                 }
@@ -151,7 +163,6 @@ namespace Ping9719.WpfEx
                 };
             }
         }
-
 
         /// <summary>
         /// 最大行数
@@ -219,18 +230,18 @@ namespace Ping9719.WpfEx
         public static readonly DependencyProperty MaxLineNumClearAllProperty =
             DependencyProperty.Register("MaxLineNumClearAll", typeof(bool), typeof(TextBoxLog), new PropertyMetadata(false));
 
-
         /// <summary>
         /// 是否自动滚动。默认true
         /// </summary>
-        public bool AutoScrollToEnd
+        public bool AutoScroll
         {
-            get { return (bool)GetValue(AutoScrollToEndProperty); }
-            set { SetValue(AutoScrollToEndProperty, value); }
+            get { return (bool)GetValue(AutoScrollProperty); }
+            set { SetValue(AutoScrollProperty, value); }
         }
 
-        public static readonly DependencyProperty AutoScrollToEndProperty =
-            DependencyProperty.Register("AutoScrollToEnd", typeof(bool), typeof(TextBoxLog), new PropertyMetadata(true));
+        public static readonly DependencyProperty AutoScrollProperty =
+            DependencyProperty.Register("AutoScroll", typeof(bool), typeof(TextBoxLog), new PropertyMetadata(true));
+
 
         /// <summary>
         /// 添加文本时，清空用户的选择。对性能有影响提升。（默认false）
@@ -260,7 +271,7 @@ namespace Ping9719.WpfEx
         }
 
         public static readonly DependencyProperty TokenProperty =
-            DependencyProperty.Register("Token", typeof(string), typeof(TextBoxLog), new PropertyMetadata("", OnTokenChanged));
+            DependencyProperty.Register("Token", typeof(string), typeof(TextBoxLog), new PropertyMetadata(string.Empty, OnTokenChanged));
 
         private static void OnTokenChanged(DependencyObject o, DependencyPropertyChangedEventArgs e)
         {
@@ -288,7 +299,7 @@ namespace Ping9719.WpfEx
 
         private void ScrollToEnd2()
         {
-            if (AutoScrollToEnd && (LineCount - GetLastVisibleLineIndex()) < 5)
+            if (AutoScroll && (LineCount - GetLastVisibleLineIndex()) < 5)
                 ScrollToEnd();
         }
 
@@ -336,12 +347,13 @@ namespace Ping9719.WpfEx
             if (texts == null)
                 return;
 
+            var dt = time.HasValue ? time.Value : DateTime.Now;
             foreach (var text in texts)
             {
                 TextBoxLogInfo info = new TextBoxLogInfo()
                 {
                     Text = text,
-                    Time = time.HasValue ? time.Value : DateTime.Now,
+                    Time = dt,
                     Tag = tag,
                     Token = token,
                     IsSeekToken = tbl != null,
