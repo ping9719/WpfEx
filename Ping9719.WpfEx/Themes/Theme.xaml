@@ -28,6 +28,8 @@
     </ResourceDictionary.MergedDictionaries>
 
     <!--转换器-->
+    <local:Boolean2VisibilityHiddenConverter x:Key="Boolean2VisibilityHiddenConverter"></local:Boolean2VisibilityHiddenConverter>
+    <local:Boolean2VisibilityHiddenReConverter x:Key="Boolean2VisibilityHiddenReConverter"></local:Boolean2VisibilityHiddenReConverter>
     <local:Enum2BoolConverter x:Key="Enum2BoolConverter"></local:Enum2BoolConverter>
     <local:Enum2IntConverter x:Key="Enum2IntConverter"></local:Enum2IntConverter>
     <local:Enum2StrConverter x:Key="Enum2StrConverter"></local:Enum2StrConverter>

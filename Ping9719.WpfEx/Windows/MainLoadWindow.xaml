@@ -6,11 +6,24 @@
         xmlns:local="clr-namespace:Ping9719.WpfEx"
         mc:Ignorable="d"
         xmlns:hc="https://handyorg.github.io/handycontrol"
-        Title="MainStartWindow" Height="200" Width="400" WindowStyle="None" BorderThickness="0" Background="{x:Null}" AllowsTransparency="True" WindowStartupLocation="CenterScreen"  Loaded="Window_Loaded" Opacity="0.9" PreviewMouseLeftButtonDown="Window_PreviewMouseLeftButtonDown">
+        Title="MainStartWindow" Height="200" Width="400" WindowStyle="None" BorderThickness="0" Background="{x:Null}" AllowsTransparency="True" WindowStartupLocation="CenterScreen"  Loaded="Window_Loaded" Opacity="0.9">
     <Border BorderBrush="Gray" Background="WhiteSmoke" CornerRadius="5" BorderThickness="1">
         <Grid>
-            <Button Margin="-5,-1" Visibility="{Binding IsClose,Converter={StaticResource Boolean2VisibilityConverter}}" Style="{StaticResource ButtonIcon}" hc:IconElement.Geometry="{StaticResource CloseGeometry}" Click="but_close" HorizontalAlignment="Right" VerticalAlignment="Top"/>
-            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid VerticalAlignment="Top">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="auto"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid PreviewMouseLeftButtonDown="previewMouseLeftButtonDown" Background="Transparent">
+
+                </Grid>
+                <Button Grid.Column="1" Margin="-5,-1" Width="35" Visibility="{Binding IsClose,Converter={StaticResource Boolean2VisibilityHiddenConverter}}" Style="{StaticResource ButtonIcon}" hc:IconElement.Geometry="{StaticResource CloseGeometry}" Click="but_close" HorizontalAlignment="Right" VerticalAlignment="Top"/>
+            </Grid>
+            <StackPanel Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center">
                 <hc:CircleProgressBar Visibility="{Binding IsVisLoad,Converter={StaticResource Boolean2VisibilityConverter}}" Width="68" Height="68" IsIndeterminate="True" Background="Transparent"/>
                 <TextBlock Text="{Binding Txt, FallbackValue=加载中...}" HorizontalAlignment="Center" Margin="0,5,0,0" TextWrapping="Wrap"  MouseLeftButtonDown="TextBlock_MouseLeftButtonDown" />
             </StackPanel>

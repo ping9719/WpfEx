@@ -101,7 +101,7 @@ namespace Ping9719.WpfEx
             this.Close();
         }
 
-        private void Window_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private void previewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             DragMove();
         }
