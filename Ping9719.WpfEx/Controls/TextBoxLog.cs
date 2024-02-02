@@ -165,7 +165,7 @@ namespace Ping9719.WpfEx
         }
 
         /// <summary>
-        /// 最大行数
+        /// 格式时间字符串。
         /// </summary>
         public string TimeFormatVal { get; private set; } = "HH:mm:ss.fff=>";
 
