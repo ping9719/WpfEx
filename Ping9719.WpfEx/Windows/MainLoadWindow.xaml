@@ -21,7 +21,7 @@
                 <Grid PreviewMouseLeftButtonDown="previewMouseLeftButtonDown" Background="Transparent">
 
                 </Grid>
-                <Button Grid.Column="1" Margin="-5,-1" Width="35" Visibility="{Binding IsClose,Converter={StaticResource Boolean2VisibilityHiddenConverter}}" Style="{StaticResource ButtonIcon}" hc:IconElement.Geometry="{StaticResource CloseGeometry}" Click="but_close" HorizontalAlignment="Right" VerticalAlignment="Top"/>
+                <Button Grid.Column="1" Visibility="{Binding IsClose,Converter={StaticResource Boolean2VisibilityHiddenConverter}}" Style="{StaticResource ButtonIcon}" hc:IconElement.Geometry="{StaticResource CloseGeometry}" Click="but_close"/>
             </Grid>
             <StackPanel Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center">
                 <hc:CircleProgressBar Visibility="{Binding IsVisLoad,Converter={StaticResource Boolean2VisibilityConverter}}" Width="68" Height="68" IsIndeterminate="True" Background="Transparent"/>
