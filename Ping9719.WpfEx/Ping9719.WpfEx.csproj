@@ -3,7 +3,7 @@
 	<PropertyGroup>
 		<TargetFrameworks>net462;net6.0-windows</TargetFrameworks>
 		<UseWPF>true</UseWPF>
-		<Version>0.6.7</Version>
+		<Version>0.7.0</Version>
 		<LangVersion>latest</LangVersion>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
@@ -32,6 +32,6 @@ https://github.com/ping9719/WpfEx
 
 
 	<ItemGroup>
-		<PackageReference Include="HandyControl" Version="3.4.0" />
+		<PackageReference Include="HandyControl" Version="3.5.0" />
 	</ItemGroup>
 </Project>
