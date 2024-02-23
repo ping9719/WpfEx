@@ -34,9 +34,10 @@
                                 <ColumnDefinition Width="auto"></ColumnDefinition>
                                 <ColumnDefinition Width="auto"></ColumnDefinition>
                             </Grid.ColumnDefinitions>
-                            <TextBlock Grid.Column="0" x:Name="tx1" FontSize="{TemplateBinding FontSize}" ToolTip="{TemplateBinding Header}" hc:TextBlockAttach.AutoTooltip="True" TextWrapping="NoWrap" TextTrimming="CharacterEllipsis"  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Text="{TemplateBinding Header}"></TextBlock>
-                            <TextBlock Grid.Column="1" x:Name="tx2" Margin="3,0,0,0" FontSize="{TemplateBinding FontSize}" TextWrapping="NoWrap" TextTrimming="CharacterEllipsis"  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Text="{TemplateBinding ValueStr}"></TextBlock>
-                            <TextBlock Grid.Column="2" x:Name="tx3" Margin="3,0,0,0" FontSize="{TemplateBinding FontSize}" TextWrapping="NoWrap" TextTrimming="CharacterEllipsis"  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Text="{TemplateBinding Postfix}" Opacity="0.6"></TextBlock>
+                            <TextBlock Grid.Column="0" x:Name="tx1" FontSize="{TemplateBinding FontSize}" ToolTip="{TemplateBinding Header}" hc:TextBlockAttach.AutoTooltip="True" TextWrapping="NoWrap" TextTrimming="CharacterEllipsis"  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Text="{TemplateBinding Header}" FontWeight="{TemplateBinding HeaderFontWeight}"></TextBlock>
+                            
+                            <TextBlock Grid.Column="1" x:Name="tx2" Margin="3,0,0,0" FontSize="{TemplateBinding FontSize}" TextWrapping="NoWrap" TextTrimming="CharacterEllipsis"  HorizontalAlignment="Center" VerticalAlignment="Center" Text="{TemplateBinding ValueStr}"></TextBlock>
+                            <TextBlock Grid.Column="2" x:Name="tx3" Margin="3,0,0,0" FontSize="{TemplateBinding FontSize}" TextWrapping="NoWrap" TextTrimming="CharacterEllipsis"  HorizontalAlignment="Center" VerticalAlignment="Center" Text="{TemplateBinding Postfix}" Opacity="0.6"></TextBlock>
 
                             <ToggleButton Grid.Column="1" x:Name="tb1" Width="{TemplateBinding InteriorHeight}" Height="auto" Margin="0,2" BorderThickness="0" IsChecked="{TemplateBinding ValueBool}" Style="{StaticResource ToggleButtonFlip}">
                                 <hc:StatusSwitchElement.CheckedElement>
@@ -59,6 +60,12 @@
                             <Setter TargetName="tx3" Property="Visibility" Value="Visible"/>
                             <Setter TargetName="tb1" Property="Visibility" Value="Collapsed"/>
                             <Setter TargetName="bo1" Property="Visibility" Value="Collapsed"/>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Opacity" Value="0.9"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Opacity" Value="0.6"/>
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="False">
                             <Setter Property="Opacity" Value="0.4"/>

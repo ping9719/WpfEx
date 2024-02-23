@@ -9,14 +9,12 @@
     <Grid>
         <TabControl Margin="10">
             <TabItem Header="选项卡1">
-
+                <pi:IotStateInfo Header="阿是aaa" Value="true" Postfix="mA"></pi:IotStateInfo>
             </TabItem>
-            <TabItem Header="选项卡2">
+            <TabItem Header="选项卡2" >
 
             </TabItem>
         </TabControl>
-
-
 
     </Grid>
 </Window>

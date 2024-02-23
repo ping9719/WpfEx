@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -17,9 +18,9 @@ using System.Windows.Shapes;
 namespace Ping9719.WpfEx
 {
     /// <summary>
-    /// 工业控件：监听
+    /// 工业控件：状态信息
     /// </summary>
-    public class IotStateInfo : Control
+    public class IotStateInfo : ButtonBase
     {
         static IotStateInfo()
         {
@@ -37,6 +38,18 @@ namespace Ping9719.WpfEx
 
         public static readonly DependencyProperty HeaderProperty =
             DependencyProperty.Register("Header", typeof(string), typeof(IotStateInfo), new PropertyMetadata("xxx"));
+
+        /// <summary>
+        /// 标题字体粗细
+        /// </summary>
+        public FontWeight HeaderFontWeight
+        {
+            get { return (FontWeight)GetValue(HeaderFontWeightProperty); }
+            set { SetValue(HeaderFontWeightProperty, value); }
+        }
+
+        public static readonly DependencyProperty HeaderFontWeightProperty =
+            DependencyProperty.Register("HeaderFontWeight", typeof(FontWeight), typeof(IotStateInfo));
 
         /// <summary>
         /// 后缀文本

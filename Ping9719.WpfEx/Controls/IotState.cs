@@ -18,7 +18,7 @@ using System.Windows.Shapes;
 namespace Ping9719.WpfEx
 {
     /// <summary>
-    /// 工业控件：传感器状态
+    /// 工业控件：状态
     /// </summary>
     [ToolboxItem(true)]
     public class IotState : ButtonBase
