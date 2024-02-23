@@ -91,13 +91,13 @@ namespace Ping9719.WpfEx
         /// <summary>
         /// 是否bool类型
         /// </summary>
-        internal bool IsBool
+        public bool IsBool
         {
             get { return (bool)GetValue(IsBoolProperty); }
-            set { SetValue(IsBoolProperty, value); }
+            internal set { SetValue(IsBoolProperty, value); }
         }
 
-        internal static readonly DependencyProperty IsBoolProperty =
+        public static readonly DependencyProperty IsBoolProperty =
             DependencyProperty.Register("IsBool", typeof(bool), typeof(IotStateInfo), new PropertyMetadata(false));
 
         /// <summary>
