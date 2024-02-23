@@ -79,8 +79,8 @@
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate TargetType="{x:Type TabItem}">
-                                <Border x:Name="templateRoot" Margin="0" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{DynamicResource BorderBrush}" CornerRadius="{TemplateBinding hc:BorderElement.CornerRadius}" Background="{Binding Background,RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type TabControl}}}" SnapsToDevicePixels="True">
-                                    <ContentPresenter x:Name="contentPresenter" ContentTemplate="{TemplateBinding HeaderTemplate}" Content="{TemplateBinding Header}" ContentStringFormat="{TemplateBinding HeaderStringFormat}" ContentSource="Header" TextElement.Foreground="{DynamicResource PrimaryTextBrush}" Focusable="False" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                <Border x:Name="templateRoot" Margin="3" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{DynamicResource BorderBrush}" CornerRadius="{TemplateBinding hc:BorderElement.CornerRadius}" Background="{Binding Background,RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type TabControl}}}" SnapsToDevicePixels="True">
+                                    <ContentPresenter x:Name="contentPresenter" ContentTemplate="{TemplateBinding HeaderTemplate}" Content="{TemplateBinding Header}" ContentStringFormat="{TemplateBinding HeaderStringFormat}" ContentSource="Header" TextElement.Foreground="{DynamicResource PrimaryTextBrush}" Focusable="False" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="Center" HorizontalAlignment="Left"/>
                                 </Border>
                                 <ControlTemplate.Triggers>
                                     <MultiTrigger>
