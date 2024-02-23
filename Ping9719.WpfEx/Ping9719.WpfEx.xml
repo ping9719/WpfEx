@@ -229,22 +229,22 @@
             自定义数据
             </summary>
         </member>
-        <member name="T:Ping9719.WpfEx.IotListener">
+        <member name="T:Ping9719.WpfEx.IotStateInfo">
             <summary>
             工业控件：监听
             </summary>
         </member>
-        <member name="P:Ping9719.WpfEx.IotListener.Header">
+        <member name="P:Ping9719.WpfEx.IotStateInfo.Header">
             <summary>
             标题
             </summary>
         </member>
-        <member name="P:Ping9719.WpfEx.IotListener.ValueStr">
+        <member name="P:Ping9719.WpfEx.IotStateInfo.ValueStr">
             <summary>
             值，字符串
             </summary>
         </member>
-        <member name="P:Ping9719.WpfEx.IotListener.Value">
+        <member name="P:Ping9719.WpfEx.IotStateInfo.Value">
             <summary>
             值
             </summary>
