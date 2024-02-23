@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Ping9719.WpfEx.Mvvm;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -74,7 +75,7 @@ namespace Ping9719.WpfEx
                 else if (double.TryParse(textwz.Text, out double re))
                     this.RaiseEvent(new RoutedEventArgs(LocationChangeEvent, re));
                 else
-                    textwz.Text = "错误格式";
+                    textwz.Text = "无效的值";
             };
 
             butsd1.Click += (s, e) =>
@@ -88,7 +89,7 @@ namespace Ping9719.WpfEx
                         Speed = re,
                     }));
                 else
-                    text1.Text = "错误格式";
+                    text1.Text = "无效的值";
             };
             butsd2.Click += (s, e) =>
             {
@@ -101,7 +102,7 @@ namespace Ping9719.WpfEx
                         Speed = re,
                     }));
                 else
-                    text2.Text = "错误格式";
+                    text2.Text = "无效的值";
             };
         }
 
@@ -207,5 +208,31 @@ namespace Ping9719.WpfEx
 
         public static readonly RoutedEvent SpeedChangeEvent =
             EventManager.RegisterRoutedEvent("SpeedChangeEvent", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(IotServoMode));
+    }
+
+    /// <summary>
+    /// 伺服模式速度
+    /// </summary>
+    public class ServoSpeed : BindableBase
+    {
+        private string name;
+        /// <summary>
+        /// 模式名称
+        /// </summary>
+        public string Name
+        {
+            get { return name; }
+            set { SetProperty(ref name, value); }
+        }
+
+        private double speed;
+        /// <summary>
+        /// 当前速度
+        /// </summary>
+        public double Speed
+        {
+            get { return speed; }
+            set { SetProperty(ref speed, value); }
+        }
     }
 }
