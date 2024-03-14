@@ -3,7 +3,7 @@
 	<PropertyGroup>
 		<TargetFrameworks>net462;net6.0-windows</TargetFrameworks>
 		<UseWPF>true</UseWPF>
-		<Version>0.7.0</Version>
+		<Version>0.8.0</Version>
 		<LangVersion>latest</LangVersion>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
