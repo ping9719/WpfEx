@@ -34,5 +34,6 @@
     <local:Enum2IntConverter x:Key="Enum2IntConverter"></local:Enum2IntConverter>
     <local:Enum2StrConverter x:Key="Enum2StrConverter"></local:Enum2StrConverter>
     <local:List2StrConverter x:Key="List2StrConverter"></local:List2StrConverter>
-
+    <local:Version2StrConverter x:Key="Version2StrConverter"></local:Version2StrConverter>
+    
 </ResourceDictionary>
