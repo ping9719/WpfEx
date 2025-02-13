@@ -1,6 +1,6 @@
 # Ping9719.WpfEx
 
-### WPF扩展库，在 HandyControl 的基础上。
+### WPF扩展库，在 [HandyControl](https://github.com/HandyOrg/HandyControl) 的基础上。
 ##### WPF extension library, based on HandyControl.
 #
 
