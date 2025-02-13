@@ -4,308 +4,115 @@
         <name>Ping9719.WpfEx</name>
     </assembly>
     <members>
-        <member name="T:Ping9719.WpfEx.IotDevice">
+        <member name="T:Ping9719.WpfEx.GridAttach">
             <summary>
-            工业控件：设备
-            </summary>
-            <summary>
-            IotDevice
+            Grid 扩展属性
             </summary>
         </member>
-        <member name="M:Ping9719.WpfEx.IotDevice.#ctor">
+        <member name="M:Ping9719.WpfEx.GridAttach.GetColumns(System.Windows.DependencyObject)">
             <summary>
-            工业控件：设备
+            得到列字符串。如“*,2.5*,100,auto”
             </summary>
         </member>
-        <member name="M:Ping9719.WpfEx.IotDevice.LoadUi(System.Collections.Generic.IEnumerable{Ping9719.WpfEx.IDeviceDataBase}[])">
+        <member name="M:Ping9719.WpfEx.GridAttach.SetColumns(System.Windows.DependencyObject,System.String)">
             <summary>
-            加载多个Ui
-            </summary>
-            <param name="deviceDatass">暂支持 DeviceStateData，DeviceUrnData，DeviceServo2Data</param>
-        </member>
-        <member name="M:Ping9719.WpfEx.IotDevice.LoadUi(System.Collections.Generic.IEnumerable{Ping9719.WpfEx.IDeviceDataBase})">
-            <summary>
-            加载Ui
-            </summary>
-            <param name="deviceDatas">暂支持 DeviceStateData，DeviceUrnData，DeviceServo2Data</param>
-        </member>
-        <member name="P:Ping9719.WpfEx.IotDevice.StateWidth">
-            <summary>
-            监视块宽度
+            设置列字符串。如“*,2.5*,100,auto”
             </summary>
         </member>
-        <member name="P:Ping9719.WpfEx.IotDevice.StateSetWidth">
+        <member name="M:Ping9719.WpfEx.GridAttach.GetRows(System.Windows.DependencyObject)">
             <summary>
-            控制块宽度
+            得到行字符串。如“*,2.5*,100,auto”
             </summary>
         </member>
-        <member name="P:Ping9719.WpfEx.IotDevice.UrnWidth">
+        <member name="M:Ping9719.WpfEx.GridAttach.SetRows(System.Windows.DependencyObject,System.String)">
             <summary>
-            气缸块宽度
+            设置行字符串。如“*,2.5*,100,auto”
             </summary>
         </member>
-        <member name="P:Ping9719.WpfEx.IotDevice.StateHeader">
+        <member name="T:Ping9719.WpfEx.ImageListener">
             <summary>
-            监视标题文本
+            图像监听。可针对文件夹文件进行监听显示
+            </summary>
+            <summary>
+            ImageListener
             </summary>
         </member>
-        <member name="P:Ping9719.WpfEx.IotDevice.StateSetHeader">
+        <member name="P:Ping9719.WpfEx.ImageListener.FullPath">
             <summary>
-            控制标题文本
+            当前加载的图像路径
             </summary>
         </member>
-        <member name="P:Ping9719.WpfEx.IotDevice.UrnHeader">
+        <member name="P:Ping9719.WpfEx.ImageListener.IsAutoActiveTabItem">
             <summary>
-            气缸标题文本
+            如果在选项卡中，是否自动切换到当前变化的项来。默认为false
             </summary>
         </member>
-        <member name="P:Ping9719.WpfEx.IotDevice.Servo2Header">
+        <member name="M:Ping9719.WpfEx.ImageListener.StartListener(System.String,System.String)">
             <summary>
-            伺服标题文本
+            开始监听
+            </summary>
+            <param name="path">监听的目录或文件</param>
+            <param name="filter">对目录的筛选值（文件无效）</param>
+            <returns>是否监听成功</returns>
+        </member>
+        <member name="M:Ping9719.WpfEx.ImageListener.StopListener">
+            <summary>
+            停止监听
             </summary>
         </member>
-        <member name="E:Ping9719.WpfEx.IotDevice.StateSetClick">
-            <summary>
-            可点击的状态点击。返回的OriginalSource参数为object[]，1为原绑定数据；2为bool（true为鼠标按下）
-            </summary>
-        </member>
-        <member name="E:Ping9719.WpfEx.IotDevice.UrnClick">
-            <summary>
-            气缸点击推或回。返回的OriginalSource参数为object[]，1为bool（true为推）；2为原绑定数据；3为bool（true为鼠标按下）
-            </summary>
-        </member>
-        <member name="E:Ping9719.WpfEx.IotDevice.ServoClick">
-            <summary>
-            伺服点击的操作。返回的OriginalSource参数为object[]，1为枚举(ServoClickType)；2为新数据；3为原绑定数据
-            </summary>
-        </member>
-        <member name="M:Ping9719.WpfEx.IotDevice.InitializeComponent">
+        <member name="M:Ping9719.WpfEx.ImageListener.InitializeComponent">
             <summary>
             InitializeComponent
             </summary>
         </member>
-        <member name="T:Ping9719.WpfEx.IDeviceDataBase">
+        <member name="M:Ping9719.WpfEx.ImageListenerModel.ImgAutoSize">
             <summary>
-            设备数据基类
+            自适应大小
             </summary>
         </member>
-        <member name="P:Ping9719.WpfEx.IDeviceDataBase.Name">
+        <member name="T:Ping9719.WpfEx.IotServoMode">
+            <summary>
+            工业控件：伺服模式
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.IotServoMode.Text">
             <summary>
             名称
             </summary>
         </member>
-        <member name="P:Ping9719.WpfEx.IDeviceDataBase.GroupName">
-            <summary>
-            组名
-            </summary>
-        </member>
-        <member name="P:Ping9719.WpfEx.IDeviceDataBase.Tag">
-            <summary>
-            自定义数据
-            </summary>
-        </member>
-        <member name="T:Ping9719.WpfEx.DeviceStateData">
-            <summary>
-            设备状态数据
-            </summary>
-        </member>
-        <member name="P:Ping9719.WpfEx.DeviceStateData.Name">
-            <summary>
-            名称
-            </summary>
-        </member>
-        <member name="P:Ping9719.WpfEx.DeviceStateData.GroupName">
-            <summary>
-            组名
-            </summary>
-        </member>
-        <member name="P:Ping9719.WpfEx.DeviceStateData.IsOk">
-            <summary>
-            是否ok状态
-            </summary>
-        </member>
-        <member name="P:Ping9719.WpfEx.DeviceStateData.Tag">
-            <summary>
-            自定义数据
-            </summary>
-        </member>
-        <member name="T:Ping9719.WpfEx.DeviceStateSetData">
-            <summary>
-            设备状态(可控制)数据
-            </summary>
-        </member>
-        <member name="P:Ping9719.WpfEx.DeviceStateSetData.Name">
-            <summary>
-            名称
-            </summary>
-        </member>
-        <member name="P:Ping9719.WpfEx.DeviceStateSetData.GroupName">
-            <summary>
-            组名
-            </summary>
-        </member>
-        <member name="P:Ping9719.WpfEx.DeviceStateSetData.IsOk">
-            <summary>
-            是否ok状态
-            </summary>
-        </member>
-        <member name="P:Ping9719.WpfEx.DeviceStateSetData.Tag">
-            <summary>
-            自定义数据
-            </summary>
-        </member>
-        <member name="T:Ping9719.WpfEx.DeviceUrnData">
-            <summary>
-            设备气缸数据
-            </summary>
-        </member>
-        <member name="P:Ping9719.WpfEx.DeviceUrnData.Name">
-            <summary>
-            名称
-            </summary>
-        </member>
-        <member name="P:Ping9719.WpfEx.DeviceUrnData.GroupName">
-            <summary>
-            组名
-            </summary>
-        </member>
-        <member name="P:Ping9719.WpfEx.DeviceUrnData.IsGoTo">
-            <summary>
-            是否推到位
-            </summary>
-        </member>
-        <member name="P:Ping9719.WpfEx.DeviceUrnData.IsRetTo">
-            <summary>
-            是否回到位
-            </summary>
-        </member>
-        <member name="P:Ping9719.WpfEx.DeviceUrnData.Tag">
-            <summary>
-            自定义数据
-            </summary>
-        </member>
-        <member name="T:Ping9719.WpfEx.DeviceServo2Data">
-            <summary>
-            设备伺服数据
-            </summary>
-        </member>
-        <member name="P:Ping9719.WpfEx.DeviceServo2Data.Name">
-            <summary>
-            名称
-            </summary>
-        </member>
-        <member name="P:Ping9719.WpfEx.DeviceServo2Data.GroupName">
-            <summary>
-            组名
-            </summary>
-        </member>
-        <member name="P:Ping9719.WpfEx.DeviceServo2Data.JogSpeed">
-            <summary>
-            手动模式速度
-            </summary>
-        </member>
-        <member name="P:Ping9719.WpfEx.DeviceServo2Data.AutoSpeed">
-            <summary>
-            自动模式速度
-            </summary>
-        </member>
-        <member name="P:Ping9719.WpfEx.DeviceServo2Data.Location">
-            <summary>
-            伺服当前位置
-            </summary>
-        </member>
-        <member name="P:Ping9719.WpfEx.DeviceServo2Data.IsJog">
-            <summary>
-            是否主页显示为手动模式
-            </summary>
-        </member>
-        <member name="P:Ping9719.WpfEx.DeviceServo2Data.IsFold">
-            <summary>
-            是否折叠
-            </summary>
-        </member>
-        <member name="P:Ping9719.WpfEx.DeviceServo2Data.Tag">
-            <summary>
-            自定义数据
-            </summary>
-        </member>
-        <member name="T:Ping9719.WpfEx.IotStateInfo">
-            <summary>
-            工业控件：监听
-            </summary>
-        </member>
-        <member name="P:Ping9719.WpfEx.IotStateInfo.Header">
-            <summary>
-            标题
-            </summary>
-        </member>
-        <member name="P:Ping9719.WpfEx.IotStateInfo.ValueStr">
-            <summary>
-            值，字符串
-            </summary>
-        </member>
-        <member name="P:Ping9719.WpfEx.IotStateInfo.Value">
-            <summary>
-            值
-            </summary>
-        </member>
-        <member name="T:Ping9719.WpfEx.IotServo">
-            <summary>
-            工业控件：伺服
-            </summary>
-            <summary>
-            IotServo
-            </summary>
-        </member>
-        <member name="M:Ping9719.WpfEx.IotServo.#ctor">
-            <summary>
-            工业控件：伺服
-            </summary>
-        </member>
-        <member name="P:Ping9719.WpfEx.IotServo.Text">
-            <summary>
-            名称
-            </summary>
-        </member>
-        <member name="P:Ping9719.WpfEx.IotServo.Location">
+        <member name="P:Ping9719.WpfEx.IotServoMode.Location">
             <summary>
             当前位置
             </summary>
         </member>
-        <member name="P:Ping9719.WpfEx.IotServo.IsFold">
+        <member name="P:Ping9719.WpfEx.IotServoMode.Speed1">
+            <summary>
+            手动速度
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.IotServoMode.Speed2">
+            <summary>
+            自动速度
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.IotServoMode.IsFold">
             <summary>
             是否折叠
             </summary>
         </member>
-        <member name="P:Ping9719.WpfEx.IotServo.ModelSpeedHome">
+        <member name="P:Ping9719.WpfEx.IotServoMode.IsVis1">
             <summary>
-            主页显示的速度模式
+            是否显示手动速度
             </summary>
         </member>
-        <member name="M:Ping9719.WpfEx.IotServo.SetModelSpeedHomeName(System.String)">
+        <member name="E:Ping9719.WpfEx.IotServoMode.LocationChange">
             <summary>
-            搜索指定名称并设为主界面展示
-            </summary>
-            <param name="name"></param>
-        </member>
-        <member name="P:Ping9719.WpfEx.IotServo.ModelSpeeds">
-            <summary>
-            全部的速度模式
+            改变伺服的位置时
             </summary>
         </member>
-        <member name="E:Ping9719.WpfEx.IotServo.LocationChange">
+        <member name="E:Ping9719.WpfEx.IotServoMode.SpeedChange">
             <summary>
-            尝试改变伺服的位置时
-            </summary>
-        </member>
-        <member name="E:Ping9719.WpfEx.IotServo.SpeedChange">
-            <summary>
-            尝试改变伺服的速度时
-            </summary>
-        </member>
-        <member name="M:Ping9719.WpfEx.IotServo.InitializeComponent">
-            <summary>
-            InitializeComponent
+            改变伺服的速度时
             </summary>
         </member>
         <member name="T:Ping9719.WpfEx.ServoSpeed">
@@ -323,72 +130,9 @@
             当前速度
             </summary>
         </member>
-        <member name="T:Ping9719.WpfEx.IotServo2">
-            <summary>
-            工业控件：伺服
-            </summary>
-            <summary>
-            IotServo2
-            </summary>
-        </member>
-        <member name="M:Ping9719.WpfEx.IotServo2.#ctor">
-            <summary>
-            工业控件：伺服
-            </summary>
-        </member>
-        <member name="P:Ping9719.WpfEx.IotServo2.Text">
-            <summary>
-            名称
-            </summary>
-        </member>
-        <member name="P:Ping9719.WpfEx.IotServo2.Location">
-            <summary>
-            当前位置
-            </summary>
-        </member>
-        <member name="P:Ping9719.WpfEx.IotServo2.Speed1">
-            <summary>
-            速度1，默认手动速度
-            </summary>
-        </member>
-        <member name="P:Ping9719.WpfEx.IotServo2.Speed2">
-            <summary>
-            速度2，默认自动速度
-            </summary>
-        </member>
-        <member name="P:Ping9719.WpfEx.IotServo2.IsFold">
-            <summary>
-            是否折叠
-            </summary>
-        </member>
-        <member name="P:Ping9719.WpfEx.IotServo2.IsVisSpeed1">
-            <summary>
-            是否主页中显示速度1和模式，默认true
-            </summary>
-        </member>
-        <member name="E:Ping9719.WpfEx.IotServo2.LocationChange">
-            <summary>
-            尝试改变伺服的位置时
-            </summary>
-        </member>
-        <member name="E:Ping9719.WpfEx.IotServo2.SpeedChange">
-            <summary>
-            尝试改变伺服的速度时
-            </summary>
-        </member>
-        <member name="M:Ping9719.WpfEx.IotServo2.InitializeComponent">
-            <summary>
-            InitializeComponent
-            </summary>
-        </member>
         <member name="T:Ping9719.WpfEx.IotState">
             <summary>
-            工业控件：传感器状态
-            </summary>
-        </member>
-        <member name="E:Ping9719.WpfEx.IotState.Click">
-            <summary>
-            单击按钮时
+            工业控件：状态
             </summary>
         </member>
         <member name="P:Ping9719.WpfEx.IotState.IsOk">
@@ -411,67 +155,94 @@
             内部高度
             </summary>
         </member>
-        <member name="T:Ping9719.WpfEx.IotUrn">
+        <member name="T:Ping9719.WpfEx.IotStateInfo">
             <summary>
-            工业控件：气缸
-            </summary>
-            <summary>
-            IotUrn
+            工业控件：状态信息
             </summary>
         </member>
-        <member name="M:Ping9719.WpfEx.IotUrn.#ctor">
+        <member name="P:Ping9719.WpfEx.IotStateInfo.Header">
             <summary>
-            工业控件：气缸
+            标题
             </summary>
         </member>
-        <member name="P:Ping9719.WpfEx.IotUrn.Text">
+        <member name="P:Ping9719.WpfEx.IotStateInfo.HeaderFontWeight">
+            <summary>
+            标题字体粗细
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.IotStateInfo.Postfix">
+            <summary>
+            后缀文本
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.IotStateInfo.ValueStr">
+            <summary>
+            值，字符串
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.IotStateInfo.ValueBool">
+            <summary>
+            值，bool
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.IotStateInfo.IsBool">
+            <summary>
+            是否bool类型
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.IotStateInfo.Value">
+            <summary>
+            值
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.IotStateInfo.OkBrush">
+            <summary>
+            成功状态下的颜色
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.IotStateInfo.NotOkBrush">
+            <summary>
+            不成功状态下的颜色
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.IotStateInfo.InteriorHeight">
+            <summary>
+            内部高度
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.IotStateInfo.ValueStrBoolIsBool">
+            <summary>
+            是否字符串bool也当做bool
+            </summary>
+        </member>
+        <member name="T:Ping9719.WpfEx.IotUrnMode">
+            <summary>
+            工业控件：气缸模式
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.IotUrnMode.Button1">
+            <summary>
+            按钮1
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.IotUrnMode.Button2">
+            <summary>
+            按钮2
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.IotUrnMode.Text">
             <summary>
             文本
             </summary>
         </member>
-        <member name="P:Ping9719.WpfEx.IotUrn.IsButBadge1">
+        <member name="P:Ping9719.WpfEx.IotUrnMode.IsButBadge1">
             <summary>
             是否显示按钮1上面的标记
             </summary>
         </member>
-        <member name="E:Ping9719.WpfEx.IotUrn.ButClick1">
-            <summary>
-            单击按钮1
-            </summary>
-        </member>
-        <member name="E:Ping9719.WpfEx.IotUrn.ButDownClick1">
-            <summary>
-            单击按钮1按下
-            </summary>
-        </member>
-        <member name="E:Ping9719.WpfEx.IotUrn.ButUpClick1">
-            <summary>
-            单击按钮1松开
-            </summary>
-        </member>
-        <member name="P:Ping9719.WpfEx.IotUrn.IsButBadge2">
+        <member name="P:Ping9719.WpfEx.IotUrnMode.IsButBadge2">
             <summary>
             是否显示按钮2上面的标记
-            </summary>
-        </member>
-        <member name="E:Ping9719.WpfEx.IotUrn.ButClick2">
-            <summary>
-            单击按钮2
-            </summary>
-        </member>
-        <member name="E:Ping9719.WpfEx.IotUrn.ButDownClick2">
-            <summary>
-            单击按钮2按下
-            </summary>
-        </member>
-        <member name="E:Ping9719.WpfEx.IotUrn.ButUpClick2">
-            <summary>
-            单击按钮2松开
-            </summary>
-        </member>
-        <member name="M:Ping9719.WpfEx.IotUrn.InitializeComponent">
-            <summary>
-            InitializeComponent
             </summary>
         </member>
         <member name="T:Ping9719.WpfEx.RunStateButton">
@@ -492,6 +263,11 @@
         <member name="P:Ping9719.WpfEx.RunStateButton.IsVisRset">
             <summary>
             是否显示复位按钮
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.RunStateButton.IsAutoRset">
+            <summary>
+            是否自动控制复位按钮是否可用
             </summary>
         </member>
         <member name="P:Ping9719.WpfEx.RunStateButton.RunState">
@@ -569,6 +345,211 @@
             任务队列
             </summary>
         </member>
+        <member name="T:Ping9719.WpfEx.TextBoxLog">
+            <summary>
+            日志文本框
+            </summary>
+        </member>
+        <member name="F:Ping9719.WpfEx.TextBoxLog.IsLoadedFirst">
+            <summary>
+            是否第一次加载
+            </summary>
+        </member>
+        <member name="M:Ping9719.WpfEx.TextBoxLog.#ctor">
+            <summary>
+            初始化
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.TextBoxLog.TimeFormatVal">
+            <summary>
+            格式时间字符串。
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.TextBoxLog.TimeFormat">
+            <summary>
+            格式时间字符串。默认 HH:mm:ss.fff=>
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.TextBoxLog.MaxLineNumVal">
+            <summary>
+            最大行数
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.TextBoxLog.MaxLineNum">
+            <summary>
+            最大行数（超过自动清除4分之1）。默认400
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.TextBoxLog.MaxLineNumClearAll">
+            <summary>
+            满足了清除条件时，是否清空所有文本。默认false
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.TextBoxLog.AutoScroll">
+            <summary>
+            是否自动滚动。默认true
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.TextBoxLog.AddTextClearSelection">
+            <summary>
+            添加文本时，清空用户的选择。对性能有影响提升。（默认false）
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.TextBoxLog.TokenVal">
+            <summary>
+            标识token
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.TextBoxLog.Token">
+            <summary>
+            标识token
+            </summary>
+        </member>
+        <member name="M:Ping9719.WpfEx.TextBoxLog.AppendText2(System.String)">
+            <summary>
+            将字符串追加到文本
+            </summary>
+            <param name="text"></param>
+        </member>
+        <member name="F:Ping9719.WpfEx.TextBoxLog.TextBoxLogAdd">
+            <summary>
+            有新的日志加入
+            </summary>
+        </member>
+        <member name="F:Ping9719.WpfEx.TextBoxLog.TokenNullSeekFirst">
+            <summary>
+            Token为空时查找第一个组件还是查找激活的组件，默认true
+            </summary>
+        </member>
+        <member name="F:Ping9719.WpfEx.TextBoxLog.TextBoxLogAll">
+            <summary>
+            所有的正在使用的日志组件
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.TextBoxLog.TextBoxLogCount">
+            <summary>
+            组件数量
+            </summary>
+        </member>
+        <member name="M:Ping9719.WpfEx.TextBoxLog.AddLog(System.String,System.DateTime)">
+            <summary>
+            追加日志信息
+            </summary>
+        </member>
+        <member name="M:Ping9719.WpfEx.TextBoxLog.AddLog(System.String,System.String,System.Nullable{System.DateTime},System.Object)">
+            <summary>
+            追加日志信息
+            </summary>
+        </member>
+        <member name="M:Ping9719.WpfEx.TextBoxLog.AddLogs(System.Collections.Generic.IEnumerable{System.String},System.String,System.Nullable{System.DateTime},System.Object)">
+            <summary>
+            追加多条日志信息
+            </summary>
+        </member>
+        <member name="M:Ping9719.WpfEx.TextBoxLog.ClearLog(System.String)">
+            <summary>
+            清除所有信息
+            </summary>
+            <param name="token"></param>
+        </member>
+        <member name="M:Ping9719.WpfEx.TextBoxLog.ClearLog(Ping9719.WpfEx.TextBoxLog)">
+            <summary>
+            清除所有信息
+            </summary>
+            <param name="tbl"></param>
+        </member>
+        <member name="M:Ping9719.WpfEx.TextBoxLog.SeeControl(System.String)">
+            <summary>
+            找寻组件
+            </summary>
+            <param name="token"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Ping9719.WpfEx.TextBoxLogInfo">
+            <summary>
+            日志加入信息
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.TextBoxLogInfo.Text">
+            <summary>
+            文本信息
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.TextBoxLogInfo.Time">
+            <summary>
+            时间
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.TextBoxLogInfo.Tag">
+            <summary>
+            自定义的信息
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.TextBoxLogInfo.Token">
+            <summary>
+            标识token
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.TextBoxLogInfo.IsSeekToken">
+            <summary>
+            是否寻找到此Token关联的组件
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.TextBoxLogInfo.SeekToken">
+            <summary>
+            找寻到的组件的token
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.TextBoxLogInfo.TimeFormat">
+            <summary>
+            找寻到的组件的时间格式字符串
+            </summary>
+        </member>
+        <member name="M:Ping9719.WpfEx.TextBoxLogInfo.ToString">
+            <summary>
+            转为字符串
+            </summary>
+        </member>
+        <member name="T:Ping9719.WpfEx.TextBoxScanner">
+            <summary>
+            扫码文本框
+            </summary>
+        </member>
+        <member name="M:Ping9719.WpfEx.TextBoxScanner.#ctor">
+            <summary>
+            初始化
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.TextBoxScanner.IsAutoFocus">
+            <summary>
+            是否自动设置焦点（在显示控件的时候尝试将焦点设置为此元素）
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.TextBoxScanner.AutoClear">
+            <summary>
+            自动清除文本（当达到计时变化间隔时）
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.TextBoxScanner.IntervalTime">
+            <summary>
+            计时变化间隔，默认600ms
+            </summary>
+        </member>
+        <member name="E:Ping9719.WpfEx.TextBoxScanner.TextScannerChanged">
+            <summary>
+            文本扫码改变
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.TextBoxScanner.ScannerText">
+            <summary>
+            扫码文本
+            </summary>
+        </member>
+        <member name="M:Ping9719.WpfEx.TextBoxScanner.FocusInvoke">
+            <summary>
+            尝试将焦点设置为此元素，针对多线程优化
+            </summary>
+        </member>
         <member name="T:Ping9719.WpfEx.UserControlBase">
             <summary>
             对用户控件的扩展
@@ -599,6 +580,16 @@
             是否处于设计模式
             </summary>
         </member>
+        <member name="T:Ping9719.WpfEx.Boolean2VisibilityHiddenConverter">
+            <summary>
+            将bool转为Visibility
+            </summary>
+        </member>
+        <member name="T:Ping9719.WpfEx.Boolean2VisibilityHiddenReConverter">
+            <summary>
+            将bool转为Visibility
+            </summary>
+        </member>
         <member name="T:Ping9719.WpfEx.Enum2BoolConverter">
             <summary>
             将枚举转为布尔
@@ -617,6 +608,11 @@
         <member name="T:Ping9719.WpfEx.List2StrConverter">
             <summary>
             将数组、集合按照默认逗号分隔转为字符串
+            </summary>
+        </member>
+        <member name="T:Ping9719.WpfEx.Version2StrConverter">
+            <summary>
+            版本号与字符串转换器
             </summary>
         </member>
         <member name="T:Ping9719.WpfEx.QueueTaskTimeState">
@@ -726,7 +722,7 @@
         </member>
         <member name="F:Ping9719.WpfEx.ServoClickType.EndDotAdd">
             <summary>
-            开始点动增加
+            结束点动增加
             </summary>
         </member>
         <member name="F:Ping9719.WpfEx.ServoClickType.StartDotSub">
@@ -736,7 +732,7 @@
         </member>
         <member name="F:Ping9719.WpfEx.ServoClickType.EndDotSub">
             <summary>
-            开始点动减少
+            结束点动减少
             </summary>
         </member>
         <member name="T:Ping9719.WpfEx.SyncProgressBarState">
@@ -762,6 +758,26 @@
         <member name="F:Ping9719.WpfEx.SyncProgressBarState.SyncErr">
             <summary>
             同步失败
+            </summary>
+        </member>
+        <member name="T:Ping9719.WpfEx.TextBoxScannerAutoClear">
+            <summary>
+            自动清空模式
+            </summary>
+        </member>
+        <member name="F:Ping9719.WpfEx.TextBoxScannerAutoClear.NoClear">
+            <summary>
+            默认，不清空
+            </summary>
+        </member>
+        <member name="F:Ping9719.WpfEx.TextBoxScannerAutoClear.Clear">
+            <summary>
+            清空
+            </summary>
+        </member>
+        <member name="F:Ping9719.WpfEx.TextBoxScannerAutoClear.NextClear">
+            <summary>
+            下次清空
             </summary>
         </member>
         <member name="T:Ping9719.WpfEx.EnumHelp">
@@ -841,17 +857,9 @@
             状态
             </summary>
         </member>
-        <member name="T:Ping9719.WpfEx.QueueTaskTime.StateChangeEventHandler">
+        <member name="F:Ping9719.WpfEx.QueueTaskTime.StateChange">
             <summary>
-            状态发生改变
-            </summary>
-            <param name="sender">源</param>
-            <param name="state">状态</param>
-            <param name="exception">错误</param>
-        </member>
-        <member name="E:Ping9719.WpfEx.QueueTaskTime.StateChange">
-            <summary>
-            状态发生改变
+            状态发生改变（本身，状态，错误）
             </summary>
         </member>
         <member name="M:Ping9719.WpfEx.QueueTaskTime.#ctor">
@@ -1071,12 +1079,12 @@
         </member>
         <member name="F:Ping9719.WpfEx.MainLoadWindow.TaskSleepTime">
             <summary>
-            任务最小间隔时间
+            任务最短停留时间，默认180ms（视觉暂留0.1，人眼辨认0.3）
             </summary>
         </member>
         <member name="M:Ping9719.WpfEx.MainLoadWindow.Show(System.Tuple{System.String,System.String,System.Action}[])">
             <summary>
-            开始显示
+            显示并运行
             </summary>
             <param name="funcs">任务，1正在进行的任务的提示（如：正在进行XX中...），2此任务错误的提示（如：XX失败），3任务</param>
             <returns>是否全部成功</returns>
@@ -1084,6 +1092,148 @@
         <member name="M:Ping9719.WpfEx.MainLoadWindow.InitializeComponent">
             <summary>
             InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Ping9719.WpfEx.MessageBoxTip">
+            <summary>
+            提示框
+            </summary>
+            <summary>
+            MessageBoxTip
+            </summary>
+        </member>
+        <member name="M:Ping9719.WpfEx.MessageBoxTip.Show(System.String,System.Boolean,System.Windows.Window)">
+            <summary>
+            显示提示框
+            </summary>
+            <param name="content">内容</param>
+            <param name="isVisCloseBut">界面右上角是否显示关闭按钮</param>
+            <returns>点击的按钮文本</returns>
+        </member>
+        <member name="M:Ping9719.WpfEx.MessageBoxTip.Show(System.String,System.String,System.Boolean,System.Windows.Window)">
+            <summary>
+            显示提示框
+            </summary>
+            <param name="content">内容</param>
+            <param name="title">标题</param>
+            <param name="isVisCloseBut">界面右上角是否显示关闭按钮</param>
+            <returns>点击的按钮文本</returns>
+        </member>
+        <member name="M:Ping9719.WpfEx.MessageBoxTip.Show(System.String,System.Collections.Generic.IEnumerable{System.String},System.Boolean,System.Windows.Window)">
+            <summary>
+            显示提示框
+            </summary>
+            <param name="content">内容</param>
+            <param name="buttons">按钮内容</param>
+            <param name="isVisCloseBut">界面右上角是否显示关闭按钮</param>
+            <returns>点击的按钮文本</returns>
+        </member>
+        <member name="M:Ping9719.WpfEx.MessageBoxTip.Show(System.String,System.String,System.Collections.Generic.IEnumerable{System.String},System.Boolean,System.Windows.Window)">
+            <summary>
+            显示提示框
+            </summary>
+            <param name="content">内容</param>
+            <param name="title">标题</param>
+            <param name="buttons">按钮内容</param>
+            <param name="isVisCloseBut">界面右上角是否显示关闭按钮</param>
+            <returns>点击的按钮文本</returns>
+        </member>
+        <member name="M:Ping9719.WpfEx.MessageBoxTip.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Ping9719.WpfEx.MessageBoxTipInput">
+            <summary>
+            提示框
+            </summary>
+            <summary>
+            MessageBoxTipInput
+            </summary>
+        </member>
+        <member name="M:Ping9719.WpfEx.MessageBoxTipInput.Show``1(System.String,System.Func{``0,System.String},System.String,System.Boolean,System.Windows.Window)">
+            <summary>
+            显示输入提示框并尝试转为指定类型
+            </summary>
+            <typeparam name="T">目标类型</typeparam>
+            <param name="content">内容</param>
+            <param name="verify">验证委托</param>
+            <param name="textContent">文本框里面的内容</param>
+            <param name="isVisCloseBut">是否显示关闭按钮</param>
+            <param name="owner">窗体所有者</param>
+            <returns>输入的内容（关闭为null）</returns>
+        </member>
+        <member name="M:Ping9719.WpfEx.MessageBoxTipInput.Show``1(System.String,System.String,System.String,System.Func{``0,System.String},System.String,System.Boolean,System.Windows.Window)">
+            <summary>
+            显示输入提示框并尝试转为指定类型
+            </summary>
+            <typeparam name="T">目标类型</typeparam>
+            <param name="content">内容</param>
+            <param name="title">标题</param>
+            <param name="contentHint">内部内容</param>
+            <param name="verify">验证委托</param>
+            <param name="textContent">文本框里面的内容</param>
+            <param name="isVisCloseBut">是否显示关闭按钮</param>
+            <param name="owner">窗体所有者</param>
+            <returns>输入的内容（关闭为null）</returns>
+        </member>
+        <member name="M:Ping9719.WpfEx.MessageBoxTipInput.Show(System.String,System.Func{System.String,System.String},System.String,System.Boolean,System.Boolean,System.Windows.Window)">
+            <summary>
+            显示输入提示框
+            </summary>
+            <param name="content">内容</param>
+            <param name="verify">验证委托</param>
+            <param name="textContent">文本框里面的内容</param>
+            <param name="isVisCloseBut">是否显示关闭按钮</param>
+            <param name="owner">窗体所有者</param>
+            <returns>输入的文本（关闭为null）</returns>
+        </member>
+        <member name="M:Ping9719.WpfEx.MessageBoxTipInput.Show(System.String,System.String,System.String,System.Func{System.String,System.String},System.String,System.Boolean,System.Boolean,System.Windows.Window)">
+            <summary>
+            显示输入提示框
+            </summary>
+            <param name="content">内容</param>
+            <param name="title">标题</param>
+            <param name="contentHint">内部内容</param>
+            <param name="verify">验证委托</param>
+            <param name="textContent">文本框里面的内容</param>
+            <param name="isVisCloseBut">是否显示关闭按钮</param>
+            <param name="owner">窗体所有者</param>
+            <returns>输入的文本（关闭为null）</returns>
+        </member>
+        <member name="M:Ping9719.WpfEx.MessageBoxTipInput.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:XamlGeneratedNamespace.GeneratedInternalTypeHelper">
+            <summary>
+            GeneratedInternalTypeHelper
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateInstance(System.Type,System.Globalization.CultureInfo)">
+            <summary>
+            CreateInstance
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.GetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            GetPropertyValue
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.SetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            SetPropertyValue
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateDelegate(System.Type,System.Object,System.String)">
+            <summary>
+            CreateDelegate
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.AddEventHandler(System.Reflection.EventInfo,System.Object,System.Delegate)">
+            <summary>
+            AddEventHandler
             </summary>
         </member>
     </members>

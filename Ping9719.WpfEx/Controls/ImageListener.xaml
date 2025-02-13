@@ -1,0 +1,27 @@
+﻿<UserControl xmlns:hc="https://handyorg.github.io/handycontrol"
+             x:Class="Ping9719.WpfEx.ImageListener"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Ping9719.WpfEx"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Border Style="{StaticResource BorderRegion}" BorderThickness="1" Background="{DynamicResource SecondaryRegionBrush}" Padding="0" ClipToBounds="True">
+        <Border.Resources>
+            <TransformGroup x:Key="Imageview">
+                <ScaleTransform ScaleX="{Binding ScaleXY}" ScaleY="{Binding ScaleXY}" CenterX="{Binding CenterX}" CenterY="{Binding CenterY}"/>
+                <TranslateTransform X="{Binding TranslateX}" Y="{Binding TranslateY}"/>
+            </TransformGroup>
+        </Border.Resources>
+        <Image x:Name="img" RenderTransform="{StaticResource Imageview}" Source="{Binding ImageSource}" PreviewMouseLeftButtonDown="previewMouseDoubleClick">
+            <Image.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="预览图片" Click="ckyt"></MenuItem>
+                    <MenuItem Header="适应窗口" Click="syck"></MenuItem>
+                    <MenuItem Header="原图大小" Click="ytdx"></MenuItem>
+                </ContextMenu>
+            </Image.ContextMenu>
+        </Image>
+    </Border>
+</UserControl>

@@ -1,0 +1,58 @@
+﻿<hc:Window x:Class="Ping9719.WpfEx.MessageBoxTipInput"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Ping9719.WpfEx"
+        mc:Ignorable="d"
+        xmlns:hc="https://handyorg.github.io/handycontrol"
+        Height="220" Width="360" WindowStyle="None" BorderThickness="0" Background="{x:Null}" AllowsTransparency="True" Opacity="0.95">
+    <hc:Window.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Button" BasedOn="{StaticResource ButtonDefault}">
+                <Setter Property="Padding" Value="25,0"></Setter>
+            </Style>
+        </ResourceDictionary>
+    </hc:Window.Resources>
+    <Border BorderBrush="Gray" Background="WhiteSmoke" CornerRadius="5" BorderThickness="1">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid VerticalAlignment="Top">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="auto"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid PreviewMouseLeftButtonDown="previewMouseLeftButtonDown" Background="Transparent">
+
+                </Grid>
+                <TextBlock Margin="5,0" Text="{Binding Title, FallbackValue=标题}" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                <Button Grid.Column="1" Visibility="{Binding IsClose,Converter={StaticResource Boolean2VisibilityHiddenConverter}}" Style="{StaticResource ButtonIcon}" hc:IconElement.Geometry="{StaticResource CloseGeometry}" Click="closeClick"/>
+            </Grid>
+            <StackPanel Grid.Row="1" VerticalAlignment="Center">
+                <TextBlock Margin="15,0,15,5" Text="{Binding Content, FallbackValue=我是内容}" TextWrapping="Wrap"></TextBlock>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="auto"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <TextBox x:Name="tb1" Style="{StaticResource TextBoxExtend}" Margin="10,0,0,0" hc:InfoElement.Placeholder="{Binding ContentHint, FallbackValue=请输入值}" hc:InfoElement.Title="" hc:InfoElement.TitlePlacement="Top" hc:BorderElement.CornerRadius="4,0,0,4" VerticalAlignment="Center"/>
+                    <StackPanel Grid.Column="1" Orientation="Horizontal">
+                        <Button x:Name="butt" Margin="-1,0,0,0" Padding="0" Width="45" hc:BorderElement.CornerRadius="0,0,0,0" FontFamily="{StaticResource IconFont}" VerticalAlignment="Bottom" Click="Button_Clickt" Visibility="Collapsed">True</Button>
+                        <Button x:Name="butf" Margin="-1,0,0,0" Padding="0" Width="45" hc:BorderElement.CornerRadius="0,0,0,0" FontFamily="{StaticResource IconFont}" VerticalAlignment="Bottom" Click="Button_Clickf" Visibility="Collapsed">False</Button>
+                        <Button Margin="-1,0,8,0" Padding="0" Width="45" hc:BorderElement.CornerRadius="0,4,4,0" FontFamily="{StaticResource IconFont}" VerticalAlignment="Bottom" Click="Button_Clickqk">&#xe62c;</Button>
+                    </StackPanel>
+                </Grid>
+                <hc:TransitioningContentControl x:Name="transit" TransitionMode="Bottom2TopWithFade" Visibility="Hidden">
+                    <TextBlock x:Name="textBlock" Style="{StaticResource TextBlockDefaultDanger}" Margin="10,0" TextWrapping="Wrap" Text="{Binding ContentHint, FallbackValue=请输入内容}"></TextBlock>
+                </hc:TransitioningContentControl>
+            </StackPanel>
+            <hc:UniformSpacingPanel x:Name="spacingPanel" Grid.Row="2" Margin="5,0,5,10" Spacing="10" Width="auto" ChildWrapping="Wrap" HorizontalAlignment="Center">
+                <Button Content="确认" Name="qr"/>
+            </hc:UniformSpacingPanel>
+        </Grid>
+    </Border>
+</hc:Window>

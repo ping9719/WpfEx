@@ -1,8 +1,8 @@
-﻿<Application x:Class="WpfApp1.App"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:WpfApp1"
-             StartupUri="MainWindow.xaml">
+﻿
+### 开始使用 [How To Use]
+
+##### 一、在App.xaml中添加以下代码 [Add to App.xaml]
+```xml
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -14,4 +14,8 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>
-</Application>
+```
+##### 二、添加命名空间 [namespace]
+```CSharp
+xmlns:pi="https://github.com/ping9719/wpfex"
+```

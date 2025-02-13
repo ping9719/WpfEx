@@ -1,9 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>net462;net8.0-windows</TargetFrameworks>
+		<TargetFrameworks>net45;net8.0-windows</TargetFrameworks>
 		<UseWPF>true</UseWPF>
-		<Version>0.8.2</Version>
+		<Version>0.8.3</Version>
 		<LangVersion>latest</LangVersion>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
@@ -33,5 +33,9 @@ https://github.com/ping9719/WpfEx
 
 	<ItemGroup>
 		<PackageReference Include="HandyControl" Version="3.5.1" />
+		<PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies.net45" Version="1.0.3">
+		  <PrivateAssets>all</PrivateAssets>
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
 	</ItemGroup>
 </Project>
