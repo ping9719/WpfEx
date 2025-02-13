@@ -19,3 +19,6 @@
 ```CSharp
 xmlns:pi="https://github.com/ping9719/wpfex"
 ```
+
+### 详细文档 [Detailed document]
+[查看在线详细文档](https://view.officeapps.live.com/op/view.aspx?src=https://github.com/ping9719/WpfEx/blob/main/Ping9719.WpfEx/docs/WpfExDoc.docx?raw=true)   

@@ -3,7 +3,7 @@
 	<PropertyGroup>
 		<TargetFrameworks>net45;net8.0-windows</TargetFrameworks>
 		<UseWPF>true</UseWPF>
-		<Version>0.8.3</Version>
+		<Version>0.8.4</Version>
 		<LangVersion>latest</LangVersion>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
@@ -13,6 +13,7 @@ https://github.com/ping9719/WpfEx
 		<PackageProjectUrl>https://github.com/ping9719/WpfEx</PackageProjectUrl>
 		<RepositoryUrl>https://github.com/ping9719/WpfEx</RepositoryUrl>
 		<Authors>ping9719</Authors>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net45|AnyCPU'">
@@ -30,12 +31,18 @@ https://github.com/ping9719/WpfEx
 	  <Page Remove="Controls\IotServo2.xaml" />
 	</ItemGroup>
 
-
 	<ItemGroup>
 		<PackageReference Include="HandyControl" Version="3.5.1" />
 		<PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies.net45" Version="1.0.3">
 		  <PrivateAssets>all</PrivateAssets>
 		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Include="docs\README.md">
+	    <Pack>True</Pack>
+	    <PackagePath>\</PackagePath>
+	  </None>
 	</ItemGroup>
 </Project>
