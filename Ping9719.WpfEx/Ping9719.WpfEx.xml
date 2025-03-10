@@ -1102,37 +1102,72 @@
             MessageBoxTip
             </summary>
         </member>
-        <member name="M:Ping9719.WpfEx.MessageBoxTip.Show(System.String,System.Boolean,System.Windows.Window)">
+        <member name="P:Ping9719.WpfEx.MessageBoxTip.ContentText">
+            <summary>
+            内容文本
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.MessageBoxTip.Buttons">
+            <summary>
+            全部按钮
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.MessageBoxTip.ClickButton">
+            <summary>
+            确定后选中的按钮
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.MessageBoxTip.IsVisCloseBut">
+            <summary>
+            是否显示关闭按钮
+            </summary>
+        </member>
+        <member name="F:Ping9719.WpfEx.MessageBoxTip.Showing">
+            <summary>
+            显示成功前,返回是否弹框
+            </summary>
+        </member>
+        <member name="F:Ping9719.WpfEx.MessageBoxTip.Showed">
+            <summary>
+            显示成功后
+            </summary>
+        </member>
+        <member name="F:Ping9719.WpfEx.MessageBoxTip.Clicked">
+            <summary>
+            点击成功后
+            </summary>
+        </member>
+        <member name="M:Ping9719.WpfEx.MessageBoxTip.Show(System.String,System.Boolean,System.Windows.Window,System.Object)">
             <summary>
             显示提示框
             </summary>
-            <param name="content">内容</param>
+            <param name="contentText">内容</param>
             <param name="isVisCloseBut">界面右上角是否显示关闭按钮</param>
             <returns>点击的按钮文本</returns>
         </member>
-        <member name="M:Ping9719.WpfEx.MessageBoxTip.Show(System.String,System.String,System.Boolean,System.Windows.Window)">
+        <member name="M:Ping9719.WpfEx.MessageBoxTip.Show(System.String,System.String,System.Boolean,System.Windows.Window,System.Object)">
             <summary>
             显示提示框
             </summary>
-            <param name="content">内容</param>
+            <param name="contentText">内容</param>
             <param name="title">标题</param>
             <param name="isVisCloseBut">界面右上角是否显示关闭按钮</param>
             <returns>点击的按钮文本</returns>
         </member>
-        <member name="M:Ping9719.WpfEx.MessageBoxTip.Show(System.String,System.Collections.Generic.IEnumerable{System.String},System.Boolean,System.Windows.Window)">
+        <member name="M:Ping9719.WpfEx.MessageBoxTip.Show(System.String,System.Collections.Generic.IEnumerable{System.String},System.Boolean,System.Windows.Window,System.Object)">
             <summary>
             显示提示框
             </summary>
-            <param name="content">内容</param>
+            <param name="contentText">内容</param>
             <param name="buttons">按钮内容</param>
             <param name="isVisCloseBut">界面右上角是否显示关闭按钮</param>
             <returns>点击的按钮文本</returns>
         </member>
-        <member name="M:Ping9719.WpfEx.MessageBoxTip.Show(System.String,System.String,System.Collections.Generic.IEnumerable{System.String},System.Boolean,System.Windows.Window)">
+        <member name="M:Ping9719.WpfEx.MessageBoxTip.Show(System.String,System.String,System.Collections.Generic.IEnumerable{System.String},System.Boolean,System.Windows.Window,System.Object)">
             <summary>
             显示提示框
             </summary>
-            <param name="content">内容</param>
+            <param name="contentText">内容</param>
             <param name="title">标题</param>
             <param name="buttons">按钮内容</param>
             <param name="isVisCloseBut">界面右上角是否显示关闭按钮</param>
@@ -1151,52 +1186,92 @@
             MessageBoxTipInput
             </summary>
         </member>
-        <member name="M:Ping9719.WpfEx.MessageBoxTipInput.Show``1(System.String,System.Func{``0,System.String},System.String,System.Boolean,System.Windows.Window)">
+        <member name="P:Ping9719.WpfEx.MessageBoxTipInput.ContentText">
+            <summary>
+            内容文本
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.MessageBoxTipInput.ContentHint">
+            <summary>
+            内容提示
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.MessageBoxTipInput.IsVisCloseBut">
+            <summary>
+            是否显示关闭按钮
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.MessageBoxTipInput.DefaultValue">
+            <summary>
+            默认值
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.MessageBoxTipInput.InputValue">
+            <summary>
+            输入值
+            </summary>
+        </member>
+        <member name="F:Ping9719.WpfEx.MessageBoxTipInput.Showing">
+            <summary>
+            显示成功前,返回是否弹框
+            </summary>
+        </member>
+        <member name="F:Ping9719.WpfEx.MessageBoxTipInput.Showed">
+            <summary>
+            显示成功后
+            </summary>
+        </member>
+        <member name="F:Ping9719.WpfEx.MessageBoxTipInput.Clicked">
+            <summary>
+            点击成功后
+            </summary>
+        </member>
+        <member name="M:Ping9719.WpfEx.MessageBoxTipInput.Show``1(System.String,System.Func{``0,System.String},System.String,System.Boolean,System.Windows.Window,System.Object)">
             <summary>
             显示输入提示框并尝试转为指定类型
             </summary>
             <typeparam name="T">目标类型</typeparam>
-            <param name="content">内容</param>
+            <param name="contentText">内容</param>
             <param name="verify">验证委托</param>
-            <param name="textContent">文本框里面的内容</param>
+            <param name="defaultValue">文本框里面的内容</param>
             <param name="isVisCloseBut">是否显示关闭按钮</param>
             <param name="owner">窗体所有者</param>
             <returns>输入的内容（关闭为null）</returns>
         </member>
-        <member name="M:Ping9719.WpfEx.MessageBoxTipInput.Show``1(System.String,System.String,System.String,System.Func{``0,System.String},System.String,System.Boolean,System.Windows.Window)">
+        <member name="M:Ping9719.WpfEx.MessageBoxTipInput.Show``1(System.String,System.String,System.String,System.Func{``0,System.String},System.String,System.Boolean,System.Windows.Window,System.Object)">
             <summary>
             显示输入提示框并尝试转为指定类型
             </summary>
             <typeparam name="T">目标类型</typeparam>
-            <param name="content">内容</param>
+            <param name="contentText">内容</param>
             <param name="title">标题</param>
             <param name="contentHint">内部内容</param>
             <param name="verify">验证委托</param>
-            <param name="textContent">文本框里面的内容</param>
+            <param name="defaultValue">文本框里面的内容</param>
             <param name="isVisCloseBut">是否显示关闭按钮</param>
             <param name="owner">窗体所有者</param>
             <returns>输入的内容（关闭为null）</returns>
         </member>
-        <member name="M:Ping9719.WpfEx.MessageBoxTipInput.Show(System.String,System.Func{System.String,System.String},System.String,System.Boolean,System.Boolean,System.Windows.Window)">
+        <member name="M:Ping9719.WpfEx.MessageBoxTipInput.Show(System.String,System.Func{System.String,System.String},System.String,System.Boolean,System.Boolean,System.Windows.Window,System.Object)">
             <summary>
             显示输入提示框
             </summary>
-            <param name="content">内容</param>
+            <param name="contentText">内容</param>
             <param name="verify">验证委托</param>
-            <param name="textContent">文本框里面的内容</param>
+            <param name="defaultValue">文本框里面的内容</param>
             <param name="isVisCloseBut">是否显示关闭按钮</param>
             <param name="owner">窗体所有者</param>
             <returns>输入的文本（关闭为null）</returns>
         </member>
-        <member name="M:Ping9719.WpfEx.MessageBoxTipInput.Show(System.String,System.String,System.String,System.Func{System.String,System.String},System.String,System.Boolean,System.Boolean,System.Windows.Window)">
+        <member name="M:Ping9719.WpfEx.MessageBoxTipInput.Show(System.String,System.String,System.String,System.Func{System.String,System.String},System.String,System.Boolean,System.Boolean,System.Windows.Window,System.Object)">
             <summary>
             显示输入提示框
             </summary>
-            <param name="content">内容</param>
+            <param name="contentText">内容</param>
             <param name="title">标题</param>
             <param name="contentHint">内部内容</param>
             <param name="verify">验证委托</param>
-            <param name="textContent">文本框里面的内容</param>
+            <param name="defaultValue">文本框里面的内容</param>
             <param name="isVisCloseBut">是否显示关闭按钮</param>
             <param name="owner">窗体所有者</param>
             <returns>输入的文本（关闭为null）</returns>

@@ -30,10 +30,10 @@
 
                 </Grid>
                 <TextBlock Margin="5,0" Text="{Binding Title, FallbackValue=标题}" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Left"/>
-                <Button Grid.Column="1" Visibility="{Binding IsClose,Converter={StaticResource Boolean2VisibilityHiddenConverter}}" Style="{StaticResource ButtonIcon}" hc:IconElement.Geometry="{StaticResource CloseGeometry}" Click="closeClick"/>
+                <Button Grid.Column="1" Visibility="{Binding IsVisCloseBut,Converter={StaticResource Boolean2VisibilityHiddenConverter}}" Style="{StaticResource ButtonIcon}" hc:IconElement.Geometry="{StaticResource CloseGeometry}" Click="closeClick"/>
             </Grid>
             <StackPanel Grid.Row="1" VerticalAlignment="Center">
-                <TextBlock Margin="15,0,15,5" Text="{Binding Content, FallbackValue=我是内容}" TextWrapping="Wrap"></TextBlock>
+                <TextBlock Margin="15,0,15,5" Text="{Binding ContentText, FallbackValue=我是内容}" TextWrapping="Wrap"></TextBlock>
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"></ColumnDefinition>
@@ -41,9 +41,9 @@
                     </Grid.ColumnDefinitions>
                     <TextBox x:Name="tb1" Style="{StaticResource TextBoxExtend}" Margin="10,0,0,0" hc:InfoElement.Placeholder="{Binding ContentHint, FallbackValue=请输入值}" hc:InfoElement.Title="" hc:InfoElement.TitlePlacement="Top" hc:BorderElement.CornerRadius="4,0,0,4" VerticalAlignment="Center"/>
                     <StackPanel Grid.Column="1" Orientation="Horizontal">
-                        <Button x:Name="butt" Margin="-1,0,0,0" Padding="0" Width="45" hc:BorderElement.CornerRadius="0,0,0,0" FontFamily="{StaticResource IconFont}" VerticalAlignment="Bottom" Click="Button_Clickt" Visibility="Collapsed">True</Button>
-                        <Button x:Name="butf" Margin="-1,0,0,0" Padding="0" Width="45" hc:BorderElement.CornerRadius="0,0,0,0" FontFamily="{StaticResource IconFont}" VerticalAlignment="Bottom" Click="Button_Clickf" Visibility="Collapsed">False</Button>
-                        <Button Margin="-1,0,8,0" Padding="0" Width="45" hc:BorderElement.CornerRadius="0,4,4,0" FontFamily="{StaticResource IconFont}" VerticalAlignment="Bottom" Click="Button_Clickqk">&#xe62c;</Button>
+                        <Button x:Name="butt" Margin="-1,0,0,0" Padding="0" Width="45" hc:BorderElement.CornerRadius="0,0,0,0" VerticalAlignment="Bottom" Click="Button_Clickt" Visibility="Collapsed">True</Button>
+                        <Button x:Name="butf" Margin="-1,0,0,0" Padding="0" Width="45" hc:BorderElement.CornerRadius="0,0,0,0" VerticalAlignment="Bottom" Click="Button_Clickf" Visibility="Collapsed">False</Button>
+                        <Button Margin="-1,0,8,0" Padding="0" Width="45" hc:BorderElement.CornerRadius="0,4,4,0" VerticalAlignment="Bottom" Click="Button_Clickqk">清空</Button>
                     </StackPanel>
                 </Grid>
                 <hc:TransitioningContentControl x:Name="transit" TransitionMode="Bottom2TopWithFade" Visibility="Hidden">

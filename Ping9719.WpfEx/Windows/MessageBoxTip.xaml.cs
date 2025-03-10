@@ -22,64 +22,85 @@ namespace Ping9719.WpfEx
             InitializeComponent();
         }
 
-        private void closeClick(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
+        /// <summary>
+        /// 内容文本
+        /// </summary>
+        public string ContentText { get; private set; }
+        /// <summary>
+        /// 全部按钮
+        /// </summary>
+        public IEnumerable<string> Buttons { get; private set; }
+        /// <summary>
+        /// 确定后选中的按钮
+        /// </summary>
+        public string ClickButton { get; private set; }
+        /// <summary>
+        /// 是否显示关闭按钮
+        /// </summary>
+        public bool IsVisCloseBut { get; private set; }
+
+        /// <summary>
+        /// 显示成功前,返回是否弹框
+        /// </summary>
+        public static Func<MessageBoxTip, bool> Showing;
+        /// <summary>
+        /// 显示成功后
+        /// </summary>
+        public static Action<MessageBoxTip> Showed;
+        /// <summary>
+        /// 点击成功后
+        /// </summary>
+        public static Action<MessageBoxTip> Clicked;
 
         /// <summary>
         /// 显示提示框
         /// </summary>
-        /// <param name="content">内容</param>
+        /// <param name="contentText">内容</param>
         /// <param name="isVisCloseBut">界面右上角是否显示关闭按钮</param>
         /// <returns>点击的按钮文本</returns>
-        public static string Show(string content, bool isVisCloseBut = true, Window owner = null)
-        {
-            return Show(content, string.Empty, isVisCloseBut);
-        }
+        public static string Show(string contentText, bool isVisCloseBut = true, Window owner = null, object tag = null) => Show(contentText, string.Empty, isVisCloseBut, owner, tag);
 
         /// <summary>
         /// 显示提示框
         /// </summary>
-        /// <param name="content">内容</param>
+        /// <param name="contentText">内容</param>
         /// <param name="title">标题</param>
         /// <param name="isVisCloseBut">界面右上角是否显示关闭按钮</param>
         /// <returns>点击的按钮文本</returns>
-        public static string Show(string content, string title, bool isVisCloseBut = true, Window owner = null)
-        {
-            return Show(content, title, new string[] { "确认" }, isVisCloseBut);
-        }
+        public static string Show(string contentText, string title, bool isVisCloseBut = true, Window owner = null, object tag = null) => Show(contentText, title, new string[] { "确认" }, isVisCloseBut, owner, tag);
 
         /// <summary>
         /// 显示提示框
         /// </summary>
-        /// <param name="content">内容</param>
+        /// <param name="contentText">内容</param>
         /// <param name="buttons">按钮内容</param>
         /// <param name="isVisCloseBut">界面右上角是否显示关闭按钮</param>
         /// <returns>点击的按钮文本</returns>
-        public static string Show(string content, IEnumerable<string> buttons, bool isVisCloseBut = true, Window owner = null)
-        {
-            return Show(content, string.Empty, buttons, isVisCloseBut);
-        }
+        public static string Show(string contentText, IEnumerable<string> buttons, bool isVisCloseBut = true, Window owner = null, object tag = null) => Show(contentText, string.Empty, buttons, isVisCloseBut, owner, tag);
 
         /// <summary>
         /// 显示提示框
         /// </summary>
-        /// <param name="content">内容</param>
+        /// <param name="contentText">内容</param>
         /// <param name="title">标题</param>
         /// <param name="buttons">按钮内容</param>
         /// <param name="isVisCloseBut">界面右上角是否显示关闭按钮</param>
         /// <returns>点击的按钮文本</returns>
-        public static string Show(string content, string title, IEnumerable<string> buttons, bool isVisCloseBut = true, Window owner = null)
+        public static string Show(string contentText, string title, IEnumerable<string> buttons, bool isVisCloseBut = true, Window owner = null, object tag = null)
         {
-            string clikename = null!;
+            string rInfo = null!;
             Application.Current.Dispatcher.Invoke(new Action(() =>
             {
                 var tipView = new MessageBoxTip();
-                tipView.DataContext = new { Title = title, Content = content, IsClose = isVisCloseBut };
+                tipView.ContentText = contentText ?? "";
+                tipView.Title = title ?? "";
+                tipView.Buttons = buttons ?? new string[] { };
+                tipView.IsVisCloseBut = isVisCloseBut;
+                tipView.Tag = tag;
+                tipView.DataContext = tipView;
                 tipView.spacingPanel.Children.Clear();
 
-                foreach (var item in buttons)
+                foreach (var item in tipView.Buttons)
                 {
                     Button button = new Button()
                     {
@@ -87,7 +108,9 @@ namespace Ping9719.WpfEx
                     };
                     button.Click += (s, e) =>
                     {
-                        clikename = ((Button)s).Content.ToString();
+                        rInfo = ((Button)s).Content.ToString();
+                        tipView.ClickButton = rInfo;
+                        Clicked?.Invoke(tipView);
                         tipView.Close();
                     };
 
@@ -100,17 +123,22 @@ namespace Ping9719.WpfEx
                 tipView.Owner = ownerWindow;
                 tipView.WindowStartupLocation = ownerIsNull ? WindowStartupLocation.CenterScreen : WindowStartupLocation.CenterOwner;
                 tipView.Topmost = ownerIsNull;
-                SystemSounds.Asterisk.Play();
-                tipView.ShowDialog();
+                if (Showing?.Invoke(tipView) ?? true)
+                {
+                    SystemSounds.Asterisk.Play();
+                    Showed?.Invoke(tipView);
+                    tipView.ShowDialog();
+                }
                 tipView = null;
             }));
 
-            return clikename;
+            return rInfo;
         }
 
-        private void previewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            DragMove();
-        }
+        #region 私有
+        private void closeClick(object sender, RoutedEventArgs e) => this.Close();
+        private void previewMouseLeftButtonDown(object sender, MouseButtonEventArgs e) => DragMove();
+        #endregion
+
     }
 }
