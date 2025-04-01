@@ -24,16 +24,8 @@ namespace Ping9719.WpfEx
             this.TextChanged += TextBoxScanner_TextChanged;
         }
 
-        int textTop = 0;
-        bool isFir = false;
         private void TextBoxScanner_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
-            if (!isFir)
-            {
-                isFir = true;
-                textTop = Text?.Length ?? 0;
-            }
-
             if (IsAutoFocus && e.NewValue is true)
             {
                 Task.Run(() =>
@@ -69,6 +61,19 @@ namespace Ping9719.WpfEx
         public static readonly DependencyProperty AutoClearProperty =
             DependencyProperty.Register("AutoClear", typeof(TextBoxScannerAutoClear), typeof(TextBoxScanner), new PropertyMetadata(TextBoxScannerAutoClear.Clear));
 
+
+        /// <summary>
+        /// 触发方式，默认为时间
+        /// </summary>
+        public TextBoxScannerTriggerMode TriggerMode
+        {
+            get { return (TextBoxScannerTriggerMode)GetValue(TriggerModeProperty); }
+            set { SetValue(TriggerModeProperty, value); }
+        }
+
+        public static readonly DependencyProperty TriggerModeProperty =
+            DependencyProperty.Register("TriggerMode", typeof(TextBoxScannerTriggerMode), typeof(TextBoxScanner), new PropertyMetadata(TextBoxScannerTriggerMode.IntervalTime));
+
         /// <summary>
         /// 计时变化间隔，默认600ms
         /// </summary>
@@ -80,6 +85,19 @@ namespace Ping9719.WpfEx
 
         public static readonly DependencyProperty IntervalTimeProperty =
             DependencyProperty.Register("IntervalTime", typeof(int), typeof(TextBoxScanner), new PropertyMetadata(600));
+
+        /// <summary>
+        /// 字符串结尾，默认（\n）
+        /// </summary>
+        public string StringEnd
+        {
+            get { return (string)GetValue(StringEndProperty); }
+            set { SetValue(StringEndProperty, value); }
+        }
+
+        public static readonly DependencyProperty StringEndProperty =
+            DependencyProperty.Register("StringEnd", typeof(string), typeof(TextBoxScanner), new PropertyMetadata("\n"));
+
 
         /// <summary>
         /// 文本扫码改变
@@ -108,6 +126,25 @@ namespace Ping9719.WpfEx
                 this.Dispatcher.Invoke(() =>
                 {
                     base.Focus();
+                    base.CaretIndex = Text.Length;
+                });
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+
+        /// <summary>
+        /// 清除所有内容
+        /// </summary>
+        public new void Clear()
+        {
+            try
+            {
+                this.Dispatcher.Invoke(() =>
+                {
+                    base.Clear();
                 });
             }
             catch (Exception)
@@ -117,35 +154,20 @@ namespace Ping9719.WpfEx
         }
 
         DateTime dt = DateTime.Now;
-        bool isRun = false;
+        string strTop = string.Empty;
+        Task t1 = Task.FromResult(true);
 
         private void TextBoxScanner_TextChanged(object sender, TextChangedEventArgs e)
         {
-            var textCount_ = Text?.Length ?? 0;
-            //删除文本中
-            if (textCount_ < textTop)
-            {
-                textTop = Text?.Length ?? 0;
-                return;
-            }
-
-            textTop = Text?.Length ?? 0;
-
-            var isNull = string.IsNullOrEmpty(Text);
-            if (isNull)
-                return;
-
             dt = DateTime.Now;
 
-            if (isRun)
+            if (e.Changes.Any(o => o.AddedLength > 0) && t1.IsCompleted)
             {
-                return;
-            }
-            else
-            {
-                isRun = true;
                 var IntervalTime_ = IntervalTime;
-                Task.Run(() =>
+                var StringEnd_ = StringEnd;
+                var TriggerMode_ = TriggerMode;
+                var sText = strTop;
+                t1 = Task.Run(() =>
                 {
                     try
                     {
@@ -154,40 +176,106 @@ namespace Ping9719.WpfEx
                             Thread.Sleep(1);
 
                             //扫码完成
-                            var dtn = DateTime.Now;
-                            if ((dtn - dt).TotalMilliseconds >= IntervalTime_)
+                            if (TriggerMode_ == TextBoxScannerTriggerMode.IntervalTime && (DateTime.Now - dt).TotalMilliseconds >= IntervalTime_)
                             {
                                 this.Dispatcher.Invoke(() =>
                                 {
-                                    if (AutoClear == TextBoxScannerAutoClear.NextClear)
-                                    {
-                                        if (Text.StartsWith(ScannerText))
-                                        {
-                                            Text = Text.Substring(ScannerText.Length);
-                                            SelectionStart = Text.Length;
-                                        }
-                                    }
-
-                                    ScannerText = Text;
-                                    this.RaiseEvent(new RoutedEventArgs(TextScannerChangedEvent));
-
-                                    if (AutoClear == TextBoxScannerAutoClear.Clear)
-                                        Text = string.Empty;
+                                    GoJx(sText);
                                 });
                                 break;
                             }
+                            else if (TriggerMode_ == TextBoxScannerTriggerMode.StringEnd)
+                            {
+                                Thread.Sleep(100);
+                                bool isend = false;
+                                this.Dispatcher.Invoke(() =>
+                                {
+                                    isend = Text.EndsWith(StringEnd_);
+                                    if (isend)
+                                        GoJx(sText);
+                                });
+
+                                if (isend)
+                                    break;
+                            }
+
                         }
                     }
                     catch (Exception)
                     {
 
                     }
-                    finally
-                    {
-                        isRun = false;
-                    }
                 });
             }
+
+            strTop = Text;
+
         }
+
+        private void GoJx(string sText)
+        {
+            if (AutoClear == TextBoxScannerAutoClear.NoClear)
+            {
+                ScannerText = Text;
+
+                if (!string.IsNullOrEmpty(ScannerText))
+                    this.RaiseEvent(new RoutedEventArgs(TextScannerChangedEvent));
+
+                base.CaretIndex = Text.Length;
+            }
+            else if (AutoClear == TextBoxScannerAutoClear.NextClear)
+            {
+                ScannerText = Text.StartsWith(sText) ? Text.Substring(sText.Length) : Text;
+
+                if (!string.IsNullOrEmpty(ScannerText))
+                    this.RaiseEvent(new RoutedEventArgs(TextScannerChangedEvent));
+
+                Text = ScannerText;
+                base.CaretIndex = Text.Length;
+            }
+            else if (AutoClear == TextBoxScannerAutoClear.Clear)
+            {
+                ScannerText = Text;
+
+                if (!string.IsNullOrEmpty(ScannerText))
+                    this.RaiseEvent(new RoutedEventArgs(TextScannerChangedEvent));
+
+                Text = string.Empty;
+            }
+        }
+    }
+
+    /// <summary>
+    /// 自动清空模式
+    /// </summary>
+    public enum TextBoxScannerAutoClear
+    {
+        /// <summary>
+        /// 默认，不清空
+        /// </summary>
+        NoClear,
+        /// <summary>
+        /// 每次清空
+        /// </summary>
+        Clear,
+        /// <summary>
+        /// 下次清空
+        /// </summary>
+        NextClear
+    }
+
+    /// <summary>
+    /// 自动清空模式
+    /// </summary>
+    public enum TextBoxScannerTriggerMode
+    {
+        /// <summary>
+        /// 一定时间间隔没有变化
+        /// </summary>
+        IntervalTime,
+        /// <summary>
+        /// 指定的字符串结尾
+        /// </summary>
+        StringEnd,
     }
 }
