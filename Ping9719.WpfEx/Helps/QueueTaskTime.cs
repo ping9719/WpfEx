@@ -50,7 +50,7 @@ namespace Ping9719.WpfEx
         /// </summary>
         public QueueTaskTime()
         {
-            task = Task.Run(() =>
+            task = Task.Run(async () =>
             {
                 while (true)
                 {
@@ -89,7 +89,7 @@ namespace Ping9719.WpfEx
                         SetState(QueueTaskTimeState.EndTaskErr, ex);
                     }
 
-                    Thread.Sleep(1);
+                    await Task.Delay(10);
                 }
             });
         }
@@ -148,7 +148,7 @@ namespace Ping9719.WpfEx
         /// <param name="isStartRun">启动是否马上就执行方法（不等待间隔时间）</param>
         public void AddForTask(Action action, TimeSpan timeSpan, bool isStartRun = true)
         {
-            Task task = new Task((object obj) =>
+            Task task = new Task(async (object obj) =>
             {
                 var dt = (Tuple<Action, TimeSpan, bool>)obj;
                 var ts = (timeSpan == null || timeSpan.TotalMilliseconds < 10) ? 10 : Convert.ToInt32(timeSpan.TotalMilliseconds);
@@ -175,7 +175,7 @@ namespace Ping9719.WpfEx
                         if (!IsStart)
                             continue;
                     }
-                    Thread.Sleep(1);
+                    await Task.Delay(10);
                 }
             }, Tuple.Create(action, timeSpan, isStartRun));
 

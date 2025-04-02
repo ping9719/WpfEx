@@ -530,9 +530,19 @@
             自动清除文本（当达到计时变化间隔时）
             </summary>
         </member>
+        <member name="P:Ping9719.WpfEx.TextBoxScanner.TriggerMode">
+            <summary>
+            触发方式，默认为时间
+            </summary>
+        </member>
         <member name="P:Ping9719.WpfEx.TextBoxScanner.IntervalTime">
             <summary>
             计时变化间隔，默认600ms
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.TextBoxScanner.StringEnd">
+            <summary>
+            字符串结尾，默认（\n）
             </summary>
         </member>
         <member name="E:Ping9719.WpfEx.TextBoxScanner.TextScannerChanged">
@@ -545,9 +555,49 @@
             扫码文本
             </summary>
         </member>
-        <member name="M:Ping9719.WpfEx.TextBoxScanner.FocusInvoke">
+        <member name="M:Ping9719.WpfEx.TextBoxScanner.FocusInvoke(System.Int32)">
             <summary>
             尝试将焦点设置为此元素，针对多线程优化
+            </summary>
+        </member>
+        <member name="M:Ping9719.WpfEx.TextBoxScanner.Clear">
+            <summary>
+            清除所有内容
+            </summary>
+        </member>
+        <member name="T:Ping9719.WpfEx.TextBoxScannerAutoClear">
+            <summary>
+            自动清空模式
+            </summary>
+        </member>
+        <member name="F:Ping9719.WpfEx.TextBoxScannerAutoClear.NoClear">
+            <summary>
+            默认，不清空
+            </summary>
+        </member>
+        <member name="F:Ping9719.WpfEx.TextBoxScannerAutoClear.Clear">
+            <summary>
+            每次清空
+            </summary>
+        </member>
+        <member name="F:Ping9719.WpfEx.TextBoxScannerAutoClear.NextClear">
+            <summary>
+            下次清空
+            </summary>
+        </member>
+        <member name="T:Ping9719.WpfEx.TextBoxScannerTriggerMode">
+            <summary>
+            自动清空模式
+            </summary>
+        </member>
+        <member name="F:Ping9719.WpfEx.TextBoxScannerTriggerMode.IntervalTime">
+            <summary>
+            一定时间间隔没有变化
+            </summary>
+        </member>
+        <member name="F:Ping9719.WpfEx.TextBoxScannerTriggerMode.StringEnd">
+            <summary>
+            指定的字符串结尾
             </summary>
         </member>
         <member name="T:Ping9719.WpfEx.UserControlBase">
@@ -758,26 +808,6 @@
         <member name="F:Ping9719.WpfEx.SyncProgressBarState.SyncErr">
             <summary>
             同步失败
-            </summary>
-        </member>
-        <member name="T:Ping9719.WpfEx.TextBoxScannerAutoClear">
-            <summary>
-            自动清空模式
-            </summary>
-        </member>
-        <member name="F:Ping9719.WpfEx.TextBoxScannerAutoClear.NoClear">
-            <summary>
-            默认，不清空
-            </summary>
-        </member>
-        <member name="F:Ping9719.WpfEx.TextBoxScannerAutoClear.Clear">
-            <summary>
-            清空
-            </summary>
-        </member>
-        <member name="F:Ping9719.WpfEx.TextBoxScannerAutoClear.NextClear">
-            <summary>
-            下次清空
             </summary>
         </member>
         <member name="T:Ping9719.WpfEx.EnumHelp">

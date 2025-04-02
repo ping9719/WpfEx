@@ -6,7 +6,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace Ping9719.WpfEx
 {
@@ -119,12 +118,15 @@ namespace Ping9719.WpfEx
         /// <summary>
         /// 尝试将焦点设置为此元素，针对多线程优化
         /// </summary>
-        public void FocusInvoke()
+        public void FocusInvoke(int time = 0)
         {
             try
             {
                 this.Dispatcher.Invoke(() =>
                 {
+                    if (time > 0)
+                        System.Threading.Thread.Sleep(time);
+
                     base.Focus();
                     base.CaretIndex = Text.Length;
                 });
@@ -142,6 +144,10 @@ namespace Ping9719.WpfEx
         {
             try
             {
+                t1.Wait();
+                strTop = string.Empty;
+                strTopEnd = string.Empty;
+
                 this.Dispatcher.Invoke(() =>
                 {
                     base.Clear();
@@ -154,62 +160,57 @@ namespace Ping9719.WpfEx
         }
 
         DateTime dt = DateTime.Now;
-        string strTop = string.Empty;
+        string strTop = string.Empty;//上次的文本
+        string strTopEnd = string.Empty;//以字符串结尾的时候的上次文本
         Task t1 = Task.FromResult(true);
 
         private void TextBoxScanner_TextChanged(object sender, TextChangedEventArgs e)
         {
             dt = DateTime.Now;
-
-            if (e.Changes.Any(o => o.AddedLength > 0) && t1.IsCompleted)
+            var isadd = e.Changes.Any(o => o.AddedLength > 0 && o.RemovedLength == 0);
+            if (isadd && t1.IsCompleted)
             {
-                var IntervalTime_ = IntervalTime;
-                var StringEnd_ = StringEnd;
-                var TriggerMode_ = TriggerMode;
-                var sText = strTop;
-                t1 = Task.Run(() =>
+                if (TriggerMode == TextBoxScannerTriggerMode.StringEnd)
                 {
-                    try
+                    if (Text.EndsWith(StringEnd))
                     {
-                        while (true)
+                        GoJx(strTopEnd);
+                        strTopEnd = Text;
+                    }
+                }
+                else if (TriggerMode == TextBoxScannerTriggerMode.IntervalTime)
+                {
+                    var IntervalTime_ = IntervalTime;
+                    var StringEnd_ = StringEnd;
+                    var TriggerMode_ = TriggerMode;
+                    var sText = strTop;
+                    t1 = Task.Run(async () =>
+                    {
+                        try
                         {
-                            Thread.Sleep(1);
+                            while (true)
+                            {
+                                await Task.Delay(10);
 
-                            //扫码完成
-                            if (TriggerMode_ == TextBoxScannerTriggerMode.IntervalTime && (DateTime.Now - dt).TotalMilliseconds >= IntervalTime_)
-                            {
-                                this.Dispatcher.Invoke(() =>
+                                //扫码完成
+                                if (TriggerMode_ == TextBoxScannerTriggerMode.IntervalTime && (DateTime.Now - dt).TotalMilliseconds >= IntervalTime_)
                                 {
-                                    GoJx(sText);
-                                });
-                                break;
-                            }
-                            else if (TriggerMode_ == TextBoxScannerTriggerMode.StringEnd)
-                            {
-                                Thread.Sleep(100);
-                                bool isend = false;
-                                this.Dispatcher.Invoke(() =>
-                                {
-                                    isend = Text.EndsWith(StringEnd_);
-                                    if (isend)
+                                    this.Dispatcher?.Invoke(() =>
+                                    {
                                         GoJx(sText);
-                                });
-
-                                if (isend)
+                                    });
                                     break;
+                                }
                             }
+                        }
+                        catch (Exception)
+                        {
 
                         }
-                    }
-                    catch (Exception)
-                    {
-
-                    }
-                });
+                    });
+                }
             }
-
             strTop = Text;
-
         }
 
         private void GoJx(string sText)
