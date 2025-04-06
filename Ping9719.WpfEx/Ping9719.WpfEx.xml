@@ -29,6 +29,127 @@
             设置行字符串。如“*,2.5*,100,auto”
             </summary>
         </member>
+        <member name="T:Ping9719.WpfEx.AutoGrid">
+            <summary>
+            自动表格（会自动设置子项在表格中的索引）
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.AutoGrid.ChildHorizontalAlignment">
+            <summary>
+            所有子项水平对齐方式
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.AutoGrid.ChildMargin">
+            <summary>
+            所有子项边距
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.AutoGrid.ChildVerticalAlignment">
+            <summary>
+            所有子项垂直对齐方式
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.AutoGrid.ColumnCount">
+            <summary>
+            列的数量
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.AutoGrid.Columns">
+            <summary>
+            列定义（用逗号分割，如“100,*,2*,auto”）
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.AutoGrid.ColumnWidth">
+            <summary>
+            所有列的宽度
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "P:Ping9719.WpfEx.AutoGrid.IsAutoIndexing" -->
+        <member name="P:Ping9719.WpfEx.AutoGrid.Orientation">
+            <summary>
+            索引方向。（水平：从左到右，从上到下；垂直：从上到下，从左到右）默认水平
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.AutoGrid.RowCount">
+            <summary>
+            行的数量
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.AutoGrid.RowHeight">
+            <summary>
+            所有行高
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.AutoGrid.Rows">
+            <summary>
+            行定义（用逗号分割，如“100,*,2*,auto”）
+            </summary>
+        </member>
+        <member name="M:Ping9719.WpfEx.AutoGrid.ColumnCountChanged(System.Windows.DependencyObject,System.Windows.DependencyPropertyChangedEventArgs)">
+            <summary>
+            列数量更改事件
+            </summary>
+        </member>
+        <member name="M:Ping9719.WpfEx.AutoGrid.ColumnsChanged(System.Windows.DependencyObject,System.Windows.DependencyPropertyChangedEventArgs)">
+            <summary>
+            列更改事件
+            </summary>
+        </member>
+        <member name="M:Ping9719.WpfEx.AutoGrid.FixedColumnWidthChanged(System.Windows.DependencyObject,System.Windows.DependencyPropertyChangedEventArgs)">
+            <summary>
+            固定列宽度更改事件
+            </summary>
+        </member>
+        <member name="M:Ping9719.WpfEx.AutoGrid.FixedRowHeightChanged(System.Windows.DependencyObject,System.Windows.DependencyPropertyChangedEventArgs)">
+            <summary>
+            固定行高度更改事件
+            </summary>
+        </member>
+        <member name="M:Ping9719.WpfEx.AutoGrid.Parse(System.String)">
+            <summary>
+            解析逗号分隔文本的网格长度数组
+            </summary>
+        </member>
+        <member name="M:Ping9719.WpfEx.AutoGrid.RowCountChanged(System.Windows.DependencyObject,System.Windows.DependencyPropertyChangedEventArgs)">
+            <summary>
+            行数更改事件
+            </summary>
+        </member>
+        <member name="M:Ping9719.WpfEx.AutoGrid.RowsChanged(System.Windows.DependencyObject,System.Windows.DependencyPropertyChangedEventArgs)">
+            <summary>
+            行更改事件
+            </summary>
+        </member>
+        <member name="M:Ping9719.WpfEx.AutoGrid.OnChildHorizontalAlignmentChanged(System.Windows.DependencyObject,System.Windows.DependencyPropertyChangedEventArgs)">
+            <summary>
+            当[子水平对齐更改]时调用
+            </summary>
+        </member>
+        <member name="M:Ping9719.WpfEx.AutoGrid.OnChildMarginChanged(System.Windows.DependencyObject,System.Windows.DependencyPropertyChangedEventArgs)">
+            <summary>
+            当[子布局更改]时调用。
+            </summary>
+        </member>
+        <member name="M:Ping9719.WpfEx.AutoGrid.OnChildVerticalAlignmentChanged(System.Windows.DependencyObject,System.Windows.DependencyPropertyChangedEventArgs)">
+            <summary>
+            当[子垂直对齐更改]时调用。
+            </summary>
+        </member>
+        <member name="M:Ping9719.WpfEx.AutoGrid.ApplyChildLayout(System.Windows.UIElement)">
+            <summary>
+            应用子边距和布局效果，如对齐
+            </summary>
+        </member>
+        <member name="M:Ping9719.WpfEx.AutoGrid.Clamp(System.Int32,System.Int32)">
+            <summary>
+            将值限制在最大值
+            </summary>
+        </member>
+        <member name="M:Ping9719.WpfEx.AutoGrid.PerformLayout">
+            <summary>
+            执行行和列索引的网格布局
+            </summary>
+        </member>
         <member name="T:Ping9719.WpfEx.ImageListener">
             <summary>
             图像监听。可针对文件夹文件进行监听显示
@@ -808,6 +929,16 @@
         <member name="F:Ping9719.WpfEx.SyncProgressBarState.SyncErr">
             <summary>
             同步失败
+            </summary>
+        </member>
+        <member name="T:Ping9719.WpfEx.DependencyExtensions">
+            <summary>
+            依赖属性扩展
+            </summary>
+        </member>
+        <member name="M:Ping9719.WpfEx.DependencyExtensions.SetIfDefault``1(System.Windows.DependencyObject,System.Windows.DependencyProperty,``0)">
+            <summary>
+            设置为默认值
             </summary>
         </member>
         <member name="T:Ping9719.WpfEx.EnumHelp">
