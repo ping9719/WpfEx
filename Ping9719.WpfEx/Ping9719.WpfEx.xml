@@ -641,6 +641,11 @@
             初始化
             </summary>
         </member>
+        <member name="P:Ping9719.WpfEx.TextBoxScanner.IsAutoAlphanumeric">
+            <summary>
+            是否自动切换为数字和英文的键盘输入法
+            </summary>
+        </member>
         <member name="P:Ping9719.WpfEx.TextBoxScanner.IsAutoFocus">
             <summary>
             是否自动设置焦点（在显示控件的时候尝试将焦点设置为此元素）

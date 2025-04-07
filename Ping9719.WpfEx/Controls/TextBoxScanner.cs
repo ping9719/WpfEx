@@ -6,6 +6,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace Ping9719.WpfEx
 {
@@ -19,8 +20,20 @@ namespace Ping9719.WpfEx
         /// </summary>
         public TextBoxScanner() : base()
         {
-            this.IsVisibleChanged += TextBoxScanner_IsVisibleChanged;
-            this.TextChanged += TextBoxScanner_TextChanged;
+            base.IsVisibleChanged += TextBoxScanner_IsVisibleChanged;
+            base.TextChanged += TextBoxScanner_TextChanged;
+            base.GotFocus += TextBoxScanner_GotFocus;
+        }
+
+        private void TextBoxScanner_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (sender is TextBox tb)
+            {
+                if (IsAutoAlphanumeric)
+                    InputMethod.SetPreferredImeConversionMode(this, ImeConversionModeValues.Alphanumeric);
+                else
+                    InputMethod.SetPreferredImeConversionMode(this, ImeConversionModeValues.NoConversion);
+            }
         }
 
         private void TextBoxScanner_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
@@ -35,6 +48,17 @@ namespace Ping9719.WpfEx
             }
         }
 
+        /// <summary>
+        /// 是否自动切换为数字和英文的键盘输入法
+        /// </summary>
+        public bool IsAutoAlphanumeric
+        {
+            get { return (bool)GetValue(IsAutoAlphanumericProperty); }
+            set { SetValue(IsAutoAlphanumericProperty, value); }
+        }
+
+        public static readonly DependencyProperty IsAutoAlphanumericProperty =
+            DependencyProperty.Register("IsAutoAlphanumeric", typeof(bool), typeof(TextBoxScanner), new PropertyMetadata(true));
 
         /// <summary>
         /// 是否自动设置焦点（在显示控件的时候尝试将焦点设置为此元素）
