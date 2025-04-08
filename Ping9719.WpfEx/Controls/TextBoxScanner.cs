@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Interop;
 
 namespace Ping9719.WpfEx
 {
@@ -15,6 +17,20 @@ namespace Ping9719.WpfEx
     /// </summary>
     public class TextBoxScanner : TextBox
     {
+        [DllImport("imm32.dll")]
+        private static extern IntPtr ImmGetContext(IntPtr hWnd);
+
+        [DllImport("imm32.dll")]
+        private static extern bool ImmSetConversionStatus(IntPtr himc, uint fdwConversion, uint fdwSentence);
+
+        // 切换到英文输入模式
+        private static void SetEnglishMode(IntPtr hWnd)
+        {
+            const uint IME_CMODE_ALPHANUMERIC = 0x0000;
+            IntPtr himc = ImmGetContext(hWnd);
+            ImmSetConversionStatus(himc, IME_CMODE_ALPHANUMERIC, 0);
+        }
+
         /// <summary>
         /// 初始化
         /// </summary>
@@ -27,12 +43,19 @@ namespace Ping9719.WpfEx
 
         private void TextBoxScanner_GotFocus(object sender, RoutedEventArgs e)
         {
-            if (sender is TextBox tb)
+            if (sender is TextBox textBox)
             {
                 if (IsAutoAlphanumeric)
-                    InputMethod.SetPreferredImeConversionMode(this, ImeConversionModeValues.Alphanumeric);
-                else
-                    InputMethod.SetPreferredImeConversionMode(this, ImeConversionModeValues.NoConversion);
+                {
+                    //InputMethod.Current.ImeConversionMode = ImeConversionModeValues.Alphanumeric;
+                    //InputMethod.Current.ImeState = InputMethodState.On;
+
+                    var hWnd = ((HwndSource)PresentationSource.FromVisual(textBox))?.Handle ?? IntPtr.Zero;
+                    if (hWnd != IntPtr.Zero)
+                    {
+                        SetEnglishMode(hWnd);
+                    }
+                }
             }
         }
 
@@ -49,7 +72,7 @@ namespace Ping9719.WpfEx
         }
 
         /// <summary>
-        /// 是否自动切换为数字和英文的键盘输入法
+        /// 是否自动切换为英文的键盘输入法，默认true
         /// </summary>
         public bool IsAutoAlphanumeric
         {
