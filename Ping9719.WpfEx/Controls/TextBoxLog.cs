@@ -85,7 +85,7 @@ namespace Ping9719.WpfEx
                         }
 
                         //刷新
-                        Task.Run(async () =>
+                        Task.Factory.StartNew(async () =>
                         {
                             while (!isColse)
                             {
@@ -156,7 +156,7 @@ namespace Ping9719.WpfEx
                                     }
                                 }
                             }
-                        });
+                        }, TaskCreationOptions.LongRunning);
                     }
 
                     IsLoadedFirst = true;

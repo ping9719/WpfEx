@@ -50,7 +50,7 @@ namespace Ping9719.WpfEx
         /// </summary>
         public QueueTaskTime()
         {
-            task = Task.Run(async () =>
+            task = Task.Factory.StartNew(async () =>
             {
                 while (true)
                 {
@@ -91,7 +91,7 @@ namespace Ping9719.WpfEx
 
                     await Task.Delay(10);
                 }
-            });
+            }, TaskCreationOptions.LongRunning);
         }
 
         /// <summary>
