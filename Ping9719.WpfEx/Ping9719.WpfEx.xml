@@ -643,7 +643,7 @@
         </member>
         <member name="P:Ping9719.WpfEx.TextBoxScanner.IsAutoAlphanumeric">
             <summary>
-            是否自动切换为数字和英文的键盘输入法
+            是否自动切换为英文的键盘输入法，默认true
             </summary>
         </member>
         <member name="P:Ping9719.WpfEx.TextBoxScanner.IsAutoFocus">

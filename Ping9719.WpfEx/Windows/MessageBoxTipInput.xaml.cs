@@ -21,7 +21,7 @@ namespace Ping9719.WpfEx
     /// </summary>
     public partial class MessageBoxTipInput : HandyControl.Controls.Window
     {
-        public MessageBoxTipInput()
+        internal MessageBoxTipInput()
         {
             InitializeComponent();
         }
