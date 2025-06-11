@@ -105,6 +105,7 @@ namespace Ping9719.WpfEx
                     Button button = new Button()
                     {
                         Content = item,
+                        Margin = new Thickness(3),
                     };
                     button.Click += (s, e) =>
                     {
