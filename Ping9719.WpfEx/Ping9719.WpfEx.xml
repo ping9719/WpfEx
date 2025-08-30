@@ -1243,11 +1243,6 @@
             MainLoadWindow
             </summary>
         </member>
-        <member name="F:Ping9719.WpfEx.MainLoadWindow.TaskSleepTime">
-            <summary>
-            任务最短停留时间，默认180ms（视觉暂留0.1，人眼辨认0.3）
-            </summary>
-        </member>
         <member name="M:Ping9719.WpfEx.MainLoadWindow.Show(System.Tuple{System.String,System.String,System.Action}[])">
             <summary>
             显示并运行
@@ -1255,9 +1250,56 @@
             <param name="funcs">任务，1正在进行的任务的提示（如：正在进行XX中...），2此任务错误的提示（如：XX失败），3任务</param>
             <returns>是否全部成功</returns>
         </member>
+        <member name="M:Ping9719.WpfEx.MainLoadWindow.Show(Ping9719.WpfEx.MainLoadInfo[])">
+            <summary>
+            显示并运行
+            </summary>
+            <param name="funcs">加载的信息</param>
+            <returns>是否全部成功</returns>
+        </member>
         <member name="M:Ping9719.WpfEx.MainLoadWindow.InitializeComponent">
             <summary>
             InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Ping9719.WpfEx.MainLoadInfo">
+            <summary>
+            窗体加载的信息
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.MainLoadInfo.Task">
+            <summary>
+            加载的任务
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.MainLoadInfo.Info">
+            <summary>
+            提示。默认，加载中...
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.MainLoadInfo.InfoErr">
+            <summary>
+            加载失败显示的提示。默认，加载失败
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.MainLoadInfo.Err">
+            <summary>
+            加载中出现的错误
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.MainLoadInfo.IsRetry">
+            <summary>
+            任务失败是否可以点击重试按钮，默认true
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.MainLoadInfo.IsErrIgnore">
+            <summary>
+            是否可以对错误进行忽略并点击继续后继续，默认false
+            </summary>
+        </member>
+        <member name="P:Ping9719.WpfEx.MainLoadInfo.StayTime">
+            <summary>
+            驻留视觉时间，默认180ms（视觉暂留0.1，人眼辨认0.3）
             </summary>
         </member>
         <member name="T:Ping9719.WpfEx.MessageBoxTip">
