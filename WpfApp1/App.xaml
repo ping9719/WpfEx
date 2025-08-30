@@ -1,0 +1,19 @@
+﻿<Application x:Class="WpfApp1.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:WpfApp1"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             xmlns:hc="https://handyorg.github.io/handycontrol">
+    <Application.Resources>
+        <ResourceDictionary>
+            <!--框架-->
+            <ResourceDictionary.MergedDictionaries>
+                <!--Ping9719.WpfEx-->
+                <ResourceDictionary Source="pack://application:,,,/Ping9719.WpfEx;component/Themes/Theme.xaml"/>
+                <!--HandyControl-->
+                <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/SkinDefault.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Theme.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
