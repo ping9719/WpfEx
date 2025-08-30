@@ -29,11 +29,11 @@
                 <Grid PreviewMouseLeftButtonDown="previewMouseLeftButtonDown" Background="Transparent">
 
                 </Grid>
-                <TextBlock Margin="5,0" Text="{Binding Title, FallbackValue=标题}" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                <TextBlock Margin="5,0" Text="{Binding Title, FallbackValue=标题}" FontSize="{StaticResource SubHeadFontSize}" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Left"/>
                 <Button Grid.Column="1" Visibility="{Binding IsVisCloseBut,Converter={StaticResource Boolean2VisibilityHiddenConverter}}" Style="{StaticResource ButtonIcon}" hc:IconElement.Geometry="{StaticResource CloseGeometry}" Click="closeClick"/>
             </Grid>
             <StackPanel Grid.Row="1" VerticalAlignment="Center">
-                <TextBlock Margin="15,0,15,5" Text="{Binding ContentText, FallbackValue=我是内容}" TextWrapping="Wrap"></TextBlock>
+                <TextBox Style="{StaticResource ComboBoxEditableTextBox}" IsReadOnly="True" Margin="5,0,0,0" Text="{Binding ContentText, FallbackValue=我是内容,Mode=OneWay}" TextWrapping="Wrap"></TextBox>
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"></ColumnDefinition>
@@ -50,9 +50,9 @@
                     <TextBlock x:Name="textBlock" Style="{StaticResource TextBlockDefaultDanger}" Margin="10,0" TextWrapping="Wrap" Text="{Binding ContentHint, FallbackValue=请输入内容}"></TextBlock>
                 </hc:TransitioningContentControl>
             </StackPanel>
-            <hc:UniformSpacingPanel x:Name="spacingPanel" Grid.Row="2" Margin="5,0,5,10" Spacing="10" Width="auto" ChildWrapping="Wrap" HorizontalAlignment="Center">
-                <Button Content="确认" Name="qr"/>
-            </hc:UniformSpacingPanel>
+            <WrapPanel x:Name="spacingPanel" Grid.Row="2" Margin="5,0,5,10" Width="auto" HorizontalAlignment="Center">
+                <Button Content="确认" Margin="3" Name="qr"/>
+            </WrapPanel>
         </Grid>
     </Border>
 </hc:Window>
