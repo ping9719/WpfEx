@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Ping9719.WpfEx"
         mc:Ignorable="d"
         xmlns:hc="https://handyorg.github.io/handycontrol"
-        Title="MainStartWindow" Height="200" Width="400" WindowStyle="None" BorderThickness="0" Background="{x:Null}" AllowsTransparency="True" WindowStartupLocation="CenterScreen"  Loaded="Window_Loaded" Opacity="0.9">
+        Title="MainStartWindow" Height="220" Width="380" WindowStyle="None" BorderThickness="0" Background="{x:Null}" AllowsTransparency="True" WindowStartupLocation="CenterScreen"  Loaded="Window_Loaded" Opacity="0.9">
     <Border BorderBrush="Gray" Background="WhiteSmoke" CornerRadius="5" BorderThickness="1">
         <Grid>
             <Grid.RowDefinitions>
@@ -25,7 +25,11 @@
             </Grid>
             <StackPanel Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center">
                 <hc:CircleProgressBar Visibility="{Binding IsVisLoad,Converter={StaticResource Boolean2VisibilityConverter}}" Width="68" Height="68" IsIndeterminate="True" Background="Transparent"/>
-                <TextBlock Text="{Binding Txt, FallbackValue=加载中...}" HorizontalAlignment="Center" Margin="0,5,0,0" TextWrapping="Wrap"  MouseLeftButtonDown="TextBlock_MouseLeftButtonDown" />
+                <TextBlock Text="{Binding Txt, FallbackValue=加载中...}" FontSize="{StaticResource SubHeadFontSize}" HorizontalAlignment="Center" Margin="0,5,0,0" TextWrapping="Wrap" MouseLeftButtonDown="TextBlock_MouseLeftButtonDown" />
+                <StackPanel Orientation="Horizontal">
+                    <Button Style="{StaticResource ButtonDashedSuccess}" Padding="22,5" Margin="5" Click="cs" Visibility="{Binding IsVisCs,Converter={StaticResource Boolean2VisibilityConverter}}">重试</Button>
+                    <Button Style="{StaticResource ButtonDashedWarning}" Padding="22,5" Margin="5" Click="tg" Visibility="{Binding IsVisTg,Converter={StaticResource Boolean2VisibilityConverter}}">跳过</Button>
+                </StackPanel>
             </StackPanel>
         </Grid>
     </Border>

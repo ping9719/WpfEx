@@ -1,4 +1,5 @@
-﻿using Ping9719.WpfEx.Mvvm;
+﻿using HandyControl.Tools.Extension;
+using Ping9719.WpfEx.Mvvm;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -23,54 +24,20 @@ namespace Ping9719.WpfEx
     /// </summary>
     public partial class MainLoadWindow : HandyControl.Controls.Window
     {
-        /// <summary>
-        /// 任务最短停留时间，默认180ms（视觉暂留0.1，人眼辨认0.3）
-        /// </summary>
-        public static int TaskSleepTime = 180;
-        Tuple<string, string, Action>[] Funcs;
+        int runi = 0;
+        MainLoadInfo[] Funcs;
         MainLoadWindowViewModel vModel = new MainLoadWindowViewModel();
-        bool isErr = false;
-        string errText = "";
 
         internal MainLoadWindow()
         {
             InitializeComponent();
+
             this.DataContext = vModel;
         }
 
-        private async void Window_Loaded(object sender, RoutedEventArgs e)
+        private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            await Task.Run(async () =>
-            {
-                foreach (var item in Funcs)
-                {
-                    vModel.Txt = item.Item1;
-                    try
-                    {
-                        var dt1 = DateTime.Now;
-                        item.Item3.Invoke();
-                        var dt2 = (int)(DateTime.Now - dt1).TotalMilliseconds;
-
-                        if (dt2 < TaskSleepTime)
-                            await Task.Delay(TaskSleepTime - dt2);
-                    }
-                    catch (Exception ex)
-                    {
-                        isErr = true;
-                        vModel.Txt = item.Item2;
-                        vModel.IsClose = true;
-                        vModel.IsVisLoad = false;
-                        errText = ex.ToString();
-                        break;
-                    }
-                }
-            });
-
-            if (!isErr)
-                this.Dispatcher.Invoke(() =>
-                {
-                    this.Close();
-                });
+            Run();
         }
 
         /// <summary>
@@ -83,16 +50,29 @@ namespace Ping9719.WpfEx
             if (funcs == null || !funcs.Any())
                 return true;
 
+            return Show(funcs.Select(o => new MainLoadInfo(o.Item3, o.Item1, o.Item2)).ToArray());
+        }
+
+        /// <summary>
+        /// 显示并运行
+        /// </summary>
+        /// <param name="funcs">加载的信息</param>
+        /// <returns>是否全部成功</returns>
+        public static bool Show(params MainLoadInfo[] funcs)
+        {
+            if (funcs == null || !funcs.Any())
+                return true;
+
             MainLoadWindow mainLoadWindow = new MainLoadWindow();
             mainLoadWindow.Funcs = funcs;
-            mainLoadWindow.ShowDialog();
-            return !mainLoadWindow.isErr;
+            return mainLoadWindow.ShowDialog() ?? false;
         }
 
         private void TextBlock_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            if (!string.IsNullOrWhiteSpace(errText))
-                MessageBox.Show(errText);
+            var err = Funcs?.ElementAtOrDefault(runi)?.Err;
+            if (err != null)
+                MessageBox.Show(err.ToString());
         }
 
         private void but_close(object sender, RoutedEventArgs e)
@@ -103,6 +83,68 @@ namespace Ping9719.WpfEx
         private void previewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             DragMove();
+        }
+
+        private void cs(object sender, RoutedEventArgs e)
+        {
+            Run();
+        }
+
+        private void tg(object sender, RoutedEventArgs e)
+        {
+            runi++;
+            Run();
+        }
+
+        private void Run()
+        {
+            Task.Run(() =>
+            {
+                vModel.Txt = "加载中...";
+                vModel.IsClose = false;
+                vModel.IsVisLoad = true;
+                vModel.IsVisCs = false;
+                vModel.IsVisTg = false;
+
+                for (int i = 0; i < Funcs.Length; i++)
+                {
+                    if (runi > i)
+                        continue;
+
+                    var item = Funcs[i];
+
+                    try
+                    {
+                        vModel.Txt = item.Info;
+
+                        var dt1 = DateTime.Now;
+                        item.Task.Invoke();
+                        var dt2 = (int)(DateTime.Now - dt1).TotalMilliseconds;
+
+                        if (dt2 < item.StayTime)
+                            Thread.Sleep(item.StayTime - dt2);
+
+                        runi++;
+                    }
+                    catch (Exception ex)
+                    {
+                        item.Err = ex;
+                        vModel.Txt = item.InfoErr;
+                        vModel.IsClose = true;
+                        vModel.IsVisLoad = false;
+                        vModel.IsVisCs = item.IsRetry;
+                        vModel.IsVisTg = item.IsErrIgnore;
+                        break;
+                    }
+                }
+
+                if (runi >= Funcs.Length)
+                    this.Dispatcher.Invoke(() =>
+                    {
+                        this.DialogResult = true;
+                        this.Close();
+                    });
+            });
         }
     }
 
@@ -116,5 +158,57 @@ namespace Ping9719.WpfEx
 
         private bool isclode = false;
         public bool IsClose { get => isclode; set { SetProperty(ref isclode, value); } }
+
+        private bool IsVisCs_ = false;
+        public bool IsVisCs { get => IsVisCs_; set { SetProperty(ref IsVisCs_, value); } }
+
+        private bool IsVisTg_ = false;
+        public bool IsVisTg { get => IsVisTg_; set { SetProperty(ref IsVisTg_, value); } }
     }
+
+    /// <summary>
+    /// 窗体加载的信息
+    /// </summary>
+    public class MainLoadInfo
+    {
+        public MainLoadInfo(Action task, string info = "加载中...", string infoErr = "加载失败", bool isRetry = true, bool isErrIgnore = false, int stayTime = 180)
+        {
+            Task = task;
+            Info = info;
+            InfoErr = infoErr;
+            IsRetry = isRetry;
+            IsErrIgnore = isErrIgnore;
+            StayTime = stayTime;
+        }
+
+        /// <summary>
+        /// 加载的任务
+        /// </summary>
+        public Action Task { get; set; }
+        /// <summary>
+        /// 提示。默认，加载中...
+        /// </summary>
+        public string Info { get; set; } = "加载中...";
+        /// <summary>
+        /// 加载失败显示的提示。默认，加载失败
+        /// </summary>
+        public string InfoErr { get; set; } = "加载失败";
+        /// <summary>
+        /// 加载中出现的错误
+        /// </summary>
+        internal Exception Err { get; set; } = null;
+        /// <summary>
+        /// 任务失败是否可以点击重试按钮，默认true
+        /// </summary>
+        public bool IsRetry { get; set; } = true;
+        /// <summary>
+        /// 是否可以对错误进行忽略并点击继续后继续，默认false
+        /// </summary>
+        public bool IsErrIgnore { get; set; } = false;
+        /// <summary>
+        /// 驻留视觉时间，默认180ms（视觉暂留0.1，人眼辨认0.3）
+        /// </summary>
+        public int StayTime { get; set; } = 180;
+    }
+
 }
