@@ -64,6 +64,70 @@ namespace Ping9719.WpfEx
         /// <summary>
         /// 显示输入提示框并尝试转为指定类型
         /// </summary>
+        /// <param name="type">不区分大小写的目标类型</param>
+        /// <param name="contentText">内容</param>
+        /// <param name="verify">验证委托</param>
+        /// <param name="defaultValue">文本框里面的内容</param>
+        /// <param name="isVisCloseBut">是否显示关闭按钮</param>
+        /// <param name="owner">窗体所有者</param>
+        /// <returns>输入的内容（关闭为null）</returns>
+        public static object Show(string type, string contentText, Func<object, string> verify = null, string defaultValue = "", bool isVisCloseBut = true, Window owner = null, object tag = null) => Show(type, contentText, string.Empty, "请输入值", verify, defaultValue, isVisCloseBut, owner, tag);
+
+        /// <summary>
+        /// 显示输入提示框并尝试转为指定类型
+        /// </summary>
+        /// <param name="type">不区分大小写的目标类型</param>
+        /// <param name="contentText">内容</param>
+        /// <param name="title">标题</param>
+        /// <param name="contentHint">内部内容</param>
+        /// <param name="verify">验证委托</param>
+        /// <param name="defaultValue">文本框里面的内容</param>
+        /// <param name="isVisCloseBut">是否显示关闭按钮</param>
+        /// <param name="owner">窗体所有者</param>
+        /// <returns>输入的内容（关闭为null）</returns>
+        public static object Show(string type, string contentText, string title, string contentHint = "请输入值", Func<object, string> verify = null, string defaultValue = "", bool isVisCloseBut = true, Window owner = null, object tag = null)
+        {
+            var ts = type.Trim().ToLower();
+            switch (ts)
+            {
+                case "bool":
+                    return Show<bool>(contentText, title, contentHint, verify == null ? null : ((a) => verify(a)), defaultValue, isVisCloseBut, owner, tag);
+                case "byte":
+                    return Show<byte>(contentText, title, contentHint, verify == null ? null : (a) => verify(a), defaultValue, isVisCloseBut, owner, tag);
+                case "int16":
+                    return Show<Int16>(contentText, title, contentHint, verify == null ? null : (a) => verify(a), defaultValue, isVisCloseBut, owner, tag);
+                case "int32":
+                    return Show<Int32>(contentText, title, contentHint, verify == null ? null : (a) => verify(a), defaultValue, isVisCloseBut, owner, tag);
+                case "int64":
+                    return Show<Int64>(contentText, title, contentHint, verify == null ? null : (a) => verify(a), defaultValue, isVisCloseBut, owner, tag); ;
+                case "uint16":
+                    return Show<UInt16>(contentText, title, contentHint, verify == null ? null : (a) => verify(a), defaultValue, isVisCloseBut, owner, tag);
+                case "uint32":
+                    return Show<UInt32>(contentText, title, contentHint, verify == null ? null : (a) => verify(a), defaultValue, isVisCloseBut, owner, tag);
+                case "uint64":
+                    return Show<UInt64>(contentText, title, contentHint, verify == null ? null : (a) => verify(a), defaultValue, isVisCloseBut, owner, tag);
+                case "float":
+                case "single":
+                    return Show<float>(contentText, title, contentHint, verify == null ? null : (a) => verify(a), defaultValue, isVisCloseBut, owner, tag);
+                case "double":
+                    return Show<double>(contentText, title, contentHint, verify == null ? null : (a) => verify(a), defaultValue, isVisCloseBut, owner, tag);
+                case "string":
+                    return Show(contentText, title, contentHint, verify == null ? null : (a) => verify(a), defaultValue, isVisCloseBut, true, owner, tag);
+                case "datatime":
+                    return Show<DateTime>(contentText, title, contentHint, verify == null ? null : (a) => verify(a), defaultValue, isVisCloseBut, owner, tag);
+                case "timespan":
+                    return Show<TimeSpan>(contentText, title, contentHint, verify == null ? null : (a) => verify(a), defaultValue, isVisCloseBut, owner, tag);
+                case "char":
+                    return Show<Char>(contentText, title, contentHint, verify == null ? null : (a) => verify(a), defaultValue, isVisCloseBut, owner, tag);
+                default:
+                    throw new Exception($"不支持的类型[{type}]");
+            }
+
+        }
+
+        /// <summary>
+        /// 显示输入提示框并尝试转为指定类型
+        /// </summary>
         /// <typeparam name="T">目标类型</typeparam>
         /// <param name="contentText">内容</param>
         /// <param name="verify">验证委托</param>

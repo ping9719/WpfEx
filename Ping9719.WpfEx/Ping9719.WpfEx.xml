@@ -1439,6 +1439,32 @@
             点击成功后
             </summary>
         </member>
+        <member name="M:Ping9719.WpfEx.MessageBoxTipInput.Show(System.String,System.String,System.Func{System.Object,System.String},System.String,System.Boolean,System.Windows.Window,System.Object)">
+            <summary>
+            显示输入提示框并尝试转为指定类型
+            </summary>
+            <param name="type">不区分大小写的目标类型</param>
+            <param name="contentText">内容</param>
+            <param name="verify">验证委托</param>
+            <param name="defaultValue">文本框里面的内容</param>
+            <param name="isVisCloseBut">是否显示关闭按钮</param>
+            <param name="owner">窗体所有者</param>
+            <returns>输入的内容（关闭为null）</returns>
+        </member>
+        <member name="M:Ping9719.WpfEx.MessageBoxTipInput.Show(System.String,System.String,System.String,System.String,System.Func{System.Object,System.String},System.String,System.Boolean,System.Windows.Window,System.Object)">
+            <summary>
+            显示输入提示框并尝试转为指定类型
+            </summary>
+            <param name="type">不区分大小写的目标类型</param>
+            <param name="contentText">内容</param>
+            <param name="title">标题</param>
+            <param name="contentHint">内部内容</param>
+            <param name="verify">验证委托</param>
+            <param name="defaultValue">文本框里面的内容</param>
+            <param name="isVisCloseBut">是否显示关闭按钮</param>
+            <param name="owner">窗体所有者</param>
+            <returns>输入的内容（关闭为null）</returns>
+        </member>
         <member name="M:Ping9719.WpfEx.MessageBoxTipInput.Show``1(System.String,System.Func{``0,System.String},System.String,System.Boolean,System.Windows.Window,System.Object)">
             <summary>
             显示输入提示框并尝试转为指定类型
