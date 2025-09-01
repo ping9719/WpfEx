@@ -24,6 +24,14 @@ namespace WpfApp1
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            var aaa = MessageBoxTipInput.Show(type: "datatime", "asadasd", (a) => 
+            {
+                if (a is Int16)
+                {
+                    return "sad";
+                }
+                return "";
+            });
             //MessageBoxTip.Show("12312");
 
         }

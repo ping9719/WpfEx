@@ -60,6 +60,7 @@ namespace Ping9719.WpfEx
         /// <returns>是否全部成功</returns>
         public static bool Show(params MainLoadInfo[] funcs)
         {
+            funcs = funcs?.Where(o => o.Task != null)?.ToArray();
             if (funcs == null || !funcs.Any())
                 return true;
 
@@ -171,6 +172,7 @@ namespace Ping9719.WpfEx
     /// </summary>
     public class MainLoadInfo
     {
+        public MainLoadInfo() { }
         public MainLoadInfo(Action task, string info = "加载中...", string infoErr = "加载失败", bool isRetry = true, bool isErrIgnore = false, int stayTime = 180)
         {
             Task = task;
@@ -184,7 +186,7 @@ namespace Ping9719.WpfEx
         /// <summary>
         /// 加载的任务
         /// </summary>
-        public Action Task { get; set; }
+        public Action Task { get; set; } = null;
         /// <summary>
         /// 提示。默认，加载中...
         /// </summary>

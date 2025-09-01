@@ -22,10 +22,11 @@ namespace WpfApp1
 
             var aaaa = MainLoadWindow.Show(new MainLoadInfo[]
              {
-                 new MainLoadInfo (()=>{ System.Threading.Thread.Sleep(1000); },"11","11err"),
-                 new MainLoadInfo (()=>{ System.Threading.Thread.Sleep(1000);int.Parse("aa"); },"22","122err",isErrIgnore:true),
-                 new MainLoadInfo (()=>{ System.Threading.Thread.Sleep(1000); },"33","133err"),
-                 new MainLoadInfo (()=>{ System.Threading.Thread.Sleep(1000); },"44","144err"),
+                 //new MainLoadInfo (()=>{ System.Threading.Thread.Sleep(10); },"11","11err"),
+                 //new MainLoadInfo (()=>{ System.Threading.Thread.Sleep(10);int.Parse("aa"); },"22","122err",isErrIgnore:true),
+                 //new MainLoadInfo (()=>{ System.Threading.Thread.Sleep(10); },"33","133err"),
+                 //new MainLoadInfo (()=>{ System.Threading.Thread.Sleep(10); },"44","144err"),
+                 new MainLoadInfo (),
              });
 
             mainWindow.Show();

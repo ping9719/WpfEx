@@ -5,8 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
+        xmlns:pi="https://github.com/ping9719/wpfex"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
+    <StackPanel>
         <Button Click="Button_Click">123</Button>
-    </Grid>
+        <pi:IotStateInfo x:Name="abc" Header="传感器1" Value="123" ValueNull="12"></pi:IotStateInfo>
+    </StackPanel>
 </Window>

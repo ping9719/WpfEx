@@ -3,7 +3,7 @@
 	<PropertyGroup>
 		<TargetFrameworks>net45;net8.0-windows</TargetFrameworks>
 		<UseWPF>true</UseWPF>
-		<Version>0.8.9</Version>
+		<Version>0.8.11</Version>
 		<LangVersion>latest</LangVersion>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
