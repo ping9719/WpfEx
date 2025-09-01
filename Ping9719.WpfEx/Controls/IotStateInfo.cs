@@ -75,6 +75,17 @@ namespace Ping9719.WpfEx
         internal static readonly DependencyProperty ValueStrProperty =
             DependencyProperty.Register("ValueStr", typeof(string), typeof(IotStateInfo), new PropertyMetadata(string.Empty));
 
+        /// <summary>
+        /// 值为null时显示的内容
+        /// </summary>
+        public string ValueNull
+        {
+            get { return (string)GetValue(ValueNullProperty); }
+            set { SetValue(ValueNullProperty, value); }
+        }
+
+        public static readonly DependencyProperty ValueNullProperty =
+            DependencyProperty.Register("ValueNull", typeof(string), typeof(IotStateInfo), new PropertyMetadata(""));
 
         /// <summary>
         /// 值，bool
@@ -91,14 +102,14 @@ namespace Ping9719.WpfEx
         /// <summary>
         /// 是否bool类型
         /// </summary>
-        public bool IsBool
+        public bool? IsBool
         {
-            get { return (bool)GetValue(IsBoolProperty); }
+            get { return (bool?)GetValue(IsBoolProperty); }
             internal set { SetValue(IsBoolProperty, value); }
         }
 
         public static readonly DependencyProperty IsBoolProperty =
-            DependencyProperty.Register("IsBool", typeof(bool), typeof(IotStateInfo), new PropertyMetadata(false));
+            DependencyProperty.Register("IsBool", typeof(bool?), typeof(IotStateInfo), new PropertyMetadata(false));
 
         /// <summary>
         /// 值
@@ -110,7 +121,7 @@ namespace Ping9719.WpfEx
         }
 
         public static readonly DependencyProperty ValueProperty =
-            DependencyProperty.Register("Value", typeof(object), typeof(IotStateInfo), new PropertyMetadata(null, OnValueChanged));
+            DependencyProperty.Register("Value", typeof(object), typeof(IotStateInfo), new PropertyMetadata("", OnValueChanged));
 
         /// <summary>
         /// 成功状态下的颜色
@@ -162,8 +173,6 @@ namespace Ping9719.WpfEx
         public static readonly DependencyProperty ValueStrBoolIsBoolProperty =
             DependencyProperty.Register("ValueStrBoolIsBool", typeof(bool), typeof(IotStateInfo), new PropertyMetadata(true));
 
-
-
         private static void OnValueChanged(DependencyObject o, DependencyPropertyChangedEventArgs e)
         {
             if (o == null || e == null)
@@ -171,7 +180,11 @@ namespace Ping9719.WpfEx
             if (o is IotStateInfo listener)
             {
                 if (e.NewValue == null)
-                    return;
+                {
+                    listener.IsBool = null;
+                    listener.ValueBool = false;
+                    listener.ValueStr = listener.ValueNull;
+                }
                 else if (e.NewValue is bool bo)
                 {
                     listener.IsBool = true;

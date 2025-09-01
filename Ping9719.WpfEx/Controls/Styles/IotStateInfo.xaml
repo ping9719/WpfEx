@@ -61,6 +61,12 @@
                             <Setter TargetName="tb1" Property="Visibility" Value="Collapsed"/>
                             <Setter TargetName="bo1" Property="Visibility" Value="Collapsed"/>
                         </Trigger>
+                        <Trigger Property="IsBool" Value="{x:Null}">
+                            <Setter TargetName="tx2" Property="Visibility" Value="Visible"/>
+                            <Setter TargetName="tx3" Property="Visibility" Value="Visible"/>
+                            <Setter TargetName="tb1" Property="Visibility" Value="Collapsed"/>
+                            <Setter TargetName="bo1" Property="Visibility" Value="Collapsed"/>
+                        </Trigger>
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter Property="Opacity" Value="0.9"/>
                         </Trigger>
